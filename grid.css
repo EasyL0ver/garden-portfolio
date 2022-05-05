@@ -1,0 +1,66 @@
+.column {
+    float: left;
+    width: 25%;
+    height: 100%;
+}
+
+
+.row {
+    height: 100%;
+}
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.grid-box{
+    height: 50%;
+    width: 100%;
+    background-color: greenyellow;
+    padding: 20px;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;  
+}
+
+.grid-element{
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.grid-element img{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.grid-description {
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(6px);
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-label {
+    margin-top: auto;
+    margin: auto;
+    color: white;
+    width: 70%;
+    text-align: left;
+    font-size: 32px;
+}
+
+.hidden {
+    display: none;
+}
+
