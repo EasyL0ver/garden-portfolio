@@ -1,0 +1,20 @@
+{
+    "row-size": 3,
+    "header": {
+        "title": "próbny tytuł",
+        "description": "próbny opis",
+        "img": "testowo.jpg"
+    },
+    "items": [
+        {
+            "title": "próbny tytuł child",
+            "description": "próbny opis",
+            "img": "testowo1.jpg"
+        },
+        {
+            "title": "próbny tytuł child 2",
+            "description": "próbny opis",
+            "img": "testowo2.jpg"
+        }
+    ]
+}
