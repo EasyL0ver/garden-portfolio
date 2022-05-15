@@ -5,6 +5,15 @@
     align-items: center;
 }
 
+.header-content {
+    margin-top: -100px;
+    padding-top: 100px;
+    height: 100%;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;  
+}
+
 .image-header p {
 	color: white;
 	font-size: 50px;

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/text.css" />
     <link rel="stylesheet" href="styles/panels.css" />
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/gallery.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -213,7 +214,9 @@
             <div class="image-header dummy-image">
                 <p class="header">PROJEKTY</p>
             </div>
-            <div class="gallery-container" data-set="GALLERY_PROJEKTY"></div>
+            <div class="header-content">
+                <div class="gallery-container" data-set="projekty.json"></div>
+            </div>
         </div>
     </section>
 
@@ -222,7 +225,7 @@
             <div class="image-header dummy-image">
                 <p class="header">REALIZACJE</p>
             </div>
-            <div class="gallery-container" data-set="GALLERY_PROJEKTY"></div>
+            <div data-set="GALLERY_PROJEKTY"></div>
         </div>
     </section>
 
@@ -287,7 +290,8 @@
         });
 
     </script>
-    <script type="module" src="build/gallery.js"></script>
+    <script src="scripts/useContainerDimensions.js"></script>
+    <script src="build/gallery.js"></script>
 </body>
 
 </html>
