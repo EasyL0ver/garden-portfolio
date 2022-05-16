@@ -3,7 +3,7 @@ const GalleryFunctional = (props) => {
   const [galleryConfiguration, setGalleryConfiguration] = React.useState({ "elements": [] });
   React.useEffect(() => {
     const fetchData = async () => {
-      const dataUrl = "/resources/galleries/" + props.galleryConfigName
+      const dataUrl = "resources/galleries/" + props.galleryConfigName
       const response = await fetch(dataUrl)
       const config = await response.json()
       setGalleryConfiguration(config.gallery)
