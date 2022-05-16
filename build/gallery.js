@@ -1,10 +1,12 @@
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 const GalleryFunctional = props => {
   const [galleryConfiguration, setGalleryConfiguration] = React.useState({
     "elements": []
   });
   React.useEffect(() => {
     const fetchData = async () => {
-      const dataUrl = "/resources/galleries/" + props.galleryConfigName;
+      const dataUrl = "resources/galleries/" + props.galleryConfigName;
       const response = await fetch(dataUrl);
       const config = await response.json();
       setGalleryConfiguration(config.gallery);
@@ -27,8 +29,8 @@ const GalleryThumbnailsView = props => {
       images: e.images
     }));
   });
-  const columnTemplate = "1fr ".repeat(props.config.columns);
-  const rowTemplate = "1fr ".repeat(props.config.rows);
+  const columnTemplate = "minmax(0, 1fr) ".repeat(props.config.columns);
+  const rowTemplate = "minmax(0, 1fr) ".repeat(props.config.rows);
   return /*#__PURE__*/React.createElement("div", {
     className: "gallery-grid-container",
     style: {
@@ -38,13 +40,37 @@ const GalleryThumbnailsView = props => {
   }, galleryElements);
 };
 
+function useHover() {
+  const [hovering, setHovering] = React.useState(false);
+  const onHoverProps = {
+    onMouseEnter: () => setHovering(true),
+    onMouseLeave: () => setHovering(false)
+  };
+  return [hovering, onHoverProps];
+}
+
 const GalleryThumbnail = props => {
+  const [thumbnailHovering, hoverProps] = useHover();
   const dataUrl = "/resources/img/" + props.details.img;
-  return /*#__PURE__*/React.createElement("div", {
+  const imageClasses = thumbnailHovering ? "fit blurred" : "fit";
+  return /*#__PURE__*/React.createElement("div", _extends({
     className: "gallery-thumbnail-container"
+  }, hoverProps), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-image-wrapper"
   }, /*#__PURE__*/React.createElement("img", {
+    className: imageClasses,
     src: dataUrl
-  }));
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-thumbnail-description"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-canvas"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "font-large white main-font center",
+    style: {
+      height: "50%",
+      width: "50%"
+    }
+  }, /*#__PURE__*/React.createElement("span", null, props.details.title, "\n"), /*#__PURE__*/React.createElement("span", null, props.details.description))))));
 };
 
 document.querySelectorAll('.gallery-container').forEach(domContainer => {

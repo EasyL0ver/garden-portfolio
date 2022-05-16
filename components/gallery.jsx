@@ -17,15 +17,15 @@ const GalleryFunctional = (props) => {
 }
 
 const GalleryThumbnailsView = (props) => {
-  const galleryElements = props.config.elements.map((e,i) => {
+  const galleryElements = props.config.elements.map((e, i) => {
 
     return (<div className="gallery-grid-box" key={i}>
       <GalleryThumbnail details={e.thumbnail} images={e.images} ></GalleryThumbnail>
     </div>)
   })
 
-  const columnTemplate = "1fr ".repeat(props.config.columns)
-  const rowTemplate = "1fr ".repeat(props.config.rows)
+  const columnTemplate = "minmax(0, 1fr) ".repeat(props.config.columns)
+  const rowTemplate = "minmax(0, 1fr) ".repeat(props.config.rows)
 
   return (
     <div className="gallery-grid-container" style={{ gridTemplateColumns: columnTemplate, gridTemplateRows: rowTemplate }} >
@@ -34,10 +34,33 @@ const GalleryThumbnailsView = (props) => {
 }
 
 
+function useHover() {
+  const [hovering, setHovering] = React.useState(false)
+  const onHoverProps = {
+    onMouseEnter: () => setHovering(true),
+    onMouseLeave: () => setHovering(false),
+  }
+  return [hovering, onHoverProps]
+}
+
 const GalleryThumbnail = (props) => {
+  const [thumbnailHovering, hoverProps] = useHover()
   const dataUrl = "/resources/img/" + props.details.img
-  return (<div className="gallery-thumbnail-container">
-    <img src={dataUrl}></img>
+
+  const imageClasses = thumbnailHovering ? "fit blurred" : "fit";
+
+  return (<div className="gallery-thumbnail-container" {...hoverProps}>
+    <div className="gallery-image-wrapper">
+      <img className={imageClasses} src={dataUrl}></img>
+      <div className="gallery-thumbnail-description">
+        <div className="text-canvas">
+          <div className="font-large white main-font center" style={{height: "50%", width: "50%"}}>
+            <span>{props.details.title}{"\n"}</span>
+            <span>{props.details.description}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>)
 }
 

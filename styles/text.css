@@ -18,6 +18,10 @@
     font-size: 14px;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .center {
     display: flex;
     justify-content: center; /* align horizontal */
