@@ -13,12 +13,19 @@ const ImageGallery = () => {
             const galleryIndex = parseInt(params.get("subGalleryIndex"))
             const galleryImages = config.gallery.elements[galleryIndex].images
 
+            const index = parseInt(params.get("currentIndex") ?? "0")
+
+            setCurrentImageIndex(index)
             setImages(galleryImages)
           }
         fetchData()
     }, [])
 
     const onImageClicked = React.useCallback((selectedImageIndex) => {
+        const params = new URLSearchParams(window.location.search)
+        params.set("currentIndex", selectedImageIndex)
+        history.replaceState(null, null, "?"+params.toString());
+
         setCurrentImageIndex(selectedImageIndex)
     }, [setCurrentImageIndex])
 
