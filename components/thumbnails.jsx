@@ -62,7 +62,7 @@ const GalleryThumbnail = (props) => {
 }
 
 
-document.querySelectorAll('.gallery-container')
+document.querySelectorAll('.thumbnails-container')
   .forEach(domContainer => {
     const gallerySet = domContainer.dataset.set;
     const root = ReactDOM.createRoot(domContainer);

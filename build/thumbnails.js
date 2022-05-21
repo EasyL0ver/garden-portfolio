@@ -70,7 +70,7 @@ const GalleryThumbnail = props => {
   }, props.details.description))));
 };
 
-document.querySelectorAll('.gallery-container').forEach(domContainer => {
+document.querySelectorAll('.thumbnails-container').forEach(domContainer => {
   const gallerySet = domContainer.dataset.set;
   const root = ReactDOM.createRoot(domContainer);
   root.render( /*#__PURE__*/React.createElement(GalleryFunctional, {
