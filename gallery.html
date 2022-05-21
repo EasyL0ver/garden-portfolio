@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles/grid.css" />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <link rel="stylesheet" href="styles/title.css" />
+    <link rel="stylesheet" href="styles/grid.css" />
+    <link rel="stylesheet" href="styles/text.css" />
+    <link rel="stylesheet" href="styles/panels.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/thumbnails.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a style="background-color: rgb(64, 255, 0);" class="header-nav-button" data-target="main">HOME</a></li>
+            <li><a class="header-nav-button" data-target="kafelki">OFERTA</a></li>
+            <li><a class="header-nav-button" data-target="uslugi">O NAS</a></li>
+            <li><a class="header-nav-button" data-target="galeria">PROJEKTY</a></li>
+            <li><a class="header-nav-button" data-target="realizacje">REALIZACJE</a></li>
+            <li><a class="header-nav-button" data-target="pracownia">KONTAKTY</a></li>
+        </ul>
+    </nav>
+
+    <section name="main" class="topmost" style="background-color: greenyellow;">
+        <div class="dummy-text">
+            MAIN TODO
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".header-nav-button").click(function (btn) {
+
+                let scrollTarget = btn.target.dataset.target
+
+                let headerContainerAbsoluteHeight = 46
+                let targetTopOffset = $("section[name='" + scrollTarget + "']").offset().top
+
+
+                $('html,body').animate({
+                    scrollTop: targetTopOffset - headerContainerAbsoluteHeight
+                },
+                    'slow');
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

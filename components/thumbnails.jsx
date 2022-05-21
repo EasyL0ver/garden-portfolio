@@ -47,19 +47,16 @@ const GalleryThumbnail = (props) => {
   const [thumbnailHovering, hoverProps] = useHover()
   const dataUrl = "/resources/img/" + props.details.img
 
-  const imageClasses = thumbnailHovering ? "fit blurred" : "fit";
+  const imageClasses = thumbnailHovering ? "fit blurred " : "fit ";
+  const descriptionVisibility = thumbnailHovering ? "" : "hidden "
 
   return (<div className="gallery-thumbnail-container" {...hoverProps}>
     <div className="gallery-image-wrapper">
       <img className={imageClasses} src={dataUrl}></img>
-      <div className="gallery-thumbnail-description">
-        <div className="text-canvas">
-          <div className="font-large white main-font center" style={{height: "50%", width: "50%"}}>
-            <span>{props.details.title}{"\n"}</span>
-            <span>{props.details.description}</span>
-          </div>
+      <div className= {descriptionVisibility + "gallery-thumbnail-description main-font white"}>
+            <div className={descriptionVisibility + "font-large bold"}>{props.details.title}</div>
+            <div className={descriptionVisibility + "font-medium"}>{props.details.description}</div>
         </div>
-      </div>
     </div>
   </div>)
 }

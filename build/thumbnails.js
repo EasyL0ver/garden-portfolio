@@ -52,7 +52,8 @@ function useHover() {
 const GalleryThumbnail = props => {
   const [thumbnailHovering, hoverProps] = useHover();
   const dataUrl = "/resources/img/" + props.details.img;
-  const imageClasses = thumbnailHovering ? "fit blurred" : "fit";
+  const imageClasses = thumbnailHovering ? "fit blurred " : "fit ";
+  const descriptionVisibility = thumbnailHovering ? "" : "hidden ";
   return /*#__PURE__*/React.createElement("div", _extends({
     className: "gallery-thumbnail-container"
   }, hoverProps), /*#__PURE__*/React.createElement("div", {
@@ -61,16 +62,12 @@ const GalleryThumbnail = props => {
     className: imageClasses,
     src: dataUrl
   }), /*#__PURE__*/React.createElement("div", {
-    className: "gallery-thumbnail-description"
+    className: descriptionVisibility + "gallery-thumbnail-description main-font white"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-canvas"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "font-large white main-font center",
-    style: {
-      height: "50%",
-      width: "50%"
-    }
-  }, /*#__PURE__*/React.createElement("span", null, props.details.title, "\n"), /*#__PURE__*/React.createElement("span", null, props.details.description))))));
+    className: descriptionVisibility + "font-large bold"
+  }, props.details.title), /*#__PURE__*/React.createElement("div", {
+    className: descriptionVisibility + "font-medium"
+  }, props.details.description))));
 };
 
 document.querySelectorAll('.gallery-container').forEach(domContainer => {

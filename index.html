@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/text.css" />
     <link rel="stylesheet" href="styles/panels.css" />
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/gallery.css" />
+    <link rel="stylesheet" href="styles/thumbnails.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -278,20 +278,10 @@
                     'slow');
             });
 
-            $('.grid-element').mouseenter(function () {
-                $(this).find('.grid-description').show();
-            })
-
-            $('.grid-element').mouseleave(function () {
-                $(this).find('.grid-description').hide();
-            });
-
-
         });
 
     </script>
-    <script src="scripts/useContainerDimensions.js"></script>
-    <script src="build/gallery.js"></script>
+    <script src="build/thumbnails.js"></script>
 </body>
 
 </html>
