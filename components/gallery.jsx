@@ -32,9 +32,9 @@ const ImageGallery = () => {
     return (
         <div className="gallery-container-inner">
             <div className="nav-overlay">
-                <NavArrow key={"right" + currentImageIndex} direction="right" selectedIndex={currentImageIndex} elementsCount={images.length} clickCallback={onImageClicked}></NavArrow>
+                <NavArrow key={"right" + currentImageIndex + images.length} direction="right" selectedIndex={currentImageIndex} elementsCount={images.length} clickCallback={onImageClicked}></NavArrow>
                 <div className="nav-overlay-flex-space"></div>
-                <NavArrow key={"left" + currentImageIndex} direction="left" selectedIndex={currentImageIndex} elementsCount={images.length} clickCallback={onImageClicked}></NavArrow>
+                <NavArrow key={"left" + currentImageIndex + images.length} direction="left" selectedIndex={currentImageIndex} elementsCount={images.length} clickCallback={onImageClicked}></NavArrow>
             </div>
             <div className="main-image-container">
                 <Image imageName={images[currentImageIndex].img}></Image>

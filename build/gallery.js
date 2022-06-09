@@ -29,7 +29,7 @@ const ImageGallery = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-overlay"
   }, /*#__PURE__*/React.createElement(NavArrow, {
-    key: "right" + currentImageIndex,
+    key: "right" + currentImageIndex + images.length,
     direction: "right",
     selectedIndex: currentImageIndex,
     elementsCount: images.length,
@@ -37,7 +37,7 @@ const ImageGallery = () => {
   }), /*#__PURE__*/React.createElement("div", {
     className: "nav-overlay-flex-space"
   }), /*#__PURE__*/React.createElement(NavArrow, {
-    key: "left" + currentImageIndex,
+    key: "left" + currentImageIndex + images.length,
     direction: "left",
     selectedIndex: currentImageIndex,
     elementsCount: images.length,
