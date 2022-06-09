@@ -15,18 +15,21 @@ const GalleryFunctional = props => {
     fetchData();
   }, []);
   return /*#__PURE__*/React.createElement(GalleryThumbnailsView, {
-    config: galleryConfiguration
+    config: galleryConfiguration,
+    galleryName: props.galleryConfigName
   });
 };
 
 const GalleryThumbnailsView = props => {
   const galleryElements = props.config.elements.map((e, i) => {
+    const buttonPressUrl = `/gallery.html?gallerySet=${props.galleryName}&subGalleryIndex=${i}&currentIndex=0`;
     return /*#__PURE__*/React.createElement("div", {
       className: "gallery-grid-box",
       key: i
     }, /*#__PURE__*/React.createElement(GalleryThumbnail, {
       details: e.thumbnail,
-      images: e.images
+      images: e.images,
+      navigateUrl: buttonPressUrl
     }));
   });
   const columnTemplate = "minmax(0, 1fr) ".repeat(props.config.columns);
@@ -59,7 +62,7 @@ const GalleryThumbnail = props => {
   }, hoverProps), /*#__PURE__*/React.createElement("div", {
     className: "gallery-image-wrapper"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "google.com"
+    href: props.navigateUrl
   }, /*#__PURE__*/React.createElement("img", {
     className: imageClasses,
     src: dataUrl

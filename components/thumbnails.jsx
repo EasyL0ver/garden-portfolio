@@ -12,15 +12,17 @@ const GalleryFunctional = (props) => {
   }, [])
 
   return (
-    <GalleryThumbnailsView config={galleryConfiguration}></GalleryThumbnailsView>
+    <GalleryThumbnailsView config={galleryConfiguration} galleryName={props.galleryConfigName}></GalleryThumbnailsView>
   )
 }
 
 const GalleryThumbnailsView = (props) => {
   const galleryElements = props.config.elements.map((e, i) => {
 
+    const buttonPressUrl = `/gallery.html?gallerySet=${props.galleryName}&subGalleryIndex=${i}&currentIndex=0`
+
     return (<div className="gallery-grid-box" key={i}>
-      <GalleryThumbnail details={e.thumbnail} images={e.images} ></GalleryThumbnail>
+      <GalleryThumbnail details={e.thumbnail} images={e.images} navigateUrl={buttonPressUrl} ></GalleryThumbnail>
     </div>)
   })
 
@@ -52,7 +54,7 @@ const GalleryThumbnail = (props) => {
 
   return (<div className="gallery-thumbnail-container" {...hoverProps}>
     <div className="gallery-image-wrapper">
-      <a href="google.com">
+      <a href={props.navigateUrl}>
         <img className={imageClasses} src={dataUrl}></img>
         <div className={descriptionVisibility + "gallery-thumbnail-description main-font white"}>
           <div className={descriptionVisibility + "font-large bold"}>{props.details.title}</div>
