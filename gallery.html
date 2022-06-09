@@ -18,12 +18,12 @@
 <body>
     <nav>
         <ul>
-            <li><a style="background-color: rgb(64, 255, 0);" class="header-nav-button" data-target="main">HOME</a></li>
-            <li><a class="header-nav-button" data-target="kafelki">OFERTA</a></li>
-            <li><a class="header-nav-button" data-target="uslugi">O NAS</a></li>
-            <li><a class="header-nav-button" data-target="galeria">PROJEKTY</a></li>
-            <li><a class="header-nav-button" data-target="realizacje">REALIZACJE</a></li>
-            <li><a class="header-nav-button" data-target="pracownia">KONTAKTY</a></li>
+            <li><a style="background-color: rgb(64, 255, 0);" class="header-nav-button" href="..">HOME</a></li>
+            <li><a class="header-nav-button" href="..#kafelki">OFERTA</a></li>
+            <li><a class="header-nav-button" href="..#uslugi">O NAS</a></li>
+            <li><a class="header-nav-button" href="..#galeria">PROJEKTY</a></li>
+            <li><a class="header-nav-button" href="..#realizacje">REALIZACJE</a></li>
+            <li><a class="header-nav-button" href="..#pracownia">KONTAKTY</a></li>
         </ul>
     </nav>
 
@@ -31,27 +31,6 @@
         <div class="gallery-container">
         </div>
     </section>
-
-    <script>
-        $(document).ready(function () {
-
-            $(".header-nav-button").click(function (btn) {
-
-                let scrollTarget = btn.target.dataset.target
-
-                let headerContainerAbsoluteHeight = 46
-                let targetTopOffset = $("section[name='" + scrollTarget + "']").offset().top
-
-
-                $('html,body').animate({
-                    scrollTop: targetTopOffset - headerContainerAbsoluteHeight
-                },
-                    'slow');
-            });
-
-        });
-
-    </script>
     <script src="build/gallery.js"></script>
 </body>
 
