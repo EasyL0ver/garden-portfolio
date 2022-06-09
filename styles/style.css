@@ -14,7 +14,7 @@ section {
     height: -webkit-calc(100% - (46px));
     height: calc(100% - (46px));
     /* idk about margin this one */
-    margin-bottom: 50px;
+    margin-bottom: 12px;
     padding: 20px;
     display:block;
     -webkit-box-sizing: border-box; 
@@ -46,4 +46,10 @@ a.anchor {
     position: relative;
     top: -66px;
     visibility: hidden;
+}
+
+.border-main {
+    border: black;
+    border-width: 1px;
+    border-style: solid;
 }
