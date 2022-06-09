@@ -52,7 +52,7 @@ function useHover() {
 const GalleryThumbnail = props => {
   const [thumbnailHovering, hoverProps] = useHover();
   const dataUrl = "/resources/img/" + props.details.img;
-  const imageClasses = thumbnailHovering ? "fit blurred " : "fit ";
+  const imageClasses = thumbnailHovering ? "blurred " : "";
   const descriptionVisibility = thumbnailHovering ? "" : "hidden ";
   return /*#__PURE__*/React.createElement("div", _extends({
     className: "gallery-thumbnail-container"
