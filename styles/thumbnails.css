@@ -8,6 +8,7 @@
     padding-top: 10px;
 }
 
+
 .gallery-grid-container {
     display: grid;
     height: 100%;
@@ -39,6 +40,12 @@
     width: 100%;
     position: relative;
     z-index: 1;
+}
+
+.gallery-image-wrapper a {
+    height: 100%;
+    width: 100%;
+    display: block;
 }
 
 .gallery-image-wrapper img {

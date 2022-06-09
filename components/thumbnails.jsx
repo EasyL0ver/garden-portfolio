@@ -52,11 +52,13 @@ const GalleryThumbnail = (props) => {
 
   return (<div className="gallery-thumbnail-container" {...hoverProps}>
     <div className="gallery-image-wrapper">
-      <img className={imageClasses} src={dataUrl}></img>
-      <div className= {descriptionVisibility + "gallery-thumbnail-description main-font white"}>
-            <div className={descriptionVisibility + "font-large bold"}>{props.details.title}</div>
-            <div className={descriptionVisibility + "font-medium"}>{props.details.description}</div>
+      <a href="google.com">
+        <img className={imageClasses} src={dataUrl}></img>
+        <div className={descriptionVisibility + "gallery-thumbnail-description main-font white"}>
+          <div className={descriptionVisibility + "font-large bold"}>{props.details.title}</div>
+          <div className={descriptionVisibility + "font-medium"}>{props.details.description}</div>
         </div>
+      </a>
     </div>
   </div>)
 }

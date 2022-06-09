@@ -58,6 +58,8 @@ const GalleryThumbnail = props => {
     className: "gallery-thumbnail-container"
   }, hoverProps), /*#__PURE__*/React.createElement("div", {
     className: "gallery-image-wrapper"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "google.com"
   }, /*#__PURE__*/React.createElement("img", {
     className: imageClasses,
     src: dataUrl
@@ -67,7 +69,7 @@ const GalleryThumbnail = props => {
     className: descriptionVisibility + "font-large bold"
   }, props.details.title), /*#__PURE__*/React.createElement("div", {
     className: descriptionVisibility + "font-medium"
-  }, props.details.description))));
+  }, props.details.description)))));
 };
 
 document.querySelectorAll('.thumbnails-container').forEach(domContainer => {
