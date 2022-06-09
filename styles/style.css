@@ -4,6 +4,11 @@ html,body {
     margin:0;
 }
 
+.fixed-body {
+    position: fixed;
+    width: 100%;
+}
+
 section {
     height: -moz-calc(100% - (46px));
     height: -webkit-calc(100% - (46px));
