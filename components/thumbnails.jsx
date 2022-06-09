@@ -47,7 +47,7 @@ function useHover() {
 
 const GalleryThumbnail = (props) => {
   const [thumbnailHovering, hoverProps] = useHover()
-  const dataUrl = "/resources/img/" + props.details.img
+  const dataUrl = "resources/img/" + props.details.img
 
   const imageClasses = thumbnailHovering ? "blurred " : "";
   const descriptionVisibility = thumbnailHovering ? "" : "hidden "

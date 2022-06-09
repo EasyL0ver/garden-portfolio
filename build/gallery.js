@@ -108,7 +108,7 @@ const MiniImage = props => {
 };
 
 const Image = props => {
-  const actualPath = "/resources/img/" + props.imageName;
+  const actualPath = "resources/img/" + props.imageName;
   return /*#__PURE__*/React.createElement("img", {
     className: "fit",
     src: actualPath
