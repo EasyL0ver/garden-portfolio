@@ -53,3 +53,23 @@ a.anchor {
     border-width: 1px;
     border-style: solid;
 }
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.fill-image {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.scale-image {
+    height: 100%;
+    width: 100%;
+    object-fit: scale-down;
+}

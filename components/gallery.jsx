@@ -92,16 +92,38 @@ const MiniImage = (props) => {
     const miniImageClasses = props.isSelected ? "mini-image-wrapper mini-selected" : "mini-image-wrapper"
 
     return (<div className={miniImageClasses} onClick={miniImageClicked}>
-        <Image imageName={props.imageName}></Image>
+        <Image imageName={props.imageName} displayMode="fill"></Image>
     </div>)
 }
 
 const Image = (props) => {
     const actualPath = "resources/img/" + props.imageName
 
-    return (
-        <img className="fit" src={actualPath}></img>
-    )
+    const displayMode = props.displayMode ?? "fill";
+
+    if(displayMode === "fill")
+        return (
+            <img className="fill-image" src={actualPath}></img>
+        )
+    if(displayMode === "scale") {
+        return (
+            <img className="scale-image" src={actualPath}></img>
+        )
+    }
+    if(displayMode === "scale-background") {
+
+        return (
+            <div className="image-section full-width full-height">
+                <div className="scale-image-background">
+                    <img className="fill-image" src={actualPath}></img>
+                </div>
+                <div className="scale-image-foreground">
+                    {/* <img className="scale-image" src={actualPath}></img> */}
+                </div>
+            </div>
+        )
+    }
+        
 }
 
 

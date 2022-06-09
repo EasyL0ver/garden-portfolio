@@ -103,16 +103,38 @@ const MiniImage = props => {
     className: miniImageClasses,
     onClick: miniImageClicked
   }, /*#__PURE__*/React.createElement(Image, {
-    imageName: props.imageName
+    imageName: props.imageName,
+    displayMode: "fill"
   }));
 };
 
 const Image = props => {
   const actualPath = "resources/img/" + props.imageName;
-  return /*#__PURE__*/React.createElement("img", {
-    className: "fit",
+  const displayMode = props.displayMode ?? "fill";
+  if (displayMode === "fill") return /*#__PURE__*/React.createElement("img", {
+    className: "fill-image",
     src: actualPath
   });
+
+  if (displayMode === "scale") {
+    return /*#__PURE__*/React.createElement("img", {
+      className: "scale-image",
+      src: actualPath
+    });
+  }
+
+  if (displayMode === "scale-background") {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "image-section full-width full-height"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "scale-image-background"
+    }, /*#__PURE__*/React.createElement("img", {
+      className: "fill-image",
+      src: actualPath
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "scale-image-foreground"
+    }));
+  }
 };
 
 document.querySelectorAll('.gallery-container').forEach(domContainer => {
