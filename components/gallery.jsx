@@ -58,6 +58,9 @@ const NavArrow = (props) => {
             newIndex++
         }
 
+        if(newIndex < 0) return;
+        if(newIndex > props.elementsCount - 1) return;
+
         props.clickCallback(newIndex)
     }, [props.clickCallback])
 
@@ -71,7 +74,7 @@ const NavArrow = (props) => {
         visible = false
     }
 
-    const wrapperClasses = visible ? "nav-arrow-wrapper" : "nav-arrow-wrapper inactive-arrow"
+    const wrapperClasses = visible ? "nav-arrow-wrapper" : "nav-arrow-wrapper inactive-arrow click-disable"
     const arrowDir = props.direction == "left" ? "arrow-left" : "arrow-right"
     const arrowActive = visible ? "arrow-active" : "arrow-inactive"
 

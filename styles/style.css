@@ -30,4 +30,8 @@ section {
     height:0; overflow:visible;
 }
 
+.click-disable {
+    pointer-events: none;
+}
+
 .clearBoth { clear:both; }
