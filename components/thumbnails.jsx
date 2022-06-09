@@ -19,7 +19,7 @@ const GalleryFunctional = (props) => {
 const GalleryThumbnailsView = (props) => {
   const galleryElements = props.config.elements.map((e, i) => {
 
-    const buttonPressUrl = `/gallery.html?gallerySet=${props.galleryName}&subGalleryIndex=${i}&currentIndex=0`
+    const buttonPressUrl = `gallery.html?gallerySet=${props.galleryName}&subGalleryIndex=${i}&currentIndex=0`
 
     return (<div className="gallery-grid-box" key={i}>
       <GalleryThumbnail details={e.thumbnail} images={e.images} navigateUrl={buttonPressUrl} ></GalleryThumbnail>
