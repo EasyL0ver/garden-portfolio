@@ -1,0 +1,16 @@
+.seasons-panels-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.seasons-panel-neutral {
+    width: 25%;
+}
+
+.seasons-panel-collapsed {
+    width: 10%;
+}
+
+.seasons-panel-expanded {
+    width: 70%;
+}

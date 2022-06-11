@@ -1,0 +1,24 @@
+{
+    "images": [
+        {
+            "title": "wiosna",
+            "description": "próbny opis",
+            "img": "testowo.jpg"
+        },
+        {
+            "title": "lato",
+            "description": "próbny opis",
+            "img": "testowo2.jpg"
+        },
+        {
+            "title": "jesien",
+            "description": "próbny opis",
+            "img": "testowo2.jpg"
+        },
+        {
+            "title": "zima",
+            "description": "próbny opis",
+            "img": "testowo2.jpg"
+        }
+    ]
+}
