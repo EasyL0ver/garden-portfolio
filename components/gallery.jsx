@@ -1,7 +1,7 @@
 const ImageGallery = () => {
-    const [images, setImages] = React.useState([{img: "default.jpg"}])
+    const [images, setImages] = React.useState([{ img: "default.jpg" }])
     const [currentImageIndex, setCurrentImageIndex] = React.useState(0)
-    
+
     React.useEffect(() => {
         const fetchData = async () => {
             const params = new URLSearchParams(window.location.search)
@@ -17,14 +17,14 @@ const ImageGallery = () => {
 
             setCurrentImageIndex(index)
             setImages(galleryImages)
-          }
+        }
         fetchData()
     }, [])
 
     const onImageClicked = React.useCallback((selectedImageIndex) => {
         const params = new URLSearchParams(window.location.search)
         params.set("currentIndex", selectedImageIndex)
-        history.replaceState(null, null, "?"+params.toString());
+        history.replaceState(null, null, "?" + params.toString());
 
         setCurrentImageIndex(selectedImageIndex)
     }, [setCurrentImageIndex])
@@ -37,7 +37,7 @@ const ImageGallery = () => {
                 <NavArrow key={"left" + currentImageIndex + images.length} direction="left" selectedIndex={currentImageIndex} elementsCount={images.length} clickCallback={onImageClicked}></NavArrow>
             </div>
             <div className="main-image-container">
-                <Image imageName={images[currentImageIndex].img}></Image>
+                <Image imageName={images[currentImageIndex].img} displayMode={images[currentImageIndex].galleryDisplayMode}></Image>
             </div>
             <div className="thumbnails-container">
                 {images.map((image, index) => <MiniImage key={index} isSelected={index === currentImageIndex} imageName={image.img} imageIndex={index} clickCallback={onImageClicked}></MiniImage>)}
@@ -50,27 +50,27 @@ const NavArrow = (props) => {
     const navigate = React.useCallback(() => {
         let newIndex = props.selectedIndex;
 
-        if(props.direction == "left") {
+        if (props.direction == "left") {
             newIndex--
         }
 
-        if(props.direction == "right") {
+        if (props.direction == "right") {
             newIndex++
         }
 
-        if(newIndex < 0) return;
-        if(newIndex > props.elementsCount - 1) return;
+        if (newIndex < 0) return;
+        if (newIndex > props.elementsCount - 1) return;
 
         props.clickCallback(newIndex)
     }, [props.clickCallback])
 
     let visible = true;
 
-    if(props.direction == "left" && props.selectedIndex == 0) {
+    if (props.direction == "left" && props.selectedIndex == 0) {
         visible = false
     }
 
-    if(props.direction == "right" && props.selectedIndex == props.elementsCount - 1) {
+    if (props.direction == "right" && props.selectedIndex == props.elementsCount - 1) {
         visible = false
     }
 
@@ -101,17 +101,17 @@ const Image = (props) => {
 
     const displayMode = props.displayMode ?? "fill";
 
-    if(displayMode === "fill")
+    if (displayMode === "fill")
         return (
             <img className="fill-image" src={actualPath}></img>
         )
-    if(displayMode === "scale") {
+    if (displayMode === "scale") {
         return (
             <img className="scale-image" src={actualPath}></img>
         )
     }
-    if(displayMode === "scale-background") {
-
+    if (displayMode === "scale-background") {
+        //todo not supported yet!
         return (
             <div className="image-section full-width full-height">
                 <div className="scale-image-background">
@@ -123,16 +123,16 @@ const Image = (props) => {
             </div>
         )
     }
-        
+
 }
 
 
 
 
 document.querySelectorAll('.gallery-container')
-  .forEach(domContainer => {
-    const root = ReactDOM.createRoot(domContainer);
-    root.render(
-      <ImageGallery></ImageGallery>
-    );
-  });
+    .forEach(domContainer => {
+        const root = ReactDOM.createRoot(domContainer);
+        root.render(
+            <ImageGallery></ImageGallery>
+        );
+    });

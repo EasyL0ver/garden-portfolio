@@ -11,9 +11,11 @@
                 },
                 "images": [
                     {
-                        "title": "próbny tytuł child",
+                        "title": "próbny tytuł child scale",
                         "description": "próbny opis",
-                        "img": "testowo.jpg"
+                        "img": "testowo.jpg",
+                        "galleryDisplayMode": "scale"
+                        
                     },
                     {
                         "title": "próbny tytuł child 2",
@@ -32,8 +34,10 @@
                     {
                         "title": "próbny tytuł child",
                         "description": "próbny opis",
-                        "img": "testowo.jpg"
+                        "img": "testowo.jpg",
+                        "galleryDisplayMode": "fill"
                     },
+                    
                     {
                         "title": "próbny tytuł child 2",
                         "description": "próbny opis",

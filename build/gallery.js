@@ -45,7 +45,8 @@ const ImageGallery = () => {
   })), /*#__PURE__*/React.createElement("div", {
     className: "main-image-container"
   }, /*#__PURE__*/React.createElement(Image, {
-    imageName: images[currentImageIndex].img
+    imageName: images[currentImageIndex].img,
+    displayMode: images[currentImageIndex].galleryDisplayMode
   })), /*#__PURE__*/React.createElement("div", {
     className: "thumbnails-container"
   }, images.map((image, index) => /*#__PURE__*/React.createElement(MiniImage, {
@@ -124,6 +125,7 @@ const Image = props => {
   }
 
   if (displayMode === "scale-background") {
+    //todo not supported yet!
     return /*#__PURE__*/React.createElement("div", {
       className: "image-section full-width full-height"
     }, /*#__PURE__*/React.createElement("div", {
