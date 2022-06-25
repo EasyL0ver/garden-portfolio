@@ -33,9 +33,19 @@
     bottom:0;
 }
 
+.top {
+    position:absolute;
+    top:0;
+}
+
 .right {
     position:absolute;
     right:0;
+}
+
+.left {
+    position:absolute;
+    left:0;
 }
 
 .text-canvas {

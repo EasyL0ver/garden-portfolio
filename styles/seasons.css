@@ -3,14 +3,46 @@
     flex-direction: row;
 }
 
+.seasons-panel {
+    position: relative;
+}
+
+.seasons-panel div {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
 .seasons-panel-neutral {
     width: 25%;
+}
+
+.seasons-panel-neutral img {
+    object-fit: cover;
 }
 
 .seasons-panel-collapsed {
     width: 10%;
 }
 
+.seasons-panel-collapsed img {
+    object-fit: cover;
+}
+
 .seasons-panel-expanded {
     width: 70%;
+}
+
+.seasons-panel-text-header {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.seasons-panel-text-desc {
+    width: 50%;
+    margin-bottom: 30px;
+    margin-right: 30px;
 }
