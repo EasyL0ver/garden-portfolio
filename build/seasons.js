@@ -5,7 +5,6 @@ const Seasons = () => {
     className: "seasons-panels-container full-height full-width"
   }, /*#__PURE__*/React.createElement(SeasonPanel, {
     key: "0" + openPanelIndex?.toString(),
-    background: "red",
     index: 0,
     selectedIndex: openPanelIndex,
     onClick: onPanelClick,
@@ -17,7 +16,6 @@ const Seasons = () => {
     className: "bottom right font-medium white seasons-panel-text-desc"
   }, "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).")), /*#__PURE__*/React.createElement(SeasonPanel, {
     key: "1" + openPanelIndex?.toString(),
-    background: "blue",
     index: 1,
     selectedIndex: openPanelIndex,
     onClick: onPanelClick,
@@ -29,7 +27,6 @@ const Seasons = () => {
     className: "bottom right font-medium white seasons-panel-text-desc"
   }, "It is a long established fact that a reader will be ")), /*#__PURE__*/React.createElement(SeasonPanel, {
     key: "2" + openPanelIndex?.toString(),
-    background: "pink",
     index: 2,
     selectedIndex: openPanelIndex,
     onClick: onPanelClick,
@@ -41,7 +38,6 @@ const Seasons = () => {
     className: "bottom right font-medium white seasons-panel-text-desc"
   }, "It is a long established fact that a reader will be ")), /*#__PURE__*/React.createElement(SeasonPanel, {
     key: "3" + openPanelIndex?.toString(),
-    background: "orange",
     index: 3,
     selectedIndex: openPanelIndex,
     onClick: onPanelClick,
@@ -63,9 +59,6 @@ const SeasonPanel = props => {
 
     props.onClick(props.index);
   }, [props.onClick, props.index, props.selectedIndex]);
-  const style = {
-    backgroundColor: props.background
-  };
   let imgPath = "resources/img/" + props.clippedImg;
   let stateClass = "seasons-panel-neutral";
 
@@ -78,7 +71,6 @@ const SeasonPanel = props => {
   }
 
   return /*#__PURE__*/React.createElement("div", {
-    style: style,
     className: "seasons-panel " + stateClass,
     onClick: onPanelClick
   }, /*#__PURE__*/React.createElement("img", {
