@@ -48,7 +48,9 @@ const SeasonPanel = (props) => {
 
     return (<div className={"seasons-panel " + stateClass} onClick={onPanelClick}>
         <img className="full-width full-height" src={imgPath}></img>
-        {props.selectedIndex === props.index ? props.children : null}
+        <div className="seasons-panel-text-container">
+            {props.selectedIndex === props.index ? props.children : null}
+        </div>
     </div>)
 }
 

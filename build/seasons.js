@@ -76,7 +76,9 @@ const SeasonPanel = props => {
   }, /*#__PURE__*/React.createElement("img", {
     className: "full-width full-height",
     src: imgPath
-  }), props.selectedIndex === props.index ? props.children : null);
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "seasons-panel-text-container"
+  }, props.selectedIndex === props.index ? props.children : null));
 };
 
 document.querySelectorAll('.seasons-container').forEach(domContainer => {
