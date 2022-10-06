@@ -27,9 +27,6 @@
 .gallery-thumbnail-container {
     height: 100%;
     width: 100%;
-    border: black;
-    border-width: 1px;
-    border-style: solid;
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box;    
     box-sizing: border-box; 
