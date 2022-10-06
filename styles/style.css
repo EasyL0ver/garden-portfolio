@@ -50,7 +50,7 @@ a.anchor {
 
 .border-main {
     border: black;
-    border-width: 1px;
+    border-width: 0px;
     border-style: solid;
 }
 
