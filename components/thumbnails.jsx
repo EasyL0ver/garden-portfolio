@@ -50,7 +50,7 @@ const GalleryThumbnail = (props) => {
   const dataUrl = "resources/img/" + props.details.img
 
   const imageClasses = thumbnailHovering ? "blurred " : "";
-  const descriptionVisibility = thumbnailHovering ? "" : "hidden "
+  const descriptionVisibility = thumbnailHovering ? "shutter " : "hidden "
 
   return (<div className="gallery-thumbnail-container" {...hoverProps}>
     <div className="gallery-image-wrapper">

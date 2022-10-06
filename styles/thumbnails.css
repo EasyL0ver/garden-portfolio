@@ -65,12 +65,16 @@
     flex-direction: column;
 }
 
+
+.gallery-thumbnail-description div {
+    background-color: transparent;
+}
+
 .gallery-thumbnail-test {
     justify-content: center;
     align-items: center;
 }
 
-.blurred {
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+.shutter {
+    background-color: rgba(0, 0,0,0.3);
 }

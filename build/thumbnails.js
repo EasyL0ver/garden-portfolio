@@ -56,7 +56,7 @@ const GalleryThumbnail = props => {
   const [thumbnailHovering, hoverProps] = useHover();
   const dataUrl = "resources/img/" + props.details.img;
   const imageClasses = thumbnailHovering ? "blurred " : "";
-  const descriptionVisibility = thumbnailHovering ? "" : "hidden ";
+  const descriptionVisibility = thumbnailHovering ? "shutter " : "hidden ";
   return /*#__PURE__*/React.createElement("div", _extends({
     className: "gallery-thumbnail-container"
   }, hoverProps), /*#__PURE__*/React.createElement("div", {
