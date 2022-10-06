@@ -69,9 +69,9 @@ const GalleryThumbnail = props => {
   }), /*#__PURE__*/React.createElement("div", {
     className: descriptionVisibility + "gallery-thumbnail-description main-font white"
   }, /*#__PURE__*/React.createElement("div", {
-    className: descriptionVisibility + "font-large bold"
+    className: descriptionVisibility + "font-large bold align-center"
   }, props.details.title), /*#__PURE__*/React.createElement("div", {
-    className: descriptionVisibility + "font-medium"
+    className: descriptionVisibility + "font-medium align-center"
   }, props.details.description)))));
 };
 

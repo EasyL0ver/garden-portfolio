@@ -57,8 +57,8 @@ const GalleryThumbnail = (props) => {
       <a href={props.navigateUrl}>
         <img className={imageClasses} src={dataUrl}></img>
         <div className={descriptionVisibility + "gallery-thumbnail-description main-font white"}>
-          <div className={descriptionVisibility + "font-large bold"}>{props.details.title}</div>
-          <div className={descriptionVisibility + "font-medium"}>{props.details.description}</div>
+          <div className={descriptionVisibility + "font-large bold align-center"}>{props.details.title}</div>
+          <div className={descriptionVisibility + "font-medium align-center"}>{props.details.description}</div>
         </div>
       </a>
     </div>
