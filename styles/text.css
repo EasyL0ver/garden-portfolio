@@ -89,7 +89,7 @@
     }
     
     .font-large {
-        font-size: 32px;
+        font-size: 16px;
     }
     
     .font-medium {
@@ -97,6 +97,6 @@
     }
     
     .font-small {
-        font-size: 14px;
+        font-size: 7px;
     }
   }
