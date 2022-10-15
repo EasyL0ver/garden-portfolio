@@ -21,6 +21,41 @@
                         "title": "próbny tytuł child 2",
                         "description": "próbny opis",
                         "img": "testowo2.jpg"
+                    },
+                    {
+                        "title": "próbny tytuł child scale",
+                        "description": "próbny opis",
+                        "img": "testowo.jpg",
+                        "galleryDisplayMode": "scale"
+                        
+                    },
+                    {
+                        "title": "próbny tytuł child 2",
+                        "description": "próbny opis",
+                        "img": "testowo2.jpg"
+                    },
+                    {
+                        "title": "próbny tytuł child scale",
+                        "description": "próbny opis",
+                        "img": "testowo.jpg",
+                        "galleryDisplayMode": "scale"
+                        
+                    },
+                    {
+                        "title": "próbny tytuł child 2",
+                        "description": "próbny opis",
+                        "img": "testowo2.jpg"
+                    },{
+                        "title": "próbny tytuł child scale",
+                        "description": "próbny opis",
+                        "img": "testowo.jpg",
+                        "galleryDisplayMode": "scale"
+                        
+                    },
+                    {
+                        "title": "próbny tytuł child 2",
+                        "description": "próbny opis",
+                        "img": "testowo2.jpg"
                     }
                 ]
             },
