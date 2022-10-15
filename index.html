@@ -23,7 +23,7 @@
         <ul>
             <li class="default-nav-element">
                 <a style="background-color: rgb(64, 255, 0);" class="header-nav-button" data-target="main">HOME</a>
-                <div class="nav-hamburger-container" style="background-color: aqua; height: 46px; width: 50px;" href="javascript:void(0);"  onclick="myFunction()"></div>
+                <div class="nav-hamburger-container" style="background-color: aqua; height: 46px; width: 50px;"></div>
             </li>
             <li><a class="header-nav-button" data-target="kafelki">OFERTA</a></li>
             <li><a class="header-nav-button" data-target="uslugi">O NAS</a></li>
@@ -219,6 +219,14 @@
 
     <script>
         $(document).ready(function () {
+
+            $(".nav-hamburger-container").click(function (btn) {
+                $("nav li:not(:first-child)").each(function( index ) {
+                    let hidden = this.style.display === "none"
+                    this.style.display = hidden ? "block" : "none"
+                });
+            });
+            
 
             $(".header-nav-button").click(function (btn) {
 
