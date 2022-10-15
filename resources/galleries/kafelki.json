@@ -1,7 +1,6 @@
 {
     "gallery": {
-        "columns": 4,
-        "rows": 2,
+        "layoutName": "gallery-template-4x2",
         "elements": [
             {
                 "thumbnail": {

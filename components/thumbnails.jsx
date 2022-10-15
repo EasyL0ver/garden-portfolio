@@ -26,11 +26,8 @@ const GalleryThumbnailsView = (props) => {
     </div>)
   })
 
-  const columnTemplate = "minmax(0, 1fr) ".repeat(props.config.columns)
-  const rowTemplate = "minmax(0, 1fr) ".repeat(props.config.rows)
-
   return (
-    <div className="gallery-grid-container" style={{ gridTemplateColumns: columnTemplate, gridTemplateRows: rowTemplate }} >
+    <div className={"gallery-grid-container " + props.config.layoutName} >
       {galleryElements}
     </div>)
 }

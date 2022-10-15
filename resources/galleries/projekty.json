@@ -2,6 +2,7 @@
     "gallery": {
         "columns": 3,
         "rows": 2,
+        "layoutName": "gallery-template-3x2",
         "elements": [
             {
                 "thumbnail": {

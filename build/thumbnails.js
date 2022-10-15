@@ -32,14 +32,8 @@ const GalleryThumbnailsView = props => {
       navigateUrl: buttonPressUrl
     }));
   });
-  const columnTemplate = "minmax(0, 1fr) ".repeat(props.config.columns);
-  const rowTemplate = "minmax(0, 1fr) ".repeat(props.config.rows);
   return /*#__PURE__*/React.createElement("div", {
-    className: "gallery-grid-container",
-    style: {
-      gridTemplateColumns: columnTemplate,
-      gridTemplateRows: rowTemplate
-    }
+    className: "gallery-grid-container " + props.config.layoutName
   }, galleryElements);
 };
 
