@@ -15,12 +15,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <nav>
         <ul>
-            <li><a style="background-color: rgb(64, 255, 0);" class="header-nav-button" data-target="main">HOME</a></li>
+            <li class="default-nav-element">
+                <a style="background-color: rgb(64, 255, 0);" class="header-nav-button" data-target="main">HOME</a>
+                <div class="nav-hamburger-container" style="background-color: aqua; height: 46px; width: 50px;" href="javascript:void(0);"  onclick="myFunction()"></div>
+            </li>
             <li><a class="header-nav-button" data-target="kafelki">OFERTA</a></li>
             <li><a class="header-nav-button" data-target="uslugi">O NAS</a></li>
             <li><a class="header-nav-button" data-target="galeria">PROJEKTY</a></li>

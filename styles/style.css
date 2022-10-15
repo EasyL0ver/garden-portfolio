@@ -26,10 +26,6 @@ section {
     height: 100%;
 }
 
-.topmost {
-    margin-top: 46px;
-}
-
 .dummy-text {
     font-size: 40px;
     height:0; overflow:visible;
@@ -73,3 +69,9 @@ a.anchor {
     width: 100%;
     object-fit: scale-down;
 }
+
+@media screen and (min-width: 601px) {
+    .topmost {
+        margin-top: 46px;
+    }
+  }
