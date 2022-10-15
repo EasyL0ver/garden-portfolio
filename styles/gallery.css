@@ -73,7 +73,7 @@
 }
 
 .arrow-inactive {
-    border: solid gray;
+    border: solid rgba(127, 127, 127, 0.9);
     border-width: 0 10px 10px 0;
 }
   
