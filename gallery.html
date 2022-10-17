@@ -17,7 +17,7 @@
 </head>
 
 <body class="fixed-body">
-    <nav>
+    <!-- <nav>
         <ul>
             <li><a class="header-nav-button" href="./">HOME</a></li>
             <li><a class="header-nav-button" href="./#kafelki">OFERTA</a></li>
@@ -26,12 +26,42 @@
             <li><a class="header-nav-button" href="./#realizacje">REALIZACJE</a></li>
             <li><a class="header-nav-button" href="./#pracownia">KONTAKTY</a></li>
         </ul>
+    </nav> -->
+
+
+    <nav>
+        <ul>
+            <li class="default-nav-element">
+                <a style="background-color: rgb(64, 255, 0);" class="header-nav-button" href="./">HOME</a>
+                <div class="nav-expand-button" style="height: 46px; width: 50px;">
+                    <div class="nav-hamburger-container">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-collapsible"><a class="header-nav-button" href="./#kafelki">OFERTA</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" href="./#uslugi">O NAS</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" href="./#galeria">PROJEKTY</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" href="./#realizacje">REALIZACJE</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" href="./#pracownia">KONTAKTY</a></li>
+        </ul>
     </nav>
 
     <section name="main" class="topmost gallery-section">
         <div class="gallery-container full-width full-height">
         </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            $(".nav-expand-button").click(function (btn) {
+                $(".nav-collapsible").toggle()
+                $(".nav-hamburger-container").toggleClass("change")
+            });
+        });
+
+    </script>
     <script src="build/gallery.js"></script>
 </body>
 
