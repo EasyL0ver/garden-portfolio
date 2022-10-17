@@ -31,11 +31,11 @@
                     </div>
                 </div>
             </li>
-            <li><a class="header-nav-button" data-target="kafelki">OFERTA</a></li>
-            <li><a class="header-nav-button" data-target="uslugi">O NAS</a></li>
-            <li><a class="header-nav-button" data-target="galeria">PROJEKTY</a></li>
-            <li><a class="header-nav-button" data-target="realizacje">REALIZACJE</a></li>
-            <li><a class="header-nav-button" data-target="pracownia">KONTAKTY</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" data-target="kafelki">OFERTA</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" data-target="uslugi">O NAS</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" data-target="galeria">PROJEKTY</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" data-target="realizacje">REALIZACJE</a></li>
+            <li class="nav-collapsible"><a class="header-nav-button" data-target="pracownia">KONTAKTY</a></li>
         </ul>
     </nav>
 
@@ -227,10 +227,8 @@
         $(document).ready(function () {
 
             $(".nav-expand-button").click(function (btn) {
-                $("nav li:not(:first-child)").each(function( index ) {
-                    let hidden = this.style.display === "none"
-                    this.style.display = hidden ? "block" : "none"
-                });
+                $(".nav-collapsible").toggle()
+                $(".nav-hamburger-container").toggleClass("change")
             });
             
 

@@ -18,7 +18,7 @@ body {margin:0;}
     float: left;
   }
 
-  .nav-hamburger-container {
+  .nav-expand-button {
     display: none;
   }
   
@@ -73,7 +73,7 @@ body {margin:0;}
     height: 100%;
   }
 
-  nav li:not(:first-child) {
+  .nav-collapsible {
     display: none;
   }
 
@@ -86,12 +86,12 @@ body {margin:0;}
   }
   
   .change .bar1 {
-    transform: translate(0, 11px) rotate(-45deg);
+    transform: translate(0, 7px) rotate(-45deg);
   }
   
   .change .bar2 {opacity: 0;}
   
   .change .bar3 {
-    transform: translate(0, -11px) rotate(45deg);
+    transform: translate(0, -7px) rotate(45deg);
   }
 }
