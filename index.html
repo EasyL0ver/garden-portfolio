@@ -23,7 +23,13 @@
         <ul>
             <li class="default-nav-element">
                 <a style="background-color: rgb(64, 255, 0);" class="header-nav-button" data-target="main">HOME</a>
-                <div class="nav-hamburger-container" style="background-color: aqua; height: 46px; width: 50px;"></div>
+                <div class="nav-expand-button" style="height: 46px; width: 50px;">
+                    <div class="nav-hamburger-container">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
             </li>
             <li><a class="header-nav-button" data-target="kafelki">OFERTA</a></li>
             <li><a class="header-nav-button" data-target="uslugi">O NAS</a></li>
@@ -220,7 +226,7 @@
     <script>
         $(document).ready(function () {
 
-            $(".nav-hamburger-container").click(function (btn) {
+            $(".nav-expand-button").click(function (btn) {
                 $("nav li:not(:first-child)").each(function( index ) {
                     let hidden = this.style.display === "none"
                     this.style.display = hidden ? "block" : "none"
