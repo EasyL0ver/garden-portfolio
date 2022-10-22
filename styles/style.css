@@ -9,19 +9,6 @@ html,body {
     width: 100%;
 }
 
-section {
-    height: -moz-calc(100% - (46px));
-    height: -webkit-calc(100% - (46px));
-    height: calc(100% - (46px));
-    /* idk about margin this one */
-    margin-bottom: 12px;
-    padding: 20px;
-    display:block;
-    -webkit-box-sizing: border-box; 
-    -moz-box-sizing: border-box;    
-    box-sizing: border-box;  
-}
-
 .section-container {
     height: 100%;
 }
@@ -70,8 +57,33 @@ a.anchor {
     object-fit: scale-down;
 }
 
+@media screen and (max-width: 600px) {
+    section {
+        height: 100vh;
+        margin-bottom: 12px;
+        padding: 20px;
+        display:block;
+        -webkit-box-sizing: border-box; 
+        -moz-box-sizing: border-box;    
+        box-sizing: border-box;  
+    }
+  }
+
 @media screen and (min-width: 601px) {
     .topmost {
         margin-top: 46px;
+    }
+
+    section {
+        height: -moz-calc(100% - (46px));
+        height: -webkit-calc(100% - (46px));
+        height: calc(100% - (46px));
+        /* idk about margin this one */
+        margin-bottom: 12px;
+        padding: 20px;
+        display:block;
+        -webkit-box-sizing: border-box; 
+        -moz-box-sizing: border-box;    
+        box-sizing: border-box;  
     }
   }
