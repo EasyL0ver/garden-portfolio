@@ -1,5 +1,3 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 const GalleryFunctional = props => {
   const [galleryConfiguration, setGalleryConfiguration] = React.useState({
     "elements": []
@@ -37,35 +35,22 @@ const GalleryThumbnailsView = props => {
   }, galleryElements);
 };
 
-function useHover() {
-  const [hovering, setHovering] = React.useState(false);
-  const onHoverProps = {
-    onMouseEnter: () => setHovering(true),
-    onMouseLeave: () => setHovering(false)
-  };
-  return [hovering, onHoverProps];
-}
-
 const GalleryThumbnail = props => {
-  const [thumbnailHovering, hoverProps] = useHover();
   const dataUrl = "resources/img/" + props.details.img;
-  const imageClasses = thumbnailHovering ? "blurred " : "";
-  const descriptionVisibility = thumbnailHovering ? "shutter " : "hidden ";
-  return /*#__PURE__*/React.createElement("div", _extends({
+  return /*#__PURE__*/React.createElement("div", {
     className: "gallery-thumbnail-container"
-  }, hoverProps), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "gallery-image-wrapper"
   }, /*#__PURE__*/React.createElement("a", {
     href: props.navigateUrl
   }, /*#__PURE__*/React.createElement("img", {
-    className: imageClasses,
     src: dataUrl
   }), /*#__PURE__*/React.createElement("div", {
-    className: descriptionVisibility + "gallery-thumbnail-description main-font white"
+    className: "gallery-thumbnail-description main-font white"
   }, /*#__PURE__*/React.createElement("div", {
-    className: descriptionVisibility + "font-large bold align-center"
+    className: "font-large bold align-center"
   }, props.details.title), /*#__PURE__*/React.createElement("div", {
-    className: descriptionVisibility + "font-medium align-center"
+    className: "font-medium align-center"
   }, props.details.description)))));
 };
 

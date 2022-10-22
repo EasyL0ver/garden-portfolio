@@ -33,29 +33,16 @@ const GalleryThumbnailsView = (props) => {
 }
 
 
-function useHover() {
-  const [hovering, setHovering] = React.useState(false)
-  const onHoverProps = {
-    onMouseEnter: () => setHovering(true),
-    onMouseLeave: () => setHovering(false),
-  }
-  return [hovering, onHoverProps]
-}
-
 const GalleryThumbnail = (props) => {
-  const [thumbnailHovering, hoverProps] = useHover()
   const dataUrl = "resources/img/" + props.details.img
 
-  const imageClasses = thumbnailHovering ? "blurred " : "";
-  const descriptionVisibility = thumbnailHovering ? "shutter " : "hidden "
-
-  return (<div className="gallery-thumbnail-container" {...hoverProps}>
+  return (<div className="gallery-thumbnail-container">
     <div className="gallery-image-wrapper">
       <a href={props.navigateUrl}>
-        <img className={imageClasses} src={dataUrl}></img>
-        <div className={descriptionVisibility + "gallery-thumbnail-description main-font white"}>
-          <div className={descriptionVisibility + "font-large bold align-center"}>{props.details.title}</div>
-          <div className={descriptionVisibility + "font-medium align-center"}>{props.details.description}</div>
+        <img src={dataUrl}></img>
+        <div className={"gallery-thumbnail-description main-font white"}>
+          <div className={"font-large bold align-center"}>{props.details.title}</div>
+          <div className={"font-medium align-center"}>{props.details.description}</div>
         </div>
       </a>
     </div>
