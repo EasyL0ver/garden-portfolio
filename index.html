@@ -236,13 +236,17 @@
 
                 let scrollTarget = btn.target.dataset.target
 
-                let headerContainerAbsoluteHeight = 46
+
+                let isNavigationBarSticky = $("nav ul").css("position") === "fixed"
+                let stickyNavBarOffset = isNavigationBarSticky ? $("nav ul").height() : 0
+
+
                 let targetTopOffset = $("section[name='" + scrollTarget + "']").offset().top
 
 
                 history.pushState({}, "", `#${scrollTarget}`)
                 $('html,body').animate({
-                    scrollTop: targetTopOffset - headerContainerAbsoluteHeight
+                    scrollTop: targetTopOffset - stickyNavBarOffset
                 },
                     'slow');
             });
