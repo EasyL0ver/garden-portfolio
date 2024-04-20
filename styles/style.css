@@ -4,6 +4,12 @@ html,body {
     margin:0;
 }
 
+.root-content-container{
+    padding-top: 60px;
+    max-width: 980px;
+    margin: 0 auto; /* This centers the container horizontally */
+}
+
 .fixed-body {
     position: fixed;
     width: 100%;
@@ -23,6 +29,7 @@ html,body {
 }
 
 .clearBoth { clear:both; }
+
 
 a.anchor {
     display: block;
@@ -57,33 +64,10 @@ a.anchor {
     object-fit: scale-down;
 }
 
-@media screen and (max-width: 600px) {
-    section {
-        height: 100vh;
-        margin-bottom: 12px;
-        padding: 20px;
-        display:block;
-        -webkit-box-sizing: border-box; 
-        -moz-box-sizing: border-box;    
-        box-sizing: border-box;  
-    }
-  }
+section {
+    height: 100vh;
+}
 
-@media screen and (min-width: 601px) {
-    .topmost {
-        margin-top: 46px;
-    }
-
-    section {
-        height: -moz-calc(100% - (46px));
-        height: -webkit-calc(100% - (46px));
-        height: calc(100% - (46px));
-        /* idk about margin this one */
-        margin-bottom: 12px;
-        padding: 20px;
-        display:block;
-        -webkit-box-sizing: border-box; 
-        -moz-box-sizing: border-box;    
-        box-sizing: border-box;  
-    }
-  }
+.carousel {
+    height: 100%;
+}
