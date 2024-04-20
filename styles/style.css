@@ -8,7 +8,7 @@ html,body {
 }
 
 .root-content-container{
-    padding-top: 60px;
+    padding-top: 56px;
     max-width: 980px;
     margin: 0 auto; /* This centers the container horizontally */
 }
