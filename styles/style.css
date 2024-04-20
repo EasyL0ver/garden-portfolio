@@ -2,14 +2,13 @@ html,body {
     height:100%;
     padding:0;
     margin:0;
-    background-image: url(../resources/img/seamless\ pattern.jpg);
+    background-image: url(../resources/img/stock-photo-watercolor-floral-seamless-pattern-in-vintage-rustic-style-colored-garden-illustration-on-ivory-2139439847.jpg);
     background-repeat: repeat; /* or repeat-x or repeat-y */
     background-size: cover;
 }
 
 .root-content-container{
-    padding-top: 56px;
-    max-width: 980px;
+    padding-top: 70px;
     margin: 0 auto; /* This centers the container horizontally */
 }
 
