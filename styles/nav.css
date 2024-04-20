@@ -1,3 +1,27 @@
 .navbar {
     background-color: bisque;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo {
+    height: 30px;
+    width: 30px;
+}
+
+.company-name {
+    color: green;
+}
+/* nav {
+    height: 60px;
+} */
+
+.navbar-border {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 2px 0;
+    margin: 2px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
