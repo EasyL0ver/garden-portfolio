@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/thumbnails.css" />
     <link rel="stylesheet" href="styles/seasons.css" />
+    <link rel="stylesheet" href="styles/accordion.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -56,7 +57,45 @@
             <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2">
 
                 <section name="main" class="topmost">
-                    <div class="seasons-container full-width full-height"> </div>
+                    <div class="full-height container">
+                        <div class="full-height accordion">
+                            <div class="tab">
+                              <img src="https://images.unsplash.com/photo-1536974735554-66bfa1ede9f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+                              <div class="caption">
+                                <h2>Lorem Impsum</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                              </div>
+                            </div>
+                            <div class="tab">
+                              <img src="https://images.unsplash.com/photo-1460529941229-d92cc936a0d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="">
+                               <div class="caption">
+                                <h2>Lorem Impsum</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                              </div>
+                            </div>
+                            <div class="tab">
+                              <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+                               <div class="caption">
+                                <h2>Lorem Impsum</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                              </div>
+                            </div>
+                            <div class="tab">
+                              <img src="https://images.unsplash.com/photo-1537007456227-aed7d59b5800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1336&q=80" alt="">
+                              <div class="caption">
+                                <h2>Lorem Impsum</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                              </div>
+                            </div>
+                            <!-- <div class="tab">
+                              <img src="https://images.unsplash.com/photo-1422207239328-29f83832206c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1279&q=80" alt="">
+                              <div class="caption">
+                                <h2>Lorem Impsum</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                              </div>
+                            </div> -->
+                          </div>
+                    </div>
                 </section>
 
                 <section name="kafelki">
@@ -222,6 +261,15 @@
                     </div>
                 </section>
 
+                <section name="galeria-fotorama">
+                    <div class="container">
+                        <div class="fotorama" data-nav="thumbs">
+                            <img src="resources/img/IMG_0033.JPG" data-caption="Obrazek">
+                            <img src="resources/img/Obraz078a1.jpg" data-caption="Kolejny">
+                            <img src="resources/img/KOTKI.jpg" data-caption="Kotki (rozciatniete)" data-fit="cover">
+                        </div>
+                    </div>
+                </section>
 
                 <section name="jak-powstaje" style="height: 50vh;">
                     <a class="anchor" id="jak-powstaje"></a>
