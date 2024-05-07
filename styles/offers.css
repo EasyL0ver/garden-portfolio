@@ -1,0 +1,43 @@
+section.offer-section .card-img-top {
+    /* width: 100%;
+    height: 15vw; */
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+section.offer-section {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section.offer-section .card-title {
+    color: green;
+}
+
+section.offer-section .card-text {
+    color: green;
+}
+
+section.offer-section .row {
+    overflow: hidden;
+}
+
+section.offer-section {
+    .card-image-container {
+        height: 50%;
+    }
+
+    .card-body {
+        height: 50%;
+    }
+
+    .card-text-group {
+        overflow: hidden;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 0px;
+        border-color: green;
+        color: green;
+    }
+}

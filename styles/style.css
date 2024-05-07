@@ -71,3 +71,9 @@ section {
     background-color: white;
 }
 
+.h-50 {
+    height: 50%;
+}
+.vh-50 {
+    height: 50vh;
+}
