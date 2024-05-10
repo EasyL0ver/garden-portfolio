@@ -67,8 +67,11 @@ a.anchor {
 }
 
 section {
-    height: 90vh;
     background-color: white;
+}
+
+.home-section {
+    height: 90vh;
 }
 
 .h-50 {
@@ -76,4 +79,19 @@ section {
 }
 .vh-50 {
     height: 50vh;
+}
+
+.section-header {
+    .image-container {
+        height: 10vh;
+    }
+
+    img {
+        height: 100%;
+    }
+
+    .spacing {
+        margin: 0 auto;
+        width: 40%;
+    }
 }
