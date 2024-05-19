@@ -95,3 +95,8 @@ section {
         width: 40%;
     }
 }
+
+.landing-page {
+    height: 100vh;
+    background-color: transparent;
+}

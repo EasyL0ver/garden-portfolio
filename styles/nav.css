@@ -1,6 +1,12 @@
 .navbar {
-    background-color: bisque;
+    background-color: transparent;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.scrolled {
+    background-color: bisque;
+    transition: background-color 200ms linear;
+    /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
 }
 
 .navbar-shadow {
