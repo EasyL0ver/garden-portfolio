@@ -18,8 +18,15 @@ section.offer-section .card-text {
     color: green;
 }
 
+section.offer-section .col-md-4 {
+    padding-right: calc(.25* var(--bs-gutter-x));
+    padding-left: calc(.25* var(--bs-gutter-x));
+}
+
 section.offer-section .row {
     overflow: hidden;
+    padding-right: calc(.25* var(--bs-gutter-x));
+    padding-left: calc(.25* var(--bs-gutter-x));
 }
 
 section.offer-section {
