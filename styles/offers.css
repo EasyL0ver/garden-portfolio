@@ -30,6 +30,10 @@ section.offer-section .row {
 }
 
 section.offer-section {
+    .card {
+        height: 400px;
+    }
+
     .card-image-container {
         height: 50%;
     }

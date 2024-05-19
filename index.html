@@ -26,48 +26,49 @@
 </head>
 
 <body class="main-font">
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="navbar-border full-height full-width navbar">
-            <div class="container">
-                <div class="navbar-brand" href="#">
-                    <img class="logo" src="resources/img/ogrodniklogo.svg">
-                    <a class="company-name">ogrodnik projektuje</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#kafelki">Oferta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#uslugi">O nas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#galeria">Projekty</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#realizacje">Realizacje</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pracownia">Contact</a>
-                        </li>
-                    </ul>
+    <div class="background-wrapper">
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="navbar-border full-height full-width navbar">
+                <div class="container">
+                    <div class="navbar-brand" href="#">
+                        <img class="logo" src="resources/img/ogrodniklogo.svg">
+                        <a class="company-name">ogrodnik projektuje</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#kafelki">Oferta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#uslugi">O nas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#galeria">Projekty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#realizacje">Realizacje</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#pracownia">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </nav>
+        <div class="landing-page topmost container-fluid">
+
         </div>
-    </nav>
-    <div class="landing-page topmost container-fluid" style="background-color: hsla(0, 0%, 0%, 0.744) ;">
 
-    </div>
+        <div class="container root-content-container">
+            <div class="row">
+                <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1">
 
-    <div class="container root-content-container">
-        <div class="row">
-            <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1">
-
-                <!-- <section name="main" class="topmost home-section">
+                    <!-- <section name="main" class="topmost home-section">
                     <div class="full-height container horizontal-accordion">
 
                         <div class="card choice unset bg-primary text-white mx-2">
@@ -147,7 +148,7 @@
                         </div>
                     </div>
                 </section> -->
-                <!-- 
+                    <!-- 
                 <section name="zaprojektuj-zima">
                     <a class="anchor" id="zaprojektuj-zima"></a>
                     <div class="container col-xxl-8 px-4 py-5">
@@ -170,231 +171,233 @@
                     </div>
                 </section> -->
 
-                <section name="uslugi" class="offer-section container no-gutters background-neutral pt-4">
-                    <div class="section-header jumbotron text-center py-4">
-                        <div class="image-container">
-                            <img src="resources/img/ogrodniklogonobackgorund.svg">
-                        </div>
-                        <div>
-                            <h1 class="jumbotron-heading">Oferta</h1>
-                            <hr class="my-4 spacing">
-                            <p class="lead text-muted">Krótki opis sekcji. Nie musi być zupełnie długi</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 pb-4 vh-50">
-                            <div class="card h-100 box-shadow rounded-0">
-                                <div id="offer-image-container-1"
-                                    class="card-image-container show offer-collapse-group-1 full-width">
-                                    <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
-                                        alt="Card image cap">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div class="card-text-group">
-                                        <h5 class="card-title">Krótki - długi tekst</h5>
-                                        <p class="card-text">Mogę ukryć tekst i rozwinąć go przy pomocy guzika
-                                        </p>
-                                        <p class="card-text collapse offer-collapse-group-1">Dodatkowy tekst
-                                            pokaże się po naciśnieciu guzika. Może być dość długi żeby przekazać
-                                            jakąś bardziej rozwiniętą myśl</p>
-                                        <p class="card-text collapse offer-collapse-group-1">Może być tu dowolny
-                                            układ tekstu np. kilka paragrafów.</p>
-                                    </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-sm btn-outline-secondary" type="button"
-                                            data-bs-toggle="collapse" data-bs-target=".offer-collapse-group-1"
-                                            aria-expanded="false" aria-controls="offer-image-container-1">Dowiedz
-                                            się więcej</button>
-                                    </div>
-                                </div>
+                    <section name="uslugi" class="offer-section container no-gutters background-neutral pt-4">
+                        <div class="section-header jumbotron text-center py-4">
+                            <div class="image-container">
+                                <img src="resources/img/ogrodniklogonobackgorund.svg">
+                            </div>
+                            <div>
+                                <h1 class="jumbotron-heading">Oferta</h1>
+                                <hr class="my-4 spacing">
+                                <p class="lead text-muted">Krótki opis sekcji. Nie musi być zupełnie długi</p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 pb-4 vh-50">
-                            <div class="card h-100 box-shadow rounded-0">
-                                <div id="offer-image-container-2" class="card-image-container">
-                                    <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
-                                        alt="Card image cap">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div class="card-text-group">
-                                        <h5 class="card-title">Karta z hiperlilinkem</h5>
-                                        <p class="card-text">W tej sekcji naciśnięcie guzika przeniesie w inne
-                                            miejsce na stronie</p>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 pb-4">
+                                <div class="card box-shadow rounded-0">
+                                    <div id="offer-image-container-1"
+                                        class="card-image-container show offer-collapse-group-1 full-width">
+                                        <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
+                                            alt="Card image cap">
                                     </div>
-                                    <div class="btn-group">
-                                        <a class="btn btn-sm btn-outline-secondary" href="#">Przenieś się</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 pb-4 vh-50">
-                            <div class="card h-100 box-shadow rounded-0">
-                                <div id="offer-image-container-2" class="card-image-container">
-                                    <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
-                                        alt="Card image cap">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div class="card-text-group">
-                                        <h5 class="card-title">Przeciętna wizytówka</h5>
-                                        <p class="card-text">Nie ma w niej nic szczególnego</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 pb-4 vh-50">
-                            <div class="card h-100 box-shadow rounded-0">
-                                <div id="offer-image-container-2" class="card-image-container">
-                                    <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
-                                        alt="Card image cap">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div class="card-text-group">
-                                        <h5 class="card-title">Przeciętna wizytówka</h5>
-                                        <p class="card-text">Nie ma w niej nic szczególnego</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 pb-4 vh-50">
-                            <div class="card h-100 box-shadow rounded-0">
-                                <div id="offer-image-container-2" class="card-image-container">
-                                    <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
-                                        alt="Card image cap">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div class="card-text-group">
-                                        <h5 class="card-title">Karta z hiperlilinkem</h5>
-                                        <p class="card-text">W tej sekcji naciśnięcie guzika przeniesie w inne
-                                            miejsce na stronie</p>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a class="btn btn-sm btn-outline-secondary" href="#">Przenieś się</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 pb-4 vh-50">
-                            <div class="card h-100 box-shadow rounded-0">
-                                <div id="offer-image-container-2" class="card-image-container">
-                                    <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
-                                        alt="Card image cap">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div class="card-text-group">
-                                        <h5 class="card-title">Przeciętna wizytówka</h5>
-                                        <p class="card-text">Nie ma w niej nic szczególnego</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-
-                <section name="jak-powstaje" class="container background-neutral pb-4">
-                    <a class="anchor" id="jak-powstaje"></a>
-                    <div class="section-header jumbotron text-center py-4">
-                        <div class="image-container">
-                            <img src="resources/img/ogrodniklogonobackgorund.svg">
-                        </div>
-                        <div>
-                            <h1 class="jumbotron-heading">Jak powstaje ogród</h1>
-                            <hr class="my-4 spacing">
-                            <p class="lead text-muted">Sekcja z karuzelą pokazującą proces projektowania krok po
-                                kroku</p>
-                        </div>
-                    </div>
-                    <div style="height: 70vh;">
-                        <div id="myCarousel" class="full-height carousel slide mb-6" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
-                                    aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
-                            </div>
-                            <div class="carousel-inner full-height">
-                                <div class="full-height carousel-item active">
-                                    <img src="resources/img/KOTKI.jpg" height="100%" width="100%"
-                                        style="object-fit: cover;">
-                                    <div class="container">
-                                        <div class="carousel-caption text-start">
-                                            <h1>Example headline.</h1>
-                                            <p class="opacity-75">Some representative placeholder content for the first
-                                                slide of the carousel.</p>
-                                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div class="card-text-group">
+                                            <h5 class="card-title">Krótki - długi tekst</h5>
+                                            <p class="card-text">Mogę ukryć tekst i rozwinąć go przy pomocy guzika
+                                            </p>
+                                            <p class="card-text collapse offer-collapse-group-1">Dodatkowy tekst
+                                                pokaże się po naciśnieciu guzika. Może być dość długi żeby przekazać
+                                                jakąś bardziej rozwiniętą myśl</p>
+                                            <p class="card-text collapse offer-collapse-group-1">Może być tu dowolny
+                                                układ tekstu np. kilka paragrafów.</p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="full-height carousel-item">
-                                    <img src="resources/img/IMG_0033.JPG" height="100%" width="100%">
-                                    <div class="container">
-                                        <div class="carousel-caption">
-                                            <h1>Another example headline.</h1>
-                                            <p>Some representative placeholder content for the second slide of the
-                                                carousel.</p>
-                                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="full-height carousel-item">
-                                    <svg class="bd-placeholder-img" width="100%" height="100%"
-                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                        preserveAspectRatio="xMidYMid slice" focusable="false">
-                                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-                                    </svg>
-                                    <div class="container">
-                                        <div class="carousel-caption text-end">
-                                            <h1>One more for good measure.</h1>
-                                            <p>Some representative placeholder content for the third slide of this
-                                                carousel.</p>
-                                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-outline-secondary" type="button"
+                                                data-bs-toggle="collapse" data-bs-target=".offer-collapse-group-1"
+                                                aria-expanded="false" aria-controls="offer-image-container-1">Dowiedz
+                                                się więcej</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                            <div class="col-md-4 col-sm-6 pb-4">
+                                <div class="card box-shadow rounded-0">
+                                    <div id="offer-image-container-2" class="card-image-container">
+                                        <img class="card-img-top rounded-0" src="resources/img/KOTKI.jpg"
+                                            alt="Card image cap">
+                                    </div>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div class="card-text-group">
+                                            <h5 class="card-title">Karta z hiperlilinkem</h5>
+                                            <p class="card-text">W tej sekcji naciśnięcie guzika przeniesie w inne
+                                                miejsce na stronie</p>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-outline-secondary" href="#">Przenieś się</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 pb-4">
+                                <div class="card box-shadow rounded-0">
+                                    <div id="offer-image-container-2" class="card-image-container">
+                                        <img class="card-img-top rounded-0" src="resources/img/Keukenhof.jpg"
+                                            alt="Card image cap">
+                                    </div>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div class="card-text-group">
+                                            <h5 class="card-title">Przeciętna wizytówka</h5>
+                                            <p class="card-text">Nie ma w niej nic szczególnego</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 pb-4">
+                                <div class="card box-shadow rounded-0">
+                                    <div id="offer-image-container-2" class="card-image-container">
+                                        <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
+                                            alt="Card image cap">
+                                    </div>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div class="card-text-group">
+                                            <h5 class="card-title">Przeciętna wizytówka</h5>
+                                            <p class="card-text">Nie ma w niej nic szczególnego</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 pb-4">
+                                <div class="card box-shadow rounded-0">
+                                    <div id="offer-image-container-2" class="card-image-container">
+                                        <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
+                                            alt="Card image cap">
+                                    </div>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div class="card-text-group">
+                                            <h5 class="card-title">Karta z hiperlilinkem</h5>
+                                            <p class="card-text">W tej sekcji naciśnięcie guzika przeniesie w inne
+                                                miejsce na stronie</p>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-outline-secondary" href="#">Przenieś się</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 pb-4">
+                                <div class="card box-shadow rounded-0">
+                                    <div id="offer-image-container-2" class="card-image-container">
+                                        <img class="card-img-top rounded-0" src="resources/img/flowers-1.jpg"
+                                            alt="Card image cap">
+                                    </div>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div class="card-text-group">
+                                            <h5 class="card-title">Przeciętna wizytówka</h5>
+                                            <p class="card-text">Nie ma w niej nic szczególnego. Oprócz tego że jest
+                                                tutaj troche więcej tekstu</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
 
-                <section name="gallery-collage" class="container background-neutral pb-4">
-                    <div class="section-header jumbotron text-center py-4">
-                        <div class="image-container">
-                            <img src="resources/img/ogrodniklogonobackgorund.svg">
+                    <section name="jak-powstaje" class="container background-neutral pb-4">
+                        <a class="anchor" id="jak-powstaje"></a>
+                        <div class="section-header jumbotron text-center py-4">
+                            <div class="image-container">
+                                <img src="resources/img/ogrodniklogonobackgorund.svg">
+                            </div>
+                            <div>
+                                <h1 class="jumbotron-heading">Jak powstaje ogród</h1>
+                                <hr class="my-4 spacing">
+                                <p class="lead text-muted">Sekcja z karuzelą pokazującą proces projektowania krok po
+                                    kroku</p>
+                            </div>
                         </div>
-                        <div>
-                            <h1 class="jumbotron-heading">Galeria</h1>
-                            <hr class="my-4 spacing">
-                            <p class="lead text-muted">Galeria typu kolaż z nieregularnym rozmiarem zdjęć</p>
+                        <div style="height: 70vh;">
+                            <div id="myCarousel" class="full-height carousel slide mb-6" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner full-height">
+                                    <div class="full-height carousel-item active">
+                                        <img src="resources/img/KOTKI.jpg" height="100%" width="100%"
+                                            style="object-fit: cover;">
+                                        <div class="container">
+                                            <div class="carousel-caption text-start">
+                                                <h1>Example headline.</h1>
+                                                <p class="opacity-75">Some representative placeholder content for the
+                                                    first
+                                                    slide of the carousel.</p>
+                                                <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-height carousel-item">
+                                        <img src="resources/img/IMG_0033.JPG" height="100%" width="100%">
+                                        <div class="container">
+                                            <div class="carousel-caption">
+                                                <h1>Another example headline.</h1>
+                                                <p>Some representative placeholder content for the second slide of the
+                                                    carousel.</p>
+                                                <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-height carousel-item">
+                                        <svg class="bd-placeholder-img" width="100%" height="100%"
+                                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                            preserveAspectRatio="xMidYMid slice" focusable="false">
+                                            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                                        </svg>
+                                        <div class="container">
+                                            <div class="carousel-caption text-end">
+                                                <h1>One more for good measure.</h1>
+                                                <p>Some representative placeholder content for the third slide of this
+                                                    carousel.</p>
+                                                <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="grid-gallery collage-1 mb-4">
-                        <div class="collage-element element-1 vertical" style="background-color: blueviolet;"></div>
-                        <div class="collage-element element-2 square" style="background-color: green;"></div>
-                        <div class="collage-element element-3 square" style="background-color: pink;"></div>
-                        <div class="collage-element element-4 square" style="background-color: yellow;"></div>
-                        <div class="collage-element element-5 square" style="background-color: red;"></div>
-                        <div class="collage-element element-6 horizontal" style="background-color: brown;"></div>
-                        <div class="collage-element element-7 square" style="background-color: blue;"></div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- <section name="galeria-fotorama">
+
+                    <section name="gallery-collage" class="container background-neutral pb-4">
+                        <div class="section-header jumbotron text-center py-4">
+                            <div class="image-container">
+                                <img src="resources/img/ogrodniklogonobackgorund.svg">
+                            </div>
+                            <div>
+                                <h1 class="jumbotron-heading">Galeria</h1>
+                                <hr class="my-4 spacing">
+                                <p class="lead text-muted">Galeria typu kolaż z nieregularnym rozmiarem zdjęć</p>
+                            </div>
+                        </div>
+                        <div class="grid-gallery collage-1 mb-4">
+                            <div class="collage-element element-1 vertical" style="background-color: blueviolet;"></div>
+                            <div class="collage-element element-2 square" style="background-color: green;"></div>
+                            <div class="collage-element element-3 square" style="background-color: pink;"></div>
+                            <div class="collage-element element-4 square" style="background-color: yellow;"></div>
+                            <div class="collage-element element-5 square" style="background-color: red;"></div>
+                            <div class="collage-element element-6 horizontal" style="background-color: brown;"></div>
+                            <div class="collage-element element-7 square" style="background-color: blue;"></div>
+                        </div>
+                    </section>
+
+                    <!-- <section name="galeria-fotorama">
                 <div class="container">
                     <div class="fotorama" data-nav="thumbs" data-height="100%" data-maxheight="100%">
                         <img src="resources/img/IMG_0033.JPG" data-caption="Obrazek" data-fit="scaledown">
@@ -403,39 +406,49 @@
                     </div>
                 </div>
             </section> -->
+                </div>
             </div>
+
+            <!-- Bootstrap JS and dependencies from CDN -->
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+            <!-- Fotorama JS from CDN -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
+            <script>
+                const choiceArray = document.querySelectorAll(".choice")
+
+                choiceArray.forEach((card) => {
+                    card.addEventListener("click", () => {
+                        choiceArray.forEach((element) => {
+                            element.classList.remove("expand", "unset")
+                            element.classList.add('small')
+                        })
+                        card.classList.remove("small")
+                        card.classList.add('expand')
+                    });
+                });
+            </script>
+            <script>
+                const shutterMaxOpacity = 0.7
+                const scrollColorBreakpoint = 300
+
+                $(document).ready(function () {
+                    $(window).scroll(function () {
+                        var distanceScrolled = $(this).scrollTop()
+                        if (distanceScrolled > 0) { // Adjust the value as needed
+                            $('.navbar').addClass('scrolled');
+                        } else {
+                            $('.navbar').removeClass('scrolled');
+                        }
+
+                        var shutterRatio = Math.max(0, (scrollColorBreakpoint - distanceScrolled) / scrollColorBreakpoint)
+
+                        $('.navbar').css('background-color', 'rgba(200, 174, 129,' + (1 - shutterRatio) + ')');
+                        $('.background-wrapper').css('background-color', 'rgba(0,0,0,' + shutterRatio * shutterMaxOpacity + ')');
+                    });
+                });
+            </script>
         </div>
-
-        <!-- Bootstrap JS and dependencies from CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-        <!-- Fotorama JS from CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
-        <script>
-            const choiceArray = document.querySelectorAll(".choice")
-
-            choiceArray.forEach((card) => {
-                card.addEventListener("click", () => {
-                    choiceArray.forEach((element) => {
-                        element.classList.remove("expand", "unset")
-                        element.classList.add('small')
-                    })
-                    card.classList.remove("small")
-                    card.classList.add('expand')
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 0) { // Adjust the value as needed
-                        $('.navbar').addClass('scrolled');
-                    } else {
-                        $('.navbar').removeClass('scrolled');
-                    }
-                });
-            });
-        </script>
 </body>
 
 </html>

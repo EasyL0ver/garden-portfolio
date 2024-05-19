@@ -1,11 +1,11 @@
 .navbar {
     background-color: transparent;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: lightgray;
 }
 
 .scrolled {
-    background-color: bisque;
-    transition: background-color 200ms linear;
+    /* color: gray !important ; */
     /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
 }
 
@@ -19,11 +19,17 @@
 }
 
 .company-name {
-    color: green;
+    color: lightgray;
 }
 /* nav {
     height: 60px;
 } */
+
+a.nav-link {
+    /* color: aqua !important; */
+    font-weight: bold;
+    color: inherit;
+}
 
 .navbar-border {
     border-top: 1px solid gray;
