@@ -96,10 +96,13 @@ a.anchor {
 }
 
 .landing-page {
-    height: 100vh;
     background-color: transparent;
 }
 
 .background-neutral {
     background-color: white;
+}
+
+.topmost {
+    padding-top: 80px;
 }
