@@ -106,3 +106,8 @@ a.anchor {
 .topmost {
     padding-top: 80px;
 }
+
+.rotated {
+    transition: transform 2s ease;
+    transform: rotate(360deg);
+}

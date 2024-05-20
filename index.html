@@ -90,7 +90,8 @@
             </div>
             <div class="description-bar row">
                 <div class="col-4">
-                    <div class="full-height image-description d-flex flex-column align-items-center justify-content-center">
+                    <div
+                        class="full-height image-description d-flex flex-column align-items-center justify-content-center">
                         <h3 id="title-0" class="toggle" style="display: block;">Tytuł pierwszego
                             zdjęcia
                         </h3>
@@ -461,16 +462,24 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
         <script>
-            const choiceArray = document.querySelectorAll(".choice")
+            var animationScrollOffset = 300
+            $(document).ready(function () {
+                var sectionHeaderLogos = $('.section-header .image-container').each(function (index, element) {
+                    var logoPosition = $(element).offset().top
+                    console.log(logoPosition);
+                    $(window).scroll(function () {
+                        var viewportTop = $(window).scrollTop();
+                        var viewportBottom = viewportTop + $(window).height();
 
-            choiceArray.forEach((card) => {
-                card.addEventListener("click", () => {
-                    choiceArray.forEach((element) => {
-                        element.classList.remove("expand", "unset")
-                        element.classList.add('small')
+                        if((viewportTop - animationScrollOffset) < logoPosition && (viewportBottom - animationScrollOffset) > logoPosition){
+                            console.log("mam cb")
+                            $(element).addClass("rotated")
+                        }
+                    });
+                    //todo fix animation reset??
+                    $(element).on('animationend', function() {
+                        $(element).removeClass('rotated');
                     })
-                    card.classList.remove("small")
-                    card.classList.add('expand')
                 });
             });
         </script>
