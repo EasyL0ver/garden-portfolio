@@ -80,32 +80,32 @@
                 <div class="carousel-cell mr-4">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg" alt="contrail" />
                 </div>
-                <div class="carousel-cell mr-4">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" alt="golden hour" />
-                </div>
-                <div class="carousel-cell mr-4">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"
-                        alt="flight formation" />
-                </div>
             </div>
             <div class="description-bar row">
                 <div class="col-4">
                     <div
                         class="full-height image-description d-flex flex-column align-items-center justify-content-center">
-                        <h3 id="title-0" class="toggle" style="display: block;">Tytuł pierwszego
+                        <h3 id="title-0" class="slide-0 slide-toggle" style="display: block;">Tytuł pierwszego
                             zdjęcia
                         </h3>
-                        <h3 id="title-1" class="toggle" style="display: none;">Tytuł drugiego zdjęcia
+                        <h3 id="title-1" class="slide-1 slide-toggle" style="display: none;">Tytuł drugiego zdjęcia
                         </h3>
-                        <p id="location-0" class="toggle" style="display: block;">Andrychów</p>
-                        <p id="location-1" class="toggle" style="display: none;">Testowo małpolskie</p>
+                        <p id="location-0" class="slide-0 slide-toggle" style="display: block;">Andrychów</p>
+                        <p id="location-1" class="slide-1 slide-toggle" style="display: none;">Testowo małpolskie</p>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="gallery-dot-container full-height d-flex align-items-center justify-content-center">
                     </div>
                 </div>
-                <div class="col-4" style="background-color: red;"></div>
+                <div class="col-4">
+                    <div class="full-height image-description d-flex flex-column align-items-center justify-content-center">
+                        <p class="slide-0 slide-toggle" style="display: block;">
+                            Opis pierwszego zdjęcia. Dobrze żeby w zachęcający klienta sposób opisywał treść zdjęcia. Może zawierać odnośniki do galerii lub innych sekcji na stronie.
+                        </p>
+                        <p class="slide-1 slide-toggle" style="display: none;">Opis drugiego zdjęcia</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -511,9 +511,8 @@
                 on: {
                     change: function (index) {
                         console.log('Slide changed to' + index);
-                        $('.landing-page .image-description .toggle').hide()
-                        $('.landing-page .image-description #title-' + index).show()
-                        $('.landing-page .image-description #location-' + index).show()
+                        $('.landing-page .slide-toggle').hide()
+                        $('.landing-page .slide-' + index).show()
                     }
                 }
             });
