@@ -28,7 +28,7 @@
 </head>
 
 <body class="main-font">
-    <div class="background-wrapper shutter">
+    <div class="background-wrapper">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="navbar-border full-height full-width navbar">
                 <div class="container">
@@ -487,9 +487,22 @@
             });
         </script>
         <script>
+            const enableScrollShutter = false
             const shutterMaxOpacity = 0.7
             const scrollColorBreakpoint = 300
 
+            if (enableScrollShutter) {
+                $(document).ready(function () {
+                    $('.background-wrapper').addClass("shutter")
+                    $(window).scroll(function () {
+                        var distanceScrolled = $(this).scrollTop()
+                        var shutterRatio = Math.max(0, (scrollColorBreakpoint - distanceScrolled) / scrollColorBreakpoint)
+                        $('.background-wrapper').css('background-color', 'rgba(0,0,0,' + shutterRatio * shutterMaxOpacity + ')');
+                    });
+                });
+            }
+        </script>
+        <script>
             $(document).ready(function () {
                 $(window).scroll(function () {
                     var distanceScrolled = $(this).scrollTop()
@@ -498,11 +511,6 @@
                     } else {
                         $('.navbar').removeClass('scrolled');
                     }
-
-                    var shutterRatio = Math.max(0, (scrollColorBreakpoint - distanceScrolled) / scrollColorBreakpoint)
-
-                    $('.navbar').css('background-color', 'rgba(200, 174, 129,' + (1 - shutterRatio) + ')');
-                    $('.background-wrapper').css('background-color', 'rgba(0,0,0,' + shutterRatio * shutterMaxOpacity + ')');
                 });
             });
         </script>
