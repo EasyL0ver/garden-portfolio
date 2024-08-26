@@ -66,6 +66,7 @@
             <div class="flickity-carousel">
                 <div class="carousel-cell mr-4" data-title="Tytuł zdjęcia">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" alt="orange tree" />
+                    <div>Drzewka pomarańczowe</div>
                 </div>
                 <div class="carousel-cell mr-4">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg"
@@ -79,34 +80,6 @@
                 </div>
                 <div class="carousel-cell mr-4">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg" alt="contrail" />
-                </div>
-            </div>
-            <div class="description-bar row">
-                <div class="col-4">
-                    <div
-                        class="full-height image-description d-flex flex-column align-items-center justify-content-center">
-                        <h3 id="title-0" class="slide-0 slide-toggle active">Tytuł pierwszego
-                            zdjęcia
-                        </h3>
-                        <h3 id="title-1" class="slide-1 slide-toggle">Tytuł drugiego zdjęcia
-                        </h3>
-                        <p id="location-0" class="slide-0 slide-toggle active">Andrychów</p>
-                        <p id="location-1" class="slide-1 slide-toggle">Testowo małpolskie</p>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="gallery-dot-container full-height d-flex align-items-center justify-content-center">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div
-                        class="full-height image-description d-flex flex-column align-items-center justify-content-center">
-                        <p class="slide-0 slide-toggle active">
-                            Opis pierwszego zdjęcia. Dobrze żeby w zachęcający klienta sposób opisywał treść zdjęcia.
-                            Może zawierać odnośniki do galerii lub innych sekcji na stronie.
-                        </p>
-                        <p class="slide-1 slide-toggle">Opis drugiego zdjęcia</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -546,8 +519,9 @@
                 });
             });
 
-            $('.flickity-page-dots').appendTo('.gallery-dot-container');
-
+            $carousel.on( 'settle.flickity', function( event, index ) {
+                console.log( 'Flickity settled at ' + index );
+            });
         </script>
     </div>
 </body>
