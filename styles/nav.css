@@ -8,10 +8,6 @@
     background-color: rgba(200, 174, 129);
 }
 
-.navbar-shadow {
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
 .logo {
     height: 30px;
     width: 30px;
@@ -19,15 +15,6 @@
 
 .company-name {
     color: lightgray;
-}
-/* nav {
-    height: 60px;
-} */
-
-a.nav-link {
-    /* color: aqua !important; */
-    font-weight: bold;
-    color: inherit;
 }
 
 .navbar-border {
