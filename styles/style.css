@@ -49,6 +49,10 @@ a.anchor {
     }
 }
 
+.hidden {
+    display: none;
+}
+
 .landing-page {
     background-color: transparent;
 }
