@@ -69,3 +69,12 @@ a.anchor {
     transition: transform 2s ease;
     transform: rotate(360deg);
 }
+
+.transparent {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+    animation: fadeInAnimation 3s ease-in-out forwards;
+}

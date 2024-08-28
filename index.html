@@ -64,7 +64,7 @@
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg"
                         alt="One World Trade" />
 
-                    <div class="title hidden">
+                    <div class="title transparent">
                         Budynek ?
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="carousel-cell mr-4">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" alt="cat nose" />
-                    <div class="title hidden">
+                    <div class="title transparent">
                         Nos kota
                     </div>
                 </div>
@@ -495,10 +495,16 @@
                     change: function (index) {
                         console.log('Slide changed to' + index);
 
-                        $carousel.find('.carousel-cell .title').addClass('hidden')
-                        var activeCell = $carousel.find('.carousel-cell').eq(index)
+                        var allTitles = $carousel.find('.carousel-cell .title')
 
-                        activeCell.find('.title').removeClass('hidden')
+                        allTitles.addClass('transparent')
+                        allTitles.removeClass('fade-in')
+
+                        var activeCell = $carousel.find('.carousel-cell').eq(index)
+                        var activeTitle = activeCell.find('.title')
+
+                        activeTitle.removeClass('transparent');
+                        activeTitle.addClass('fade-in')
                     }
                 }
             });
