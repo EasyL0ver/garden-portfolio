@@ -1,16 +1,19 @@
 .landing-page {
-    height: 100vh;
+    height: calc(100vh - 80px);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: blue;
 
     * {
         box-sizing: border-box;
     }
 
     .flickity-carousel {
-        height: 80%;
+        height: 100%;
     }
 
     .carousel-cell {
-        margin-right: 20px;
+        margin-right: 12px;
         overflow: hidden;
         height: 100%;
         position: relative;
