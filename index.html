@@ -58,8 +58,14 @@
                     <div class="flickity-carousel">
                         <div class="carousel-cell mr-4" data-title="Tytuł zdjęcia">
                             <img src="resources/img/home/PICT0228 (1).jpg" alt="TODO" />
-                            <div class="title">
-                                Drzewko pomarańczowe
+                            <div class="picture-info-section d-flex justify-content-between">
+                                <div class="title w-50 d-flex flex-column">
+                                    <span class="fw-bold">Tytuł</span>
+                                    <span>Miejscowość</span>
+                                </div>
+                                <div class="description w-50">
+                                    Urokliwy ogród pełen zieleni i kwitnących kwiatów. W centrum ogrodu znajduje się kamienny chodnik prowadzący do małej drewnianej ławki otoczonej przez krzewy róż w różnych odcieniach czerwieni i różu.
+                                </div>
                             </div>
                         </div>
                         <div class="carousel-cell mr-4">
@@ -87,7 +93,7 @@
         </div>
 
 
-        <div class="container main-content">
+        <div class="container main-content mt-5">
             <div class="row">
                 <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1">
 
@@ -499,13 +505,13 @@
                     change: function (index) {
                         console.log('Slide changed to' + index);
 
-                        var allTitles = $carousel.find('.carousel-cell .title')
+                        var allTitles = $carousel.find('.carousel-cell .picture-info-section')
 
                         allTitles.addClass('transparent')
                         allTitles.removeClass('fade-in')
 
                         var activeCell = $carousel.find('.carousel-cell').eq(index)
-                        var activeTitle = activeCell.find('.title')
+                        var activeTitle = activeCell.find('.picture-info-section')
 
                         activeTitle.removeClass('transparent');
                         activeTitle.addClass('fade-in')
