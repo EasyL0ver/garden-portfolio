@@ -18,10 +18,6 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.root-content-container{
-    margin: 0 auto; /* This centers the container horizontally */
-}
-
 a.anchor {
     display: block;
     position: relative;
@@ -35,6 +31,10 @@ a.anchor {
 
 .full-width {
     width: 100%;
+}
+
+.main-content section {
+    margin-top: 42px;
 }
 
 .section-header {

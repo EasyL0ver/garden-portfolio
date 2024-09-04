@@ -52,39 +52,42 @@
                 </div>
             </div>
         </nav>
-        <div class="landing-page topmost container-fluid">
-            <div class="flickity-carousel">
-                <div class="carousel-cell mr-4" data-title="Tytuł zdjęcia">
-                    <img src="resources/img/home/PICT0228 (1).jpg" alt="TODO" />
-                    <div class="title">
-                        Drzewko pomarańczowe
-                    </div>
-                </div>
-                <div class="carousel-cell mr-4">
-                    <img src="resources/img/home/1.jpg"
-                        alt="One World Trade" />
+        <div class="landing-page topmost container">
+            <div class="row full-height">
+                <div class="col-sm-12 col-md-12 full-height carousel-container">
+                    <div class="flickity-carousel">
+                        <div class="carousel-cell mr-4" data-title="Tytuł zdjęcia">
+                            <img src="resources/img/home/PICT0228 (1).jpg" alt="TODO" />
+                            <div class="title">
+                                Drzewko pomarańczowe
+                            </div>
+                        </div>
+                        <div class="carousel-cell mr-4">
+                            <img src="resources/img/home/1.jpg" alt="One World Trade" />
 
-                    <div class="title transparent">
-                        Budynek ?
+                            <div class="title transparent">
+                                Budynek ?
+                            </div>
+                        </div>
+                        <div class="carousel-cell mr-4">
+                            <img src="resources/img/home/PICT0293 (1).jpg" alt="drizzle" />
+                        </div>
+                        <div class="carousel-cell mr-4">
+                            <img src="resources/img/home/DSCF8915.jpg" alt="cat nose" />
+                            <div class="title transparent">
+                                Nos kota
+                            </div>
+                        </div>
+                        <div class="carousel-cell mr-4">
+                            <img src="resources/img/home/IMG_20210825_123928 (1)_edited_edited.jpg" alt="contrail" />
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-cell mr-4">
-                    <img src="resources/img/home/PICT0293 (1).jpg" alt="drizzle" />
-                </div>
-                <div class="carousel-cell mr-4">
-                    <img src="resources/img/home/DSCF8915.jpg" alt="cat nose" />
-                    <div class="title transparent">
-                        Nos kota
-                    </div>
-                </div>
-                <div class="carousel-cell mr-4">
-                    <img src="resources/img/home/IMG_20210825_123928 (1)_edited_edited.jpg" alt="contrail" />
                 </div>
             </div>
         </div>
 
 
-        <div class="container root-content-container">
+        <div class="container main-content">
             <div class="row">
                 <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1">
 
@@ -459,7 +462,7 @@
             });
         </script>
         <script>
-            const enableScrollShutter = false
+            const enableScrollShutter = true
             const shutterMaxOpacity = 0.7
             const scrollColorBreakpoint = 300
 
@@ -525,13 +528,13 @@
             //     flkty.slides.forEach(function (slide, i) {
             //         var cell = cells[i];
             //         var x = (slide.target + flkty.x) * -1 / 3;
-                    
+
             //         cell.style[transformProp] = 'translateX(' + x + 'px)';
             //     });
             // });
 
-            $carousel.on( 'settle.flickity', function( event, index ) {
-                console.log( 'Flickity settled at ' + index );
+            $carousel.on('settle.flickity', function (event, index) {
+                console.log('Flickity settled at ' + index);
             });
         </script>
     </div>
