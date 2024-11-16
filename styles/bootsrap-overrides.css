@@ -1,3 +1,4 @@
 :root {
-    --bs-primary: #ff5733; /* Your custom color */
-  }
+    --bs-primary: green; /* Your custom color */
+    --bs-primary-rgb: 0, 128, 0;
+}
