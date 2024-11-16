@@ -30,12 +30,11 @@
 
     .picture-info-section {
         position: absolute;
-        bottom: 0;
+        bottom: 50px;
         left: 0;
-        right: 0;
-        background-color: pink;
-        padding: 10px;
-        transition: opacity 0.3s ease-in-out;
+        padding-left: 18px;
+        background-color: rgba(255, 255, 255, 1);
+        padding-right: 30px;
         pointer-events: none; /* Prevents mouse interactions */
     }
 
