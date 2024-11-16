@@ -36,6 +36,8 @@
         background-color: rgba(255, 255, 255, 1);
         padding-right: 30px;
         pointer-events: none; /* Prevents mouse interactions */
+        /* replace with unfold to left transition */
+        transition: opacity 0.3s ease-in-out;
     }
 
     .active {
