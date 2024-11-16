@@ -1,4 +1,7 @@
 :root {
     --bs-primary: green; /* Your custom color */
     --bs-primary-rgb: 0, 128, 0;
+
+    --bs-secondary: lightgreen;
+    --bs-secondary-rgb: 144, 238, 144;
 }

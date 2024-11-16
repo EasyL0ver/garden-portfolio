@@ -40,6 +40,13 @@
         transition: opacity 0.3s ease-in-out;
     }
 
+    /* disable on mobile */
+    @media only screen and (max-width: 768px) {
+        .picture-info-section {
+            display: none;
+        }
+    }
+
     .active {
         display: block !important;
     }
