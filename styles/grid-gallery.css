@@ -10,19 +10,45 @@
 
 .hover-title {
     position: absolute; /* Position text relative to the container */
-    bottom: 10%; /* Center vertically */
+    z-index: 2;
     left: 0;
     right: 0;
     /* transform: translate(-50%, -50%); Fine-tune centering */
     background-color: rgba(255, 255, 255, 1); /* Add a semi-transparent background */
     padding: 10px 20px; /* Add padding around the text */
     opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth fade-in effect */
+    /* transition: opacity 0.3s ease; Smooth fade-in effect */
     pointer-events: none; /* Prevent text from interfering with hover */
 }
 
-.collage-element:hover .hover-title {
+.hover-shutter {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom:0 ;
+    background-color: beige;
+    pointer-events: none;
+}
+
+.gallery-tile:hover .hover-shutter {
+    opacity: 0.2; /* Show text on hover */
+}
+
+.gallery-tile:hover .hover-title {
     opacity: 1; /* Show text on hover */
+}
+
+@media (max-width: 728px) {
+    .gallery-tile:hover .hover-shutter {
+        opacity: 0; /* Show text on hover */
+    }
+    
+    .gallery-tile:hover .hover-title {
+        opacity: 0; /* Show text on hover */
+    }
 }
 
 .collage-element img {
@@ -34,6 +60,10 @@
 .grid-gallery {
     .square {
         aspect-ratio: 1/1;
+
+        .hover-title {
+            bottom: 0
+        }
     }
 
     .horizontal {
@@ -72,6 +102,10 @@
 
         padding-top: 0;
         padding-left: 0;
+
+        .hover-title {
+            bottom:calc(50% + 3px)
+        }
     }
 
     .element-2 {
@@ -94,6 +128,11 @@
         grid-row-end: 4;
 
         padding-right: 0;
+
+        .hover-title {
+            left:0;
+            right:calc(50% - 3px);
+        }
     }
 
     .element-6 {
@@ -102,11 +141,21 @@
 
         padding-left: 0;
         padding-bottom: 0;
+
+        .hover-title {
+            top:0;
+            left:calc(50% - 3px);
+        }
     }
 
     .element-7 {
         padding-bottom: 0;
         padding-right: 0;
+
+        .hover-title {
+            top:0;
+            bottom: unset;
+        }
     }
 }
 
@@ -114,6 +163,14 @@
     .collage-1 {
         .collage-element {
             padding: 4px;
+        }
+
+        .hover-shutter {
+            display: none;
+        }
+
+        .hover-text {
+            display: none;
         }
 
         .element-1 {
