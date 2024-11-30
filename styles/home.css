@@ -30,8 +30,9 @@
 
     .picture-info-section {
         position: absolute;
-        bottom: 50px;
-        left: -12px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
         padding-left: 30px;
         background-color: rgba(255, 255, 255, 1);
         padding-right: 30px;
