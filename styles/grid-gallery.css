@@ -60,10 +60,6 @@
 .grid-gallery {
     .square {
         aspect-ratio: 1/1;
-
-        .hover-title {
-            bottom: 0
-        }
     }
 
     .horizontal {
@@ -92,6 +88,10 @@
 }
 
 .collage-1 {
+    .hover-title {
+        top: 0
+    }
+
     .collage-element {
         padding: 6px;
     }
@@ -102,10 +102,6 @@
 
         padding-top: 0;
         padding-left: 0;
-
-        .hover-title {
-            bottom:calc(50% + 3px)
-        }
     }
 
     .element-2 {
@@ -128,11 +124,6 @@
         grid-row-end: 4;
 
         padding-right: 0;
-
-        .hover-title {
-            left:0;
-            right:calc(50% - 3px);
-        }
     }
 
     .element-6 {
@@ -141,21 +132,11 @@
 
         padding-left: 0;
         padding-bottom: 0;
-
-        .hover-title {
-            top:0;
-            left:calc(50% - 3px);
-        }
     }
 
     .element-7 {
         padding-bottom: 0;
         padding-right: 0;
-
-        .hover-title {
-            top:0;
-            bottom: unset;
-        }
     }
 }
 
