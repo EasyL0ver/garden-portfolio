@@ -505,7 +505,7 @@
             });
         </script>
         <script>
-            var $carousel = $('#homepage-carousel').flickity({
+            var $homepageCarousel = $('#homepage-carousel').flickity({
                 imagesLoaded: true,
                 percentPosition: false,
                 contain: true,
@@ -514,12 +514,12 @@
                     change: function (index) {
                         console.log('Slide changed to' + index);
 
-                        var allTitles = $carousel.find('.carousel-cell .picture-info-section')
+                        var allTitles = $homepageCarousel.find('.carousel-cell .picture-info-section')
 
                         allTitles.addClass('transparent')
                         allTitles.removeClass('fade-in')
 
-                        var activeCell = $carousel.find('.carousel-cell').eq(index)
+                        var activeCell = $homepageCarousel.find('.carousel-cell').eq(index)
                         var activeTitle = activeCell.find('.picture-info-section')
 
                         activeTitle.removeClass('transparent');
@@ -529,7 +529,7 @@
             });
         </script>
                 <script>
-                    var $carousel = $('#jak-powstaje-carousel').flickity({
+                    var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
                         imagesLoaded: true,
                         percentPosition: false,
                         contain: true,
