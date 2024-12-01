@@ -1,0 +1,12 @@
+.jak-powstaje-img-container {
+    position: relative;
+
+    .jak-powstaje-number {
+
+    }
+
+    img {
+        display: block;
+    }
+
+}
