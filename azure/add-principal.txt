@@ -1,0 +1,1 @@
+az ad sp create-for-rbac --name "githubactions" --role contributor --scopes /subscriptions/a37503c4-fb26-45cf-bcb3-b6dc89543433/resourceGroups/mama-strona --json-auth
