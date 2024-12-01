@@ -18,12 +18,12 @@ jobs:
       with:
         inlineScript: |
             az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s . --pattern "*.html"
-            
+
     - name: Upload styles
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s styles
+            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s styles --destination-path styles
 
   # Azure logout
     - name: logout
