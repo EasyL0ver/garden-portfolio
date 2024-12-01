@@ -17,13 +17,13 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s . --pattern "*.html"
+            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s . --pattern "*.html" --overwrite
 
     - name: Upload styles
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s styles --destination-path styles
+            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s styles --destination-path styles --overwrite
 
   # Azure logout
     - name: logout
