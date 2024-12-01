@@ -13,11 +13,17 @@ jobs:
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Upload to blob storage
+    - name: Upload HTML files
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s .
+            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s . --pattern "*.html"
+            
+    - name: Upload styles
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+            az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s styles
 
   # Azure logout
     - name: logout
