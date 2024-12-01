@@ -3,6 +3,10 @@
     padding-bottom: 12px;
 }
 
+.home-background-color {
+    background-color: rgb(248, 229, 217);
+}
+
 .landing-page {
     height: calc(100vh - 80px);
     background-color: white;
@@ -34,7 +38,6 @@
         left: 0px;
         right: 0px;
         padding-left: 30px;
-        background-color: rgba(255, 255, 255, 1);
         padding-right: 30px;
         pointer-events: none; /* Prevents mouse interactions */
         /* replace with unfold to left transition */
