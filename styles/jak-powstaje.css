@@ -1,12 +1,31 @@
-.jak-powstaje-img-container {
-    position: relative;
-
-    .jak-powstaje-number {
-
+#jak-powstaje-carousel {
+    .content {
+        background-color: inherit;
     }
 
-    img {
-        display: block;
+    .jak-powstaje-img-container {
+        position: relative;
+    
+        .slide-number {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top:0
+        }
+    
+        .background {
+            object-fit: cover;
+        }
+    
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+    
     }
 
+
+    
 }
+

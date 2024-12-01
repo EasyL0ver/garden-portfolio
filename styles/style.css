@@ -79,3 +79,24 @@ a.anchor {
     opacity: 1;
     animation: fadeInAnimation 3s ease-in-out forwards;
 }
+
+
+.pastel-1 {
+    background-color: rgb(227, 255, 211);
+    fill: rgb(227, 255, 211);
+}
+
+.pastel-2 {
+    background-color: rgb(255, 241, 199);
+    fill: rgb(255, 241, 199);
+}
+
+.pastel-3 {
+    background-color: rgb(255, 220, 195);
+    fill: rgb(255, 220, 195);
+}
+
+.pastel-4 {
+    background-color: rgb(227, 238, 255);
+    fill: rgb(227, 238, 255);
+}
