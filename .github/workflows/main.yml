@@ -25,6 +25,8 @@ jobs:
         inlineScript: |
             az storage blob upload-batch --account-name mamastronahoststorage --auth-mode key -d '$web' -s styles --destination-path styles --overwrite --content-type "text/css; charset=utf-8"
 
+    
+
   # Azure logout
     - name: logout
       run: |
