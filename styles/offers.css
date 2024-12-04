@@ -45,10 +45,4 @@ section.offer-section {
     .card-text-group {
         overflow: hidden;
     }
-
-    .btn-outline-secondary {
-        border-radius: 0px;
-        border-color: green;
-        color: green;
-    }
 }

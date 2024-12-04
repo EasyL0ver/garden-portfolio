@@ -35,6 +35,7 @@ a.anchor {
     width: 100%;
 }
 
+
 .section-header {
     .image-container {
         height: 10vh;
@@ -80,6 +81,10 @@ a.anchor {
     animation: fadeInAnimation 3s ease-in-out forwards;
 }
 
+/* forms are square on this website */
+.form-control {
+    border-radius: 0px !important;
+}
 
 .pastel-1 {
     background-color: rgb(227, 255, 211);
