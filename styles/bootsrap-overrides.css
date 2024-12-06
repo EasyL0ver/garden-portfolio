@@ -21,3 +21,7 @@
     box-shadow: 0 0 10px rgb(120 128 140 / 25%);
     border-color: green;
 }
+
+.form-control::placeholder {
+    opacity: 0.5;
+}
