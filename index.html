@@ -380,7 +380,7 @@
                         </div>
                     </section>
 
-                    <section name="contact" class="container background-neutral pt-4">
+                    <section name="contact" class="background-neutral py-4 container">
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
                                 <img src="resources/img/ogrodniklogonobackgorund.svg">
@@ -391,39 +391,49 @@
                                 <p class="lead text-muted">Kompleksowe usługi projektowe oraz doradcze w zakresie projektowania i realizacji zieleni. </p>
                             </div>
                         </div>
-                        <div class="contact-section container" style="height: 80vh;">
-                            <div class="row full-height">
-                                <div class="col-md-4 row full-height text-primary main-font fs-5" >
-                                    <div class="col-md-12 d-flex justify-content-center align-items-center text-center pastel-1">
-                                        PRACOWNIA <br>
-                                        ogrodnik projektuje <br>
-                                        Katarzyna Gągola-Kudłacik
-                                    </div>
-                                    <div class="col-md-12 d-flex flex-column justify-content-center align-items-center text-center pastel-2" >
-                                        <span class="d-block">email</span>
-                                        <a class="d-block text-primary" href="mailto:katarzynakudlacik@gmail.com">katarzynakudlacik@gmail.com</a>
-                                    </div>
-                                    <div class="col-md-12 d-flex flex-column justify-content-center align-items-center text-center pastel-3">
-                                        <span class="d-block">numer kontaktowy</span>
-                                        <a class="d-block text-primary" href="tel:+48663151163">+48 663 151 163</a>
+                        <div class="contact-section" style="height: 80vh;">
+                            <div class="row h-100">
+                                <div class="col-4 full-height text-primary main-font fs-5" >
+                                    <div class="row h-100">
+                                        <div class="col-md-12 d-flex justify-content-center align-items-center">
+                                            <div class="text-center w-100">
+                                                PRACOWNIA <br>
+                                                ogrodnik projektuje <br>
+                                                Katarzyna Gągola-Kudłacik
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 d-flex justify-content-center align-items-center" >
+                                            <div class="text-center fs-6 w-100">
+                                                <span class="d-block">email</span>
+                                                <a class="d-block text-primary" href="mailto:katarzynakudlacik@gmail.com">katarzynakudlacik@gmail.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 d-flex flex-column justify-content-center align-items-center">
+                                            <div class="text-center fs-6 w-100">
+                                                <span class="d-block">numer kontaktowy</span>
+                                                <a class="d-block text-primary" href="tel:+48663151163">+48 663 151 163</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8 py-5 px-5" style="background-image: url(resources/img/bellingrat.jpeg); background-repeat: no-repeat; background-size: cover;">
-                                    <div class="full-height full-width background-neutral">
-                                        <form action="/submit" method="post" class="full-height full-width">
-                                            <div class="d-flex flex-column py-4 px-4 full-height gap-2">
-                                                <div class="text-primary fs-4" >napisz do nas!</div>
-                                                <div class="form-group">
-                                                    <label for="email-text-box" class="text-primary">twój email</label>
-                                                    <input type="email" id="email-text-box" name="email-text-box" class="form-control" placeholder="wpisz swój email">
+                                <div class="col-8">
+                                    <div style="background-image: url(resources/img/bellingrat.jpeg); background-repeat: no-repeat; background-size: cover;" class="p-5 h-100">
+                                        <div class="full-height full-width background-neutral">
+                                            <form action="/submit" method="post" class="full-height full-width">
+                                                <div class="d-flex flex-column py-4 px-4 full-height gap-2">
+                                                    <div class="text-primary fs-4" >napisz do nas!</div>
+                                                    <div class="form-group">
+                                                        <label for="email-text-box" class="text-primary">twój email</label>
+                                                        <input type="email" id="email-text-box" name="email-text-box" class="form-control" placeholder="wpisz swój email">
+                                                    </div>
+                                                    <div class="form-group d-flex flex-column flex-grow-1">
+                                                        <label for="message-text-box" class="text-primary">wiadomość</label>
+                                                        <textarea type="text" id="message-text-box" name="message-text-box" class="form-control flex-grow-1" placeholder="wpisz swoją wiadomość" style="resize: none;"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-sm btn-outline-secondary" style="width: 30%">prześlij</button>
                                                 </div>
-                                                <div class="form-group d-flex flex-column flex-grow-1">
-                                                    <label for="message-text-box" class="text-primary">wiadomość</label>
-                                                    <textarea type="text" id="message-text-box" name="message-text-box" class="form-control flex-grow-1" placeholder="wpisz swoją wiadomość" style="resize: none;"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-sm btn-outline-secondary" style="width: 30%">prześlij</button>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
