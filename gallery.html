@@ -18,6 +18,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="styles/bootsrap-overrides.css">
+    <script id="galleries" type="application/json">
+    {
+        "testowa": {
+            "name": "Testowa",
+            "description": "Testowa galeria",
+            "location": "Testowa lokalizacja",
+            "images": [
+                {
+                    "title": "wiosna",
+                    "description": "próbny opis",
+                    "img": "KOTKI.jpg"
+                },
+                {
+                    "title": "lato",
+                    "description": "próbny opis",
+                    "img": "testowo2.jpg"
+                },
+                {
+                    "title": "jesien",
+                    "description": "próbny opis jesieni",
+                    "img": "testowo1.jpg"
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 
 <body class="main-font">
@@ -57,28 +83,10 @@
                 <div class="col-sm-8 container h-100">
                     <div class="row gallery-row padding-from-gutter">
                         <div id="gallery-carousel" class="flickity-carousel h-100">
-                            <div class="carousel-cell h-100">
-                                <img class="object-fit-cover" src="resources/img/download.jpeg">
-                            </div>
-                            <div class="carousel-cell h-100">
-                                <img class="object-fit-cover" src="resources/img/bellingrat.jpeg">
-                            </div>
-                            <div class="carousel-cell h-100">
-                                <img class="object-fit-cover" src="resources/img/flowers-1.jpg">
-                            </div>
                         </div>
                     </div>
                     <div class="row thumbnail-row">
                         <div id="thumbnail-carousel" class="flickity-carousel h-100">
-                            <div class="carousel-cell h-100">
-                                <img class="object-fit-cover" src="resources/img/download.jpeg">
-                            </div>
-                            <div class="carousel-cell h-100">
-                                <img class="object-fit-cover" src="resources/img/bellingrat.jpeg">
-                            </div>
-                            <div class="carousel-cell h-100">
-                                <img class="object-fit-cover" src="resources/img/flowers-1.jpg">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,7 +108,6 @@
             percentPosition: false,
             contain: true,
             pageDots: false,
-            asNavFor: "#thumbnail-carousel",
             on: {
                 change: function (index) {
                     console.log('Slide changed to' + index);
@@ -112,7 +119,6 @@
             imagesLoaded: true,
             contain: true,
             pageDots: false,
-            asNavFor: "#gallery-carousel",
             prevNextButtons: false,
             on: {
                 change: function (index) {
@@ -120,6 +126,53 @@
                 }
             }
         });
+    </script>
+    <script>
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    
+        // Get the 'gallery' parameter from the URL
+        const galleryName = getQueryParam('gallery');
+    
+        if (galleryName) {
+            // Parse the embedded JSON data from the <script> tag in the <head>
+            const galleryData = JSON.parse(document.getElementById('galleries').textContent);
+    
+            // Check if the gallery exists in the JSON data
+            if (galleryData[galleryName]) {
+                const data = galleryData[galleryName];
+    
+                // Add images to the carousels
+                data.images.forEach(image => {
+                    // Create gallery carousel cell
+                    const galleryCell = document.createElement('div');
+                    galleryCell.className = 'carousel-cell h-100';
+                    const galleryImg = document.createElement('img');
+                    galleryImg.className = 'object-fit-cover';
+                    galleryImg.src = "resources/img/" + image.img;
+                    galleryImg.alt = image.title || 'Gallery Image';
+    
+                    // Create thumbnail carousel cell
+                    const thumbnailCell = document.createElement('div');
+                    thumbnailCell.className = 'carousel-cell h-100';
+                    const thumbnailImg = document.createElement('img');
+                    thumbnailImg.className = 'object-fit-cover';
+                    thumbnailImg.src = "resources/img/" + image.img;
+                    thumbnailImg.alt = image.title || 'Thumbnail Image';
+
+                    $('#gallery-carousel').flickity( 'prepend', galleryCell );
+                    $('#thumbnail-carousel').flickity( 'prepend', thumbnailCell );
+                });
+    
+            } else {
+                console.error(`Gallery "${galleryName}" not found in the embedded JSON data.`);
+            }
+        } else {
+            console.error('No gallery parameter provided in the URL.');
+        }
     </script>
 </body>
 

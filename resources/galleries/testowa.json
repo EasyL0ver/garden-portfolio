@@ -1,4 +1,7 @@
 {
+    "name": "Testowa",
+    "description": "Testowa galeria",
+    "location": "Testowa lokalizacja",
     "images": [
         {
             "title": "wiosna",
