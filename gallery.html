@@ -116,6 +116,8 @@
                     <span id="name-label"></span>
                     <span id="location-label"></span>
                     <span id="description-label"></span>
+                    <span id="image-title"></span>
+                    <span id="image-label"></span>
                 </div>
             </div>
         </div>
@@ -142,7 +144,7 @@
     
             // Check if the gallery exists in the JSON data
             if (galleryData[galleryName]) {
-                const data = galleryData[galleryName];
+                data = galleryData[galleryName];
 
                 document.getElementById('name-label').innerText = data.name;
                 document.getElementById('description-label').innerText = data.description;
@@ -177,6 +179,9 @@
                 });
 
                 $('#thumbnail-carousel').append(...thumbnailCells);
+
+                document.getElementById('image-title').innerText = data.images[0].title || 'No title available';
+                document.getElementById('image-label').innerText = data.images[0].description || 'No description available';
             } else {
                 console.error(`Gallery "${galleryName}" not found in the embedded JSON data.`);
             }
@@ -190,11 +195,15 @@
                 setGallerySize: false,
                 percentPosition: false,
                 contain: true,
-                asNavFor: '#thumbnail-carousel',
+                //asNavFor: '#thumbnail-carousel',
                 pageDots: false,
                 on: {
                     change: function (index) {
                         console.log('Slide changed to' + index);
+
+                        var currentImage = data.images[index];
+                        document.getElementById('image-title').innerText = currentImage.title || 'No title available';
+                        document.getElementById('image-label').innerText = currentImage.description || 'No description available';
                     }
                 }
             });
