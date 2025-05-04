@@ -41,6 +41,28 @@
                     "img": "testowo1.jpg"
                 }
             ]
+        },
+        "testowa2": {
+            "name": "Testowa",
+            "description": "Testowa galeria",
+            "location": "Testowa lokalizacja",
+            "images": [
+                {
+                    "title": "wiosna",
+                    "description": "próbny opis",
+                    "img": "testowo.jpg"
+                },
+                {
+                    "title": "lato",
+                    "description": "próbny opis",
+                    "img": "testowo2.jpg"
+                },
+                {
+                    "title": "jesien",
+                    "description": "próbny opis jesieni",
+                    "img": "testowo1.jpg"
+                }
+            ]
         }
     }
     </script>
@@ -91,7 +113,9 @@
                     </div>
                 </div>
                 <div class="col-sm-4" style="background-color: pink;">
-
+                    <span id="name-label"></span>
+                    <span id="location-label"></span>
+                    <span id="description-label"></span>
                 </div>
             </div>
         </div>
@@ -102,31 +126,6 @@
     <!-- Fotorama JS from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script>
-        var $galleryCarousel = $('#gallery-carousel').flickity({
-            imagesLoaded: true,
-            percentPosition: false,
-            contain: true,
-            pageDots: false,
-            on: {
-                change: function (index) {
-                    console.log('Slide changed to' + index);
-                }
-            }
-        });
-
-        var $thumbnailCarouse = $('#thumbnail-carousel').flickity({
-            imagesLoaded: true,
-            contain: true,
-            pageDots: false,
-            prevNextButtons: false,
-            on: {
-                change: function (index) {
-                    console.log('Slide changed to' + index);
-                }
-            }
-        });
-    </script>
     <script>
         // Function to get URL parameters
         function getQueryParam(param) {
@@ -144,35 +143,75 @@
             // Check if the gallery exists in the JSON data
             if (galleryData[galleryName]) {
                 const data = galleryData[galleryName];
-    
-                // Add images to the carousels
-                data.images.forEach(image => {
-                    // Create gallery carousel cell
+
+                document.getElementById('name-label').innerText = data.name;
+                document.getElementById('description-label').innerText = data.description;
+                document.getElementById('location-label').innerText = data.location;
+
+                var galleryCells = data.images.map(image => {
                     const galleryCell = document.createElement('div');
-                    galleryCell.className = 'carousel-cell h-100';
+                    galleryCell.className = 'carousel-cell';
+                    galleryCell.style.height = '100%';
+                    galleryCell.style.width = 'fit-content';
                     const galleryImg = document.createElement('img');
-                    galleryImg.className = 'object-fit-cover';
+                    //galleryImg.className = 'object-fit-cover';
                     galleryImg.src = "resources/img/" + image.img;
                     galleryImg.alt = image.title || 'Gallery Image';
-    
-                    // Create thumbnail carousel cell
+                    galleryCell.appendChild(galleryImg);
+
+                    return galleryCell;
+                });
+
+                $('#gallery-carousel').append(...galleryCells);
+
+                var thumbnailCells = data.images.map(image => {
                     const thumbnailCell = document.createElement('div');
                     thumbnailCell.className = 'carousel-cell h-100';
                     const thumbnailImg = document.createElement('img');
                     thumbnailImg.className = 'object-fit-cover';
                     thumbnailImg.src = "resources/img/" + image.img;
                     thumbnailImg.alt = image.title || 'Thumbnail Image';
+                    thumbnailCell.appendChild(thumbnailImg);
 
-                    $('#gallery-carousel').flickity( 'prepend', galleryCell );
-                    $('#thumbnail-carousel').flickity( 'prepend', thumbnailCell );
+                    return thumbnailCell;
                 });
-    
+
+                $('#thumbnail-carousel').append(...thumbnailCells);
             } else {
                 console.error(`Gallery "${galleryName}" not found in the embedded JSON data.`);
             }
         } else {
             console.error('No gallery parameter provided in the URL.');
         }
+    </script>
+    <script>
+            var $galleryCarousel = $('#gallery-carousel').flickity({
+                imagesLoaded: true,
+                setGallerySize: false,
+                percentPosition: false,
+                contain: true,
+                asNavFor: '#thumbnail-carousel',
+                pageDots: false,
+                on: {
+                    change: function (index) {
+                        console.log('Slide changed to' + index);
+                    }
+                }
+            });
+    
+            var $thumbnailCarousel = $('#thumbnail-carousel').flickity({
+                //imagesLoaded: true,
+                setGallerySize: false,
+                contain: true,
+                pageDots: false,
+                prevNextButtons: false,
+                asNavFor: '#gallery-carousel',
+                on: {
+                    change: function (index) {
+                        console.log('Slide changed to' + index);
+                    }
+                }
+            });
     </script>
 </body>
 

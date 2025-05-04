@@ -118,6 +118,12 @@
     display: block; /* Prevent inline spacing issues */
 }
 
+.gallery-row .carousel-cell img {
+    width: auto; /* Maintain aspect ratio */
+    height: 100%; /* Fill the height of the container */
+    display: block; /* Prevent inline spacing issues */
+}
+
 .gallery-row {
     height: 80%;
 }
