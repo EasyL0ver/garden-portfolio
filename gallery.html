@@ -118,6 +118,8 @@
                     <span id="description-label"></span>
                     <span id="image-title"></span>
                     <span id="image-label"></span>
+                    <a id="next-button" class="d-none">Następny</a>
+                    <a id="prev-button" class="d-none">Poprzedni</a>
                 </div>
             </div>
         </div>
@@ -145,6 +147,7 @@
             // Check if the gallery exists in the JSON data
             if (galleryData[galleryName]) {
                 data = galleryData[galleryName];
+                galleryIndex = Object.keys(galleryData).indexOf(galleryName);
 
                 document.getElementById('name-label').innerText = data.name;
                 document.getElementById('description-label').innerText = data.description;
@@ -182,6 +185,23 @@
 
                 document.getElementById('image-title').innerText = data.images[0].title || 'No title available';
                 document.getElementById('image-label').innerText = data.images[0].description || 'No description available';
+
+                var galleryKeys = Object.keys(galleryData);
+
+                var nextGalleryKey = galleryKeys[(galleryIndex + 1)]
+
+                if (nextGalleryKey) {
+                    $('#next-button').attr('href', `/gallery.html?gallery=${nextGalleryKey}`);
+                    $('#next-button').removeClass('d-none');
+                }
+
+                var prevGalleryKey = galleryKeys[(galleryIndex - 1)]
+
+                if (prevGalleryKey) {
+                    $('#prev-button').attr('href', `/gallery.html?gallery=${prevGalleryKey}`);
+                    $('#prev-button').removeClass('d-none');
+                }
+
             } else {
                 console.error(`Gallery "${galleryName}" not found in the embedded JSON data.`);
             }
