@@ -63,6 +63,28 @@
                     "img": "testowo1.jpg"
                 }
             ]
+        },
+        "testowa3": {
+            "name": "Testowa",
+            "description": "Testowa galeria",
+            "location": "Testowa lokalizacja",
+            "images": [
+                {
+                    "title": "wiosna",
+                    "description": "próbny opis",
+                    "img": "daga.jpg"
+                },
+                {
+                    "title": "lato",
+                    "description": "próbny opis",
+                    "img": "testowo2.jpg"
+                },
+                {
+                    "title": "jesien",
+                    "description": "próbny opis jesieni",
+                    "img": "testowo1.jpg"
+                }
+            ]
         }
     }
     </script>
@@ -113,13 +135,15 @@
                     </div>
                 </div>
                 <div class="col-sm-4" style="background-color: pink;">
+                    <div class="row d-flex flex-column"  >
+                        <a id="next-button" class="d-none">Następny</a>
+                        <a id="prev-button" class="d-none">Poprzedni</a>
+                    </div>
                     <span id="name-label"></span>
                     <span id="location-label"></span>
                     <span id="description-label"></span>
                     <span id="image-title"></span>
                     <span id="image-label"></span>
-                    <a id="next-button" class="d-none">Następny</a>
-                    <a id="prev-button" class="d-none">Poprzedni</a>
                 </div>
             </div>
         </div>
