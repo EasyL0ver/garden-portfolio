@@ -28,19 +28,26 @@
             "date": "2023",
             "images": [
                 {
-                    "title": "Kwitnące Drzewa",
                     "description": "Zdjęcie przedstawia piękne drzewa w pełnym rozkwicie, pokryte różowymi i białymi kwiatami. To widok, który zachwyca każdego miłośnika przyrody. Kwitnące drzewa symbolizują odrodzenie i nowy początek, a ich delikatne kwiaty tworzą niesamowity kontrast z błękitnym niebem.",
-                    "img": "flowers-1.jpg"
+                    "img": "portfolio/skalny/1_edited.jpg"
                 },
                 {
-                    "title": "Łąka Pełna Kwiatów",
                     "description": "Kolorowa łąka pełna wiosennych kwiatów, takich jak tulipany, krokusy i żonkile. To miejsce, które emanuje spokojem i pięknem natury. Spacer po takiej łące to prawdziwa uczta dla zmysłów – zapach kwiatów, śpiew ptaków i delikatny powiew wiosennego wiatru sprawiają, że czujemy się częścią tego magicznego świata.",
-                    "img": "IMG_0056.jpg"
+                    "img": "portfolio/skalny/IMG_0061.jpg"
                 },
                 {
-                    "title": "Wiosenny Zachód Słońca",
-                    "description": "Zachód słońca nad wiosennym krajobrazem, gdzie ciepłe promienie słońca oświetlają pola i drzewa. To chwila pełna magii i spokoju, która zapada w pamięć na długo. Wiosenny zachód słońca to moment, kiedy natura pokazuje swoje najpiękniejsze barwy – od złotych odcieni po głębokie czerwienie i fiolety.",
-                    "img": "IMG_20210819_114958.jpg"
+                    "img": "portfolio/skalny/PICT0107a.jpg"
+                },
+                {
+                    "img": "portfolio/skalny/PICT0115a.jpg"
+                },
+                {
+                    "description": "Kolorowa łąka pełna wiosennych kwiatów, takich jak tulipany, krokusy i żonkile. To miejsce, które emanuje spokojem i pięknem natury. Spacer po takiej łące to prawdziwa uczta dla zmysłów – zapach kwiatów, śpiew ptaków i delikatny powiew wiosennego wiatru sprawiają, że czujemy się częścią tego magicznego świata.",
+                    "img": "portfolio/skalny/PICT0124a.jpg"
+                },
+                {
+                    "description": "Kolorowa łąka pełna wiosennych kwiatów, takich jak tulipany, krokusy i żonkile. To miejsce, które emanuje spokojem i pięknem natury. Spacer po takiej łące to prawdziwa uczta dla zmysłów – zapach kwiatów, śpiew ptaków i delikatny powiew wiosennego wiatru sprawiają, że czujemy się częścią tego magicznego świata.",
+                    "img": "portfolio/skalny/PICT0139.jpg"
                 }
             ]
         },
@@ -93,8 +100,8 @@
 </head>
 
 <body class="main-font">
-    <div class="background-wrapper">
-        <nav class="navbar scrolled navbar-expand-lg fixed-top">
+    <div class="background-wrapper shutter">
+        <nav class="navbar navbar-expand-lg fixed-top">
             <div class="navbar-border full-height full-width navbar">
                 <div class="container">
                     <div class="navbar-brand" href="#">
@@ -124,29 +131,34 @@
                 </div>
             </div>
         </nav>
-        <div class="container topmost landing-page padding-from-gutter">
-            <div class="row h-100">
-                <div class="col-sm-8 container h-100">
-                    <div class="row gallery-row padding-from-gutter">
-                        <div id="gallery-carousel" class="flickity-carousel h-100">
+        <div class="container topmost landing-page">
+            <div class="d-flex flex-column h-100">
+                <div class="flex-grow-1">
+                    <div class="row carousel-container h-100">
+                        <div class="col-sm-8 container h-100">
+                            <div class="row gallery-row h-100">
+                                <div id="gallery-carousel" class="flickity-carousel h-100">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row thumbnail-row">
-                        <div id="thumbnail-carousel" class="flickity-carousel h-100">
+                        <div class="col-sm-4 d-flex ps-0">
+                            <div class="row mt-4 h-100">
+                                <div class="col-12 flex-grow-1 d-flex flex-column" style="height: 90%"> 
+                                    <div class="flex-grow-1">
+                                        <h5 id="name-label" class="fw-bold"></h5>
+                                        <p id="location-label" class="mb-1"></p>
+                                        <p id="date-label" class="mb-1"></p>
+                                        <p id="description-label" class="mb-3"></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4" style="background-color: pink;">
-                    <div class="mt-4">
-                        <h5 id="name-label" class="fw-bold"></h5>
-                        <p id="location-label" class="mb-1"></p>
-                        <p id="description-label" class="mb-3"></p>
-                        <h6 id="image-title" class="text-muted"></h6>
-                        <p id="image-label" class="text-muted"></p>
-                    </div>
-                    <div class="row d-flex gap-3 align-items-start justify-content-start mt-3 mb-3">
-                        <a id="prev-button" class="btn btn-secondary d-none">Poprzedni</a>
-                        <a id="next-button" class="btn btn-primary d-none">Następny</a>
+                <div style="height: 200px;" class="padding-from-gutter">
+                    <div class="row thumbnail-container h-100">
+                        <div id="thumbnail-carousel" class="flickity-carousel h-100">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -178,8 +190,8 @@
                 galleryIndex = Object.keys(galleryData).indexOf(galleryName);
 
                 document.getElementById('name-label').innerText = data.name;
-                document.getElementById('description-label').innerText = data.description;
                 document.getElementById('location-label').innerText = data.location;
+                document.getElementById('date-label').innerText = data.date;
 
                 var galleryCells = data.images.map(image => {
                     const galleryCell = document.createElement('div');
@@ -199,20 +211,29 @@
 
                 var thumbnailCells = data.images.map(image => {
                     const thumbnailCell = document.createElement('div');
-                    thumbnailCell.className = 'carousel-cell h-100';
+                    thumbnailCell.className = 'carousel-cell';
+                    thumbnailCell.style.height = '100%';
+                    thumbnailCell.style.width = '200px'; // same as the height for square
+
                     const thumbnailImg = document.createElement('img');
-                    thumbnailImg.className = 'object-fit-cover';
                     thumbnailImg.src = "resources/img/" + image.img;
                     thumbnailImg.alt = image.title || 'Thumbnail Image';
-                    thumbnailCell.appendChild(thumbnailImg);
+                    thumbnailImg.style.height = "100%";
+                    thumbnailImg.style.width = "100%";
+                    thumbnailImg.style.objectFit = "cover"; // ensures the image fills the square
 
+                    thumbnailCell.appendChild(thumbnailImg);
+                    document.getElementById('thumbnail-carousel').appendChild(thumbnailCell);
                     return thumbnailCell;
                 });
 
                 $('#thumbnail-carousel').append(...thumbnailCells);
 
-                document.getElementById('image-title').innerText = data.images[0].title || 'No title available';
-                document.getElementById('image-label').innerText = data.images[0].description || 'No description available';
+                if(data.images[0].description){
+                    document.getElementById('description-label').innerText = data.images[0].description;
+                } else{
+                    document.getElementById('description-label').innerText = data.description;
+                }
 
                 var galleryKeys = Object.keys(galleryData);
 
@@ -250,18 +271,23 @@
                         console.log('Slide changed to' + index);
 
                         var currentImage = data.images[index];
-                        document.getElementById('image-title').innerText = currentImage.title || 'No title available';
-                        document.getElementById('image-label').innerText = currentImage.description || 'No description available';
+
+                        if(currentImage.description){
+                            document.getElementById('description-label').innerText = currentImage.description;
+                        } else{
+                            document.getElementById('description-label').innerText = data.description;
+                        }
                     }
                 }
             });
     
             var $thumbnailCarousel = $('#thumbnail-carousel').flickity({
                 //imagesLoaded: true,
-                setGallerySize: false,
+                //setGallerySize: false,
                 contain: true,
                 pageDots: false,
                 prevNextButtons: false,
+                cellAlign: 'left',
                 asNavFor: '#gallery-carousel',
                 on: {
                     change: function (index) {
