@@ -25,6 +25,11 @@
             "subtitle": "stylizowany na japoński",
             "description": "Oto jak stworzyć piękny, japoński ogród w swojej przestrzeni mieszkalnej! Oczywiście, nie trzeba przesadzać z stylizacją, aby uzyskać wspaniały efekt. Możesz dodać kilka elementów, które nawiązują do japońskiej kultury, takich jak żwirowa ścieżka wspinająca się pod górę lub naturalne ułożenie głazów na skarpie. Nie zapomnij również o roślinach, które występują w stanie naturalnym w Azji i dobrze radzą sobie w naszym klimacie, takich jak klon japoński, magnolie, sosny i azalie. I na koniec, dodaj prostą, drewnianą ławkę, aby w pełni cieszyć się lekkością orientalnej estetyki.",
             "location": "okolice Andrychowa",
+            "thumbnailImage": {
+                "title": "Złote Liście",
+                "description": "Drzewa pokryte złotymi liśćmi w parku, które tworzą niesamowity dywan na ziemi. To widok, który zachwyca każdego miłośnika jesiennych krajobrazów. Spacer po takim parku to prawdziwa uczta dla zmysłów – szelest liści pod stopami, zapach wilgotnej ziemi i delikatny powiew jesiennego wiatru.",
+                "img": "portfolio/skalny/1_edited.jpg"
+            },
             "date": "2023",
             "images": [
                 {
@@ -55,6 +60,11 @@
             "name": "Galeria Letnia",
             "description": "Galeria ukazująca uroki lata, kiedy słońce świeci najjaśniej, a przyroda jest w pełnym rozkwicie. Lato to czas wakacji, podróży i odkrywania pięknych miejsc. W tej galerii znajdziesz obrazy pełne energii i życia – od spokojnych plaż nad morzem, przez bujne ogrody, aż po majestatyczne góry. Każde zdjęcie przypomina o radości, jaką niesie lato, i o chwilach, które warto zapamiętać na zawsze.",
             "location": "Kraków, Polska",
+            "thumbnailImage": {
+                "title": "Plaża nad Morzem",
+                "description": "Piękna plaża z widokiem na spokojne morze, gdzie fale delikatnie obmywają brzeg. To idealne miejsce na odpoczynek, opalanie i cieszenie się letnim słońcem. Plaża jest otoczona złotym piaskiem, a w oddali widać horyzont, który zdaje się nie mieć końca. To miejsce, które koi zmysły i pozwala zapomnieć o codziennych troskach.",
+                "img": "Keukenhof.jpg"
+            },
             "images": [
                 {
                     "title": "Plaża nad Morzem",
@@ -77,6 +87,11 @@
             "name": "Galeria Jesienna",
             "description": "Galeria ukazująca piękno jesieni, kiedy liście zmieniają kolor na złoty, czerwony i pomarańczowy. Jesień to czas nostalgii, spacerów po parku i podziwiania mglistych poranków. W tej galerii znajdziesz obrazy pełne ciepłych barw i spokojnych krajobrazów, które przypominają o ulotności czasu i pięknie każdej chwili.",
             "location": "Gdańsk, Polska",
+            "thumbnailImage": {
+                "title": "Złote Liście",
+                "description": "Drzewa pokryte złotymi liśćmi w parku, które tworzą niesamowity dywan na ziemi. To widok, który zachwyca każdego miłośnika jesiennych krajobrazów. Spacer po takim parku to prawdziwa uczta dla zmysłów – szelest liści pod stopami, zapach wilgotnej ziemi i delikatny powiew jesiennego wiatru.",
+                "img": "PICT0068.JPG"
+            },
             "images": [
                 {
                     "title": "Złote Liście",
@@ -171,92 +186,96 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script>
+        // Get the 'gallery' parameter from the URL
+        const galleryName = getQueryParam('gallery');
+        const galleryData = JSON.parse(document.getElementById('galleries').textContent);
+        const galleryKeys = Object.keys(galleryData);
+
         // Function to get URL parameters
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
-    
-        // Get the 'gallery' parameter from the URL
-        const galleryName = getQueryParam('gallery');
-    
-        if (galleryName) {
-            // Parse the embedded JSON data from the <script> tag in the <head>
-            const galleryData = JSON.parse(document.getElementById('galleries').textContent);
-    
-            // Check if the gallery exists in the JSON data
-            if (galleryData[galleryName]) {
-                data = galleryData[galleryName];
-                galleryIndex = Object.keys(galleryData).indexOf(galleryName);
 
-                document.getElementById('name-label').innerText = data.name;
-                document.getElementById('location-label').innerText = data.location;
-                document.getElementById('date-label').innerText = data.date;
+        function createGalleryCell(imageData) {
+            const galleryCell = document.createElement('div');
+            galleryCell.className = 'carousel-cell';
+            galleryCell.style.height = '100%';
+            galleryCell.style.width = 'fit-content';
+            const galleryImg = document.createElement('img');
+            galleryImg.src = "resources/img/" + imageData.img;
+            galleryImg.alt = imageData.title || 'Gallery Image';
+            galleryCell.appendChild(galleryImg);
 
-                var galleryCells = data.images.map(image => {
-                    const galleryCell = document.createElement('div');
-                    galleryCell.className = 'carousel-cell';
-                    galleryCell.style.height = '100%';
-                    galleryCell.style.width = 'fit-content';
-                    const galleryImg = document.createElement('img');
-                    //galleryImg.className = 'object-fit-cover';
-                    galleryImg.src = "resources/img/" + image.img;
-                    galleryImg.alt = image.title || 'Gallery Image';
-                    galleryCell.appendChild(galleryImg);
-
-                    return galleryCell;
-                });
-
-                $('#gallery-carousel').append(...galleryCells);
-
-                var thumbnailCells = data.images.map(image => {
-                    const thumbnailCell = document.createElement('div');
-                    thumbnailCell.className = 'carousel-cell';
-                    thumbnailCell.style.height = '100%';
-                    thumbnailCell.style.width = '200px'; // same as the height for square
-
-                    const thumbnailImg = document.createElement('img');
-                    thumbnailImg.src = "resources/img/" + image.img;
-                    thumbnailImg.alt = image.title || 'Thumbnail Image';
-                    thumbnailImg.style.height = "100%";
-                    thumbnailImg.style.width = "100%";
-                    thumbnailImg.style.objectFit = "cover"; // ensures the image fills the square
-
-                    thumbnailCell.appendChild(thumbnailImg);
-                    document.getElementById('thumbnail-carousel').appendChild(thumbnailCell);
-                    return thumbnailCell;
-                });
-
-                $('#thumbnail-carousel').append(...thumbnailCells);
-
-                if(data.images[0].description){
-                    document.getElementById('description-label').innerText = data.images[0].description;
-                } else{
-                    document.getElementById('description-label').innerText = data.description;
-                }
-
-                var galleryKeys = Object.keys(galleryData);
-
-                var nextGalleryKey = galleryKeys[(galleryIndex + 1)]
-
-                if (nextGalleryKey) {
-                    $('#next-button').attr('href', `/gallery.html?gallery=${nextGalleryKey}`);
-                    $('#next-button').removeClass('d-none');
-                }
-
-                var prevGalleryKey = galleryKeys[(galleryIndex - 1)]
-
-                if (prevGalleryKey) {
-                    $('#prev-button').attr('href', `/gallery.html?gallery=${prevGalleryKey}`);
-                    $('#prev-button').removeClass('d-none');
-                }
-
-            } else {
-                console.error(`Gallery "${galleryName}" not found in the embedded JSON data.`);
-            }
-        } else {
-            console.error('No gallery parameter provided in the URL.');
+            return galleryCell;
         }
+
+        function loadGallery(galleryName) {
+            data = galleryData[galleryName];
+            galleryIndex = Object.keys(galleryData).indexOf(galleryName);
+
+            document.getElementById('name-label').innerText = data.name;
+            document.getElementById('location-label').innerText = data.location;
+            document.getElementById('date-label').innerText = data.date;
+
+            var galleryCells = data.images.map(image => createGalleryCell(image));
+
+            $('#gallery-carousel').append(...galleryCells);
+
+
+            if(data.images[0].description){
+                document.getElementById('description-label').innerText = data.images[0].description;
+            } else{
+                document.getElementById('description-label').innerText = data.description;
+            }
+        }
+
+
+        function createThumbnailCell(gallery, galleryKey) {
+            var imageData = gallery.thumbnailImage || gallery.images[0];
+
+
+            const thumbCell = document.createElement('div');
+            thumbCell.className = 'carousel-cell';
+            thumbCell.style.height = '100%';
+            thumbCell.style.width = 'fit-content';
+
+            const thumbImg = document.createElement('img');
+            thumbImg.src = "resources/img/" + imageData.img;
+            thumbImg.alt = imageData.title || 'Thumbnail Image';
+            thumbImg.style.height = "100%";
+            thumbImg.style.width = "100%";
+            thumbImg.style.objectFit = "cover";
+            thumbImg.style.display = "block";
+
+            // Optional: add title/description overlay or tooltip
+            thumbCell.title = imageData.title + " – " + (imageData.description || '');
+
+            thumbCell.appendChild(thumbImg);
+
+            thumbCell.addEventListener('click', function() {
+
+                //todo enable dynamic loading of gallery
+                //loadGallery(galleryKey);
+                //history.pushState({}, '', '?gallery=' + galleryKey);
+
+                window.location = '?gallery=' + encodeURIComponent(galleryKey);
+            });
+            return thumbCell;
+        }
+    
+
+        var thumbnailCells = galleryKeys.map((key, index) => {
+            return createThumbnailCell(galleryData[key], key)
+        });
+
+
+        const thumbnailCarousel = document.getElementById('thumbnail-carousel');
+
+        thumbnailCarousel.append(...thumbnailCells);
+
+        loadGallery(galleryName);
+     
     </script>
     <script>
             var $galleryCarousel = $('#gallery-carousel').flickity({
@@ -287,8 +306,8 @@
                 contain: true,
                 pageDots: false,
                 prevNextButtons: false,
-                cellAlign: 'left',
-                asNavFor: '#gallery-carousel',
+                cellAlign: 'center',
+                //asNavFor: '#gallery-carousel',
                 on: {
                     change: function (index) {
                         console.log('Slide changed to' + index);
