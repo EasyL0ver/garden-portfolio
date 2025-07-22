@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/offers.css">
     <link rel="stylesheet" href="styles/grid-gallery.css">
     <link rel="stylesheet" href="styles/jak-powstaje.css">
+    <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/gallery.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap CSS from CDN -->
@@ -187,6 +188,7 @@
     <script>
         // Get the 'gallery' parameter from the URL
         const galleryName = getQueryParam('gallery');
+        const initialIndex = getQueryParam('index') ?? 0;
         const galleryData = JSON.parse(document.getElementById('galleries').textContent);
         const galleryKeys = Object.keys(galleryData);
 
@@ -196,11 +198,16 @@
             return urlParams.get(param);
         }
 
-        function createGalleryCell(imageData) {
+        function createGalleryCell(imageData, subIndex, key) {
             const galleryCell = document.createElement('div');
             galleryCell.className = 'carousel-cell';
             galleryCell.style.height = '100%';
             galleryCell.style.width = 'fit-content';
+            
+            // Add data attributes using dataset
+            galleryCell.dataset.subindex = subIndex;
+            galleryCell.dataset.key = key;
+            
             const galleryImg = document.createElement('img');
             galleryImg.src = "resources/img/" + imageData.img;
             galleryImg.alt = imageData.title || 'Gallery Image';
@@ -217,27 +224,23 @@
             document.getElementById('location-label').innerText = data.location;
             document.getElementById('date-label').innerText = data.date;
 
-            var galleryCells = data.images.map(image => createGalleryCell(image));
+            var galleryCells = data.images.map((image, index) => createGalleryCell(image, index, galleryName));
 
             $('#gallery-carousel').append(...galleryCells);
-
-
-            if(data.images[0].description){
-                document.getElementById('description-label').innerText = data.images[0].description;
-            } else{
-                document.getElementById('description-label').innerText = data.description;
-            }
         }
 
 
         function createThumbnailCell(gallery, galleryKey) {
             var imageData = gallery.thumbnailImage || gallery.images[0];
 
-
             const thumbCell = document.createElement('div');
             thumbCell.className = 'carousel-cell';
             thumbCell.style.height = '100%';
             thumbCell.style.width = 'fit-content';
+            
+            // Add data attributes for thumbnail cells too
+            thumbCell.dataset.key = galleryKey;
+            thumbCell.dataset.subindex = 0; // thumbnails represent the first image of each gallery
 
             const thumbImg = document.createElement('img');
             thumbImg.src = "resources/img/" + imageData.img;
@@ -252,17 +255,43 @@
 
             thumbCell.appendChild(thumbImg);
 
+            // Add click handler to navigate to gallery
             thumbCell.addEventListener('click', function() {
-
-                //todo enable dynamic loading of gallery
-                //loadGallery(galleryKey);
-                //history.pushState({}, '', '?gallery=' + galleryKey);
-
-                window.location = '?gallery=' + encodeURIComponent(galleryKey);
+                // Find the starting index of this gallery in the main carousel
+                var startIndex = 0;
+                for (let i = 0; i < galleryKeys.indexOf(galleryKey); i++) {
+                    startIndex += galleryData[galleryKeys[i]].images.length;
+                }
+                
+                // Navigate to the first image of the selected gallery
+                $galleryCarousel.flickity('select', startIndex);
             });
+
             return thumbCell;
         }
-    
+
+        function updateGalleryTitle(gallery){
+            document.getElementById('name-label').innerText = gallery.name;
+            document.getElementById('location-label').innerText = gallery.location;
+            document.getElementById('date-label').innerText = gallery.date;
+        }
+
+        function updateGalleryDescription(gallery, index){
+            var imageObject = gallery.images[index];
+
+            var descriptionLabelElement = document.getElementById('description-label');
+
+            if(imageObject.description) {
+                descriptionLabelElement.innerText = imageObject.description;
+            } else{
+                descriptionLabelElement.innerText = gallery.description;
+            }
+        }
+
+        function updateUrl(galleryKey, index) {
+            const newUrl = '?gallery=' + galleryKey + '&index=' + index;
+            history.pushState({}, '', newUrl);
+        }
 
         var thumbnailCells = galleryKeys.map((key, index) => {
             return createThumbnailCell(galleryData[key], key)
@@ -273,8 +302,15 @@
 
         thumbnailCarousel.append(...thumbnailCells);
 
-        loadGallery(galleryName);
-     
+        galleryKeys.forEach(key => {
+            loadGallery(key);
+        })
+
+        var currentGallery = galleryData[galleryName] || galleryData[galleryKeys[0]];
+
+        updateGalleryDescription(currentGallery, initialIndex);
+        updateGalleryTitle(currentGallery);
+
     </script>
     <script>
             var $galleryCarousel = $('#gallery-carousel').flickity({
@@ -282,36 +318,35 @@
                 setGallerySize: false,
                 percentPosition: false,
                 contain: true,
-                //asNavFor: '#thumbnail-carousel',
                 pageDots: false,
                 on: {
                     change: function (index) {
-                        console.log('Slide changed to' + index);
+                        var currentSlide = this.selectedElement;
 
-                        var currentImage = data.images[index];
-
-                        if(currentImage.description){
-                            document.getElementById('description-label').innerText = currentImage.description;
-                        } else{
-                            document.getElementById('description-label').innerText = data.description;
+                        if(!currentSlide) {
+                            console.warn('No current slide found');
+                            return;
                         }
+
+                        var key = currentSlide.dataset.key;
+                        var subIndex = currentSlide.dataset.subindex;
+                        console.log('Current slide - Key:', key, 'SubIndex:', subIndex, "Index", index);
+
+                        var subGallery = galleryData[key];
+
+                        updateGalleryTitle(subGallery);
+                        updateGalleryDescription(subGallery, subIndex);
+                        updateUrl(key, subIndex);
                     }
                 }
             });
     
             var $thumbnailCarousel = $('#thumbnail-carousel').flickity({
-                //imagesLoaded: true,
-                //setGallerySize: false,
+                imagesLoaded: true,
                 contain: true,
                 pageDots: false,
                 prevNextButtons: false,
-                cellAlign: 'center',
-                //asNavFor: '#gallery-carousel',
-                on: {
-                    change: function (index) {
-                        console.log('Slide changed to' + index);
-                    }
-                }
+                cellAlign: 'center'
             });
     </script>
 </body>
