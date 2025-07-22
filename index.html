@@ -9,68 +9,6 @@
     <link rel="stylesheet" href="styles/grid-gallery.css">
     <link rel="stylesheet" href="styles/jak-powstaje.css">
     <link rel="stylesheet" href="styles/home.css">
-    <style>
-        /* Block layout image cropping with info bar */
-        .carousel-cell.image-container {
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .carousel-cell.image-container .image-wrapper {
-            /* Don't change height - let Flickity handle sizing */
-            position: relative;
-            height: 100%;
-        }
-
-        .carousel-cell.image-container img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-cell.image-container .info-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgb(248, 229, 217);
-            color: #000;
-            padding: 0 16px;
-            height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            z-index: 10;
-        }
-
-        .carousel-cell.image-container .info-bar h3 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .carousel-cell.image-container .info-bar p {
-            margin: 0;
-            font-size: 16px;
-            opacity: 0.8;
-        }
-
-        /* When picked, show info bar and shift image up */
-        .carousel-cell.image-container.picked .info-bar {
-            height: 50px;
-            padding: 8px 16px;
-        }
-
-        .carousel-cell.image-container.picked img {
-            transform: translateY(-50px);
-        }
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap CSS from CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
