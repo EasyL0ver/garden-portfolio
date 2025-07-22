@@ -209,7 +209,8 @@
             galleryCell.dataset.key = key;
             
             const galleryImg = document.createElement('img');
-            galleryImg.src = "resources/img/" + imageData.img;
+            // Use data-flickity-lazyload instead of src for lazy loading
+            galleryImg.setAttribute('data-flickity-lazyload', "resources/img/" + imageData.img);
             galleryImg.alt = imageData.title || 'Gallery Image';
             galleryCell.appendChild(galleryImg);
 
@@ -319,6 +320,7 @@
                 percentPosition: false,
                 contain: true,
                 pageDots: false,
+                lazyLoad: 1, // Load images in selected slide + 2 adjacent slides on each side
                 on: {
                     change: function (index) {
                         var currentSlide = this.selectedElement;

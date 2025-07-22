@@ -186,3 +186,20 @@
         margin-right: 12px;
     }
 }
+
+/* Lazy loading image transitions - only for main gallery */
+#gallery-carousel .carousel-cell img {
+    transition: opacity 0.4s ease;
+    opacity: 0;
+    min-width: 150px; /* Ensure cells have size before images load */
+}
+
+#gallery-carousel .carousel-cell img.flickity-lazyloaded,
+#gallery-carousel .carousel-cell img.flickity-lazyerror {
+    opacity: 1;
+}
+
+/* Ensure thumbnail carousel images are always visible */
+#thumbnail-carousel .carousel-cell img {
+    opacity: 1 !important;
+}
