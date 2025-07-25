@@ -13,6 +13,10 @@
     width: 30px;
 }
 
+.nav-shadow {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.28), 0 1px 0.5px 0 rgba(255,255,255,0.10);
+}
+
 .navbar-border {
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
