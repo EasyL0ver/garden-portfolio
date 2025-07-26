@@ -27,6 +27,4 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin-right: calc(var(--bs-gutter-x)* .5);
-    margin-left: calc(var(--bs-gutter-x)* .5);
 }
