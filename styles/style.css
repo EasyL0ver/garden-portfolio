@@ -12,6 +12,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+    --navbar-height: 60px;
+}
+
 .main-font {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -64,7 +68,7 @@ a.anchor {
 }
 
 .topmost {
-    margin-top: 80px;
+    margin-top: var(--navbar-height);
 }
 
 .rotated {
