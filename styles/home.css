@@ -1,6 +1,5 @@
 .carousel-container {
     padding-top: 12px;
-    padding-bottom: 12px;
 }
 
 .home-background-color {
@@ -89,7 +88,7 @@
         background: rgb(248, 229, 217);
         color: #000;
         padding: 0 16px;
-        height: 0;
+        height: calc(var(--bs-gutter-x) * .5);
         overflow: hidden;
         transition: all 0.3s ease;
         font-family: inherit;
@@ -100,21 +99,31 @@
         margin: 0;
         font-size: 20px;
         font-weight: bold;
+        display: none;
     }
 
     .carousel-cell.image-container .info-bar p {
         margin: 0;
         font-size: 16px;
         opacity: 0.8;
+        display: none;
     }
 
     /* When picked, show info bar and shift image up */
     .carousel-cell.image-container.picked .info-bar {
-        height: 50px;
+        height: var(--gallery-info-bar-height);
         padding: 8px 16px;
     }
 
+    .carousel-cell.image-container.picked .info-bar p {
+        display: block;
+    }
+
+    .carousel-cell.image-container.picked .info-bar h3 {
+        display: block;
+    }
+
     .carousel-cell.image-container.picked img {
-        transform: translateY(-50px);
+        transform: translateY(calc(-1 * (var(--gallery-info-bar-height) - (var(--bs-gutter-x) * .5))));
     }
 }
