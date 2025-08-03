@@ -6,18 +6,6 @@ section.offer-section .card-img-top {
     width: 100%;
 }
 
-section.offer-section {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-section.offer-section .card-title {
-    color: green;
-}
-
-section.offer-section .card-text {
-    color: green;
-}
-
 section.offer-section .col-md-4 {
     padding-right: calc(.25* var(--bs-gutter-x));
     padding-left: calc(.25* var(--bs-gutter-x));

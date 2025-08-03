@@ -1,25 +1,17 @@
-:root {
-    --bs-primary: green; /* Your custom color */
-    --bs-primary-rgb: 0, 128, 0;
-
-    --bs-secondary: lightgreen;
-    --bs-secondary-rgb: 144, 238, 144;
-}
-
 .btn {
-    --bs-btn-color: green;
-    --bs-btn-border-color: green;
+    --bs-btn-color: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
     border-radius: 0px !important;
 }
 
 .form-control {
-    --bs-body-color: green;
-    --bs-border-color: green !important;
+    --bs-body-color: var(--bs-primary);
+    --bs-border-color: var(--bs-primary) !important;
 }
 
 .form-control:focus {
     box-shadow: 0 0 10px rgb(120 128 140 / 25%);
-    border-color: green;
+    border-color: var(--bs-primary);
 }
 
 .form-control::placeholder {

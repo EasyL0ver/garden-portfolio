@@ -1,6 +1,5 @@
 .navbar {
     background-color: transparent;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: lightgray;
     height: var(--navbar-height);
 }
@@ -20,8 +19,8 @@
 }
 
 .navbar-border {
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: 1px solid var(--separator-color);
+    border-bottom: 1px solid var(--separator-color);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
