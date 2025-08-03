@@ -87,7 +87,7 @@
         right: 0;
         background: rgb(248, 229, 217);
         color: #000;
-        padding: 0 16px;
+        padding: 0 4px;
         height: calc(var(--bs-gutter-x) * .5);
         overflow: hidden;
         transition: all 0.3s ease;
@@ -105,13 +105,14 @@
         margin: 0;
         font-size: 20px;
         opacity: 0.8;
+        margin-left: 4px;
         display: none;
     }
 
     /* When picked, show info bar and shift image up */
     .carousel-cell.image-container.picked .info-bar {
         height: var(--gallery-info-bar-height);
-        padding: 8px 16px;
+        padding: 8px 4px;
     }
 
     .carousel-cell.image-container.picked .info-bar p {
