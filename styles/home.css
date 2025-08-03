@@ -91,7 +91,6 @@
         height: calc(var(--bs-gutter-x) * .5);
         overflow: hidden;
         transition: all 0.3s ease;
-        font-family: inherit;
         z-index: 10;
     }
 
