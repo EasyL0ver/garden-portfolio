@@ -15,10 +15,21 @@
     right: 0;
     /* transform: translate(-50%, -50%); Fine-tune centering */
     background-color: rgba(255, 255, 255, 1); /* Add a semi-transparent background */
-    padding: 10px 20px; /* Add padding around the text */
+    padding: 4px 4px; /* Add padding around the text */
     opacity: 0; /* Initially hidden */
     /* transition: opacity 0.3s ease; Smooth fade-in effect */
     pointer-events: none; /* Prevent text from interfering with hover */
+    min-height: var(--gallery-info-bar-height);
+
+    .primary-text {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .secondary-text {
+        font-size: 16px;
+        font-weight: 200;
+    }
 }
 
 .hover-shutter {
