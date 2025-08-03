@@ -15,7 +15,9 @@
     right: 0;
     /* transform: translate(-50%, -50%); Fine-tune centering */
     background-color: rgba(255, 255, 255, 1); /* Add a semi-transparent background */
-    padding: 4px 4px; /* Add padding around the text */
+    padding-left: 4px; /* Add padding around the text */
+    padding-right: 4px;
+    padding-bottom: 8px;
     opacity: 0; /* Initially hidden */
     /* transition: opacity 0.3s ease; Smooth fade-in effect */
     pointer-events: none; /* Prevent text from interfering with hover */
