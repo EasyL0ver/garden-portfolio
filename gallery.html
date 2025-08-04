@@ -3,13 +3,6 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/nav.css">
-    <link rel="stylesheet" href="styles/offers.css">
-    <link rel="stylesheet" href="styles/grid-gallery.css">
-    <link rel="stylesheet" href="styles/jak-powstaje.css">
-    <link rel="stylesheet" href="styles/home.css">
-    <link rel="stylesheet" href="styles/gallery.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap CSS from CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,6 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="styles/bootsrap-overrides.css">
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/offers.css">
+    <link rel="stylesheet" href="styles/grid-gallery.css">
+    <link rel="stylesheet" href="styles/jak-powstaje.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/gallery.css">
     <script id="galleries" type="application/json">
     {
         "skalny": {
@@ -118,33 +118,31 @@
 
 <body class="main-font">
     <div class="background-wrapper shutter">
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="navbar-border full-height full-width navbar">
-                <div class="container">
-                    <div class="navbar-brand" href="#">
-                        <img class="logo" src="resources/img/ogrodniklogo.svg">
-                        <h class="text-primary">ogrodnik projektuje</h>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/#uslugi">oferta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/#portfolio">portfolio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/#kontakt">kontakt</a>
-                            </li>
-                        </ul>
-                    </div>
+        <nav class="navbar navbar-expand-lg fixed-top nav-shadow">
+            <div class="navbar-border full-height full-width ms-3 me-3 ps-5 pe-5">
+                <div class="navbar-brand full-height d-flex" href="#">
+                    <img class="full-height logo" src="resources/img/ogrodniklogo.svg">
+                    <h class="text-primary ms-2">ogrodnik projektuje</h>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="#">home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="#uslugi">oferta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="#portfolio">portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="#kontakt">kontakt</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
