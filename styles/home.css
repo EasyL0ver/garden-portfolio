@@ -14,6 +14,9 @@
 
 .landing-page {
     height: calc(100vh - var(--navbar-height));
+    @media (max-width: 728px) {
+        height: calc(80vh - var(--navbar-height));
+    }
     background-color: white;
 
     * {
@@ -58,7 +61,6 @@
         overflow: hidden;
         cursor: pointer;
         transition: all 0.3s ease;
-        border: 2px solid transparent;
         position: relative;
         margin-right: 12px;
         height: 100%;
@@ -94,16 +96,14 @@
         z-index: 10;
     }
 
-    .carousel-cell.image-container .info-bar h3 {
+    .carousel-cell.image-container .info-bar .text-primary {
         margin: 0;
-        font-size: 20px;
         font-weight: 400;
         display: none;
     }
 
-    .carousel-cell.image-container .info-bar p {
+    .carousel-cell.image-container .info-bar .text-muted {
         margin: 0;
-        font-size: 20px;
         opacity: 0.8;
         margin-left: 4px;
         display: none;
@@ -115,11 +115,11 @@
         padding: 8px 4px;
     }
 
-    .carousel-cell.image-container.picked .info-bar p {
+    .carousel-cell.image-container.picked .info-bar .text-muted {
         display: block;
     }
 
-    .carousel-cell.image-container.picked .info-bar h3 {
+    .carousel-cell.image-container.picked .info-bar .text-primary {
         display: block;
     }
 
