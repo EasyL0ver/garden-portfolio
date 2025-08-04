@@ -246,7 +246,7 @@
                                 <p class="lead text-muted">Zobacz, jak powstaje Twój ogród – od pierwszego kontaktu, przez projekt, aż po realizację i wsparcie w pielęgnacji.</p>
                             </div>
                         </div>
-                        <div style="height: 70vh;">
+                        <div style="height: 50vh;">
                             <div id="jak-powstaje-carousel" class="full-height flickity-carousel mb-6">
                                 <div class ="carousel-cell row full-height full-width g-0 pastel-1">
                                     <div class="col-md-4 jak-powstaje-img-container">
@@ -521,15 +521,18 @@
             }
         </script>
         <script>
+            function updateNavbarScrolled() {
+                var distanceScrolled = $(window).scrollTop();
+                if (distanceScrolled > 0) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            }
+
             $(document).ready(function () {
-                $(window).scroll(function () {
-                    var distanceScrolled = $(this).scrollTop()
-                    if (distanceScrolled > 0) { // Adjust the value as needed
-                        $('.navbar').addClass('scrolled');
-                    } else {
-                        $('.navbar').removeClass('scrolled');
-                    }
-                });
+                updateNavbarScrolled(); // Check on page load
+                $(window).scroll(updateNavbarScrolled); // Check on scroll
             });
         </script>
         <script>
