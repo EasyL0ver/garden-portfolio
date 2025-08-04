@@ -52,6 +52,9 @@ a.anchor {
     width: 100%;
 }
 
+.full-screen {
+    height: calc(100vh - var(--navbar-height));
+}
 
 .section-header {
     .image-container {
