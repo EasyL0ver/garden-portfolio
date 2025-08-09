@@ -1,11 +1,11 @@
 .navbar {
-    background-color: transparent;
-    color: lightgray;
+    background-color: var(--navbar-color);
     height: var(--navbar-height);
+    opacity: 0.8;
 }
 
 .scrolled {
-    background-color: rgba(200, 174, 129);
+    opacity: 1;
 }
 
 .logo {
