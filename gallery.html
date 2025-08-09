@@ -384,7 +384,7 @@
     <script>
         // Get the 'gallery' parameter from the URL
         const galleryName = getQueryParam('gallery');
-        const initialIndex = getQueryParam('index') ?? 0;
+        const initialIndex = parseInt(getQueryParam('index') ?? "0");
         const galleryData = JSON.parse(document.getElementById('galleries').textContent);
         const galleryKeys = Object.keys(galleryData);
 
@@ -510,13 +510,22 @@
 
     </script>
     <script>
+            // Find the starting index of this gallery in the main carousel
+            var absoluteInitialIndex = 0;
+            var thumbnailInitialIndex = 0;
+            for (let i = 0; i < galleryKeys.indexOf(galleryName); i++) {
+                absoluteInitialIndex += galleryData[galleryKeys[i]].images.length;
+                thumbnailInitialIndex += 1;
+            }
+
             var $galleryCarousel = $('#gallery-carousel').flickity({
                 imagesLoaded: true,
                 setGallerySize: false,
                 percentPosition: false,
                 contain: true,
+                initialIndex: absoluteInitialIndex + initialIndex,
                 pageDots: false,
-                lazyLoad: 1, // Load images in selected slide + 2 adjacent slides on each side
+                lazyLoad: 2,
                 on: {
                     change: function (index) {
                         var currentSlide = this.selectedElement;
@@ -543,6 +552,7 @@
                 imagesLoaded: true,
                 contain: true,
                 pageDots: false,
+                initialIndex: thumbnailInitialIndex,
                 prevNextButtons: false,
                 cellAlign: 'center'
             });
