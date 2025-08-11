@@ -21,6 +21,14 @@
 
         .nav-item {
             min-height: 50px;
+            border-bottom: 1px solid var(--separator-color);
+            margin: 0 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item:last-child {
+            border-bottom: none;
         }
 
     }
