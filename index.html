@@ -598,6 +598,17 @@
                 }
             }
         </script>
+        <script>
+            $(document).ready(function() {
+                // Close mobile menu when nav links are clicked (mobile only)
+                $('.navbar-nav .nav-link').on('click', function() {
+                    // Check if we're on mobile (navbar-toggler is visible)
+                    if ($('.navbar-toggler').is(':visible')) {
+                        $('#navbarNav').collapse('hide');
+                    }
+                });
+            });
+        </script>
     </div>
 </body>
 
