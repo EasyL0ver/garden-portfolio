@@ -653,6 +653,165 @@
                 });
             });
         </script>
+        <script>
+            var galleryVisibilityDelay = 2000; // 2 second delay after gallery becomes visible
+            var galleryTitleDisplayDuration = 3000; // 3 seconds to display each title
+            var galleryTitleRotationDelay = 1000; // 1 second between title changes
+            
+            $(document).ready(function () {
+                var galleryTiles = $('.grid-gallery .gallery-tile');
+                var galleryVisibilityTimer = null;
+                var titleRotationTimer = null;
+                var currentTitleIndex = 0;
+                var isGalleryVisible = false;
+                var userIsHovering = false;
+                var currentlyShownTitle = null;
+                var titleHideTimer = null;
+                
+                // Use Intersection Observer to detect when gallery comes into view
+                var galleryObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            // Gallery is visible, start the title rotation system
+                            if (!isGalleryVisible && !galleryVisibilityTimer) {
+                                isGalleryVisible = true;
+                                galleryVisibilityTimer = setTimeout(function() {
+                                    console.log("Gallery title rotation started");
+                                    startTitleRotation();
+                                }, galleryVisibilityDelay);
+                            }
+                        } else {
+                            // Gallery is not visible, stop everything
+                            if (galleryVisibilityTimer) {
+                                clearTimeout(galleryVisibilityTimer);
+                                galleryVisibilityTimer = null;
+                            }
+                            stopTitleRotation();
+                            hideAllTitles();
+                            isGalleryVisible = false;
+                        }
+                    });
+                }, {
+                    threshold: 0.3 // Trigger when 30% of the gallery is visible
+                });
+                
+                // Observe the gallery section
+                var gallerySection = document.querySelector('.grid-gallery');
+                if (gallerySection) {
+                    galleryObserver.observe(gallerySection);
+                }
+                
+                function startTitleRotation() {
+                    if (userIsHovering) return; // Don't start if user is hovering
+                    
+                    showRandomTitle();
+                    titleRotationTimer = setInterval(function() {
+                        if (!userIsHovering) {
+                            showRandomTitle();
+                        }
+                    }, galleryTitleDisplayDuration + galleryTitleRotationDelay);
+                }
+                
+                function stopTitleRotation() {
+                    if (titleRotationTimer) {
+                        clearInterval(titleRotationTimer);
+                        titleRotationTimer = null;
+                    }
+                    if (titleHideTimer) {
+                        clearTimeout(titleHideTimer);
+                        titleHideTimer = null;
+                    }
+                }
+                
+                function showRandomTitle() {
+                    // If there's a currently shown title, hide it first and wait for the animation
+                    if (currentlyShownTitle) {
+                        var titleToHide = currentlyShownTitle;
+                        currentlyShownTitle = null;
+                        
+                        // Clear any pending hide timer
+                        if (titleHideTimer) {
+                            clearTimeout(titleHideTimer);
+                            titleHideTimer = null;
+                        }
+                        
+                        // Hide the current title
+                        titleToHide.removeClass('auto-show');
+                        
+                        // Wait for the hide animation to complete before showing new title
+                        setTimeout(function() {
+                            if (!userIsHovering && isGalleryVisible) {
+                                displayNewRandomTitle();
+                            }
+                        }, 350); // Slightly longer delay to ensure clean transition
+                    } else {
+                        displayNewRandomTitle();
+                    }
+                }
+                
+                function displayNewRandomTitle() {
+                    // Show a random title
+                    if (galleryTiles.length > 0) {
+                        var randomIndex = Math.floor(Math.random() * galleryTiles.length);
+                        var randomTile = galleryTiles.eq(randomIndex);
+                        var title = randomTile.find('.hover-title');
+                        
+                        currentlyShownTitle = title;
+                        
+                        // Add class and ensure clean state
+                        title.addClass('auto-show');
+                        
+                        // Schedule hiding it after display duration
+                        titleHideTimer = setTimeout(function() {
+                            if (!userIsHovering && currentlyShownTitle && currentlyShownTitle.is(title)) {
+                                // Smoothly hide by removing class
+                                title.removeClass('auto-show');
+                                
+                                // Clear the reference after transition completes
+                                setTimeout(function() {
+                                    if (currentlyShownTitle && currentlyShownTitle.is(title)) {
+                                        currentlyShownTitle = null;
+                                    }
+                                }, 300);
+                            }
+                        }, galleryTitleDisplayDuration);
+                    }
+                }
+                
+                function hideAllTitles() {
+                    galleryTiles.find('.hover-title').removeClass('auto-show');
+                    currentlyShownTitle = null;
+                    if (titleHideTimer) {
+                        clearTimeout(titleHideTimer);
+                        titleHideTimer = null;
+                    }
+                }
+                
+                // Handle manual hover interactions
+                galleryTiles.on('mouseenter', function() {
+                    userIsHovering = true;
+                    var hoveredTitle = $(this).find('.hover-title');
+                    
+                    // Hide all auto-shown titles smoothly
+                    hideAllTitles();
+                    
+                    // Show the hovered title after a brief delay to avoid overlap
+                    setTimeout(function() {
+                        if (userIsHovering) {
+                            hoveredTitle.addClass('manual-show');
+                        }
+                    }, 100);
+                });
+                
+                galleryTiles.on('mouseleave', function() {
+                    userIsHovering = false;
+                    var hoveredTitle = $(this).find('.hover-title');
+                    
+                    // Hide the manually shown title
+                    hoveredTitle.removeClass('manual-show');
+                });
+            });
+        </script>
     </div>
 </body>
 

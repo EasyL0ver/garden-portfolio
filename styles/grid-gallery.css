@@ -54,6 +54,66 @@
     opacity: 1; /* Show text on hover */
 }
 
+/* Auto-show animation for random title display */
+.hover-title.auto-show {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(0);
+}
+
+/* Manual show for explicit hover */
+.hover-title.manual-show {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Smooth transition for hiding titles */
+.hover-title {
+    position: absolute; /* Position text relative to the container */
+    z-index: 2;
+    left: 0;
+    right: 0;
+    /* transform: translate(-50%, -50%); Fine-tune centering */
+    background-color: rgba(255, 255, 255, 1); /* Add a semi-transparent background */
+    padding-left: 4px; /* Add padding around the text */
+    padding-right: 4px;
+    padding-bottom: 8px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transitions */
+    pointer-events: none; /* Prevent text from interfering with hover */
+    min-height: var(--gallery-info-bar-height);
+
+    .primary-text {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .secondary-text {
+        font-size: 16px;
+        font-weight: 200;
+    }
+}
+
+/* Pulse animation for auto-shown titles */
+@keyframes titlePulse {
+    0% { 
+        opacity: 0; 
+        transform: translateY(10px);
+    }
+    15% { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+    85% { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateY(-10px);
+    }
+}
+
 @media (max-width: 728px) {
     .gallery-tile:hover .hover-shutter {
         opacity: 0; /* Show text on hover */
