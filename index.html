@@ -493,6 +493,7 @@
                 var sectionHeaderLogos = $('.section-header .image-container');
                 var visibilityTimers = new Map();
                 var animatedElements = new Set(); // Track which elements have been animated
+                var cooldownElements = new Set(); // Track elements in cooldown period
                 
                 // Use Intersection Observer to detect when logos come into view
                 var observer = new IntersectionObserver(function(entries) {
@@ -501,13 +502,18 @@
                         console.log("Logo section intersection:", entry.isIntersecting, "ratio:", entry.intersectionRatio);
                         
                         if (entry.isIntersecting && entry.intersectionRatio >= 0.95) {
-                            // Logo section is fully visible, start timer if not already started and not currently animated
-                            if (!visibilityTimers.has(element) && !$(element).hasClass('rotated')) {
+                            // Logo section is fully visible, start timer if not already started, animated, or in cooldown
+                            if (!visibilityTimers.has(element) && 
+                                !$(element).hasClass('rotated') && 
+                                !animatedElements.has(element) && 
+                                !cooldownElements.has(element)) {
                                 console.log("Starting logo visibility timer for fully visible section");
                                 var timer = setTimeout(function() {
-                                    console.log("Logo animation triggered");
-                                    $(element).addClass("rotated");
-                                    animatedElements.add(element);
+                                    if (!animatedElements.has(element) && !cooldownElements.has(element)) {
+                                        console.log("Logo animation triggered");
+                                        $(element).addClass("rotated");
+                                        animatedElements.add(element);
+                                    }
                                 }, visibilityDelay);
                                 
                                 visibilityTimers.set(element, timer);
@@ -522,6 +528,7 @@
                             // Reset animation state when element goes out of view
                             if (animatedElements.has(element)) {
                                 animatedElements.delete(element);
+                                cooldownElements.delete(element);
                                 $(element).removeClass('rotated');
                             }
                         }
@@ -537,8 +544,14 @@
                     // Handle animation end
                     $(element).on('animationend', function () {
                         $(element).removeClass('rotated');
-                        // Remove from animated set when animation completes naturally
+                        // Remove from animated set and add to cooldown
                         animatedElements.delete(element);
+                        cooldownElements.add(element);
+                        
+                        // Remove from cooldown after a delay to prevent immediate re-triggering
+                        setTimeout(function() {
+                            cooldownElements.delete(element);
+                        }, 2000); // 2 second cooldown period
                     });
                 });
             });
