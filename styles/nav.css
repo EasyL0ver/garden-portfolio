@@ -2,6 +2,23 @@
     background-color: var(--navbar-color);
     height: var(--navbar-height);
     opacity: 0.8;
+
+    --bs-navbar-toggler-padding-y: 0.1rem;
+    --bs-navbar-toggler-padding-x: 0.8rem;
+    --bs-navbar-toggler-border-radius: 0;
+
+
+    .show {
+        opacity: 1;
+        background-color: pink;
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+        position: relative;
+        z-index: 1;
+    }
 }
 
 .scrolled {
