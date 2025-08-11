@@ -64,7 +64,7 @@
 /* Manual show for explicit hover */
 .hover-title.manual-show {
     opacity: 1;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
 }
 
 /* Smooth transition for hiding titles */
@@ -79,7 +79,7 @@
     padding-right: 4px;
     padding-bottom: 8px;
     opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transitions */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Faster transitions */
     pointer-events: none; /* Prevent text from interfering with hover */
     min-height: var(--gallery-info-bar-height);
 

@@ -654,9 +654,9 @@
             });
         </script>
         <script>
-            var galleryVisibilityDelay = 2000; // 2 second delay after gallery becomes visible
-            var galleryTitleDisplayDuration = 3000; // 3 seconds to display each title
-            var galleryTitleRotationDelay = 1000; // 1 second between title changes
+            var galleryVisibilityDelay = 4000; // 4 second delay after gallery becomes visible (was 2s)
+            var galleryTitleDisplayDuration = 5000; // 5 seconds to display each title (was 3s)
+            var galleryTitleRotationDelay = 2000; // 2 seconds between title changes (was 1s)
             
             $(document).ready(function () {
                 var galleryTiles = $('.grid-gallery .gallery-tile');
@@ -743,7 +743,7 @@
                             if (!userIsHovering && isGalleryVisible) {
                                 displayNewRandomTitle();
                             }
-                        }, 350); // Slightly longer delay to ensure clean transition
+                        }, 350); // Faster transition timing
                     } else {
                         displayNewRandomTitle();
                     }
@@ -772,7 +772,7 @@
                                     if (currentlyShownTitle && currentlyShownTitle.is(title)) {
                                         currentlyShownTitle = null;
                                     }
-                                }, 300);
+                                }, 350); // Faster CSS transition timing
                             }
                         }, galleryTitleDisplayDuration);
                     }
@@ -795,12 +795,8 @@
                     // Hide all auto-shown titles smoothly
                     hideAllTitles();
                     
-                    // Show the hovered title after a brief delay to avoid overlap
-                    setTimeout(function() {
-                        if (userIsHovering) {
-                            hoveredTitle.addClass('manual-show');
-                        }
-                    }, 100);
+                    // Show the hovered title instantly
+                    hoveredTitle.addClass('manual-show');
                 });
                 
                 galleryTiles.on('mouseleave', function() {
