@@ -1,11 +1,11 @@
 .gallery-section {
-    margin-bottom: 0px !important
+    margin-bottom: 0px !important;
 }
 
 .gallery-container-inner {
     position: relative;
     height: 100%;
-    width: 100;
+    width: 100%;
 }
 
 .main-image-container {
@@ -16,7 +16,7 @@
 .thumbnails-container {
     width: 100%;
     margin-top: 4px;
-    height: 120px; /* or any fixed value you want */
+    height: 120px; /* Fixed value */
     min-height: 80px;
     max-height: 200px;
 }
@@ -26,13 +26,13 @@
     width: 100px;
     margin-left: 2px;
     margin-right: 2px;
-    -webkit-box-sizing: border-box; 
-    -moz-box-sizing: border-box;    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .mini-selected {
-    border: 2px solid black ;
+    border: 2px solid black;
 }
 
 .nav-arrow-wrapper {
@@ -46,7 +46,7 @@
     top: 0px;
     left: 0px;
     pointer-events: none;
-    background:none !important;
+    background: none !important;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -54,7 +54,7 @@
 }
 
 .nav-overlay-flex-space {
-    width:  85%;
+    width: 85%;
     height: 100%;
 }
 
@@ -63,7 +63,7 @@
     padding: 3px;
     height: 20px;
     width: 20px;
-  }
+}
 
 .arrow-active {
     border: solid black;
@@ -75,15 +75,15 @@
     border-width: 0 10px 10px 0;
 }
   
-  .arrow-right {
+.arrow-right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
-  }
-  
-  .arrow-left {
+}
+
+.arrow-left {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
-  }
+}
 
 .scale-image-background {
     opacity: 0.5;
@@ -127,7 +127,7 @@
 }
 
 .padding-from-gutter {
-    padding-bottom: calc(var(--bs-gutter-x) * .5);
+    padding-bottom: calc(var(--bs-gutter-x) * 0.5);
 }
 
 .thumbnails-container {
@@ -135,28 +135,30 @@
 }
 
 .flickity-prev-next-button.previous {
-  left: 30px !important;  /* Increase this value to move further from the edge */
+    left: 30px !important;
 }
+
 .flickity-prev-next-button.next {
-  right: 30px !important;  /* Increase this value to move further from the edge */
+    right: 30px !important;
 }
 
 #thumbnail-carousel {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
+
 #thumbnail-carousel .carousel-cell {
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  min-width: 0;
-  box-sizing: border-box;
-  /* Remove any float or flex-wrap */
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    box-sizing: border-box;
 }
+
 #thumbnail-carousel .carousel-cell img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Essential styles copied from home.css for gallery page */
@@ -178,7 +180,7 @@
         height: 100%;
     }
 
-    /* Gallery specific carousel cell margins */
+/* Gallery specific carousel cell margins */
     .carousel-cell {
         margin-right: 12px;
     }

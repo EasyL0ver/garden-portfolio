@@ -90,7 +90,7 @@
         background: rgb(248, 229, 217);
         color: #000;
         padding: 0 4px;
-        height: calc(var(--bs-gutter-x) * .5);
+        height: calc(var(--bs-gutter-x) * 0.5);
         overflow: hidden;
         transition: all 0.3s ease;
         z-index: 10;
@@ -124,6 +124,6 @@
     }
 
     .carousel-cell.image-container.picked img {
-        transform: translateY(calc(-1 * (var(--gallery-info-bar-height) - (var(--bs-gutter-x) * .5))));
+        transform: translateY(calc(-1 * (var(--gallery-info-bar-height) - (var(--bs-gutter-x) * 0.5))));
     }
 }

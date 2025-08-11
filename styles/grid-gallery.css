@@ -9,18 +9,17 @@
 }
 
 .hover-title {
-    position: absolute; /* Position text relative to the container */
+    position: absolute;
     z-index: 2;
     left: 0;
     right: 0;
-    /* transform: translate(-50%, -50%); Fine-tune centering */
-    background-color: rgba(255, 255, 255, 1); /* Add a semi-transparent background */
-    padding-left: 4px; /* Add padding around the text */
+    background-color: rgba(255, 255, 255, 1);
+    padding-left: 4px;
     padding-right: 4px;
     padding-bottom: 8px;
-    opacity: 0; /* Initially hidden */
-    /* transition: opacity 0.3s ease; Smooth fade-in effect */
-    pointer-events: none; /* Prevent text from interfering with hover */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none;
     min-height: var(--gallery-info-bar-height);
 
     .primary-text {
@@ -41,17 +40,17 @@
     left: 0;
     right: 0;
     top: 0;
-    bottom:0 ;
+    bottom: 0;
     background-color: beige;
     pointer-events: none;
 }
 
 .gallery-tile:hover .hover-shutter {
-    opacity: 0.2; /* Show text on hover */
+    opacity: 0.2;
 }
 
 .gallery-tile:hover .hover-title {
-    opacity: 1; /* Show text on hover */
+    opacity: 1;
 }
 
 /* Auto-show animation for random title display */
@@ -68,31 +67,6 @@
 }
 
 /* Smooth transition for hiding titles */
-.hover-title {
-    position: absolute; /* Position text relative to the container */
-    z-index: 2;
-    left: 0;
-    right: 0;
-    /* transform: translate(-50%, -50%); Fine-tune centering */
-    background-color: rgba(255, 255, 255, 1); /* Add a semi-transparent background */
-    padding-left: 4px; /* Add padding around the text */
-    padding-right: 4px;
-    padding-bottom: 8px;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Faster transitions */
-    pointer-events: none; /* Prevent text from interfering with hover */
-    min-height: var(--gallery-info-bar-height);
-
-    .primary-text {
-        font-size: 16px;
-        font-weight: 400;
-    }
-
-    .secondary-text {
-        font-size: 16px;
-        font-weight: 200;
-    }
-}
 
 /* Pulse animation for auto-shown titles */
 @keyframes titlePulse {
@@ -116,11 +90,11 @@
 
 @media (max-width: 728px) {
     .gallery-tile:hover .hover-shutter {
-        opacity: 0; /* Show text on hover */
+        opacity: 0;
     }
     
     .gallery-tile:hover .hover-title {
-        opacity: 0; /* Show text on hover */
+        opacity: 0;
     }
 }
 
@@ -162,7 +136,7 @@
 
 .collage-1 {
     .hover-title {
-        top: 0
+        top: 0;
     }
 
     .collage-element {

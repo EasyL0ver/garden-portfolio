@@ -1,3 +1,5 @@
+/* Bootstrap Overrides */
+
 .btn {
     --bs-btn-color: var(--bs-primary);
     --bs-btn-border-color: var(--bs-primary);
@@ -18,11 +20,10 @@
     opacity: 0.5;
 }
 
-
+/* Font size overrides */
 .fs-5 {
     font-size: 1.25rem !important;
 }
-
 
 @media (max-width: 728px) {
     .fs-5 {
