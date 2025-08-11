@@ -25,3 +25,20 @@
     }
 }
 
+/* Mobile card styling for the step-by-step layout */
+@media (max-width: 767.98px) {
+    section[name="jak-powstaje"] .card {
+        border-radius: 0px !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    section[name="jak-powstaje"] .card .text-primary {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    section[name="jak-powstaje"] .card h5 {
+        font-weight: 600;
+    }
+}
+
