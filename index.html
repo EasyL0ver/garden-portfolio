@@ -485,24 +485,57 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
         <script>
-            var animationScrollOffset = 300
+            var visibilityDelay = 1000; // 1 second delay after logo becomes visible
+            
             $(document).ready(function () {
-                var sectionHeaderLogos = $('.section-header .image-container').each(function (index, element) {
-                    var logoPosition = $(element).offset().top
-                    console.log(logoPosition);
-                    $(window).scroll(function () {
-                        var viewportTop = $(window).scrollTop();
-                        var viewportBottom = viewportTop + $(window).height();
-
-                        if ((viewportTop - animationScrollOffset) < logoPosition && (viewportBottom - animationScrollOffset) > logoPosition) {
-                            console.log("mam cb")
-                            $(element).addClass("rotated")
+                var sectionHeaderLogos = $('.section-header .image-container');
+                var visibilityTimers = new Map();
+                var animatedElements = new Set(); // Track which elements have been animated
+                
+                // Use Intersection Observer to detect when logos come into view
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        var element = entry.target;
+                        
+                        if (entry.isIntersecting) {
+                            // Logo is visible, start timer if not already started and not currently animated
+                            if (!visibilityTimers.has(element) && !$(element).hasClass('rotated')) {
+                                var timer = setTimeout(function() {
+                                    console.log("Logo animation triggered");
+                                    $(element).addClass("rotated");
+                                    animatedElements.add(element);
+                                }, visibilityDelay);
+                                
+                                visibilityTimers.set(element, timer);
+                            }
+                        } else {
+                            // Logo is not visible, clear timer and reset animation state
+                            if (visibilityTimers.has(element)) {
+                                clearTimeout(visibilityTimers.get(element));
+                                visibilityTimers.delete(element);
+                            }
+                            
+                            // Reset animation state when element goes out of view
+                            if (animatedElements.has(element)) {
+                                animatedElements.delete(element);
+                                $(element).removeClass('rotated');
+                            }
                         }
                     });
-                    //todo fix animation reset??
+                }, {
+                    threshold: 0.5 // Trigger when 50% of the element is visible
+                });
+                
+                // Observe each logo
+                sectionHeaderLogos.each(function(index, element) {
+                    observer.observe(element);
+                    
+                    // Handle animation end
                     $(element).on('animationend', function () {
                         $(element).removeClass('rotated');
-                    })
+                        // Remove from animated set when animation completes naturally
+                        animatedElements.delete(element);
+                    });
                 });
             });
         </script>
