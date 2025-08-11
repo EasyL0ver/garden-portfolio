@@ -61,6 +61,15 @@
     justify-content: space-between;
 }
 
+/* Nav link hover effects for both navbar and footer */
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--bs-secondary) !important;
+}
+
 /* Footer styles matching navbar */
 .footer-navbar {
     background-color: var(--navbar-color-solid);
@@ -71,11 +80,6 @@
 
 .footer-navbar .nav-link {
     color: var(--bs-primary) !important;
-    transition: color 0.3s ease;
-}
-
-.footer-navbar .nav-link:hover {
-    color: var(--bs-secondary) !important;
 }
 
 .footer-navbar .border-bottom {
