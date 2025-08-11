@@ -25,6 +25,10 @@
             margin: 0 1rem;
             display: flex;
             align-items: center;
+
+            .nav-link {
+                width: 100%;
+            }
         }
 
         .nav-item:last-child {
