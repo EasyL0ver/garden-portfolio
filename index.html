@@ -607,6 +607,17 @@
                         $('#navbarNav').collapse('hide');
                     }
                 });
+
+                // Close mobile menu when clicking outside (mobile only)
+                $(document).on('click', function(event) {
+                    // Check if we're on mobile and navbar is open
+                    if ($('.navbar-toggler').is(':visible') && $('#navbarNav').hasClass('show')) {
+                        // Check if click was outside the navbar
+                        if (!$(event.target).closest('.navbar').length) {
+                            $('#navbarNav').collapse('hide');
+                        }
+                    }
+                });
             });
         </script>
     </div>
