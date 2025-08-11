@@ -12,8 +12,17 @@
 
     .show {
         opacity: 1;
-        background-color: pink;
+        background-color: white;
         width: 100%;
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+
+        .nav-item {
+            min-height: 50px;
+        }
+
     }
 
     /* .navbar-toggler {
