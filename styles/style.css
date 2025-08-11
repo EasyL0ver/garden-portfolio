@@ -28,6 +28,7 @@ body {
 
     --separator-color: rgba(17, 77, 7, 0.3);
     --navbar-color: rgb(255, 220, 195, 0.95);
+    --navbar-color-solid: rgba(255, 220, 195, 1);
 }
 
 .main-font {

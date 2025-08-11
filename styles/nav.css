@@ -39,7 +39,7 @@
 }
 
 .scrolled {
-    opacity: 1;
+    background-color: var(--navbar-color-solid);
 }
 
 .logo {
