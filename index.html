@@ -496,10 +496,12 @@
                 var observer = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
                         var element = entry.target;
+                        console.log("Logo section intersection:", entry.isIntersecting, "ratio:", entry.intersectionRatio);
                         
-                        if (entry.isIntersecting) {
-                            // Logo is visible, start timer if not already started and not currently animated
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.95) {
+                            // Logo section is fully visible, start timer if not already started and not currently animated
                             if (!visibilityTimers.has(element) && !$(element).hasClass('rotated')) {
+                                console.log("Starting logo visibility timer for fully visible section");
                                 var timer = setTimeout(function() {
                                     console.log("Logo animation triggered");
                                     $(element).addClass("rotated");
@@ -509,7 +511,7 @@
                                 visibilityTimers.set(element, timer);
                             }
                         } else {
-                            // Logo is not visible, clear timer and reset animation state
+                            // Logo section is not fully visible, clear timer and reset animation state
                             if (visibilityTimers.has(element)) {
                                 clearTimeout(visibilityTimers.get(element));
                                 visibilityTimers.delete(element);
@@ -523,7 +525,7 @@
                         }
                     });
                 }, {
-                    threshold: 0.5 // Trigger when 50% of the element is visible
+                    threshold: [0.95] // Only trigger when the entire header section is 95% visible
                 });
                 
                 // Observe each logo
