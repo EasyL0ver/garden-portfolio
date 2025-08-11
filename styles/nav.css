@@ -60,3 +60,24 @@
     align-items: center;
     justify-content: space-between;
 }
+
+/* Footer styles matching navbar */
+.footer-navbar {
+    background-color: var(--navbar-color-solid);
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.footer-navbar .nav-link {
+    color: var(--bs-primary) !important;
+    transition: color 0.3s ease;
+}
+
+.footer-navbar .nav-link:hover {
+    color: var(--bs-secondary) !important;
+}
+
+.footer-navbar .border-bottom {
+    border-color: var(--separator-color) !important;
+}
