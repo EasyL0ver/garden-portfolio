@@ -14,7 +14,7 @@
 
 .landing-page {
     height: calc(100vh - var(--navbar-height));
-    @media (max-width: 728px) {
+    @media (orientation: portrait) {
         height: calc(80vh - var(--navbar-height));
     }
     background-color: white;
