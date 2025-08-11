@@ -667,13 +667,61 @@
                 var userIsHovering = false;
                 var currentlyShownTitle = null;
                 var titleHideTimer = null;
+                var fullyVisibleTiles = new Set(); // Track which tiles are fully visible
+                
+                // Observer for individual tiles to track which are fully visible
+                var tileObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        var tile = entry.target;
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.95) {
+                            // Tile is fully visible (95% threshold for truly full visibility)
+                            fullyVisibleTiles.add(tile);
+                            console.log("Tile became visible:", fullyVisibleTiles.size, "total visible");
+                        } else {
+                            // Tile is not fully visible
+                            fullyVisibleTiles.delete(tile);
+                            console.log("Tile became hidden:", fullyVisibleTiles.size, "total visible");
+                            
+                            // If this tile was showing an animation, clean it up and show elsewhere
+                            var tileTitle = $(tile).find('.hover-title');
+                            if (currentlyShownTitle && currentlyShownTitle.is(tileTitle)) {
+                                console.log("Cleaning up animation from hidden tile");
+                                // Clean up current animation
+                                currentlyShownTitle.removeClass('auto-show');
+                                currentlyShownTitle = null;
+                                
+                                // Clear any pending hide timer
+                                if (titleHideTimer) {
+                                    clearTimeout(titleHideTimer);
+                                    titleHideTimer = null;
+                                }
+                                
+                                // Immediately show animation on another visible tile if gallery is active
+                                if (isGalleryVisible && titleRotationTimer && !userIsHovering) {
+                                    setTimeout(function() {
+                                        displayNewRandomTitle();
+                                    }, 100); // Small delay to ensure cleanup is complete
+                                }
+                            }
+                        }
+                    });
+                }, {
+                    threshold: [0.95] // High threshold to ensure tiles are truly fully visible
+                });
+                
+                // Observe each gallery tile
+                galleryTiles.each(function(index, tile) {
+                    tileObserver.observe(tile);
+                });
                 
                 // Use Intersection Observer to detect when gallery comes into view
                 var galleryObserver = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
+                        console.log("Gallery intersection:", entry.isIntersecting, "ratio:", entry.intersectionRatio);
                         if (entry.isIntersecting) {
                             // Gallery is visible, start the title rotation system
                             if (!isGalleryVisible && !galleryVisibilityTimer) {
+                                console.log("Starting gallery visibility timer");
                                 isGalleryVisible = true;
                                 galleryVisibilityTimer = setTimeout(function() {
                                     console.log("Gallery title rotation started");
@@ -692,7 +740,7 @@
                         }
                     });
                 }, {
-                    threshold: 0.3 // Trigger when 30% of the gallery is visible
+                    threshold: 0.1 // Start as soon as any part of the gallery is visible
                 });
                 
                 // Observe the gallery section
@@ -750,12 +798,15 @@
                 }
                 
                 function displayNewRandomTitle() {
-                    // Show a random title
-                    if (galleryTiles.length > 0) {
-                        var randomIndex = Math.floor(Math.random() * galleryTiles.length);
-                        var randomTile = galleryTiles.eq(randomIndex);
+                    // Only show titles for fully visible tiles
+                    var visibleTileArray = Array.from(fullyVisibleTiles);
+                    console.log("Attempting to show title. Visible tiles:", visibleTileArray.length);
+                    if (visibleTileArray.length > 0) {
+                        var randomIndex = Math.floor(Math.random() * visibleTileArray.length);
+                        var randomTile = $(visibleTileArray[randomIndex]);
                         var title = randomTile.find('.hover-title');
                         
+                        console.log("Selected tile for animation:", randomIndex, "of", visibleTileArray.length);
                         currentlyShownTitle = title;
                         
                         // Add class and ensure clean state
@@ -775,6 +826,8 @@
                                 }, 350); // Faster CSS transition timing
                             }
                         }, galleryTitleDisplayDuration);
+                    } else {
+                        console.log("No visible tiles available for animation");
                     }
                 }
                 
