@@ -1,6 +1,13 @@
 #jak-powstaje-carousel {
+    --bs-border-width: 0px;
+
     .content {
         background-color: inherit;
+    }
+
+    .carousel-cell {
+        /* Default: auto height for portrait */
+        height: auto;
     }
 
     .jak-powstaje-img-container {
@@ -25,6 +32,25 @@
     }
 }
 
+/* Full height carousel cells only on landscape orientation */
+@media (orientation: landscape) {
+    #jak-powstaje-carousel .carousel-cell {
+        height: 100% !important;
+        min-height: 60vh; /* Ensure minimum height even if container is small */
+    }
+}
+
+.jak-powstaje-container {
+    /* Height based on screen orientation */
+    height: 60vh; /* Default horizontal orientation */
+}
+
+@media (orientation: portrait) {
+    .jak-powstaje-container {
+        height: auto;
+    }
+}
+
 /* Mobile card styling for the step-by-step layout */
 @media (max-width: 767.98px) {
     section[name="jak-powstaje"] .card {
@@ -39,6 +65,11 @@
     
     section[name="jak-powstaje"] .card h5 {
         font-weight: 600;
+    }
+    
+    /* Smaller font size for carousel text on mobile/tablet */
+    #jak-powstaje-carousel .text-primary.fs-4 {
+        font-size: 1.1rem !important; /* Smaller than fs-4 (1.5rem) */
     }
 }
 
