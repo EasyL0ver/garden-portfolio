@@ -489,6 +489,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
         <script>
+            function throttle(func, delay) {
+                let lastCall = 0;
+                return function (...args) {
+                    const now = new Date().getTime();
+                    if (now - lastCall >= delay) {
+                    lastCall = now;
+                    func.apply(this, args);
+                    }
+                };
+            }
+        </script>
+        <script>
             var visibilityDelay = 1000; // 1 second delay after logo becomes visible
             
             $(document).ready(function () {
@@ -590,35 +602,34 @@
             });
         </script>
         <script>
-            var $homepageCarousel = $('#homepage-carousel').flickity({
-                imagesLoaded: true,
-                percentPosition: false,
-                contain: true,
-                pageDots: false,
-                on: {
-                    change: function (index) {
-                        console.log('Slide changed to' + index);
+            var initHomepageCarousel = () => {
+                var $homepageCarousel = $('#homepage-carousel').flickity({
+                    imagesLoaded: true,
+                    percentPosition: false,
+                    contain: true,
+                    pageDots: false,
+                    on: {
+                        change: function (index) {
+                            console.log('Slide changed to' + index);
 
-                        // Handle the new info bar logic
-                        var allContainers = $homepageCarousel.find('.carousel-cell.image-container');
-                        
-                        // Clear all picked states
-                        allContainers.each(function() {
-                            clearImagePicked(this);
-                        });
-                        
-                        // Set the active slide as picked
-                        var activeContainer = allContainers.eq(index)[0];
-                        if (activeContainer) {
-                            setImagePicked(activeContainer);
+                            // Handle the new info bar logic
+                            var allContainers = $homepageCarousel.find('.carousel-cell.image-container');
+                            
+                            // Clear all picked states
+                            allContainers.each(function() {
+                                clearImagePicked(this);
+                            });
+                            
+                            // Set the active slide as picked
+                            var activeContainer = allContainers.eq(index)[0];
+                            if (activeContainer) {
+                                setImagePicked(activeContainer);
+                            }
                         }
                     }
-                }
-            });
-        </script>
-        <script>
-            // Only initialize the carousel on desktop screens
-            function initJakPowstajeCarousel() {
+                });
+            }
+            var initJakPowstajeCarousel = () => {
                 if (window.innerWidth >= 768) {
                     var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
                         imagesLoaded: true,
@@ -637,18 +648,27 @@
             // Initialize on page load
             $(document).ready(function() {
                 initJakPowstajeCarousel();
+                initHomepageCarousel();
             });
-            
-            // Re-initialize on window resize if switching between mobile/desktop
-            $(window).resize(function() {
-                // Destroy existing carousel if it exists
-                var $carousel = $('#jak-powstaje-carousel');
-                if ($carousel.hasClass('flickity-enabled')) {
-                    $carousel.flickity('destroy');
+
+
+            var onResize = (event) => {
+                console.log(event);
+                console.log("Window resized, reinitializing carousels if necessary");
+                var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
+                if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
+                    $jakPowstajeCarousel.flickity('destroy');
                 }
-                // Re-initialize if needed
+                
+                var $homepageCarousel = $('#homepage-carousel');
+                $homepageCarousel.flickity('destroy');
+
                 initJakPowstajeCarousel();
-            });
+                initHomepageCarousel();
+            }
+            
+            $(window).on('orientationchange', onResize);
+            $(window).resize(throttle(onResize, 400)); // Throttle resize events to every 400ms
         </script>
         <script>
             function setImagePicked(container) {
