@@ -759,7 +759,7 @@
                         var randomIndex = Math.floor(Math.random() * animationCandidates.length);
                         animatedTile = animationCandidates[randomIndex];
 
-                        $(animatedTile).addClass('auto-show');
+                        $(animatedTile).find('.hover-title').addClass('auto-show');
                     }
 
                     if(animationFrame >= 4) {
