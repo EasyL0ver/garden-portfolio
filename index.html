@@ -715,7 +715,7 @@
                 var titleObserver = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
                         var title = entry.target;
-                        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.8) {
                             fullyVisibleTitles.add(title);
                         } else {
                             fullyVisibleTitles.delete(title);
@@ -737,7 +737,7 @@
                         titleRotationTimer = setInterval(animationTick, animationTickMilliseconds);
                     }
                 }, {
-                    threshold: [0.6] // High threshold to ensure titles are truly fully visible
+                    threshold: [0.8] // High threshold to ensure titles are truly fully visible
                 });
                 
                 // Observe each gallery title
