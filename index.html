@@ -704,29 +704,30 @@
 
             $(document).ready(function () {
                 var galleryTiles = $('.grid-gallery .gallery-tile');
-                var fullyVisibleTiles = new Set(); // Track which tiles are fully visible
-                var animatedTile = null;
+                var galleryTitles = $('.grid-gallery .hover-title');
+                var fullyVisibleTitles = new Set(); // Track which titles are fully visible
+                var animatedTitle = null;
                 var animationFrame = 0;
                 var titleRotationTimer = null;
                 var userIsHovering = false;
                 
-                // Observer for individual tiles to track which are fully visible
-                var tileObserver = new IntersectionObserver(function(entries) {
+                // Observer for individual titles to track which are fully visible
+                var titleObserver = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
-                        var tile = entry.target;
+                        var title = entry.target;
                         if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-                            fullyVisibleTiles.add(tile);
+                            fullyVisibleTitles.add(title);
                         } else {
-                            fullyVisibleTiles.delete(tile);
+                            fullyVisibleTitles.delete(title);
                         }
                     });
 
-                    console.log("Fully visible tiles:", fullyVisibleTiles.size);
+                    console.log("Fully visible titles:", fullyVisibleTitles.size);
 
-                    if (animatedTile && !fullyVisibleTiles.has(animatedTile)) {
+                    if (animatedTitle && !fullyVisibleTitles.has(animatedTitle)) {
 
-                        // reset the animation frame if the animated tile is no longer fully visible
-                        console.log("Animated tile is no longer fully visible, resetting animation frame");
+                        // reset the animation frame if the animated title is no longer fully visible
+                        console.log("Animated title is no longer fully visible, resetting animation frame");
                         animationFrame = 0;
 
                         // force the rotation to happen immediately
@@ -736,12 +737,12 @@
                         titleRotationTimer = setInterval(animationTick, animationTickMilliseconds);
                     }
                 }, {
-                    threshold: [0.6] // High threshold to ensure tiles are truly fully visible
+                    threshold: [0.6] // High threshold to ensure titles are truly fully visible
                 });
                 
-                // Observe each gallery tile
-                galleryTiles.each(function(index, tile) {
-                    tileObserver.observe(tile);
+                // Observe each gallery title
+                galleryTitles.each(function(index, title) {
+                    titleObserver.observe(title);
                 });
 
                 var animationTick = () => {
@@ -751,15 +752,15 @@
                         galleryTiles.find('.hover-title').removeClass('auto-show');
                     }
 
-                    var visibleTiles = Array.from(fullyVisibleTiles)
-                    if(animationFrame == 1 && !userIsHovering && visibleTiles.length > 1 ) {
+                    var visibleTitles = Array.from(fullyVisibleTitles)
+                    if(animationFrame == 1 && !userIsHovering && visibleTitles.length > 1 ) {
 
-                        console.debug("Animation frame 1, showing a random tile");
-                        var animationCandidates = visibleTiles.filter(tile => tile != animatedTile);
+                        console.debug("Animation frame 1, showing a random title");
+                        var animationCandidates = visibleTitles.filter(title => title != animatedTitle);
                         var randomIndex = Math.floor(Math.random() * animationCandidates.length);
-                        animatedTile = animationCandidates[randomIndex];
+                        animatedTitle = animationCandidates[randomIndex];
 
-                        $(animatedTile).find('.hover-title').addClass('auto-show');
+                        $(animatedTitle).addClass('auto-show');
                     }
 
                     if(animationFrame >= 12) {
