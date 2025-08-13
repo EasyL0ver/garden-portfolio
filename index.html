@@ -700,195 +700,85 @@
             var galleryTitleDisplayDuration = 5000; // 5 seconds to display each title (was 3s)
             var galleryTitleRotationDelay = 2000; // 2 seconds between title changes (was 1s)
             
+            var animationTickMilliseconds = 300;
+
             $(document).ready(function () {
                 var galleryTiles = $('.grid-gallery .gallery-tile');
-                var galleryVisibilityTimer = null;
-                var titleRotationTimer = null;
-                var currentTitleIndex = 0;
-                var isGalleryVisible = false;
-                var userIsHovering = false;
-                var currentlyShownTitle = null;
-                var titleHideTimer = null;
                 var fullyVisibleTiles = new Set(); // Track which tiles are fully visible
+                var animatedTile = null;
+                var animationFrame = 0;
+                var titleRotationTimer = null;
+                var userIsHovering = false;
                 
                 // Observer for individual tiles to track which are fully visible
                 var tileObserver = new IntersectionObserver(function(entries) {
+                    fullyVisibleTiles = new Set();
                     entries.forEach(function(entry) {
                         var tile = entry.target;
-                        if (entry.isIntersecting && entry.intersectionRatio >= 0.95) {
-                            // Tile is fully visible (95% threshold for truly full visibility)
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
                             fullyVisibleTiles.add(tile);
-                            console.log("Tile became visible:", fullyVisibleTiles.size, "total visible");
-                        } else {
-                            // Tile is not fully visible
-                            fullyVisibleTiles.delete(tile);
-                            console.log("Tile became hidden:", fullyVisibleTiles.size, "total visible");
-                            
-                            // If this tile was showing an animation, clean it up and show elsewhere
-                            var tileTitle = $(tile).find('.hover-title');
-                            if (currentlyShownTitle && currentlyShownTitle.is(tileTitle)) {
-                                console.log("Cleaning up animation from hidden tile");
-                                // Clean up current animation
-                                currentlyShownTitle.removeClass('auto-show');
-                                currentlyShownTitle = null;
-                                
-                                // Clear any pending hide timer
-                                if (titleHideTimer) {
-                                    clearTimeout(titleHideTimer);
-                                    titleHideTimer = null;
-                                }
-                                
-                                // Immediately show animation on another visible tile if gallery is active
-                                if (isGalleryVisible && titleRotationTimer && !userIsHovering) {
-                                    setTimeout(function() {
-                                        displayNewRandomTitle();
-                                    }, 100); // Small delay to ensure cleanup is complete
-                                }
-                            }
                         }
                     });
+
+                    console.log("Fully visible tiles:", fullyVisibleTiles.size);
+
+                    if (animatedTile && !fullyVisibleTiles.has(animatedTile)) {
+
+                        // reset the animation frame if the animated tile is no longer fully visible
+                        console.log("Animated tile is no longer fully visible, resetting animation frame");
+                        animationFrame = 0;
+
+                        // force the rotation to happen immediately
+                        clearInterval(titleRotationTimer);
+
+                        animationTick();
+                        titleRotationTimer = setInterval(animationTick, animationTickMilliseconds);
+                    }
                 }, {
-                    threshold: [0.95] // High threshold to ensure tiles are truly fully visible
+                    threshold: [0.6] // High threshold to ensure tiles are truly fully visible
                 });
                 
                 // Observe each gallery tile
                 galleryTiles.each(function(index, tile) {
                     tileObserver.observe(tile);
                 });
-                
-                // Use Intersection Observer to detect when gallery comes into view
-                var galleryObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        console.log("Gallery intersection:", entry.isIntersecting, "ratio:", entry.intersectionRatio);
-                        if (entry.isIntersecting) {
-                            // Gallery is visible, start the title rotation system
-                            if (!isGalleryVisible && !galleryVisibilityTimer) {
-                                console.log("Starting gallery visibility timer");
-                                isGalleryVisible = true;
-                                galleryVisibilityTimer = setTimeout(function() {
-                                    console.log("Gallery title rotation started");
-                                    startTitleRotation();
-                                }, galleryVisibilityDelay);
-                            }
-                        } else {
-                            // Gallery is not visible, stop everything
-                            if (galleryVisibilityTimer) {
-                                clearTimeout(galleryVisibilityTimer);
-                                galleryVisibilityTimer = null;
-                            }
-                            stopTitleRotation();
-                            hideAllTitles();
-                            isGalleryVisible = false;
-                        }
-                    });
-                }, {
-                    threshold: 0.1 // Start as soon as any part of the gallery is visible
-                });
-                
-                // Observe the gallery section
-                var gallerySection = document.querySelector('.grid-gallery');
-                if (gallerySection) {
-                    galleryObserver.observe(gallerySection);
-                }
-                
-                function startTitleRotation() {
-                    if (userIsHovering) return; // Don't start if user is hovering
-                    
-                    showRandomTitle();
-                    titleRotationTimer = setInterval(function() {
-                        if (!userIsHovering) {
-                            showRandomTitle();
-                        }
-                    }, galleryTitleDisplayDuration + galleryTitleRotationDelay);
-                }
-                
-                function stopTitleRotation() {
-                    if (titleRotationTimer) {
-                        clearInterval(titleRotationTimer);
-                        titleRotationTimer = null;
+
+                var animationTick = () => {
+                    if(animationFrame == 0) {
+                        // all frames dissapear right now
+                        console.debug("Animation frame 0, hiding all titles");
+                        galleryTiles.find('.hover-title').removeClass('auto-show');
                     }
-                    if (titleHideTimer) {
-                        clearTimeout(titleHideTimer);
-                        titleHideTimer = null;
+
+                    var visibleTiles = Array.from(fullyVisibleTiles)
+                    if(animationFrame == 1 && !userIsHovering && visibleTiles.length > 1 ) {
+
+                        console.debug("Animation frame 1, showing a random tile");
+                        var animationCandidates = visibleTiles.filter(tile => tile != animatedTile);
+                        var randomIndex = Math.floor(Math.random() * animationCandidates.length);
+                        animatedTile = animationCandidates[randomIndex];
+
+                        $(animatedTile).addClass('auto-show');
                     }
-                }
-                
-                function showRandomTitle() {
-                    // If there's a currently shown title, hide it first and wait for the animation
-                    if (currentlyShownTitle) {
-                        var titleToHide = currentlyShownTitle;
-                        currentlyShownTitle = null;
-                        
-                        // Clear any pending hide timer
-                        if (titleHideTimer) {
-                            clearTimeout(titleHideTimer);
-                            titleHideTimer = null;
-                        }
-                        
-                        // Hide the current title
-                        titleToHide.removeClass('auto-show');
-                        
-                        // Wait for the hide animation to complete before showing new title
-                        setTimeout(function() {
-                            if (!userIsHovering && isGalleryVisible) {
-                                displayNewRandomTitle();
-                            }
-                        }, 350); // Faster transition timing
+
+                    if(animationFrame >= 4) {
+                        // it's over reset the animation frame
+                        console.debug("Animation frame 4 or more, resetting animation frame");
+                        animationFrame = 0;
+                        console.log("Resetting animation frame");
                     } else {
-                        displayNewRandomTitle();
+                        animationFrame++;
                     }
-                }
+                };
                 
-                function displayNewRandomTitle() {
-                    // Only show titles for fully visible tiles
-                    var visibleTileArray = Array.from(fullyVisibleTiles);
-                    console.log("Attempting to show title. Visible tiles:", visibleTileArray.length);
-                    if (visibleTileArray.length > 0) {
-                        var randomIndex = Math.floor(Math.random() * visibleTileArray.length);
-                        var randomTile = $(visibleTileArray[randomIndex]);
-                        var title = randomTile.find('.hover-title');
-                        
-                        console.log("Selected tile for animation:", randomIndex, "of", visibleTileArray.length);
-                        currentlyShownTitle = title;
-                        
-                        // Add class and ensure clean state
-                        title.addClass('auto-show');
-                        
-                        // Schedule hiding it after display duration
-                        titleHideTimer = setTimeout(function() {
-                            if (!userIsHovering && currentlyShownTitle && currentlyShownTitle.is(title)) {
-                                // Smoothly hide by removing class
-                                title.removeClass('auto-show');
-                                
-                                // Clear the reference after transition completes
-                                setTimeout(function() {
-                                    if (currentlyShownTitle && currentlyShownTitle.is(title)) {
-                                        currentlyShownTitle = null;
-                                    }
-                                }, 350); // Faster CSS transition timing
-                            }
-                        }, galleryTitleDisplayDuration);
-                    } else {
-                        console.log("No visible tiles available for animation");
-                    }
-                }
-                
-                function hideAllTitles() {
-                    galleryTiles.find('.hover-title').removeClass('auto-show');
-                    currentlyShownTitle = null;
-                    if (titleHideTimer) {
-                        clearTimeout(titleHideTimer);
-                        titleHideTimer = null;
-                    }
-                }
-                
+   
                 // Handle manual hover interactions
                 galleryTiles.on('mouseenter', function() {
                     userIsHovering = true;
                     var hoveredTitle = $(this).find('.hover-title');
                     
-                    // Hide all auto-shown titles smoothly
-                    hideAllTitles();
+                    // all frames dissapear right now
+                    galleryTiles.find('.hover-title').removeClass('auto-show')
                     
                     // Show the hovered title instantly
                     hoveredTitle.addClass('manual-show');
@@ -900,7 +790,17 @@
                     
                     // Hide the manually shown title
                     hoveredTitle.removeClass('manual-show');
+
+                    animationFrame = 0;
+
+                    // force the rotation to happen immediately
+                    clearInterval(titleRotationTimer);
+
+                    animationTick();
+                    titleRotationTimer = setInterval(animationTick, animationTickMilliseconds);
                 });
+
+                titleRotationTimer = setInterval(animationTick, animationTickMilliseconds);
             });
         </script>
     </div>
