@@ -523,9 +523,22 @@
                         console.log("Logo section intersection:", entry.isIntersecting, "ratio:", entry.intersectionRatio);
                         
                         if(element != animatingElement) {
-                            console.log("Animating new element:", element);
-                            $(sectionHeaderLogos).removeClass('rotated'); // Remove rotation from all logos
-                            $(element).addClass('rotated');
+                            console.log("Animating new element after delay:", element);
+
+                            // rotate after one second
+                            setTimeout(function() {
+                                console.log("Rotating element:", element);
+                                // Remove rotation from previously animated element
+                                if (animatingElement) {
+                                    $(animatingElement).removeClass('rotated');
+                                }
+                                
+                                // Remove rotation from all logos
+                                $(sectionHeaderLogos).removeClass('rotated');
+
+                                // Add rotation to the currently intersecting logo
+                                $(element).addClass('rotated');
+                            }, 1000);
                             animatingElement = element;
                         }
                     });
