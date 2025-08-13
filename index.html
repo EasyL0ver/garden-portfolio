@@ -712,11 +712,12 @@
                 
                 // Observer for individual tiles to track which are fully visible
                 var tileObserver = new IntersectionObserver(function(entries) {
-                    fullyVisibleTiles = new Set();
                     entries.forEach(function(entry) {
                         var tile = entry.target;
                         if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
                             fullyVisibleTiles.add(tile);
+                        } else {
+                            fullyVisibleTiles.delete(tile);
                         }
                     });
 
