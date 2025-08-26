@@ -346,15 +346,15 @@
             <div class="d-flex flex-column h-100">
                 <div class="flex-grow-1">
                     <div class="row carousel-container h-100">
-                        <div class="col-sm-8 container h-100">
+                        <div class="col-12 col-md-8">
                             <div class="row gallery-row h-100">
                                 <div id="gallery-carousel" class="flickity-carousel h-100">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 d-flex ps-0">
-                            <div class="row mt-4 h-100">
-                                <div class="col-12 flex-grow-1 d-flex flex-column" style="height: 90%"> 
+                        <div class="col-12 col-md-4 ps-md-0">
+                            <div class="row mt-2 mt-md-4 h-100">
+                                <div class="col-12 flex-grow-1 d-flex flex-column" > 
                                     <div class="flex-grow-1">
                                         <h5 id="name-label" class="fw-bold"></h5>
                                         <p id="location-label" class="mb-1"></p>
@@ -366,7 +366,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="height: 200px;" class="padding-from-gutter">
+                <div style="height: 140px;" class="padding-from-gutter d-none d-md-block">
                     <div class="row thumbnail-container h-100">
                         <div id="thumbnail-carousel" class="flickity-carousel h-100">
                         </div>
@@ -547,6 +547,10 @@
                     }
                 }
             });
+
+
+            //on thumbnail carousel visible event - initialize flickity
+            
     
             var $thumbnailCarousel = $('#thumbnail-carousel').flickity({
                 imagesLoaded: true,
