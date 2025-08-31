@@ -22,12 +22,12 @@
         top: var(--navbar-height);
         left: 0;
         right: 0;
+        z-index: 1000;
 
         .nav-item {
             min-height: 50px;
             border-bottom: 1px solid var(--separator-color);
             margin: 0 0.5rem;
-            padding-top: 1rem;
             padding-left: 0.5rem;
             display: flex;
             align-items: center;
@@ -35,10 +35,6 @@
             .nav-link {
                 width: 100%;
             }
-        }
-
-        .nav-item:first-child {
-            padding-top: 0.5rem;
         }
 
         .nav-item:last-child {
