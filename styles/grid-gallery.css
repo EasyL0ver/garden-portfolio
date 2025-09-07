@@ -145,6 +145,13 @@
 }
 
 .collage-1 {
+    /* 
+    * Padding is applied directly to <a> tags instead of their parent elements
+    * to fix an iOS Safari issue where padding on parent elements of links
+    * isn't properly respected. This is a known behavior in iOS Safari's
+    * touch handling system.
+    */
+    
     .hover-title {
         top: 0;
     }
@@ -152,18 +159,20 @@
     .element-1 {
         grid-row-start: 1;
         grid-row-end: 3;
-        padding: 0 6px 6px 0;
+        > a {
+            padding: 0 6px 6px 0;
+        }
     }
 
-    .element-2 {
+    .element-2 > a {
         padding: 0 6px 6px 6px;
     }
 
-    .element-3 {
+    .element-3 > a {
         padding: 0 0 6px 6px;
     }
 
-    .element-4 {
+    .element-4 > a {
         padding: 6px 6px 6px 0;
     }
 
@@ -172,16 +181,20 @@
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 4;
-        padding: 6px 0 6px 6px;
+        > a {
+            padding: 6px 0 6px 6px;
+        }
     }
 
     .element-6 {
         grid-column-start: 1;
         grid-column-end: 3;
-        padding: 6px 6px 0 0;
+        > a {
+            padding: 6px 6px 0 0;
+        }
     }
 
-    .element-7 {
+    .element-7 > a {
         padding: 6px 0 0 6px;
     }
 }
@@ -194,18 +207,20 @@
         .element-1 {
             grid-row-start: 3;
             grid-row-end: 5;
-            padding: 4px 4px 4px 0;
+            > a {
+                padding: 4px 4px 4px 0;
+            }
         }
 
-        .element-2 {
+        .element-2 > a {
             padding: 4px 0 4px 4px;
         }
 
-        .element-3 {
+        .element-3 > a {
             padding: 4px 0 4px 4px;
         }
 
-        .element-4 {
+        .element-4 > a {
             padding: 4px 4px 0 0;
         }
     
@@ -214,17 +229,21 @@
             grid-column-end: 3;
             grid-row-start: 1;
             grid-row-end: 3;
-            padding: 0 0 4px 0;
+            > a {
+                padding: 0 0 4px 0;
+            }
         }
 
         .element-6 {
             grid-row: 5;
             grid-column-end: 3;
             grid-column-start: 1;
-            padding: 4px 0 4px 0;
+            > a {
+                padding: 4px 0 4px 0;
+            }
         }
 
-        .element-7 {
+        .element-7 > a {
             padding: 4px 0 0 4px;
         }
     }
