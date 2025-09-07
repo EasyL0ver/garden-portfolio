@@ -4,12 +4,21 @@ on: workflow_dispatch
 
 env: 
   AZURE_STORAGE_ACCOUNT: mamastronahoststorage
+  JPEG_QUALITY: '85'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
+    - name: Compress Images
+      id: calibre
+      uses: calibreapp/image-actions@main
+      with:
+          # compress only - do not create a pull request
+          compressOnly: true
+          jpegQuality: ${{ env.JPEG_QUALITY }}
 
     - uses: azure/login@v1
       with:
