@@ -6,6 +6,8 @@
 .gallery-tile {
     cursor: pointer;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .hover-title {
@@ -127,13 +129,6 @@
     grid-template-rows: repeat(4, 1fr);
 }
 
-@media (max-width: 728px) {
-    .collage-1 {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-    }
-}
-
 .collage-1 {
     .hover-title {
         top: 0;
@@ -146,7 +141,6 @@
     .element-1 {
         grid-row-start: 1;
         grid-row-end: 3;
-
         padding-top: 0;
         padding-left: 0;
     }
@@ -169,14 +163,12 @@
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 4;
-
         padding-right: 0;
     }
 
     .element-6 {
         grid-column-start: 1;
         grid-column-end: 3;
-
         padding-left: 0;
         padding-bottom: 0;
     }
@@ -189,22 +181,16 @@
 
 @media (max-width: 728px) {
     .collage-1 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        
         .collage-element {
             padding: 4px;
-        }
-
-        .hover-shutter {
-            display: none;
-        }
-
-        .hover-text {
-            display: none;
         }
 
         .element-1 {
             grid-row-start: 3;
             grid-row-end: 5;
-
             padding-left: 0;
         }
 
@@ -226,7 +212,6 @@
             grid-column-end: 3;
             grid-row-start: 1;
             grid-row-end: 3;
-
             padding-top: 0;
             padding-left: 0;
             padding-right: 0;
@@ -236,7 +221,6 @@
             grid-row: 5;
             grid-column-end: 3;
             grid-column-start: 1;
-
             padding-left: 0;
             padding-right: 0;
         }
@@ -247,3 +231,5 @@
         }
     }
 }
+
+/* Remove all individual padding rules as we're using grid gap now */
