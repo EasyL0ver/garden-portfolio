@@ -346,9 +346,9 @@
             <div class="d-flex flex-column h-100">
                 <div class="flex-grow-1">
                     <div class="row carousel-container h-100">
-                        <div class="col-12 col-md-8" style="min-height: 60%;">
+                        <div class="col-12 col-md-8" style="height: calc(100vh - 200px);">
                             <div class="row gallery-row h-100">
-                                <div id="gallery-carousel" class="flickity-carousel h-100">
+                                <div id="gallery-carousel" class="flickity-carousel h-100 w-100">
                                 </div>
                             </div>
                         </div>
@@ -398,7 +398,6 @@
             const galleryCell = document.createElement('div');
             galleryCell.className = 'carousel-cell';
             galleryCell.style.height = '100%';
-            galleryCell.style.width = 'fit-content';
             
             // Add data attributes using dataset
             galleryCell.dataset.subindex = subIndex;
@@ -408,6 +407,9 @@
             // Use data-flickity-lazyload instead of src for lazy loading
             galleryImg.setAttribute('data-flickity-lazyload', "resources/img/" + imageData.img);
             galleryImg.alt = imageData.title || 'Gallery Image';
+            galleryImg.style.width = 'auto';
+            galleryImg.style.height = '100%';
+            galleryImg.style.display = 'block';
             galleryCell.appendChild(galleryImg);
 
             return galleryCell;
@@ -520,9 +522,10 @@
 
             var $galleryCarousel = $('#gallery-carousel').flickity({
                 imagesLoaded: true,
-                setGallerySize: false,
-                percentPosition: false,
-                contain: true,
+                setGallerySize: true,
+                cellAlign: 'center',
+                percentPosition: true,
+                contain: false,
                 initialIndex: absoluteInitialIndex + initialIndex,
                 pageDots: false,
                 lazyLoad: 2,
