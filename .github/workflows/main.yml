@@ -26,6 +26,11 @@ jobs:
           fi
         done
 
+    - name: auto minify the files
+      uses: nizarmah/auto-minify@v3
+      with:
+        overwrite: true
+
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
