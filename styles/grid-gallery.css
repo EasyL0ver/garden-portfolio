@@ -8,6 +8,8 @@
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    contain: layout paint;
 }
 
 .hover-title {
@@ -21,6 +23,9 @@
     transition: none;
     pointer-events: none;
     min-height: var(--gallery-info-bar-height);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     .primary-text {
         font-size: 16px;
@@ -123,6 +128,8 @@
     
     .collage-element {
         box-sizing: border-box;
+        overflow: hidden;
+        contain: layout paint;
     }
 }
 
