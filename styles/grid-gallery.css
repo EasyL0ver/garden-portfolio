@@ -134,28 +134,22 @@
         top: 0;
     }
 
-    .collage-element {
-        padding: 6px;
-    }
-
     .element-1 {
         grid-row-start: 1;
         grid-row-end: 3;
-        padding-top: 0;
-        padding-left: 0;
+        padding: 0 6px 6px 0;
     }
 
     .element-2 {
-        padding-top: 0;
+        padding: 0 6px 6px 6px;
     }
 
     .element-3 {
-        padding-top: 0;
-        padding-right: 0;
+        padding: 0 0 6px 6px;
     }
 
     .element-4 {
-        padding-left: 0;
+        padding: 6px 6px 6px 0;
     }
 
     .element-5 {
@@ -163,19 +157,17 @@
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 4;
-        padding-right: 0;
+        padding: 6px 0 6px 6px;
     }
 
     .element-6 {
         grid-column-start: 1;
         grid-column-end: 3;
-        padding-left: 0;
-        padding-bottom: 0;
+        padding: 6px 6px 0 0;
     }
 
     .element-7 {
-        padding-bottom: 0;
-        padding-right: 0;
+        padding: 6px 0 0 6px;
     }
 }
 
@@ -183,28 +175,23 @@
     .collage-1 {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(6, 1fr);
-        
-        .collage-element {
-            padding: 4px;
-        }
 
         .element-1 {
             grid-row-start: 3;
             grid-row-end: 5;
-            padding-left: 0;
+            padding: 4px 4px 4px 0;
         }
 
         .element-2 {
-            padding-right: 0;
+            padding: 4px 0 4px 4px;
         }
 
         .element-3 {
-            padding-right: 0;
+            padding: 4px 0 4px 4px;
         }
 
         .element-4 {
-            padding-left: 0;
-            padding-bottom: 0;
+            padding: 4px 4px 0 0;
         }
     
         .element-5 {
@@ -212,22 +199,18 @@
             grid-column-end: 3;
             grid-row-start: 1;
             grid-row-end: 3;
-            padding-top: 0;
-            padding-left: 0;
-            padding-right: 0;
+            padding: 0 0 4px 0;
         }
 
         .element-6 {
             grid-row: 5;
             grid-column-end: 3;
             grid-column-start: 1;
-            padding-left: 0;
-            padding-right: 0;
+            padding: 4px 0 4px 0;
         }
 
         .element-7 {
-            padding-bottom: 0;
-            padding-right: 0;
+            padding: 4px 0 0 4px;
         }
     }
 }
