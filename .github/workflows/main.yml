@@ -6,6 +6,7 @@ on:
 
 env: 
   AZURE_STORAGE_ACCOUNT: mamastronahoststorage
+  BINDING_FORM_ACTION: 
 
 jobs:
   build:
