@@ -2,6 +2,9 @@ name: Upload resources
 
 on: workflow_dispatch
 
+env: 
+  AZURE_STORAGE_ACCOUNT: mamastronahoststorage
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,13 +19,13 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name mamastronahoststorage --pattern "*.jpg" --auth-mode key -d '$web' -s resources --destination-path resources --overwrite --content-type "image/jpeg"
+            az storage blob upload-batch --account-name ${{ env.AZURE_STORAGE_ACCOUNT }} --pattern "*.jpg" --auth-mode key -d '$web' -s resources --destination-path resources --overwrite --content-type "image/jpeg"
 
     - name: Upload *.svg files
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name mamastronahoststorage --pattern "*.svg" --auth-mode key -d '$web' -s resources --destination-path resources --overwrite --content-type "image/svg+xml"
+            az storage blob upload-batch --account-name ${{ env.AZURE_STORAGE_ACCOUNT }} --pattern "*.svg" --auth-mode key -d '$web' -s resources --destination-path resources --overwrite --content-type "image/svg+xml"
 
   # Azure logout
     - name: logout
