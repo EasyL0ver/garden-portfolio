@@ -9,6 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Get commit message and add to HTML files
+      run: |
+        COMMIT_MSG=$(git log -1 --pretty=%B)
+        for file in *.html; do
+          if [ -f "$file" ]; then
+            TEMP_FILE=$(mktemp)
+            echo "<!-- Deploy: $COMMIT_MSG - $(date) -->" > "$TEMP_FILE"
+            cat "$file" >> "$TEMP_FILE"
+            mv "$TEMP_FILE" "$file"
+          fi
+        done
+
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
