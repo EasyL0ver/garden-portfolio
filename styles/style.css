@@ -29,6 +29,7 @@ section {
     --navbar-color-solid: rgba(255, 220, 195, 1);
 
     --home-color: rgb(248, 229, 217);
+    --background-color: white;
 }
 
 .main-font {
@@ -88,16 +89,8 @@ a.anchor {
     }
 }
 
-.hidden {
-    display: none;
-}
-
-.landing-page {
-    background-color: transparent;
-}
-
 .background-neutral {
-    background-color: white;
+    background-color: var(--background-color);
 }
 
 .topmost {
