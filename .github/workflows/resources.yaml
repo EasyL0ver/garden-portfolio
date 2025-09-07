@@ -1,0 +1,25 @@
+name: Upload resources
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Upload *.jpg files
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+            az storage blob upload-batch --account-name mamastronahoststorage --pattern "*.jpg" --auth-mode key -d '$web' -s resources --destination-path resources --overwrite --content-type "image/jpeg"
+
+  # Azure logout
+    - name: logout
+      run: |
+            az logout
+      if: always()
