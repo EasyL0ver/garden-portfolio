@@ -1,59 +1,16 @@
-.carousel-container {
-    padding-top: 12px;
-}
-
-.home-background-color {
-    background-color: rgb(248, 229, 217);
-}
-
-.section-header .lead {
-    max-width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .landing-page {
     height: calc(100vh - var(--navbar-height));
     @media (orientation: portrait) {
         height: calc(80vh - var(--navbar-height));
     }
-    background-color: white;
+    background-color: var(--home-color);
 
     * {
         box-sizing: border-box;
     }
 
-    .flickity-carousel {
-        height: 100%;
-    }
-
-    .flickity-page-dots {
-        position: relative;
-        display: block;
-        bottom: 0;
-    }
-
-    .flickity-page-dots .dot {
-        width: 16px;
-        height: 16px;
-        opacity: 1;
-        background: transparent;
-        border: 3px solid lightgray;
-    }
-
-    /* fill-in selected dot */
-    .flickity-page-dots .dot.is-selected {
-        background: lightgray;
-    }
-
-    .flickity-title-custom {
-        color: lightgray;
-        text-align: center;
-    }
-
-    .image-description {
-        color: lightgray;
-        text-align: center;
+    .carousel-container {
+        padding-top: 12px;
     }
 
     /* Block layout image cropping with info bar */
