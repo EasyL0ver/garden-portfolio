@@ -60,7 +60,6 @@
     .carousel-cell.image-container {
         overflow: hidden;
         cursor: pointer;
-        transition: all 0.3s ease;
         position: relative;
         margin-right: 12px;
         height: 100%;
