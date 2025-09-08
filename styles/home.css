@@ -4,11 +4,13 @@
         height: calc(80vh - var(--navbar-height));
     }
     background-color: var(--home-color);
+}
 
-    * {
-        box-sizing: border-box;
-    }
+.landing-page * {
+    box-sizing: border-box;
+}
 
+.landing-page {
     .carousel-container {
         padding-top: 12px;
     }
