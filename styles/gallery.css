@@ -120,10 +120,22 @@
     width: auto; /* Maintain aspect ratio */
     height: 100%; /* Fill the height of the container */
     display: block; /* Prevent inline spacing issues */
+    object-fit: contain; /* Changed from default to prevent cropping */
+    object-position: center;
 }
 
 .gallery-row {
     height: 80%;
+}
+
+/* Additional Safari fixes for main gallery */
+.gallery-row .carousel-cell {
+    width: auto;
+    min-width: 150px;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
 }
 
 .padding-from-gutter {
@@ -182,6 +194,29 @@
 /* Gallery specific carousel cell margins */
 .landing-page .carousel-cell {
     margin-right: 12px;
+}
+
+/* Safari-specific fixes for consistent spacing */
+.landing-page .carousel-cell {
+    width: auto;
+    min-width: 150px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.landing-page .carousel-cell img {
+    width: auto;
+    height: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Force consistent spacing in Safari */
+.flickity-carousel .carousel-cell {
+    margin-right: 12px !important;
+    box-sizing: border-box;
 }
 
 /* Lazy loading image transitions - only for main gallery */
