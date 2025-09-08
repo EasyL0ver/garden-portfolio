@@ -235,35 +235,3 @@
 #thumbnail-carousel .carousel-cell img {
     opacity: 1 !important;
 }
-
-/* Safari-only fix for Flickity transform positioning bug */
-@supports (-webkit-appearance: none) and (not (appearance: none)) {
-    /* Fix Flickity transform positioning bug in Safari */
-    #gallery-carousel .flickity-slider {
-        transform-style: flat !important;
-        backface-visibility: hidden !important;
-        will-change: transform !important;
-        -webkit-transform-style: flat !important;
-        -webkit-backface-visibility: hidden !important;
-    }
-
-    #gallery-carousel .carousel-cell {
-        transform: translateZ(0) !important; /* Force hardware acceleration */
-        backface-visibility: hidden !important;
-        -webkit-transform: translateZ(0) !important;
-        -webkit-backface-visibility: hidden !important;
-        position: relative !important;
-    }
-
-    #gallery-carousel .carousel-cell img {
-        transform: translateZ(0) !important; /* Force hardware acceleration */
-        -webkit-transform: translateZ(0) !important;
-    }
-
-    #gallery-carousel .flickity-viewport {
-        transform: translateZ(0) !important; /* Force hardware acceleration */
-        -webkit-transform: translateZ(0) !important;
-        backface-visibility: hidden !important;
-        -webkit-backface-visibility: hidden !important;
-    }
-}
