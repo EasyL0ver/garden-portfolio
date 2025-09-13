@@ -616,7 +616,8 @@
                 });
             }
             var initJakPowstajeCarousel = () => {
-                if (window.innerWidth >= 768) {
+                var width = document.documentElement.clientWidth
+                if (width >= 768) {
                     var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
                         imagesLoaded: true,
                         percentPosition: false,
@@ -630,8 +631,8 @@
                     });
                 }
             }
-            
-            $(document).ready(function() {
+
+            $(window).on('load', function() {
                 console.log("Document ready, initializing carousels");
                 initJakPowstajeCarousel();
                 initHomepageCarousel();
@@ -641,20 +642,36 @@
             var onResize = (event) => {
                 console.log(event);
                 console.log("Window resized, reinitializing carousels if necessary");
-                var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
-                if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
-                    $jakPowstajeCarousel.flickity('destroy');
-                }
+                console.log("Homepage carousel size:", $('#homepage-carousel').width(), $('#homepage-carousel').height());
                 
-                var $homepageCarousel = $('#homepage-carousel');
-                $homepageCarousel.flickity('destroy');
+                $('#homepage-carousel').flickity('resize');
+                $('#homepage-carousel').flickity('reposition');
 
-                initJakPowstajeCarousel();
-                initHomepageCarousel();
+                var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
+
+                var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+                if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
+                    $jakPowstajeCarousel.flickity('resize');
+                    $jakPowstajeCarousel.flickity('reposition');
+
+                    if(width < 768) {
+                        console.log("Destroying Jak Powstaje carousel for width:", width);
+                        $jakPowstajeCarousel.flickity('destroy')
+                        $jakPowstajeCarousel.removeClass('flickity-enabled');
+                    }
+                } else {
+
+                    if (width >= 768) {
+                        console.log("Re-initializing Jak Powstaje carousel for width:", width);
+                        initJakPowstajeCarousel();
+                    } 
+                }
+
             }
             
             $(window).on('orientationchange', onResize);
-            $(window).resize(throttle(onResize, 400)); // Throttle resize events to every 400ms
+            $(window).resize(throttle(onResize, 200)); // Throttle resize events to every 400ms
         </script>
         <script>
             function setImagePicked(container) {

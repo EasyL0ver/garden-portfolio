@@ -62,6 +62,10 @@
     display: none;
 }
 
+.landing-page .flickity-viewport {
+    height: 100% !important;
+}
+
 .landing-page .carousel-cell.image-container .info-bar .text-muted {
     margin: 0;
     opacity: 0.8;
