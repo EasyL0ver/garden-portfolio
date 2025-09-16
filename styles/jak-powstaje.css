@@ -48,6 +48,13 @@
     }
 }
 
+/* for wide but small devices make the height a bit larger */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .jak-powstaje-container {
+        height: 60vh;
+    }
+}
+
 @media (min-width: 992px) {
     .jak-powstaje-container .text-primary {
         font-size: 1.2rem;
