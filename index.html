@@ -135,43 +135,40 @@
                         </div>
                         <div class="row text-primary">
                             <div class="col-xl-4 col-lg-6 pb-4">
-                                <div class="card border-primary box-shadow rounded-0">
-                                    <div id="offer-image-container-1"
-                                        class="card-image-container show offer-collapse-group-1 w-100">
+                                <div id="offer-card-1" class="offer-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
+                                    <div id="offer-image-container-1" class="card-image-container d-block col-3 col-md-12">
                                         <img class="card-img-top rounded-0" src="resources/img/offer/DSCF4788.jpg"
                                             alt="Card image cap">
                                     </div>
-                                    <div class="card-body d-flex flex-column justify-content-between">
+                                    <div id="offer-body-1" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-2 p-2 p-md-3">
                                         <div class="card-text-group">
                                             <h5 class="card-title">Nadzór realizacji zieleni</h5>
                                             <p class="card-text">z wsparciem od certyfikowanego inspektora ds. terenów zieleni.
                                             </p>
-                                            <p class="card-text collapse offer-collapse-group-1">Posiadamy uprawnienia inspektora ds. terenów zieleni (nr uprawnień  Poznań/TZ/0018/12)</p>
-                                            <p class="card-text collapse offer-collapse-group-1">
+                                            <p class="card-text optional">Posiadamy uprawnienia inspektora ds. terenów zieleni (nr uprawnień  Poznań/TZ/0018/12)</p>
+                                            <p class="card-text optional">
                                                 Inspektor ds. terenów zieleni odpowiada za nadzór nad zgodnością realizacji projektów związanych z zielenią z wymaganiami umowy, przepisami prawa oraz specyfikacjami technicznymi.
                                             </p>
                                         </div>
-                                        <div class="btn-group">
-                                            <button class="btn btn-sm btn-outline-primary" type="button"
-                                                data-bs-toggle="collapse" data-bs-target=".offer-collapse-group-1"
-                                                aria-expanded="false" aria-controls="offer-image-container-1">Dowiedz się więcej</button>
+                                        <div class="btn-group mt-3">
+                                            <button class="btn btn-sm btn-outline-primary" type="button" onclick="toggleOfferExpanded(1)">Dowiedz się więcej</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-6 pb-4">
-                                <div class="card border-primary box-shadow rounded-0">
-                                    <div id="offer-image-container-2" class="card-image-container">
+                                <div id="offer-card-2" class="offer-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
+                                    <div id="offer-image-container-2" class="card-image-container d-block col-3 col-md-12">
                                         <img class="card-img-top rounded-0" src="resources/img/offer/IMG_0021.jpg"
                                             alt="Card image cap">
                                     </div>
-                                    <div class="card-body d-flex flex-column justify-content-between">
+                                    <div id="offer-body-2" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-3 p-2 p-md-3">
                                         <div class="card-text-group">
                                             <h5 class="card-title">Ogrody przy domach</h5>
                                             <p class="card-text">łączące estetykę z funkcjonalnością na terenie całej Polski.</p>
                                         </div>
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm btn-outline-primary" href="#jak-powstaje">Zaprojektuj z nami!</a>
+                                        <div class="btn-group mt-3">
+                                            <a class="btn btn-sm btn-outline-primary" type="button" href="#jak-powstaje">Zaprojektuj z nami!</a>
                                         </div>
                                     </div>
                                 </div>
@@ -492,6 +489,23 @@
             </div>
         </footer>
     </div>
+        <script>
+            function toggleOfferExpanded(offerIndex){
+                console.log("Toggling offer expanded for index:", offerIndex);
+
+                var offerCard = $("#offer-card-" + offerIndex);
+                var offerBody = $("#offer-body-" + offerIndex);
+                var offerImageContainer = $("#offer-image-container-" + offerIndex);
+
+                offerCard.toggleClass("offer-collapsed offer-expanded");
+
+                offerImageContainer.toggleClass("d-block d-none");
+
+                //small screen hide the image
+                offerBody.toggleClass("col-9 col-12");
+                offerBody.toggleClass("body-expanded");
+            }
+        </script>
         <script>
             function throttle(func, delay) {
                 let lastCall = 0;
