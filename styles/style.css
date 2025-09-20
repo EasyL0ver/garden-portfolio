@@ -89,6 +89,10 @@ a.anchor {
     }
 }
 
+.ogrodnik-card {
+    box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
 .background-neutral {
     background-color: var(--background-color);
 }

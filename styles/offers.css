@@ -19,7 +19,6 @@ section.offer-section .row {
 section.offer-section .offer-card {
     /* default height just in case */
     height: 200px;
-    box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.2);
 
     /* for size below md height height should be auto as long as card is expanded */
     @media (max-width: 767.98px) {
