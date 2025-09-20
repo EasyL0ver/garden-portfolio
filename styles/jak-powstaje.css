@@ -2,6 +2,16 @@
     --bs-border-width: 0px;
     --bs-border-radius: 0px;
 
+
+    /* if jak-postaje-carousel has class flickity-enabled then add dropshadow */
+    &.flickity-enabled {
+        box-shadow: var(--card-dropshadow);
+    }
+
+    &.flickity-enabled .carousel-cell {
+        box-shadow: none;
+    }
+
     .content {
         background-color: inherit;
     }

@@ -30,6 +30,8 @@ section {
 
     --home-color: rgb(248, 229, 217);
     --background-color: white;
+
+    --card-dropshadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 .main-font {
@@ -90,7 +92,7 @@ a.anchor {
 }
 
 .ogrodnik-card {
-    box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--card-dropshadow)
 }
 
 .background-neutral {
