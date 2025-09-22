@@ -1,13 +1,23 @@
 .gallery-section {
     margin-bottom: 0px !important;
+
+    --thumbnail-height: 140px;
+
+    .flickity-viewport {
+        height: 100% !important;
+    }
 }
 
 .padding-from-gutter {
     padding-bottom: calc(var(--bs-gutter-x) * 0.5);
 }
 
+.gallery-content-container {
+    height: calc(100vh - var(--navbar-height) - var(--thumbnail-height));
+}
+
 .gallery-thumbnail-container {
-    height: 140px;
+    height: var(--thumbnail-height);
 }
 
 
