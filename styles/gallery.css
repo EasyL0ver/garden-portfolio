@@ -196,14 +196,6 @@
     margin-right: 12px;
 }
 
-/* Safari-specific fixes for consistent spacing */
-.landing-page .carousel-cell {
-    width: auto;
-    min-width: 150px;
-    flex-shrink: 0;
-    display: block;
-}
-
 .landing-page .carousel-cell img {
     width: auto;
     height: 100%;
@@ -211,12 +203,6 @@
     display: block;
     object-fit: contain;
     object-position: center;
-}
-
-/* Force consistent spacing in Safari */
-.flickity-carousel .carousel-cell {
-    margin-right: 12px !important;
-    box-sizing: border-box;
 }
 
 /* Lazy loading image transitions - only for main gallery */
