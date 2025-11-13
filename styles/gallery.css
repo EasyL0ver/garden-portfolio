@@ -6,6 +6,10 @@
     .flickity-viewport {
         height: 100% !important;
     }
+
+    @media (max-width: 728px) {
+        --thumbnail-height: 0px;
+    }
 }
 
 .padding-from-gutter {
@@ -14,12 +18,23 @@
 
 .gallery-content-container {
     height: calc(100vh - var(--navbar-height) - var(--thumbnail-height));
+
+    @media (max-width: 728px) {
+        height: calc((100vh - var(--navbar-height)) * 0.6);
+    }
+}
+
+.gallery-description-container {
+    height: calc(100vh - var(--navbar-height) - var(--thumbnail-height));
+
+    @media (max-width: 728px) {
+        height: calc((100vh - var(--navbar-height)) * 0.4);
+    }
 }
 
 .gallery-thumbnail-container {
     height: var(--thumbnail-height);
 }
-
 
 #thumbnail-carousel .carousel-cell {
     height: 100%;
