@@ -45,14 +45,48 @@
 }
 /* big previous & next buttons */
 .flickity-prev-next-button {
-  width: 100px;
-  height: 100px;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 10px;
+
 }
 /* icon color */
 .flickity-button-icon {
-  fill: var(--bs-secondary);
+  fill: white;
+}
+
+.flickity-button {
+  path {
+    stroke-width: 2px;
+  }
+}
+
+.flickity-button:hover {
+  background: none;
+  cursor: pointer;
+}
+
+.flickity-button:focus {
+  box-shadow: none;
 }
 /* hide disabled button */
 .flickity-button:disabled {
   display: none;
+}
+
+/* position dots in carousel */
+.flickity-page-dots {
+  bottom: 15px;
+}
+/* white circles */
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 1px solid var(--bs-primary);
+}
+/* fill-in selected dot */
+.flickity-page-dots .dot.is-selected {
+  background: var(--bs-primary);
 }
