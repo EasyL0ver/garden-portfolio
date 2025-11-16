@@ -20,16 +20,16 @@ section.offer-section .offer-card {
     /* default height just in case */
     height: 200px;
 
-    /* for size below md height height should be auto as long as card is expanded */
-    @media (max-width: 767.98px) {
-        &.offer-collapsed {
-            height: 200px;
-        }
 
-        &.offer-expanded {
-            height: auto;
-        }
+/* for size below md height height should be auto as long as card is expanded */
+@media (max-width: 767.98px) {
+    section.offer-section .offer-card.offer-collapsed {
+        height: 200px;
     }
+    section.offer-section .offer-card.offer-expanded {
+        height: auto;
+    }
+}
 
     /* for size above md, make the height 400px */
     @media (min-width: 768px) {
