@@ -25,11 +25,11 @@ section {
     --gallery-info-bar-height: 50px;
 
     --separator-color: rgba(17, 77, 7, 0.3);
-    --navbar-color: rgb(255, 220, 195, 0.95);
-    --navbar-color-solid: rgba(255, 220, 195, 1);
+    --navbar-color: red;
+    --navbar-color-solid: red;
 
-    --home-color: rgb(248, 229, 217);
-    --background-color: white;
+    --home-color: green;
+    --background-color: pink;
 
     --card-dropshadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
 }
