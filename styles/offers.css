@@ -64,3 +64,13 @@ section.offer-section .offer-collapsed .optional {
 section.offer-section .offer-expanded .optional {
     display: block;
 }
+
+section.offer-section .btn-group {
+    display: flex;
+    justify-content: center;
+}
+
+section.offer-section .btn-group .btn {
+    max-width: 250px;
+    width: 100%;
+}

@@ -7,8 +7,11 @@
     --bs-btn-hover-border-color: var(--bs-primary);
     --bs-btn-active-border-color: var(--bs-primary);
     --bs-btn-bg: var(--background-color);
-    --bs-btn-hover-bg: var(--bs-secondary);
+    --bs-btn-hover-bg: rgb(1,1,1,0.2);
     --bs-btn-active-bg: var(--bs-primary);
+    --bs-btn-hover-color: var(--bs-primary);
+
+    --background-color: none;
 
     --bs-button-box-shadow: none;
     border-radius: 0px !important;
