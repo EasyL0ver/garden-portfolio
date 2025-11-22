@@ -93,3 +93,22 @@
 #thumbnail-carousel .carousel-cell img {
     opacity: 1 !important;
 }
+
+/* Show short description on small screens in landscape orientation */
+@media (max-width: 728px) and (orientation: landscape) {
+    .d-landscape-inline {
+        display: inline !important;
+    }
+    .d-landscape-none {
+        display: none !important;
+    }
+}
+
+@media (min-width: 729px) {
+    .d-landscape-inline {
+        display: none !important;
+    }
+    .d-landscape-none {
+        display: inline !important;
+    }
+}
