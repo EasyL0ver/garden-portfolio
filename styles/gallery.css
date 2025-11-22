@@ -12,6 +12,11 @@
     }
 }
 
+.gallery-root {
+    overflow: hidden;
+    touch-action: none;
+}
+
 .padding-from-gutter {
     padding-bottom: calc(var(--bs-gutter-x) * 0.5);
 }
@@ -35,8 +40,8 @@
 .gallery-text-container {
     max-height: 100%;
     overflow-y: auto;
+    touch-action: pan-y;
 }
-
 
 .gallery-thumbnail-container {
     height: var(--thumbnail-height);
