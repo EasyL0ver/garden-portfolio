@@ -1,0 +1,11 @@
+image RGB
+
+55, 58, 73
+
+HSL CONVERT - HUE 230, 14.01, 25.01
+
+target RGB
+
+17, 77, 7
+
+HSL CONVERT - HUE 111,83.3,16.5
