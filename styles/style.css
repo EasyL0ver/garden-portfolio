@@ -26,9 +26,9 @@ section {
     --bs-primary-rgb: 7, 77, 7;
 
     /* Bootstrap's secondary color */
-    --bs-secondary: rgb(17, 77, 7);
-    --bs-secondary-rgb: 7, 77, 7;
-    --bs-secondary-color: rgb(17, 77, 7);
+    --bs-secondary: rgba(112, 122, 112, 0.7);
+    --bs-secondary-rgb: 112, 122, 112;
+    --bs-secondary-color: rgba(112, 122, 112, 0.7);
 
     --navbar-height: 60px;
     --gallery-info-bar-height: 50px;
