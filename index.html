@@ -494,6 +494,7 @@
                 var offerCard = $("#offer-card-" + offerIndex);
                 var offerBody = $("#offer-body-" + offerIndex);
                 var offerImageContainer = $("#offer-image-container-" + offerIndex);
+                var button = $("#offer-body-" + offerIndex + " button");
 
                 offerCard.toggleClass("offer-collapsed offer-expanded");
 
@@ -502,6 +503,13 @@
                 //small screen hide the image
                 offerBody.toggleClass("col-9 col-12");
                 offerBody.toggleClass("body-expanded");
+                
+                // Toggle button text
+                if (offerCard.hasClass("offer-expanded")) {
+                    button.text("Dowiedz się mniej");
+                } else {
+                    button.text("Dowiedz się więcej");
+                }
             }
         </script>
         <script>
