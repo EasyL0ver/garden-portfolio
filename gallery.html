@@ -506,7 +506,7 @@
 
         function updateUrl(galleryKey, index) {
             const newUrl = '?gallery=' + galleryKey + '&index=' + index;
-            history.pushState({}, '', newUrl);
+            history.replaceState({}, '', newUrl);
         }
 
         var thumbnailCells = galleryKeys.map((key, index) => {
