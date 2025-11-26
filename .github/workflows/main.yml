@@ -1,4 +1,4 @@
-name: Blob storage prod
+name: Blob storage test
 
 on:
     push:
