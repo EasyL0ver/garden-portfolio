@@ -1,8 +1,6 @@
 name: Blob storage prod
 
-on:
-    push:
-        branches: [ master ]
+on: workflow_dispatch
 
 env: 
   AZURE_STORAGE_ACCOUNT: ogrodnikprojektuje
