@@ -1,0 +1,55 @@
+name: Blob storage prod
+
+on:
+    push:
+        branches: [ master ]
+
+env: 
+  AZURE_STORAGE_ACCOUNT: ogrodnikprojektuje
+  BINDING_FORM_ACTION: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Get commit message and add to HTML files
+      run: |
+        COMMIT_MSG=$(git log -1 --pretty=%B)
+        for file in *.html; do
+          if [ -f "$file" ]; then
+            TEMP_FILE=$(mktemp)
+            echo "<!-- Deploy: $COMMIT_MSG - $(date) -->" > "$TEMP_FILE"
+            cat "$file" >> "$TEMP_FILE"
+            mv "$TEMP_FILE" "$file"
+          fi
+        done
+
+    - name: auto minify the files
+      uses: nizarmah/auto-minify@v3
+      with:
+        overwrite: true
+
+    - uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Upload HTML files
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+            az storage blob upload-batch --account-name ${{ env.AZURE_STORAGE_ACCOUNT }} --auth-mode key -d '$web' -s . --pattern "*.html" --overwrite --content-type "text/html; charset=utf-8"
+
+    - name: Upload styles
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+            az storage blob upload-batch --account-name ${{ env.AZURE_STORAGE_ACCOUNT }} --auth-mode key -d '$web' -s styles --destination-path styles --overwrite --content-type "text/css; charset=utf-8"
+    
+
+  # Azure logout
+    - name: logout
+      run: |
+            az logout
+      if: always()
