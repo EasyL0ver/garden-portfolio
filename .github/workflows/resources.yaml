@@ -1,9 +1,19 @@
 name: Upload resources
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        type: choice
+        options:
+          - test
+          - production
+        default: test
 
 env: 
-  AZURE_STORAGE_ACCOUNT: mamastronahoststorage
+  AZURE_STORAGE_ACCOUNT: ${{ github.event.inputs.environment == 'production' && 'ogrodnikprojektuje' || 'mamastronahoststorage' }}
   JPEG_QUALITY: '85'
 
 jobs:
