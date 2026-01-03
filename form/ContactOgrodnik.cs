@@ -56,7 +56,7 @@ public class ContactOgrodnik
                     </html>
                     """
             );
-            _logger.LogInformation($"Email sent with message ID: {selfEmailSendOperation.Id} and status: {selfEmailSendOperation.Value.Status}");
+            _logger.LogInformation($"Email sent with message ID: {selfEmailSendOperation.Id}");
 
             // Email to notify the contact (user)
             var contactEmailSendOperation = emailClient.SendAsync(
@@ -71,7 +71,7 @@ public class ContactOgrodnik
                             <div style='max-width: 600px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #eee; padding: 24px;'>
                                 <h2 style='color: #2e7d32;'>Dziękujemy za Twoją wiadomość!</h2>
                                 <p>Otrzymaliśmy Twoją wiadomość i postaramy się odpowiedzieć jak najszybciej.</p>
-                                <p style='margin-top: 24px;'>Pozdrawiamy,<br /><strong>Zespół Ogrodnika</strong></p>
+                                <p style='margin-top: 24px;'>Pozdrawiamy,<br /><strong>Zespół ogrodnikprojektuje.pl</strong></p>
                                 <hr />
                                 <p style='font-size: 12px; color: #888;'>Wiadomość wygenerowana automatycznie. Prosimy nie odpowiadać na ten e-mail.</p>
                             </div>
@@ -82,7 +82,7 @@ public class ContactOgrodnik
 
             await Task.WhenAll(selfEmailSendOperation, contactEmailSendOperation);
 
-            _logger.LogInformation($"Email sent with message ID: {contactEmailSendOperation.Id} and status: {contactEmailSendOperation.Value.Status}");
+            _logger.LogInformation($"Email sent with message ID: {contactEmailSendOperation.Id}");
             return new OkObjectResult($"Wiadomości zostały wysłane.");
         }
         catch (Exception ex)
