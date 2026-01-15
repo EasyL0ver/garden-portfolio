@@ -724,29 +724,36 @@
             // Initialize secondary carousel after full load (it's below the fold)
             $(window).on('load', function() {
                 initJakPowstajeCarousel();
-            });
+                
+                // Attach resize handler only AFTER initial load is complete
+                // This prevents resize from firing during startup
+                var lastWidth = window.innerWidth;
+                
+                var onResize = () => {
+                    // Skip if width hasn't actually changed (prevents false triggers)
+                    var currentWidth = window.innerWidth;
+                    if (currentWidth === lastWidth) return;
+                    lastWidth = currentWidth;
+                    
+                    $('#homepage-carousel').flickity('resize');
 
+                    var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
 
-            var onResize = () => {
-                $('#homepage-carousel').flickity('resize');
+                    if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
+                        $jakPowstajeCarousel.flickity('resize');
 
-                var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
-                var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-                if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
-                    $jakPowstajeCarousel.flickity('resize');
-
-                    if(width < 768) {
-                        $jakPowstajeCarousel.flickity('destroy')
-                        $jakPowstajeCarousel.removeClass('flickity-enabled');
+                        if(currentWidth < 768) {
+                            $jakPowstajeCarousel.flickity('destroy')
+                            $jakPowstajeCarousel.removeClass('flickity-enabled');
+                        }
+                    } else if (currentWidth >= 768) {
+                        initJakPowstajeCarousel();
                     }
-                } else if (width >= 768) {
-                    initJakPowstajeCarousel();
-                }
-            }
-            
-            $(window).on('orientationchange', onResize);
-            $(window).resize(throttle(onResize, 400));
+                };
+                
+                $(window).on('orientationchange', onResize);
+                $(window).resize(throttle(onResize, 400));
+            });
         </script>
         <script>
             function setImagePicked(container) {
