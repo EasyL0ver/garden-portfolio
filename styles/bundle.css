@@ -1,0 +1,991 @@
+/* ==========================================================================
+   BUNDLE.CSS - All styles combined for performance
+   Order: bootstrap-overrides, style, nav, offers, grid-gallery, jak-powstaje, home
+   ========================================================================== */
+
+/* ==========================================================================
+   Bootstrap Overrides
+   ========================================================================== */
+
+.btn {
+    --bs-btn-color: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-active-border-color: var(--bs-primary);
+    --bs-btn-hover-border-color: var(--bs-primary);
+    --bs-btn-active-border-color: var(--bs-primary);
+    --bs-btn-bg: var(--background-color);
+    --bs-btn-hover-bg: rgb(1,1,1,0.2);
+    --bs-btn-active-bg: var(--bs-primary);
+    --bs-btn-hover-color: var(--bs-primary);
+
+    --background-color: none;
+
+    --bs-button-box-shadow: none;
+    border-radius: 0px !important;
+}
+
+.form-control {
+    --bs-body-color: var(--bs-primary);
+    --bs-border-color: var(--bs-primary) !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgb(120 128 140 / 25%);
+    border-color: var(--bs-primary);
+}
+
+.form-control::placeholder {
+    opacity: 0.5;
+}
+
+/* Font size overrides */
+.fs-5 {
+    font-size: 1.25rem !important;
+}
+
+@media (max-width: 728px) {
+    .fs-5 {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* no circle */
+.flickity-button {
+  background: transparent;
+}
+/* big previous & next buttons */
+.flickity-prev-next-button {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 10px;
+
+}
+/* icon color */
+.flickity-button-icon {
+  fill: white;
+}
+
+.flickity-button {
+  path {
+    stroke-width: 2px;
+  }
+}
+
+.flickity-button:hover {
+  background: none;
+  cursor: pointer;
+}
+
+.flickity-button:focus {
+  box-shadow: none;
+}
+/* hide disabled button */
+.flickity-button:disabled {
+  display: none;
+}
+
+/* position dots in carousel */
+.flickity-page-dots {
+  bottom: 15px;
+}
+/* white circles */
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 1px solid var(--bs-primary);
+}
+/* fill-in selected dot */
+.flickity-page-dots .dot.is-selected {
+  background: var(--bs-primary);
+}
+
+/* ==========================================================================
+   Style.css - Base styles
+   ========================================================================== */
+
+body {
+    background-color:rgb(245, 255, 243);
+    background-image: url(../resources/img/background-big-res-rotated.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--bs-primary);
+}
+
+a:hover {
+    color: #0d6efd;
+}
+
+section {
+    padding-bottom: calc(var(--bs-gutter-x) * 0.5);
+    padding-top: calc(var(--bs-gutter-x) * 0.5);
+}
+
+:root {
+    /* Bootstrap's primary color */
+    --bs-primary: rgb(17, 77, 7);
+    --bs-primary-rgb: 7, 77, 7;
+
+    /* Bootstrap's secondary color */
+    --bs-secondary: rgba(105, 129, 105, 0.7);
+    --bs-secondary-rgb: 105, 129, 105;
+    --bs-secondary-color: rgba(105, 129, 105, 0.7);
+
+    --navbar-height: 60px;
+    --gallery-info-bar-height: 50px;
+
+    --separator-color: rgba(17, 77, 7, 0.3);
+    --navbar-color: rgb(172, 220, 244, 0.9);
+    --navbar-color-solid: rgb(172, 220, 244);
+
+    --home-color: rgb(237, 250, 238);
+    --background-color: white;
+
+    --card-dropshadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.main-font {
+    font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo-font {
+    font-family: 'Rouge Script';
+    font-size: 30px;
+    font-weight: 550;
+    line-height: 1;
+}
+
+.shutter {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -66px;
+    visibility: hidden;
+}
+
+.full-screen {
+    height: calc(100vh - var(--navbar-height));
+}
+
+.section-header {
+    .image-container {
+        height: 10vh;
+    }
+
+    .lead {
+        max-width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img {
+        height: 100%;
+    }
+
+    h1 {
+        font-weight: 400;
+    }
+
+    .spacing {
+        margin: 0 auto;
+        width: 60%;
+        color: var(--separator-color);
+
+        /* Overwrite default opacity to set it with the color */
+        opacity: 1;
+    }
+}
+
+.ogrodnik-card {
+    box-shadow: var(--card-dropshadow)
+}
+
+.background-neutral {
+    background-color: var(--background-color);
+}
+
+.topmost {
+    margin-top: var(--navbar-height);
+}
+
+.rotated {
+    transition: transform 2s ease;
+    transform: rotate(360deg);
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+    animation: fadeInAnimation 3s ease-in-out forwards;
+}
+
+/* Forms are square on this website */
+.form-control {
+    border-radius: 0px !important;
+}
+
+.pastel-1 {
+    background-color: rgb(227, 255, 211);
+    fill: rgb(227, 255, 211);
+}
+
+.pastel-2 {
+    background-color: rgb(255, 241, 199);
+    fill: rgb(255, 241, 199);
+}
+
+.pastel-3 {
+    background-color: rgb(255, 220, 195);
+    fill: rgb(255, 220, 195);
+}
+
+.pastel-4 {
+    background-color: rgb(227, 238, 255);
+    fill: rgb(227, 238, 255);
+}
+
+/* ==========================================================================
+   Nav.css - Navigation styles
+   ========================================================================== */
+
+.navbar {
+    background-color: var(--navbar-color);
+    height: var(--navbar-height);
+
+    --bs-navbar-toggler-padding-y: 0.1rem;
+    --bs-navbar-toggler-padding-x: 0.8rem;
+    --bs-border-width: 0;
+    --bs-border-radius: 0;
+    --bs-navbar-toggler-focus-width: 0;
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2817, 77, 7, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+
+    .collapsing {
+        height: auto;
+    }
+
+    .show, .collapsing {
+        opacity: 1;
+        background-color: white;
+        width: 100%;
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        z-index: 1000;
+
+        .nav-item {
+            min-height: 50px;
+            border-bottom: 1px solid var(--separator-color);
+            margin: 0 0.5rem;
+            padding-left: 0.5rem;
+            display: flex;
+            align-items: center;
+
+            .nav-link {
+                width: 100%;
+            }
+        }
+
+        .nav-item:last-child {
+            border-bottom: none;
+        }
+
+    }
+}
+
+.scrolled {
+    background-color: var(--navbar-color-solid);
+}
+
+.logo {
+    object-fit: contain; /* or cover */
+    object-position: top;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    align-items: center;
+    padding-top: 0.5px;
+    margin-left: 8px
+}
+
+.nav-shadow {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.28), 0 1px 0.5px 0 rgba(255,255,255,0.10);
+}
+
+.navbar-border {
+    border-top: 1px solid var(--separator-color);
+    border-bottom: 1px solid var(--separator-color);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Nav link hover effects for both navbar and footer */
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--bs-secondary) !important;
+}
+
+/* Footer styles matching navbar */
+.footer-navbar {
+    background-color: var(--navbar-color-solid);
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.footer-navbar .nav-link {
+    color: var(--bs-primary) !important;
+}
+
+.footer-navbar .border-bottom {
+    border-color: var(--separator-color) !important;
+}
+
+/* ==========================================================================
+   Offers.css - Offer section styles
+   ========================================================================== */
+
+section.offer-section .card-img-top {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+section.offer-section .col-md-4 {
+    padding-right: calc(0.25 * var(--bs-gutter-x));
+    padding-left: calc(0.25 * var(--bs-gutter-x));
+}
+
+section.offer-section .row {
+    overflow: hidden;
+    padding-right: calc(0.25 * var(--bs-gutter-x));
+    padding-left: calc(0.25 * var(--bs-gutter-x));
+}
+
+
+section.offer-section .offer-card {
+    /* default height just in case */
+    height: 200px;
+}
+
+/* for size below md height height should be auto as long as card is expanded */
+@media (max-width: 767.98px) {
+    section.offer-section .offer-card.offer-collapsed {
+        height: 200px;
+    }
+    section.offer-section .offer-card.offer-expanded {
+        height: auto;
+    }
+}
+
+/* for size above md, make the height 400px */
+@media (min-width: 768px) {
+    section.offer-section .offer-card {
+        height: 400px;
+    }
+    section.offer-section .offer-card .card-image-container {
+        height: 60%;
+    }
+    section.offer-section .offer-card .offer-body {
+        height: 40%;
+    }
+    section.offer-section .offer-card .body-expanded {
+        height: 100%;
+    }
+}
+
+
+section.offer-section .card {
+    height: 400px;
+}
+
+section.offer-section .card-text-group {
+    overflow: hidden;
+}
+
+
+section.offer-section .offer-collapsed .optional {
+    display: none;
+}
+
+section.offer-section .offer-expanded .optional {
+    display: block;
+}
+
+section.offer-section .btn-group {
+    display: flex;
+    justify-content: center;
+}
+
+section.offer-section .btn-group .btn {
+    max-width: 250px;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Grid-gallery.css - Gallery grid styles
+   ========================================================================== */
+
+.grid-gallery {
+    display: grid;
+    width: 100%;
+}
+
+.grid-gallery a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.gallery-tile {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    contain: layout paint;
+}
+
+.hover-title {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    background-color: var(--background-color);
+    padding: 0 4px 12px 4px;
+    opacity: 0;
+    transition: none;
+    pointer-events: none;
+    min-height: var(--gallery-info-bar-height);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .primary-text {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .secondary-text {
+        font-size: 16px;
+        font-weight: 200;
+    }
+
+    @media (max-width: 728px) {
+        padding: 0 4px 8px 4px;
+    }
+}
+
+.hover-shutter {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: beige;
+    pointer-events: none;
+}
+
+.gallery-tile:hover .hover-shutter {
+    opacity: 0.2;
+}
+
+.gallery-tile:hover .hover-title {
+    opacity: 1;
+}
+
+/* Auto-show animation for random title display */
+.hover-title.auto-show {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    transform: translateY(0);
+}
+
+/* Manual show for explicit hover */
+.hover-title.manual-show {
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+}
+
+/* Pulse animation for auto-shown titles */
+@keyframes titlePulse {
+    0% { 
+        opacity: 0; 
+        transform: translateY(10px);
+    }
+    15% { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+    85% { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 728px) {
+    .gallery-tile:hover .hover-shutter {
+        opacity: 0;
+    }
+    
+    .gallery-tile:hover .hover-title {
+        opacity: 0;
+    }
+}
+
+.collage-element img {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.grid-gallery {
+    .square {
+        aspect-ratio: 1/1;
+    }
+
+    .horizontal {
+        aspect-ratio: 2/1;
+    }
+
+    .vertical {
+        aspect-ratio: 1/2;
+    }
+    
+    .collage-element {
+        box-sizing: border-box;
+        overflow: hidden;
+        contain: layout paint;
+    }
+}
+
+.collage-1 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.collage-1 {
+    /* 
+    * Padding is applied directly to <a> tags instead of their parent elements
+    * to fix an iOS Safari issue where padding on parent elements of links
+    * isn't properly respected. This is a known behavior in iOS Safari's
+    * touch handling system.
+    */
+    
+    .hover-title {
+        top: 0;
+    }
+
+    .element-1 {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        > a {
+            padding: 0 6px 6px 0;
+        }
+    }
+
+    .element-2 > a {
+        padding: 0 6px 6px 6px;
+    }
+
+    .element-3 > a {
+        padding: 0 0 6px 6px;
+    }
+
+    .element-4 > a {
+        padding: 6px 6px 6px 0;
+    }
+
+    .element-5 {
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        > a {
+            padding: 6px 0 6px 6px;
+        }
+    }
+
+    .element-6 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        > a {
+            padding: 6px 6px 0 0;
+        }
+    }
+
+    .element-7 > a {
+        padding: 6px 0 0 6px;
+    }
+}
+
+@media (max-width: 728px) {
+    .collage-1 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+
+        .element-1 {
+            grid-row-start: 3;
+            grid-row-end: 5;
+            > a {
+                padding: 4px 4px 4px 0;
+            }
+        }
+
+        .element-2 > a {
+            padding: 4px 0 4px 4px;
+        }
+
+        .element-3 > a {
+            padding: 4px 0 4px 4px;
+        }
+
+        .element-4 > a {
+            padding: 4px 4px 0 0;
+        }
+    
+        .element-5 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            > a {
+                padding: 0 0 4px 0;
+            }
+        }
+
+        .element-6 {
+            grid-row: 5;
+            grid-column-end: 3;
+            grid-column-start: 1;
+            > a {
+                padding: 4px 0 4px 0;
+            }
+        }
+
+        .element-7 > a {
+            padding: 4px 0 0 4px;
+        }
+    }
+}
+
+/* ==========================================================================
+   Jak-powstaje.css - "How it's made" section styles
+   ========================================================================== */
+
+#jak-powstaje-carousel {
+    --bs-border-width: 0px;
+    --bs-border-radius: 0px;
+
+
+    /* if jak-postaje-carousel has class flickity-enabled then add dropshadow */
+    &.flickity-enabled {
+        box-shadow: var(--card-dropshadow);
+    }
+
+    &.flickity-enabled .carousel-cell {
+        box-shadow: none;
+    }
+
+    .content {
+        background-color: inherit;
+    }
+
+    .carousel-cell {
+        /* Default: auto height for portrait */
+        height: auto;
+    }
+
+    .jak-powstaje-img-container {
+        position: relative;
+    
+        .slide-number {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+        }
+    
+        .background {
+            object-fit: cover;
+        }
+    
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+
+.jak-powstaje-container {
+    height: auto;
+}
+
+@media (min-width: 767.98px) {
+    .jak-powstaje-container {
+        height: 40vh;
+    }
+
+    #jak-powstaje-carousel .carousel-cell {
+        height: 100% !important;
+    }
+}
+
+/* for wide but small devices make the height a bit larger */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .jak-powstaje-container {
+        height: 60vh;
+    }
+}
+
+@media (min-width: 992px) {
+    .jak-powstaje-container .text-primary {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   Home.css - Landing page styles
+   ========================================================================== */
+
+.landing-page {
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--home-color);
+}
+
+@media (orientation: portrait) {
+    .landing-page {
+        height: calc(80vh - var(--navbar-height));
+    }
+}
+
+.landing-page * {
+    box-sizing: border-box;
+}
+
+.landing-page .carousel-container {
+    padding-top: 12px;
+}
+
+/* Block layout image cropping with info bar */
+.landing-page .carousel-cell.image-container {
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    margin-right: 12px;
+    height: 100%;
+    display: inline-block;
+}
+
+.landing-page .carousel-cell.image-container .image-wrapper {
+    /* Don't change height - let Flickity handle sizing */
+    position: relative;
+    height: 100%;
+}
+
+.landing-page .carousel-cell.image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.3s ease;
+}
+
+.landing-page .carousel-cell.image-container .info-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--home-color);
+    color: #000;
+    padding: 0 4px;
+    height: calc(var(--bs-gutter-x) * 0.5);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.landing-page .carousel-cell.image-container .info-bar .text-primary {
+    margin: 0;
+    font-weight: 400;
+    display: none;
+}
+
+.landing-page .flickity-viewport {
+    height: 100% !important;
+}
+
+.landing-page .carousel-cell.image-container .info-bar .text-muted {
+    margin: 0;
+    opacity: 0.8;
+    margin-left: 4px;
+    display: none;
+}
+
+/* When picked, show info bar and shift image up */
+.landing-page .carousel-cell.image-container.picked .info-bar {
+    height: var(--gallery-info-bar-height);
+    padding: 8px 4px;
+}
+
+.landing-page .carousel-cell.image-container.picked .info-bar .text-muted {
+    display: block;
+}
+
+.landing-page .carousel-cell.image-container.picked .info-bar .text-primary {
+    display: block;
+}
+
+.landing-page .carousel-cell.image-container.picked img {
+    transform: translateY(calc(-1 * (var(--gallery-info-bar-height) - (var(--bs-gutter-x) * 0.5))));
+}
+
+/* ==========================================================================
+   Gallery.css - Gallery page styles
+   ========================================================================== */
+
+.gallery-section {
+    margin-bottom: 0px !important;
+
+    --thumbnail-height: 140px;
+
+    .flickity-viewport {
+        height: 100% !important;
+    }
+
+    @media (max-width: 728px) {
+        --thumbnail-height: 0px;
+    }
+}
+
+.gallery-root {
+    overflow: hidden;
+    touch-action: none;
+}
+
+.padding-from-gutter {
+    padding-bottom: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.gallery-content-container {
+    height: calc(100vh - var(--navbar-height) - var(--thumbnail-height));
+
+    @media (max-width: 728px) {
+        height: calc((100vh - var(--navbar-height)) * 0.6);
+    }
+}
+
+.gallery-description-container {
+    height: calc(100vh - var(--navbar-height) - var(--thumbnail-height));
+
+    @media (max-width: 728px) {
+        height: calc((100vh - var(--navbar-height)) * 0.4);
+    }
+}
+
+.gallery-text-container {
+    max-height: 100%;
+    overflow-y: auto;
+    touch-action: pan-y;
+}
+
+.gallery-thumbnail-container {
+    height: var(--thumbnail-height);
+}
+
+#thumbnail-carousel .carousel-cell {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+#thumbnail-carousel .carousel-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#gallery-carousel .carousel-cell img {
+    width: auto;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* Essential styles copied from home.css for gallery page */
+.carousel-container {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* Gallery specific carousel cell margins */
+.landing-page .carousel-cell {
+    margin-right: 12px;
+}
+
+/* Lazy loading image transitions - only for main gallery */
+#gallery-carousel .carousel-cell img {
+    transition: opacity 0.4s ease;
+    opacity: 0;
+    min-width: 150px; /* Ensure cells have size before images load */
+}
+
+#gallery-carousel .carousel-cell img.flickity-lazyloaded,
+#gallery-carousel .carousel-cell img.flickity-lazyerror {
+    opacity: 1;
+}
+
+/* Ensure thumbnail carousel images are always visible */
+#thumbnail-carousel .carousel-cell img {
+    opacity: 1 !important;
+}
+
+/* Show short description on small screens in landscape orientation */
+@media (max-width: 728px) and (orientation: landscape) {
+    .d-landscape-inline {
+        display: inline !important;
+    }
+    .d-landscape-none {
+        display: none !important;
+    }
+}
+
+@media (min-width: 729px) {
+    .d-landscape-inline {
+        display: none !important;
+    }
+    .d-landscape-none {
+        display: inline !important;
+    }
+}
