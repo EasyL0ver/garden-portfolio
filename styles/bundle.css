@@ -943,14 +943,8 @@ section.offer-section .btn-group .btn {
     object-fit: contain;
 }
 
-/* Essential styles copied from home.css for gallery page */
-.carousel-container {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-
 /* Gallery specific carousel cell margins */
-.landing-page .carousel-cell {
+.gallery-section .carousel-cell {
     margin-right: 12px;
 }
 
