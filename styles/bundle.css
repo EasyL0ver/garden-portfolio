@@ -107,7 +107,7 @@
 
 body {
     background-color:rgb(245, 255, 243);
-    background-image: url(../resources/img/background-big-res-rotated.jpg);
+    background-image: url(../resources/img/background_compressed.webp);
     background-repeat: repeat;
     background-size: cover;
     -webkit-font-smoothing: antialiased;
