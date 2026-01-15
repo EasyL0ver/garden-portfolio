@@ -768,6 +768,10 @@ section.offer-section .btn-group .btn {
     --bs-border-width: 0px;
     --bs-border-radius: 0px;
 
+    /* Required for setGallerySize: false */
+    .flickity-viewport {
+        height: 100% !important;
+    }
 
     /* if jak-postaje-carousel has class flickity-enabled then add dropshadow */
     &.flickity-enabled {
@@ -844,6 +848,8 @@ section.offer-section .btn-group .btn {
 .landing-page {
     height: calc(100vh - var(--navbar-height));
     background-color: var(--home-color);
+    /* CSS containment for better rendering performance */
+    contain: layout style;
 }
 
 @media (orientation: portrait) {

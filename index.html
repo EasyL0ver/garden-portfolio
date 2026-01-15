@@ -677,25 +677,26 @@
                 var $homepageCarousel = $('#homepage-carousel').flickity({
                     imagesLoaded: false,
                     percentPosition: false,
+                    setGallerySize: false,
                     contain: true,
                     pageDots: false,
                     lazyLoad: 1,
                     on: {
+                        ready: function() {
+                            // Cache carousel cells once on ready
+                            this.carouselCells = this.element.querySelectorAll('.carousel-cell.image-container');
+                        },
                         change: function (index) {
-                            console.log('Slide changed to' + index);
-
-                            // Handle the new info bar logic
-                            var allContainers = $homepageCarousel.find('.carousel-cell.image-container');
+                            // Use cached cells instead of querying DOM each time
+                            var cells = this.carouselCells;
+                            if (!cells) return;
                             
-                            // Clear all picked states
-                            allContainers.each(function() {
-                                clearImagePicked(this);
-                            });
-                            
-                            // Set the active slide as picked
-                            var activeContainer = allContainers.eq(index)[0];
-                            if (activeContainer) {
-                                setImagePicked(activeContainer);
+                            // Remove picked from all, add to active
+                            for (var i = 0; i < cells.length; i++) {
+                                cells[i].classList.remove('picked');
+                            }
+                            if (cells[index]) {
+                                cells[index].classList.add('picked');
                             }
                         }
                     }
@@ -705,67 +706,47 @@
                 var width = document.documentElement.clientWidth
                 if (width >= 768) {
                     var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
-                        imagesLoaded: true,
+                        imagesLoaded: false,
                         percentPosition: false,
+                        setGallerySize: false,
                         contain: true,
                         pageDots: true,
-                        prevNextButtons: false,
-                        on: {
-                            change: function (index) {
-                                console.log('Jak Powstaje Slide changed to' + index);
-                            }
-                        }
+                        prevNextButtons: false
                     });
                 }
             }
 
             // Initialize homepage carousel on DOMContentLoaded for faster LCP
-            // Don't wait for all resources to load
             $(document).ready(function() {
-                console.log("DOM ready, initializing homepage carousel immediately");
                 initHomepageCarousel();
             });
             
             // Initialize secondary carousel after full load (it's below the fold)
             $(window).on('load', function() {
-                console.log("Window loaded, initializing jak-powstaje carousel");
                 initJakPowstajeCarousel();
             });
 
 
-            var onResize = (event) => {
-                console.log(event);
-                console.log("Window resized, reinitializing carousels if necessary");
-                console.log("Homepage carousel size:", $('#homepage-carousel').width(), $('#homepage-carousel').height());
-                
+            var onResize = () => {
                 $('#homepage-carousel').flickity('resize');
-                $('#homepage-carousel').flickity('reposition');
 
                 var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
-
                 var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
                 if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
                     $jakPowstajeCarousel.flickity('resize');
-                    $jakPowstajeCarousel.flickity('reposition');
 
                     if(width < 768) {
-                        console.log("Destroying Jak Powstaje carousel for width:", width);
                         $jakPowstajeCarousel.flickity('destroy')
                         $jakPowstajeCarousel.removeClass('flickity-enabled');
                     }
-                } else {
-
-                    if (width >= 768) {
-                        console.log("Re-initializing Jak Powstaje carousel for width:", width);
-                        initJakPowstajeCarousel();
-                    } 
+                } else if (width >= 768) {
+                    initJakPowstajeCarousel();
                 }
-
             }
             
             $(window).on('orientationchange', onResize);
-            $(window).resize(throttle(onResize, 200)); // Throttle resize events to every 400ms
+            $(window).resize(throttle(onResize, 400));
         </script>
         <script>
             function setImagePicked(container) {
