@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" id="meta-description" content="Portfolio projektów ogrodów – zobacz nasze realizacje i zainspiruj się.">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBM0FEFTDV"></script>
     <script>
@@ -430,6 +431,17 @@
             }
         }
 
+        function updateMetaDescription(gallery){
+            var metaDescription = document.getElementById('meta-description');
+            if (gallery && gallery['short-description']) {
+                metaDescription.content = gallery['short-description'];
+            } else if (gallery && gallery.description) {
+                metaDescription.content = gallery.description.substring(0, 160);
+            } else {
+                metaDescription.content = "Portfolio projektów ogrodów – zobacz nasze realizacje i zainspiruj się.";
+            }
+        }
+
         function updateGalleryDescription(gallery, index){
             var imageObject = gallery.images[index];
 
@@ -472,6 +484,7 @@
         updateGalleryDescription(currentGallery, initialIndex);
         updateGalleryTitle(currentGallery);
         updateWebsiteTitle(currentGallery);
+        updateMetaDescription(currentGallery);
 
     </script>
     <script>
@@ -512,6 +525,7 @@
                         updateGalleryDescription(subGallery, subIndex);
                         updateUrl(key, subIndex);
                         updateWebsiteTitle(subGallery);
+                        updateMetaDescription(subGallery);
                     }
                 }
             });
