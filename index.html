@@ -585,47 +585,51 @@
             </div>
         </footer>
     </div>
-        <!-- Combined JS bundle (jQuery + Bootstrap + Flickity) - at end of body for faster LCP -->
-        <script src="js/bundle.js"></script>
-        <script>
-            function toggleOfferExpanded(offerIndex){
-                console.log("Toggling offer expanded for index:", offerIndex);
+        <!-- Combined JS bundle (jQuery + Bootstrap + Flickity) - deferred for faster LCP -->
+        <script src="js/bundle.js" defer></script>
+        <script defer>
+            // All jQuery-dependent code wrapped in DOMContentLoaded
+            // (deferred scripts run in order, jQuery will be available)
+            document.addEventListener('DOMContentLoaded', function() {
 
-                var offerCard = $("#offer-card-" + offerIndex);
-                var offerBody = $("#offer-body-" + offerIndex);
-                var offerImageContainer = $("#offer-image-container-" + offerIndex);
-                var button = $("#offer-body-" + offerIndex + " button");
+                // Toggle offer cards
+                window.toggleOfferExpanded = function(offerIndex){
+                    console.log("Toggling offer expanded for index:", offerIndex);
 
-                offerCard.toggleClass("offer-collapsed offer-expanded");
+                    var offerCard = $("#offer-card-" + offerIndex);
+                    var offerBody = $("#offer-body-" + offerIndex);
+                    var offerImageContainer = $("#offer-image-container-" + offerIndex);
+                    var button = $("#offer-body-" + offerIndex + " button");
 
-                offerImageContainer.toggleClass("d-block d-none");
+                    offerCard.toggleClass("offer-collapsed offer-expanded");
 
-                //small screen hide the image
-                offerBody.toggleClass("col-9 col-12");
-                offerBody.toggleClass("body-expanded");
-                
-                // Toggle button text
-                if (offerCard.hasClass("offer-expanded")) {
-                    button.text("Dowiedz się mniej");
-                } else {
-                    button.text("Dowiedz się więcej");
-                }
-            }
-        </script>
-        <script>
-            function throttle(func, delay) {
-                let lastCall = 0;
-                return function (...args) {
-                    const now = new Date().getTime();
-                    if (now - lastCall >= delay) {
-                    lastCall = now;
-                    func.apply(this, args);
+                    offerImageContainer.toggleClass("d-block d-none");
+
+                    //small screen hide the image
+                    offerBody.toggleClass("col-9 col-12");
+                    offerBody.toggleClass("body-expanded");
+                    
+                    // Toggle button text
+                    if (offerCard.hasClass("offer-expanded")) {
+                        button.text("Dowiedz się mniej");
+                    } else {
+                        button.text("Dowiedz się więcej");
                     }
                 };
-            }
-        </script>
-        <script>
-            $(document).ready(function () {
+
+                // Throttle utility function
+                function throttle(func, delay) {
+                    let lastCall = 0;
+                    return function (...args) {
+                        const now = new Date().getTime();
+                        if (now - lastCall >= delay) {
+                        lastCall = now;
+                        func.apply(this, args);
+                        }
+                    };
+                }
+
+                // Logo rotation animation
                 var sectionHeaderLogos = $('.section-header .image-container');
                 var animatingElement = null;
                 
@@ -674,162 +678,152 @@
                 sectionHeaderLogos.each(function(index, element) {
                     observer.observe(element);
                 });
-            });
-        </script>
-        <script>
-            const enableScrollShutter = false
-            const shutterMaxOpacity = 0.7
-            const scrollColorBreakpoint = 300
 
-            if (enableScrollShutter) {
-                $(document).ready(function () {
+                // Scroll shutter effect (disabled)
+                const enableScrollShutter = false
+                const shutterMaxOpacity = 0.7
+                const scrollColorBreakpoint = 300
+
+                if (enableScrollShutter) {
                     $('.background-wrapper').addClass("shutter")
                     $(window).scroll(function () {
                         var distanceScrolled = $(this).scrollTop()
                         var shutterRatio = Math.max(0, (scrollColorBreakpoint - distanceScrolled) / scrollColorBreakpoint)
                         $('.background-wrapper').css('background-color', 'rgba(0,0,0,' + shutterRatio * shutterMaxOpacity + ')');
                     });
-                });
-            }
-        </script>
-        <script>
-            function updateNavbarScrolled() {
-                var distanceScrolled = $(window).scrollTop();
-                if (distanceScrolled > 0) {
-                    $('.navbar').addClass('scrolled');
-                } else {
-                    $('.navbar').removeClass('scrolled');
                 }
-            }
 
-            $(document).ready(function () {
+                // Navbar scroll state
+                function updateNavbarScrolled() {
+                    var distanceScrolled = $(window).scrollTop();
+                    if (distanceScrolled > 0) {
+                        $('.navbar').addClass('scrolled');
+                    } else {
+                        $('.navbar').removeClass('scrolled');
+                    }
+                }
+
                 updateNavbarScrolled(); // Check on page load
                 $(window).scroll(updateNavbarScrolled); // Check on scroll
-            });
-        </script>
-        <script>
-            var initHomepageCarousel = () => {
-                var $homepageCarousel = $('#homepage-carousel').flickity({
-                    imagesLoaded: false,
-                    percentPosition: false,
-                    setGallerySize: false,
-                    contain: true,
-                    pageDots: false,
-                    lazyLoad: 1,
-                    on: {
-                        ready: function() {
-                            // Cache carousel cells once on ready
-                            this.carouselCells = this.element.querySelectorAll('.carousel-cell.image-container');
-                        },
-                        change: function (index) {
-                            // Use cached cells instead of querying DOM each time
-                            var cells = this.carouselCells;
-                            if (!cells) return;
-                            
-                            // Remove picked from all, add to active
-                            for (var i = 0; i < cells.length; i++) {
-                                cells[i].classList.remove('picked');
-                            }
-                            if (cells[index]) {
-                                cells[index].classList.add('picked');
-                            }
-                        }
-                    }
-                });
-            }
-            var initJakPowstajeCarousel = () => {
-                var width = document.documentElement.clientWidth
-                if (width >= 768) {
-                    var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
+
+                // Carousel initialization functions
+                var initHomepageCarousel = () => {
+                    var $homepageCarousel = $('#homepage-carousel').flickity({
                         imagesLoaded: false,
                         percentPosition: false,
                         setGallerySize: false,
                         contain: true,
-                        pageDots: true,
-                        prevNextButtons: false
+                        pageDots: false,
+                        lazyLoad: 1,
+                        on: {
+                            ready: function() {
+                                // Cache carousel cells once on ready
+                                this.carouselCells = this.element.querySelectorAll('.carousel-cell.image-container');
+                            },
+                            change: function (index) {
+                                // Use cached cells instead of querying DOM each time
+                                var cells = this.carouselCells;
+                                if (!cells) return;
+                                
+                                // Remove picked from all, add to active
+                                for (var i = 0; i < cells.length; i++) {
+                                    cells[i].classList.remove('picked');
+                                }
+                                if (cells[index]) {
+                                    cells[index].classList.add('picked');
+                                }
+                            }
+                        }
                     });
-                }
-            }
+                };
 
-            // Initialize homepage carousel on DOMContentLoaded for faster LCP
-            $(document).ready(function() {
-                initHomepageCarousel();
-            });
-            
-            // Defer jak-powstaje carousel until user scrolls to it
-            var jakPowstajeInitialized = false;
-            var jakPowstajeObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting && !jakPowstajeInitialized) {
-                        jakPowstajeInitialized = true;
-                        initJakPowstajeCarousel();
-                        jakPowstajeObserver.disconnect();
+                var initJakPowstajeCarousel = () => {
+                    var width = document.documentElement.clientWidth
+                    if (width >= 768) {
+                        var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
+                            imagesLoaded: false,
+                            percentPosition: false,
+                            setGallerySize: false,
+                            contain: true,
+                            pageDots: true,
+                            prevNextButtons: false
+                        });
                     }
+                };
+
+                // Initialize homepage carousel
+                initHomepageCarousel();
+                
+                // Defer jak-powstaje carousel until user scrolls to it
+                var jakPowstajeInitialized = false;
+                var jakPowstajeObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !jakPowstajeInitialized) {
+                            jakPowstajeInitialized = true;
+                            initJakPowstajeCarousel();
+                            jakPowstajeObserver.disconnect();
+                        }
+                    });
+                }, {
+                    rootMargin: '200px' // Start loading slightly before it comes into view
                 });
-            }, {
-                rootMargin: '200px' // Start loading slightly before it comes into view
-            });
-            
-            $(document).ready(function() {
+                
                 var jakPowstajeSection = document.getElementById('jak-powstaje-carousel');
                 if (jakPowstajeSection) {
                     jakPowstajeObserver.observe(jakPowstajeSection);
                 }
-            });
-            
-            // Attach resize handler after initial load
-            $(window).on('load', function() {
-                var lastWidth = window.innerWidth;
                 
-                var onResize = () => {
-                    // Skip if width hasn't actually changed (prevents false triggers)
-                    var currentWidth = window.innerWidth;
-                    if (currentWidth === lastWidth) return;
-                    lastWidth = currentWidth;
+                // Attach resize handler after initial load
+                $(window).on('load', function() {
+                    var lastWidth = window.innerWidth;
                     
-                    $('#homepage-carousel').flickity('resize');
+                    var onResize = () => {
+                        // Skip if width hasn't actually changed (prevents false triggers)
+                        var currentWidth = window.innerWidth;
+                        if (currentWidth === lastWidth) return;
+                        lastWidth = currentWidth;
+                        
+                        $('#homepage-carousel').flickity('resize');
 
-                    var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
+                        var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
 
-                    if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
-                        $jakPowstajeCarousel.flickity('resize');
+                        if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
+                            $jakPowstajeCarousel.flickity('resize');
 
-                        if(currentWidth < 768) {
-                            $jakPowstajeCarousel.flickity('destroy')
-                            $jakPowstajeCarousel.removeClass('flickity-enabled');
+                            if(currentWidth < 768) {
+                                $jakPowstajeCarousel.flickity('destroy')
+                                $jakPowstajeCarousel.removeClass('flickity-enabled');
+                            }
+                        } else if (currentWidth >= 768) {
+                            initJakPowstajeCarousel();
                         }
-                    } else if (currentWidth >= 768) {
-                        initJakPowstajeCarousel();
+                    };
+                    
+                    $(window).on('orientationchange', onResize);
+                    $(window).resize(throttle(onResize, 400));
+                });
+
+                // Image picked utility functions
+                window.setImagePicked = function(container) {
+                    if (!container.classList.contains('picked')) {
+                        container.classList.add('picked');
                     }
                 };
                 
-                $(window).on('orientationchange', onResize);
-                $(window).resize(throttle(onResize, 400));
-            });
-        </script>
-        <script>
-            function setImagePicked(container) {
-                if (!container.classList.contains('picked')) {
-                    container.classList.add('picked');
-                }
-            }
-            
-            function clearImagePicked(container) {
-                if (container.classList.contains('picked')) {
-                    container.classList.remove('picked');
-                }
-            }
-            
-            function toggleImagePicked(container) {
-                if (container.classList.contains('picked')) {
-                    clearImagePicked(container);
-                } else {
-                    setImagePicked(container);
-                }
-            }
-        </script>
-        <script>
-            $(document).ready(function() {
+                window.clearImagePicked = function(container) {
+                    if (container.classList.contains('picked')) {
+                        container.classList.remove('picked');
+                    }
+                };
+                
+                window.toggleImagePicked = function(container) {
+                    if (container.classList.contains('picked')) {
+                        clearImagePicked(container);
+                    } else {
+                        setImagePicked(container);
+                    }
+                };
+
                 // Close mobile menu when nav links are clicked (mobile only)
                 $('.navbar-nav .nav-link').on('click', function() {
                     // Check if we're on mobile (navbar-toggler is visible)
@@ -848,16 +842,14 @@
                         }
                     }
                 });
-            });
-        </script>
-        <script>
-            var galleryVisibilityDelay = 4000; // 4 second delay after gallery becomes visible (was 2s)
-            var galleryTitleDisplayDuration = 5000; // 5 seconds to display each title (was 3s)
-            var galleryTitleRotationDelay = 2000; // 2 seconds between title changes (was 1s)
-            
-            var animationTickMilliseconds = 300;
 
-            $(document).ready(function () {
+                // Gallery title animation
+                var galleryVisibilityDelay = 4000; // 4 second delay after gallery becomes visible (was 2s)
+                var galleryTitleDisplayDuration = 5000; // 5 seconds to display each title (was 3s)
+                var galleryTitleRotationDelay = 2000; // 2 seconds between title changes (was 1s)
+                
+                var animationTickMilliseconds = 300;
+
                 var galleryTiles = $('.grid-gallery .gallery-tile');
                 var galleryTitles = $('.grid-gallery .hover-title');
                 var fullyVisibleTitles = new Set(); // Track which titles are fully visible
