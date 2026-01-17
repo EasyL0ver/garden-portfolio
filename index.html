@@ -723,12 +723,29 @@
                 initHomepageCarousel();
             });
             
-            // Initialize secondary carousel after full load (it's below the fold)
+            // Defer jak-powstaje carousel until user scrolls to it
+            var jakPowstajeInitialized = false;
+            var jakPowstajeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !jakPowstajeInitialized) {
+                        jakPowstajeInitialized = true;
+                        initJakPowstajeCarousel();
+                        jakPowstajeObserver.disconnect();
+                    }
+                });
+            }, {
+                rootMargin: '200px' // Start loading slightly before it comes into view
+            });
+            
+            $(document).ready(function() {
+                var jakPowstajeSection = document.getElementById('jak-powstaje-carousel');
+                if (jakPowstajeSection) {
+                    jakPowstajeObserver.observe(jakPowstajeSection);
+                }
+            });
+            
+            // Attach resize handler after initial load
             $(window).on('load', function() {
-                initJakPowstajeCarousel();
-                
-                // Attach resize handler only AFTER initial load is complete
-                // This prevents resize from firing during startup
                 var lastWidth = window.innerWidth;
                 
                 var onResize = () => {
