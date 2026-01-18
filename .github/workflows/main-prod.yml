@@ -17,6 +17,17 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Get commit message and add to HTML files
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          for file in *.html; do
+            if [ -f "$file" ]; then
+              TEMP_FILE=$(mktemp)
+              echo "<!-- Deploy: $COMMIT_MSG - $(date) -->" > "$TEMP_FILE"
+              cat "$file" >> "$TEMP_FILE"
+              mv "$TEMP_FILE" "$file"
+            fi
+          done
       # - name: auto minify the files
       #   uses: nizarmah/auto-minify@v3
       #   with:
