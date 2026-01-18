@@ -17,17 +17,17 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: auto minify the files
-        uses: nizarmah/auto-minify@v3
-        with:
-          overwrite: true
-      - name: Compress Images
-        id: calibre
-        uses: calibreapp/image-actions@main
-        with:
-            # compress only - do not create a pull request
-            compressOnly: true
-            jpegQuality: ${{ env.JPEG_QUALITY }}
+      # - name: auto minify the files
+      #   uses: nizarmah/auto-minify@v3
+      #   with:
+      #     overwrite: true
+      # - name: Compress Images
+      #   id: calibre
+      #   uses: calibreapp/image-actions@main
+      #   with:
+      #       # compress only - do not create a pull request
+      #       compressOnly: true
+      #       jpegQuality: ${{ env.JPEG_QUALITY }}
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1

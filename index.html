@@ -4,14 +4,26 @@
 <head>
     <title>ogrodnikprojektuje.pl - projekty ogrodów, aranżacja zieleni</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBM0FEFTDV"></script>
+    <meta name="description" content="Projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.">
+    <!-- Google tag (gtag.js) - deferred until browser is idle -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-DBM0FEFTDV');
+        
+        function loadGtag() {
+            var s = document.createElement('script');
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DBM0FEFTDV';
+            s.async = true;
+            document.head.appendChild(s);
+            gtag('js', new Date());
+            gtag('config', 'G-DBM0FEFTDV');
+        }
+        
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadGtag, { timeout: 4000 });
+        } else {
+            setTimeout(loadGtag, 2000);
+        }
     </script>
     <link rel="icon" type="image/x-icon" href="/resources/img/logo/drawingpainted.svg">
     
@@ -32,22 +44,35 @@
     <meta name="twitter:image" content="https://ogrodnikprojektuje.pl/resources/img/home/PICT0228 (1).jpg">
     <!-- #endregion -->
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Preload hero image for faster LCP -->
-    <link rel="preload" as="image" href="resources/img/home/PICT0228 (1).jpg" fetchpriority="high">
-    <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&family=Quicksand:wght@300..700" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap CSS from CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <!-- Combined CSS bundle (7 files -> 1) -->
+    <link rel="preload" as="image" href="resources/img/home/PICT0228 (1).webp" fetchpriority="high">
+    <!-- Combined CSS bundle (Bootstrap + Flickity + fonts + custom styles) -->
     <link rel="stylesheet" href="styles/bundle.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script> -->
+    <!-- Critical CSS for hero image before JS loads -->
+    <style>
+        /* Fallback display for hero carousel before Flickity initializes */
+        #homepage-carousel:not(.flickity-enabled) {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #homepage-carousel:not(.flickity-enabled) .carousel-cell {
+            flex: 0 0 auto;
+            height: 100%;
+            margin-right: 12px;
+        }
+        #homepage-carousel:not(.flickity-enabled) .carousel-cell .image-wrapper {
+            height: 100%;
+        }
+        #homepage-carousel:not(.flickity-enabled) .carousel-cell .image-wrapper img {
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            object-position: center top;
+        }
+    </style>
 
 </head>
 
@@ -92,7 +117,7 @@
                     <div id="homepage-carousel" class="h-100">
                         <div class="carousel-cell mr-4 image-container picked" data-title="Tytuł zdjęcia">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/PICT0228 (1).jpg" alt="Rezydencja na wsi - okolice Bielska-Białej, rok 2006" fetchpriority="high" loading="eager" decoding="async" />
+                                <img src="resources/img/home/PICT0228 (1).webp" alt="Rezydencja na wsi - okolice Bielska-Białej, rok 2006" fetchpriority="high" loading="eager" decoding="async" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rezydencja na wsi - okolice Bielska-Białej, rok 2006</div>
@@ -101,7 +126,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/1.jpg" alt="Zieleń miejska - Kraków, rok 2017" />
+                                <img src="resources/img/home/1_compressed.webp" alt="Zieleń miejska - Kraków, rok 2017" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">zieleń miejska - Kraków, rok 2017</div>
@@ -110,7 +135,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/PICT0293 (1).jpg" alt="Rabata bylinowa - okolice Andrychowa, rok 2008" />
+                                <img data-flickity-lazyload="resources/img/home/PICT0293 (1).jpg" alt="Rabata bylinowa - okolice Andrychowa, rok 2008" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rabata bylinowa - okolice Andrychowa, rok 2008</div>
@@ -119,7 +144,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/hom 4.jpg" alt="Rabaty wyniesione na patio - Kraków, 2017" />
+                                <img data-flickity-lazyload="resources/img/home/hom 4.jpg" alt="Rabaty wyniesione na patio - Kraków, 2017" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rabaty wyniesione na patio - Kraków, 2017</div>
@@ -128,7 +153,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/home 5.jpg" alt="Zabytkowy park przypałacowy - Małopolska, 2003" />
+                                <img data-flickity-lazyload="resources/img/home/home 5.jpg" alt="Zabytkowy park przypałacowy - Małopolska, 2003" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">zabytkowy park przypałacowy - Małopolska, 2003</div>
@@ -137,7 +162,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/home 6.jpg" alt="Partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015" />
+                                <img data-flickity-lazyload="resources/img/home/home 6.jpg" alt="Partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015</div>
@@ -169,8 +194,8 @@
                             <div class="col-xl-4 col-lg-6 pb-4">
                                 <div id="offer-card-1" class="offer-card ogrodnik-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
                                     <div id="offer-image-container-1" class="card-image-container d-block col-3 col-md-12">
-                                        <img class="card-img-top rounded-0" src="resources/img/offer/DSCF4788.jpg"
-                                            alt="Kwitnące dzielżany o pomarańczowo-żółtych płatkach">
+                                        <img class="card-img-top rounded-0" src="resources/img/offer/DSCF4788.webp"
+                                            alt="Kwitnące dziełżany o pomarańczowo-żółtych płatkach" loading="lazy">
                                     </div>
                                     <div id="offer-body-1" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-2 p-2 p-md-3">
                                         <div class="card-text-group">
@@ -191,8 +216,8 @@
                             <div class="col-xl-4 col-lg-6 pb-4">
                                 <div id="offer-card-2" class="offer-card ogrodnik-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
                                     <div id="offer-image-container-2" class="card-image-container d-block col-3 col-md-12">
-                                        <img class="card-img-top rounded-0" src="resources/img/offer/IMG_0021.jpg"
-                                            alt="Kwitnące wrzosy różowe">
+                                        <img class="card-img-top rounded-0" src="resources/img/offer/IMG_0021.webp"
+                                            alt="Kwitnące wrzosy różowe" loading="lazy">
                                     </div>
                                     <div id="offer-body-2" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-3 p-2 p-md-3">
                                         <div class="card-text-group">
@@ -208,8 +233,8 @@
                             <div class="col-xl-4 col-lg-6 pb-4">
                                 <div id="offer-card-3" class="offer-card ogrodnik-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
                                     <div id="offer-image-container-3" class="card-image-container d-block col-3 col-md-12">
-                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0038.jpg"
-                                            alt="Błękitne hortensje ogrodowe w pełnym rozkwicie">
+                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0038.webp"
+                                            alt="Błękitne hortensje ogrodowe w pełnym rozkwicie" loading="lazy">
                                     </div>
                                     <div id="offer-body-3" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-1 p-2 p-md-3">
                                         <div class="card-text-group">
@@ -230,8 +255,8 @@
                             <div class="col-xl-4 col-lg-6 pb-4">
                                 <div id="offer-card-4" class="offer-card ogrodnik-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
                                     <div id="offer-image-container-4" class="card-image-container d-block col-3 col-md-12">
-                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0173.jpg"
-                                            alt="Gałązki świerka srebrnego z młodymi przyrostami">
+                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0173.webp"
+                                            alt="Gałązki świerka srebrnego z młodymi przyrostami" loading="lazy">
                                     </div>
                                     <div id="offer-body-4" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-4 p-2 p-md-3">
                                         <div class="card-text-group">
@@ -250,8 +275,8 @@
                             <div class="col-xl-4 col-lg-6 pb-4">
                                 <div id="offer-card-5" class="offer-card ogrodnik-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
                                     <div id="offer-image-container-5" class="card-image-container d-block col-3 col-md-12">
-                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0175.jpg"
-                                            alt="Młode jasnozielone liście dębu wiosną">
+                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0175.webp"
+                                            alt="Młode jasnozielone liście dębu wiosną" loading="lazy">
                                     </div>
                                     <div id="offer-body-5" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-1 p-2 p-md-3">
                                         <div class="card-text-group">
@@ -264,8 +289,8 @@
                             <div class="col-xl-4 col-lg-6 pb-4">
                                 <div id="offer-card-6" class="offer-card ogrodnik-card offer-collapsed row g-0 border-primary box-shadow rounded-0">
                                     <div id="offer-image-container-6" class="card-image-container d-block col-3 col-md-12">
-                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0177 (1).jpg"
-                                            alt="Charakterystyczna łuszcząca się kora platana">
+                                        <img class="card-img-top rounded-0" src="resources/img/offer/PICT0177 (1).webp"
+                                            alt="Charakterystyczna łuszcząca się kora platana" loading="lazy">
                                     </div>
                                     <div id="offer-body-6" class="offer-body col-9 col-md-12 d-flex flex-column justify-content-between pastel-4 p-2 p-md-3">
                                         <div class="card-text-group">
@@ -301,7 +326,7 @@
                             <div id="jak-powstaje-carousel" class="h-100 flickity-carousel mb-6">
                                 <div class ="carousel-cell ogrodnik-card card row w-100 g-0 pastel-1 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/KONCEPCJA.jpg" alt="Wizualizacja koncepcyjna ogrodu z rabatami kwiatowymi">
+                                        <img class="background" src="resources/img/jakpowstaje/KONCEPCJA.jpg" alt="Wizualizacja koncepcyjna ogrodu z rabatami kwiatowymi" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="70 20 60 160" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M95.27 60.302c-1.238.662-4.507 2.092-9.806 4.297-.908.331-2.311.889-4.226 1.648-1.915.775-3.5 1.494-4.738 2.157V47.895C90.029 41.053 98.308 36.086 101.354 33H123.5v134H95.27V60.302z"></path>
@@ -319,7 +344,7 @@
                                 </div>
                                 <div class ="carousel-cell ogrodnik-card card row w-100 g-0 pastel-2 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/projekt_edited.jpg" alt="Plan zagospodarowania działki z podziałem na strefy zieleni">
+                                        <img class="background" src="resources/img/jakpowstaje/projekt_edited.jpg" alt="Plan zagospodarowania działki z podziałem na strefy zieleni" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="55 20 85 160" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M63.331 148.45l32.122-49.356 1.98-2.993c4.195-6.293 7.283-11.567 9.271-15.813a31.095 31.095 0 0 0 2.975-13.338c0-3.753-.744-6.6-2.231-8.525-1.487-1.933-3.621-2.904-6.369-2.904-4.203 0-7.121 1.626-8.778 4.885-1.649 3.26-2.481 7.757-2.481 13.5v6.633H63v-7.126c0-12.594 3.063-22.64 9.19-30.146C78.317 35.753 87.774 32 100.578 32c11.809 0 20.83 3.098 27.062 9.278 6.24 6.18 9.36 14.907 9.36 26.174 0 5.08-.808 9.884-2.401 14.414-1.609 4.53-3.508 8.606-5.715 12.254-2.207 3.648-5.626 8.841-10.265 15.57l-24.492 36.609h39.227V168H63.331v-19.55z"></path>
@@ -337,7 +362,7 @@
                                 </div> 
                                 <div class ="ogrodnik-card carousel-cell card row w-100 g-0 pastel-3 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/propozycja 1_edited.jpg" alt="Kolorowy projekt parku z fontanną i alejkami">
+                                        <img class="background" src="resources/img/jakpowstaje/propozycja 1_edited.jpg" alt="Kolorowy projekt parku z fontanną i alejkami" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="63 20 74 160" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M71.87 158.537c-5.575-7.298-8.37-17.709-8.37-31.219v-4.817h27.401v4.817c0 6.868.673 11.709 2.05 14.531 1.362 2.822 3.909 4.233 7.625 4.233 3.492 0 5.847-1.378 7.048-4.152 1.201-2.757 1.81-7.363 1.81-13.785 0-7.079-.985-12.26-2.956-15.52-1.97-3.268-5.631-4.954-10.989-5.068h-5.086V88.461h4.429c5.575 0 9.403-1.524 11.478-4.565 2.083-3.041 3.124-8.109 3.124-15.196 0-5.425-.721-9.463-2.131-12.123-1.426-2.66-3.941-3.99-7.545-3.99-3.396 0-5.719 1.411-6.976 4.233-1.258 2.822-1.882 6.957-1.882 12.374v6.974H63.5v-8.133c0-12.066 3.196-21.342 9.604-27.821C79.495 33.743 88.378 30.5 99.76 30.5c11.582 0 20.609 3.106 27.057 9.309 6.456 6.195 9.684 15.22 9.684 27.067 0 7.638-1.53 14.142-4.59 19.51-3.068 5.368-6.952 8.717-11.646 10.047 5.022 1.889 8.987 5.263 11.886 10.128 2.899 4.873 4.349 11.855 4.349 20.929 0 13.063-2.899 23.329-8.69 30.805-5.799 7.476-15.042 11.206-27.729 11.206-13.233-.001-22.636-3.65-28.211-10.964z"></path>
@@ -354,7 +379,7 @@
                                 </div> 
                                 <div class ="carousel-cell ogrodnik-card card row w-100 g-0 pastel-4 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/05-08-24 22-01-57_0000_edited.jpg" alt="Szczegółowy projekt techniczny nasadzeń z oznaczeniami gatunków roślin">
+                                        <img class="background" src="resources/img/jakpowstaje/05-08-24 22-01-57_0000_edited.jpg" alt="Szczegółowy projekt techniczny nasadzeń z oznaczeniami gatunków roślin" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="50 20 95 155" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M101.497 136.895H60v-20.356L95.166 33H127.5v83.377H140v20.517h-12.501V167h-26.002v-30.105zm0-20.518V60.626L81.16 116.377h20.337z"></path>
@@ -393,7 +418,7 @@
                                 <h3 class="visually-hidden">Skalniak - ogród skalny</h3>
                                 <a href="gallery.html?gallery=skalny">
                                     <div class="gallery-tile h-100 w-100">
-                                        <img class="object-fit-cover" src="resources/img/portfolio/SKALNY/skalny_thumbnail.jpg" alt="Ogród skalny ze żwirową ścieżką, głazami i roślinami iglastymi"> 
+                                        <img class="object-fit-cover" src="resources/img/portfolio/SKALNY/skalny_thumbnail.jpg" alt="Ogród skalny ze żwirowá ścieżká, głazami i roślinami iglastymi" loading="lazy">
                                         <div class="hover-title text-primary fs-4">ogród skalny <span class="text-secondary">okolice Andrychowa</span></div>
                                         <div class="hover-shutter"></div>
                                     </div>
@@ -403,7 +428,7 @@
                                 <h3 class="visually-hidden">Ogród różany</h3>
                                 <a href="gallery.html?gallery=romantyczny">
                                     <div class="gallery-tile h-100 w-100">
-                                        <img class="object-fit-cover" src="resources/img/portfolio/ROMANTYCZNY/thumbnail.jpg" alt="Romantyczna rabata z różowymi różami, lawendą i cisami"> 
+                                        <img class="object-fit-cover" src="resources/img/portfolio/ROMANTYCZNY/thumbnail.jpg" alt="Romantyczna rabata z różowymi różami, lawendą i cisami" loading="lazy"> 
                                         <div class="hover-title text-primary fs-4">romantyczny ogród kwiatowy <span class="text-secondary">okolice Andrychowa</span></div>
                                         <div class="hover-shutter"></div>
                                     </div>
@@ -413,7 +438,7 @@
                                 <h3 class="visually-hidden">Zieleń miejska</h3>
                                 <a href="gallery.html?gallery=miejska">
                                     <div class="gallery-tile h-100 w-100">
-                                        <img class="object-fit-cover" src="resources/img/portfolio/MIEJSKA/thumbnail.jpg" alt="Nowoczesna zieleń miejska z trawami ozdobnymi i kolorowymi ławkami"> 
+                                        <img class="object-fit-cover" src="resources/img/portfolio/MIEJSKA/thumbnail.jpg" alt="Nowoczesna zieleń miejska z trawami ozdobnymi i kolorowymi ławkami" loading="lazy"> 
                                         <div class="hover-title text-primary fs-4">zieleń miejska <span class="text-secondary">Andrychów</span></div>
                                         <div class="hover-shutter"></div>
                                     </div>
@@ -423,7 +448,7 @@
                                 <h3 class="visually-hidden">Ogród przy rezydencji</h3>
                                 <a href="gallery.html?gallery=willowy">
                                     <div class="gallery-tile h-100 w-100">
-                                        <img class="object-fit-cover" src="resources/img/portfolio/WILLOWY/thumbnail.jpg" alt="Kamienne schody ogrodowe z kulą ozdobną i iglakami"> 
+                                        <img class="object-fit-cover" src="resources/img/portfolio/WILLOWY/thumbnail.jpg" alt="Kamienne schody ogrodowe z kulą ozdobną i iglakami" loading="lazy"> 
                                         <div class="hover-title text-primary fs-4">ogród willowy <span class="text-secondary">okolice Krakowa</span></div>
                                         <div class="hover-shutter"></div>
                                     </div>
@@ -433,7 +458,7 @@
                                 <h3 class="visually-hidden">Projekt ogrodu na wsi</h3>
                                 <a href="gallery.html?gallery=nawsi">
                                     <div class="gallery-tile h-100 w-100">
-                                        <img class="object-fit-cover" src="resources/img/portfolio/NAWSI/thumbnail.jpg" alt="Rozległy ogród wiejski z hostami i widokiem na dom na tle gór"> 
+                                        <img class="object-fit-cover" src="resources/img/portfolio/NAWSI/thumbnail.jpg" alt="Rozległy ogród wiejski z hostami i widokiem na dom na tle gór" loading="lazy"> 
                                         <div class="hover-title text-primary fs-4">duży ogród na wsi <span class="text-secondary">Beskidy</span></div>
                                         <div class="hover-shutter"></div>
                                     </div>
@@ -443,7 +468,7 @@
                                 <h3 class="visually-hidden">Rewitalizacja parków zabytkowych</h3>
                                 <a href="gallery.html?gallery=zabytkowy">
                                     <div class="gallery-tile h-100 w-100">
-                                        <img class="object-fit-cover" src="resources/img/portfolio/ZABYTKOWY/thumbnail.jpg" alt="Zabytkowy pałac z ogrodem i żywopłotami berberysowymi"> 
+                                        <img class="object-fit-cover" src="resources/img/portfolio/ZABYTKOWY/thumbnail.jpg" alt="Zabytkowy pałac z ogrodem i żywopłotami berberysowymi" loading="lazy"> 
                                         <div class="hover-title text-primary fs-4">park zabytkowy <span class="text-secondary">Małopolska</span></div>
                                         <div class="hover-shutter"></div>
                                     </div>
@@ -453,7 +478,7 @@
                                 <h3 class="visually-hidden">Ogród przy dworku zabytkowym</h3>
                                 <a href="gallery.html?gallery=dworek">
                                     <div class="gallery-tile h-100 w-100">
-                                        <img class="object-fit-cover" src="resources/img/portfolio/DWOREK/thumbnail.jpg" alt="Elegancki ogród przy dworku z żywopłotem bukszpanowym i kamiennymi schodami"> 
+                                        <img class="object-fit-cover" src="resources/img/portfolio/DWOREK/thumbnail.jpg" alt="Elegancki ogród przy dworku z żywopłotem bukszpanowym i kamiennymi schodami" loading="lazy"> 
                                         <div class="hover-title text-primary fs-4">ogród przy dworku <span class="text-secondary">okolice Andrychowa</span></div>
                                         <div class="hover-shutter"></div>
                                     </div>
@@ -503,8 +528,9 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-8">
-                                    <div style="background-image: url(resources/img/contactus.jpg); background-repeat: no-repeat; background-size: cover;" class="p-2 p-md-5 h-100" style="min-height: 300px;">
-                                        <div class="h-100 w-100" style="background-color: white"> 
+                                    <div class="contact-bg-container p-2 p-md-5 h-100" style="min-height: 300px; position: relative; overflow: hidden;">
+                                        <img src="resources/img/contactus.jpg" alt="" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+                                        <div class="h-100 w-100" style="background-color: white; position: relative; z-index: 1;"> 
                                             <form id="emailForm" class="h-100 w-100" onsubmit="sendEmail(); return false;">
                                                 <div class="d-flex flex-column py-2 py-md-4 px-2 px-md-4 h-100 gap-2">
                                                     <div class="text-primary" style="font-size: clamp(1rem, 2.2vw, 1.5rem);">Napisz do nas!</div>
@@ -573,45 +599,51 @@
             </div>
         </footer>
     </div>
-        <script>
-            function toggleOfferExpanded(offerIndex){
-                console.log("Toggling offer expanded for index:", offerIndex);
+        <!-- Combined JS bundle (jQuery + Bootstrap + Flickity) - deferred for faster LCP -->
+        <script src="js/bundle.js" defer></script>
+        <script defer>
+            // All jQuery-dependent code wrapped in DOMContentLoaded
+            // (deferred scripts run in order, jQuery will be available)
+            document.addEventListener('DOMContentLoaded', function() {
 
-                var offerCard = $("#offer-card-" + offerIndex);
-                var offerBody = $("#offer-body-" + offerIndex);
-                var offerImageContainer = $("#offer-image-container-" + offerIndex);
-                var button = $("#offer-body-" + offerIndex + " button");
+                // Toggle offer cards
+                window.toggleOfferExpanded = function(offerIndex){
+                    console.log("Toggling offer expanded for index:", offerIndex);
 
-                offerCard.toggleClass("offer-collapsed offer-expanded");
+                    var offerCard = $("#offer-card-" + offerIndex);
+                    var offerBody = $("#offer-body-" + offerIndex);
+                    var offerImageContainer = $("#offer-image-container-" + offerIndex);
+                    var button = $("#offer-body-" + offerIndex + " button");
 
-                offerImageContainer.toggleClass("d-block d-none");
+                    offerCard.toggleClass("offer-collapsed offer-expanded");
 
-                //small screen hide the image
-                offerBody.toggleClass("col-9 col-12");
-                offerBody.toggleClass("body-expanded");
-                
-                // Toggle button text
-                if (offerCard.hasClass("offer-expanded")) {
-                    button.text("Dowiedz się mniej");
-                } else {
-                    button.text("Dowiedz się więcej");
-                }
-            }
-        </script>
-        <script>
-            function throttle(func, delay) {
-                let lastCall = 0;
-                return function (...args) {
-                    const now = new Date().getTime();
-                    if (now - lastCall >= delay) {
-                    lastCall = now;
-                    func.apply(this, args);
+                    offerImageContainer.toggleClass("d-block d-none");
+
+                    //small screen hide the image
+                    offerBody.toggleClass("col-9 col-12");
+                    offerBody.toggleClass("body-expanded");
+                    
+                    // Toggle button text
+                    if (offerCard.hasClass("offer-expanded")) {
+                        button.text("Dowiedz się mniej");
+                    } else {
+                        button.text("Dowiedz się więcej");
                     }
                 };
-            }
-        </script>
-        <script>
-            $(document).ready(function () {
+
+                // Throttle utility function
+                function throttle(func, delay) {
+                    let lastCall = 0;
+                    return function (...args) {
+                        const now = new Date().getTime();
+                        if (now - lastCall >= delay) {
+                        lastCall = now;
+                        func.apply(this, args);
+                        }
+                    };
+                }
+
+                // Logo rotation animation
                 var sectionHeaderLogos = $('.section-header .image-container');
                 var animatingElement = null;
                 
@@ -660,157 +692,152 @@
                 sectionHeaderLogos.each(function(index, element) {
                     observer.observe(element);
                 });
-            });
-        </script>
-        <script>
-            const enableScrollShutter = false
-            const shutterMaxOpacity = 0.7
-            const scrollColorBreakpoint = 300
 
-            if (enableScrollShutter) {
-                $(document).ready(function () {
+                // Scroll shutter effect (disabled)
+                const enableScrollShutter = false
+                const shutterMaxOpacity = 0.7
+                const scrollColorBreakpoint = 300
+
+                if (enableScrollShutter) {
                     $('.background-wrapper').addClass("shutter")
                     $(window).scroll(function () {
                         var distanceScrolled = $(this).scrollTop()
                         var shutterRatio = Math.max(0, (scrollColorBreakpoint - distanceScrolled) / scrollColorBreakpoint)
                         $('.background-wrapper').css('background-color', 'rgba(0,0,0,' + shutterRatio * shutterMaxOpacity + ')');
                     });
-                });
-            }
-        </script>
-        <script>
-            function updateNavbarScrolled() {
-                var distanceScrolled = $(window).scrollTop();
-                if (distanceScrolled > 0) {
-                    $('.navbar').addClass('scrolled');
-                } else {
-                    $('.navbar').removeClass('scrolled');
                 }
-            }
 
-            $(document).ready(function () {
+                // Navbar scroll state
+                function updateNavbarScrolled() {
+                    var distanceScrolled = $(window).scrollTop();
+                    if (distanceScrolled > 0) {
+                        $('.navbar').addClass('scrolled');
+                    } else {
+                        $('.navbar').removeClass('scrolled');
+                    }
+                }
+
                 updateNavbarScrolled(); // Check on page load
                 $(window).scroll(updateNavbarScrolled); // Check on scroll
-            });
-        </script>
-        <script>
-            var initHomepageCarousel = () => {
-                var $homepageCarousel = $('#homepage-carousel').flickity({
-                    imagesLoaded: false,
-                    percentPosition: false,
-                    contain: true,
-                    pageDots: false,
-                    lazyLoad: 0,
-                    on: {
-                        change: function (index) {
-                            console.log('Slide changed to' + index);
 
-                            // Handle the new info bar logic
-                            var allContainers = $homepageCarousel.find('.carousel-cell.image-container');
-                            
-                            // Clear all picked states
-                            allContainers.each(function() {
-                                clearImagePicked(this);
-                            });
-                            
-                            // Set the active slide as picked
-                            var activeContainer = allContainers.eq(index)[0];
-                            if (activeContainer) {
-                                setImagePicked(activeContainer);
-                            }
-                        }
-                    }
-                });
-            }
-            var initJakPowstajeCarousel = () => {
-                var width = document.documentElement.clientWidth
-                if (width >= 768) {
-                    var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
-                        imagesLoaded: true,
+                // Carousel initialization functions
+                var initHomepageCarousel = () => {
+                    var $homepageCarousel = $('#homepage-carousel').flickity({
+                        imagesLoaded: false,
                         percentPosition: false,
+                        setGallerySize: false,
                         contain: true,
-                        pageDots: true,
-                        prevNextButtons: false,
+                        pageDots: false,
+                        lazyLoad: 1,
                         on: {
+                            ready: function() {
+                                // Cache carousel cells once on ready
+                                this.carouselCells = this.element.querySelectorAll('.carousel-cell.image-container');
+                            },
                             change: function (index) {
-                                console.log('Jak Powstaje Slide changed to' + index);
+                                // Use cached cells instead of querying DOM each time
+                                var cells = this.carouselCells;
+                                if (!cells) return;
+                                
+                                // Remove picked from all, add to active
+                                for (var i = 0; i < cells.length; i++) {
+                                    cells[i].classList.remove('picked');
+                                }
+                                if (cells[index]) {
+                                    cells[index].classList.add('picked');
+                                }
                             }
                         }
                     });
-                }
-            }
+                };
 
-            // Initialize homepage carousel on DOMContentLoaded for faster LCP
-            // Don't wait for all resources to load
-            $(document).ready(function() {
-                console.log("DOM ready, initializing homepage carousel immediately");
-                initHomepageCarousel();
-            });
-            
-            // Initialize secondary carousel after full load (it's below the fold)
-            $(window).on('load', function() {
-                console.log("Window loaded, initializing jak-powstaje carousel");
-                initJakPowstajeCarousel();
-            });
-
-
-            var onResize = (event) => {
-                console.log(event);
-                console.log("Window resized, reinitializing carousels if necessary");
-                console.log("Homepage carousel size:", $('#homepage-carousel').width(), $('#homepage-carousel').height());
-                
-                $('#homepage-carousel').flickity('resize');
-                $('#homepage-carousel').flickity('reposition');
-
-                var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
-
-                var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-                if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
-                    $jakPowstajeCarousel.flickity('resize');
-                    $jakPowstajeCarousel.flickity('reposition');
-
-                    if(width < 768) {
-                        console.log("Destroying Jak Powstaje carousel for width:", width);
-                        $jakPowstajeCarousel.flickity('destroy')
-                        $jakPowstajeCarousel.removeClass('flickity-enabled');
-                    }
-                } else {
-
+                var initJakPowstajeCarousel = () => {
+                    var width = document.documentElement.clientWidth
                     if (width >= 768) {
-                        console.log("Re-initializing Jak Powstaje carousel for width:", width);
-                        initJakPowstajeCarousel();
-                    } 
-                }
+                        var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
+                            imagesLoaded: false,
+                            percentPosition: false,
+                            setGallerySize: false,
+                            contain: true,
+                            pageDots: true,
+                            prevNextButtons: false
+                        });
+                    }
+                };
 
-            }
-            
-            $(window).on('orientationchange', onResize);
-            $(window).resize(throttle(onResize, 200)); // Throttle resize events to every 400ms
-        </script>
-        <script>
-            function setImagePicked(container) {
-                if (!container.classList.contains('picked')) {
-                    container.classList.add('picked');
+                // Initialize homepage carousel
+                initHomepageCarousel();
+                
+                // Defer jak-powstaje carousel until user scrolls to it
+                var jakPowstajeInitialized = false;
+                var jakPowstajeObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !jakPowstajeInitialized) {
+                            jakPowstajeInitialized = true;
+                            initJakPowstajeCarousel();
+                            jakPowstajeObserver.disconnect();
+                        }
+                    });
+                }, {
+                    rootMargin: '200px' // Start loading slightly before it comes into view
+                });
+                
+                var jakPowstajeSection = document.getElementById('jak-powstaje-carousel');
+                if (jakPowstajeSection) {
+                    jakPowstajeObserver.observe(jakPowstajeSection);
                 }
-            }
-            
-            function clearImagePicked(container) {
-                if (container.classList.contains('picked')) {
-                    container.classList.remove('picked');
-                }
-            }
-            
-            function toggleImagePicked(container) {
-                if (container.classList.contains('picked')) {
-                    clearImagePicked(container);
-                } else {
-                    setImagePicked(container);
-                }
-            }
-        </script>
-        <script>
-            $(document).ready(function() {
+                
+                // Attach resize handler after initial load
+                $(window).on('load', function() {
+                    var lastWidth = window.innerWidth;
+                    
+                    var onResize = () => {
+                        // Skip if width hasn't actually changed (prevents false triggers)
+                        var currentWidth = window.innerWidth;
+                        if (currentWidth === lastWidth) return;
+                        lastWidth = currentWidth;
+                        
+                        $('#homepage-carousel').flickity('resize');
+
+                        var $jakPowstajeCarousel = $('#jak-powstaje-carousel');
+
+                        if ($jakPowstajeCarousel.hasClass('flickity-enabled')) {
+                            $jakPowstajeCarousel.flickity('resize');
+
+                            if(currentWidth < 768) {
+                                $jakPowstajeCarousel.flickity('destroy')
+                                $jakPowstajeCarousel.removeClass('flickity-enabled');
+                            }
+                        } else if (currentWidth >= 768) {
+                            initJakPowstajeCarousel();
+                        }
+                    };
+                    
+                    $(window).on('orientationchange', onResize);
+                    $(window).resize(throttle(onResize, 400));
+                });
+
+                // Image picked utility functions
+                window.setImagePicked = function(container) {
+                    if (!container.classList.contains('picked')) {
+                        container.classList.add('picked');
+                    }
+                };
+                
+                window.clearImagePicked = function(container) {
+                    if (container.classList.contains('picked')) {
+                        container.classList.remove('picked');
+                    }
+                };
+                
+                window.toggleImagePicked = function(container) {
+                    if (container.classList.contains('picked')) {
+                        clearImagePicked(container);
+                    } else {
+                        setImagePicked(container);
+                    }
+                };
+
                 // Close mobile menu when nav links are clicked (mobile only)
                 $('.navbar-nav .nav-link').on('click', function() {
                     // Check if we're on mobile (navbar-toggler is visible)
@@ -829,16 +856,14 @@
                         }
                     }
                 });
-            });
-        </script>
-        <script>
-            var galleryVisibilityDelay = 4000; // 4 second delay after gallery becomes visible (was 2s)
-            var galleryTitleDisplayDuration = 5000; // 5 seconds to display each title (was 3s)
-            var galleryTitleRotationDelay = 2000; // 2 seconds between title changes (was 1s)
-            
-            var animationTickMilliseconds = 300;
 
-            $(document).ready(function () {
+                // Gallery title animation
+                var galleryVisibilityDelay = 4000; // 4 second delay after gallery becomes visible (was 2s)
+                var galleryTitleDisplayDuration = 5000; // 5 seconds to display each title (was 3s)
+                var galleryTitleRotationDelay = 2000; // 2 seconds between title changes (was 1s)
+                
+                var animationTickMilliseconds = 300;
+
                 var galleryTiles = $('.grid-gallery .gallery-tile');
                 var galleryTitles = $('.grid-gallery .hover-title');
                 var fullyVisibleTitles = new Set(); // Track which titles are fully visible
