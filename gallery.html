@@ -307,13 +307,14 @@
                     <div class="row pt-2 pt-md-4 h-100">
                         <div class="col-12 d-flex flex-column h-100" > 
                             <div class="gallery-text-container text-primary h-100">
-                                <h5 id="name-label" class="fw-bold"></h5>
+                                <h1 id="name-label" class="fw-bold h5"></h1>
                                 <p class="mb-1">
                                     <span id="location-label"></span>,
                                     <span id="date-label" class="text-muted"></span>
                                 </p>
                                 <p id="description-label" class="mb-3 d-none d-sm-inline d-landscape-none"></p>
                                 <p id="short-description-label" class="mb-3 d-inline d-sm-none d-landscape-inline"></p>
+                                <h2 class="visually-hidden description-subtitle"></h2>"
                             </div>
                         </div>
                     </div>
@@ -421,6 +422,7 @@
             document.getElementById('name-label').innerText = gallery.name;
             document.getElementById('location-label').innerText = gallery.location;
             document.getElementById('date-label').innerText = gallery.date;
+            document.getElementById('description-subtitle').innerText = gallery.short-description;
         }
 
         function updateWebsiteTitle(gallery){
