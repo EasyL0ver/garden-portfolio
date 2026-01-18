@@ -422,7 +422,7 @@
             document.getElementById('name-label').innerText = gallery.name;
             document.getElementById('location-label').innerText = gallery.location;
             document.getElementById('date-label').innerText = gallery.date;
-            document.getElementById('description-subtitle').innerText = gallery.short-description;
+            document.querySelector('.description-subtitle').innerText = gallery['short-description'];
         }
 
         function updateWebsiteTitle(gallery){
