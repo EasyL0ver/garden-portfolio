@@ -46,10 +46,31 @@
     <!-- #endregion -->
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
     <!-- Preload hero image for faster LCP -->
     <link rel="preload" as="image" href="resources/img/home/PICT0228 (1).webp" fetchpriority="high">
     <!-- Combined CSS bundle (Bootstrap + Flickity + fonts + custom styles) -->
     <link rel="stylesheet" href="styles/bundle.css">
+    <!-- JSON-LD Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "ogrodnik projektuje",
+        "description": "Projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.",
+        "url": "https://www.ogrodnikprojektuje.pl",
+        "image": "https://ogrodnikprojektuje.pl/resources/img/home/PICT0228 (1).jpg",
+        "telephone": "+48663151163",
+        "email": "katarzynakudlacik@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "PL",
+            "addressRegion": "Małopolska"
+        },
+        "areaServed": "Polska",
+        "knowsAbout": ["projektowanie ogrodów", "aranżacja zieleni", "rewitalizacja parków", "nasadzenia zastępcze", "zieleń miejska"]
+    }
+    </script>
     <!-- Critical CSS for hero image before JS loads -->
     <style>
         /* Fallback display for hero carousel before Flickity initializes */
@@ -78,14 +99,15 @@
 </head>
 
 <body class="main-font h-100 p-0 m-0">
+    <a href="#uslugi" class="visually-hidden visually-hidden-focusable">Przejdź do treści</a>
     <div class="background-wrapper">
-        <nav class="navbar navbar-expand-lg fixed-top nav-shadow">
+        <nav class="navbar navbar-expand-lg fixed-top nav-shadow" aria-label="Nawigacja główna">
             <div class="navbar-border h-100 w-100 ms-2 me-2 ms-md-3 me-md-3 ps-md-5 pe-md-5">
-                <div class="navbar-brand h-100 d-flex" href="#">
-                    <a href="#" class="d-flex h-100 align-items-center text-decoration-none">
+                <div class="navbar-brand h-100 d-flex">
+                    <a href="/" class="d-flex h-100 align-items-center text-decoration-none">
                         <img class="h-100 logo" src="resources/img/logo/drawingpainted.svg" alt="Logo ogrodnik projektuje">
                         <div class="h-100">
-                            <h class="text-primary logo-font logo-text d-block">ogrodnik projektuje</h>
+                            <span class="text-primary logo-font logo-text d-block">ogrodnik projektuje</span>
                         </div>
                     </a>
                 </div>
@@ -96,7 +118,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-primary" href="#">home</a>
+                            <a class="nav-link text-primary" href="/">home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="#uslugi">oferta</a>
@@ -127,7 +149,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/1_compressed.webp" alt="Zieleń miejska - Kraków, rok 2017" />
+                                <img src="resources/img/home/1_compressed.webp" alt="Zieleń miejska - Kraków, rok 2017" fetchpriority="low" decoding="async" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">zieleń miejska - Kraków, rok 2017</div>
@@ -180,7 +202,7 @@
             <a class="anchor" id="uslugi"></a>
             <div class="row">
                 <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 background-neutral">
-                    <section name="uslugi" class="offer-section container no-gutters background-neutral">
+                    <section aria-label="Oferta usług" class="offer-section container no-gutters background-neutral">
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
                                 <img src="resources/img/logo/drawing.svg" alt="Logo ogrodnikprojektuje.pl">
@@ -241,10 +263,10 @@
                                         <div class="card-text-group">
                                             <h3 class="card-title h5">poprawa bioróżnorodności</h3>
                                             <p class="card-text">
-                                                zieleń spełniająca wymogi certyfikacji <a href="https://pl.wikipedia.org/wiki/BREEAM">BREEAM</a>
+                                                zieleń spełniająca wymogi certyfikacji <a href="https://pl.wikipedia.org/wiki/BREEAM" target="_blank" rel="noopener noreferrer">BREEAM</a>
                                             </p>
                                             <p class="card-text optional">
-                                                Nasza firma specjalizuje się w projektowaniu ogrodów, które spełniają najwyższe standardy zrównoważonego rozwoju i ekologii, w tym prestiżową certyfikację <a href="https://pl.wikipedia.org/wiki/BREEAM">BREEAM</a>.
+                                                Nasza firma specjalizuje się w projektowaniu ogrodów, które spełniają najwyższe standardy zrównoważonego rozwoju i ekologii, w tym prestiżową certyfikację <a href="https://pl.wikipedia.org/wiki/BREEAM" target="_blank" rel="noopener noreferrer">BREEAM</a>.
                                             </p>
                                         </div>
                                         <div class="btn-group mt-3">
@@ -311,7 +333,7 @@
                     </section>
 
 
-                    <section name="jak-powstaje" class="container background-neutral">
+                    <section aria-label="Jak powstaje ogród" class="container background-neutral">
                         <a class="anchor" id="jak-powstaje"></a>
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
@@ -402,7 +424,7 @@
                     </section>
 
 
-                    <section name="gallery-collage" class="container background-neutral">
+                    <section aria-label="Portfolio realizacji" class="container background-neutral">
                         <a class="anchor" id="portfolio"></a>
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
@@ -488,7 +510,7 @@
                         </div>
                     </section>
 
-                    <section name="contact" class="background-neutral container">
+                    <section aria-label="Kontakt" class="background-neutral container">
                         <a class="anchor" id="kontakt"></a>
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
@@ -588,15 +610,17 @@
         </div>
         
         <!-- Footer with full width and navbar styling -->
-        <footer class="footer-navbar py-4">
+        <footer class="footer-navbar py-4" role="contentinfo">
             <div class="container">
+                <nav aria-label="Nawigacja stopki">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-primary">home</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link px-2 text-primary">home</a></li>
                     <li class="nav-item"><a href="#uslugi" class="nav-link px-2 text-primary">oferta</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav-link px-2 text-primary">portfolio</a></li>
                     <li class="nav-item"><a href="#kontakt" class="nav-link px-2 text-primary">kontakt</a></li>
                 </ul>
-                <p class="text-center text-primary mb-0">ogrodnikprojektuje.pl</p>
+                </nav>
+                <p class="text-center text-primary mb-0">© 2025 ogrodnikprojektuje.pl. Wszelkie prawa zastrzeżone.</p>
             </div>
         </footer>
     </div>
@@ -729,7 +753,7 @@
                         setGallerySize: false,
                         contain: true,
                         pageDots: false,
-                        lazyLoad: 1,
+                        lazyLoad: 2,
                         on: {
                             ready: function() {
                                 // Cache carousel cells once on ready
