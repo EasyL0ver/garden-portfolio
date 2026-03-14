@@ -71,6 +71,8 @@
         "knowsAbout": ["projektowanie ogrodów", "aranżacja zieleni", "rewitalizacja parków", "nasadzenia zastępcze", "zieleń miejska"]
     }
     </script>
+    <!-- Preload primary font to prevent layout shift from font swap -->
+    <link rel="preload" href="fonts/quicksand-400.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Critical CSS for hero image before JS loads -->
     <style>
         /* Fallback display for hero carousel before Flickity initializes */
@@ -140,7 +142,7 @@
                     <div id="homepage-carousel" class="h-100">
                         <div class="carousel-cell mr-4 image-container picked" data-title="Tytuł zdjęcia">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/PICT0228 (1).webp" alt="Rezydencja na wsi - okolice Bielska-Białej, rok 2006" fetchpriority="high" loading="eager" decoding="async" />
+                                <img src="resources/img/home/PICT0228 (1).webp" alt="Rezydencja na wsi - okolice Bielska-Białej, rok 2006" width="1200" height="900" fetchpriority="high" loading="eager" decoding="async" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rezydencja na wsi - okolice Bielska-Białej, rok 2006</div>
@@ -149,7 +151,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/1_compressed.webp" alt="Zieleń miejska - Kraków, rok 2017" fetchpriority="low" decoding="async" />
+                                <img src="resources/img/home/1_compressed.webp" alt="Zieleń miejska - Kraków, rok 2017" width="1512" height="2016" fetchpriority="low" decoding="async" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">zieleń miejska - Kraków, rok 2017</div>
@@ -158,7 +160,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/PICT0293 (1).jpg" alt="Rabata bylinowa - okolice Andrychowa, rok 2008" />
+                                <img data-flickity-lazyload="resources/img/home/PICT0293 (1).jpg" alt="Rabata bylinowa - okolice Andrychowa, rok 2008" width="1200" height="1600" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rabata bylinowa - okolice Andrychowa, rok 2008</div>
@@ -167,7 +169,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/hom 4.jpg" alt="Rabaty wyniesione na patio - Kraków, 2017" />
+                                <img data-flickity-lazyload="resources/img/home/hom 4.jpg" alt="Rabaty wyniesione na patio - Kraków, 2017" width="3024" height="4032" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rabaty wyniesione na patio - Kraków, 2017</div>
@@ -176,7 +178,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/home 5.jpg" alt="Zabytkowy park przypałacowy - Małopolska, 2003" />
+                                <img data-flickity-lazyload="resources/img/home/home 5.jpg" alt="Zabytkowy park przypałacowy - Małopolska, 2003" width="2272" height="1712" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">zabytkowy park przypałacowy - Małopolska, 2003</div>
@@ -185,7 +187,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/home 6.jpg" alt="Partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015" />
+                                <img data-flickity-lazyload="resources/img/home/home 6.jpg" alt="Partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015" width="3648" height="2736" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015</div>
@@ -748,7 +750,7 @@
                 // Carousel initialization functions
                 var initHomepageCarousel = () => {
                     var $homepageCarousel = $('#homepage-carousel').flickity({
-                        imagesLoaded: false,
+                        imagesLoaded: true,
                         percentPosition: false,
                         setGallerySize: false,
                         contain: true,
@@ -780,7 +782,7 @@
                     var width = document.documentElement.clientWidth
                     if (width >= 768) {
                         var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
-                            imagesLoaded: false,
+                            imagesLoaded: true,
                             percentPosition: false,
                             setGallerySize: false,
                             contain: true,
