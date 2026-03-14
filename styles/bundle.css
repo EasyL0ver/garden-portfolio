@@ -10,8 +10,9 @@
     font-family: 'Rouge Script';
     font-style: normal;
     font-weight: 400;
-    font-display: block;
-    src: url(../fonts/rouge-script.ttf) format('truetype');
+    font-display: swap;
+    src: url(../fonts/rouge-script.woff2) format('woff2'),
+         url(../fonts/rouge-script.ttf) format('truetype');
 }
 
 @font-face {
@@ -19,7 +20,8 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(../fonts/quicksand-300.ttf) format('truetype');
+    src: url(../fonts/quicksand-300.woff2) format('woff2'),
+         url(../fonts/quicksand-300.ttf) format('truetype');
 }
 
 @font-face {
@@ -27,7 +29,8 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(../fonts/quicksand-400.ttf) format('truetype');
+    src: url(../fonts/quicksand-400.woff2) format('woff2'),
+         url(../fonts/quicksand-400.ttf) format('truetype');
 }
 
 @font-face {
@@ -35,7 +38,8 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(../fonts/quicksand-500.ttf) format('truetype');
+    src: url(../fonts/quicksand-500.woff2) format('woff2'),
+         url(../fonts/quicksand-500.ttf) format('truetype');
 }
 
 @font-face {
@@ -43,7 +47,8 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(../fonts/quicksand-600.ttf) format('truetype');
+    src: url(../fonts/quicksand-600.woff2) format('woff2'),
+         url(../fonts/quicksand-600.ttf) format('truetype');
 }
 
 @font-face {
@@ -51,7 +56,8 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(../fonts/quicksand-700.ttf) format('truetype');
+    src: url(../fonts/quicksand-700.woff2) format('woff2'),
+         url(../fonts/quicksand-700.ttf) format('truetype');
 }
 
 /* Bootstrap 5.3.0-alpha1 */
