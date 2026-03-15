@@ -150,4 +150,22 @@ index_page = render(
 )
 (OUT_DIR / "index.html").write_text(index_page, encoding="utf-8")
 print(f"  OK index.html")
+# ── Update sitemap (blog posts only, static URLs untouched) ───────────────────
+SITEMAP = ROOT / "sitemap.xml"
+sitemap_text = SITEMAP.read_text(encoding="utf-8")
+
+# Strip any previously generated blog post entries
+sitemap_text = re.sub(r'\s*<url>\s*<loc>[^<]*/blog/posts/[^<]*</loc>.*?</url>', '', sitemap_text, flags=re.DOTALL)
+
+# Build new blog post entries
+blog_urls = ""
+for post in posts:
+    loc = f"https://www.ogrodnikprojektuje.pl/blog/posts/{post['slug']}/"
+    lastmod = str(post["date"]) if post["date"] else datetime.now().strftime("%Y-%m-%d")
+    blog_urls += f"\n  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n    <priority>0.7</priority>\n  </url>"
+
+sitemap_text = sitemap_text.replace("</urlset>", f"{blog_urls}\n</urlset>")
+SITEMAP.write_text(sitemap_text, encoding="utf-8")
+print(f"  OK sitemap.xml (+{len(posts)} blog post URLs)")
+
 print(f"\nDone - {len(posts)} post(s) built to blog/")
