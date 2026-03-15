@@ -62,3 +62,5 @@ Podstawę tuneliku stanowią malowane nadstawki do palet – dostępne w [CMC w 
 Pierwsze korzenie pojawiają się po **4–6 tygodniach**. Sadzonki są gotowe do sadzenia, gdy widać, że roślina wyraźnie ruszyła do wzrostu i korzenie trzymają bryłkę ziemi w doniczce. Przed posadzeniem na stałe warto zahartować je przez kilka dni wystawiając poza tunelik.
 
 Z jednego starego krzaka można uzyskać **20–30 sadzonek** – wystarczająco dużo na całą obwódkę rabaty.
+
+Jeśli planujesz nasadzenia lawendy jako część większego projektu ogrodu – chętnie pomożemy dobrać odmiany i rozplanować kompozycję. [Pierwsze spotkanie jest bezpłatne.](/)
