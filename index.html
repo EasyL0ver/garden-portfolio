@@ -2,9 +2,9 @@
 <html lang="pl" class="h-100 p-0 m-0">
 
 <head>
-    <title>ogrodnikprojektuje.pl - projekty ogrodów, aranżacja zieleni</title>
+    <title>Projektowanie Ogrodów – Małopolska i cała Polska | ogrodnikprojektuje.pl</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="description" content="Projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.">
+    <meta name="description" content="Profesjonalne projekty ogrodów z ponad 20-letnim doświadczeniem. Certyfikowany inspektor terenów zieleni. Obsługujemy Małopolskę i całą Polskę – darmowa wycena bez zobowiązań!">
     <link rel="canonical" href="https://www.ogrodnikprojektuje.pl" />
     <!-- Google tag (gtag.js) - deferred until browser is idle -->
     <script>
@@ -31,8 +31,8 @@
     <!-- #region Social Media Meta Tags -->
     <!-- Open Graph / Facebook meta tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ogrodnikprojektuje.pl - projekty ogrodów, aranżacja zieleni">
-    <meta property="og:description" content="Projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.">
+    <meta property="og:title" content="Projektowanie Ogrodów – Małopolska i cała Polska | ogrodnikprojektuje.pl">
+    <meta property="og:description" content="Profesjonalne projekty ogrodów z ponad 20-letnim doświadczeniem. Certyfikowany inspektor terenów zieleni. Obsługujemy Małopolskę i całą Polskę – darmowa wycena bez zobowiązań!">
     <meta property="og:image" content="https://ogrodnikprojektuje.pl/resources/img/home/PICT0228 (1).jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -40,8 +40,8 @@
     
     <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ogrodnik projektuje - projekty ogrodów">
-    <meta name="twitter:description" content="Projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.">
+    <meta name="twitter:title" content="Projektowanie Ogrodów na terenie całej Polski | ogrodnikprojektuje.pl">
+    <meta name="twitter:description" content="Profesjonalne projekty ogrodów z ponad 20-letnim doświadczeniem. Certyfikowany inspektor terenów zieleni. Darmowa wycena bez zobowiązań!">
     <meta name="twitter:image" content="https://ogrodnikprojektuje.pl/resources/img/home/PICT0228 (1).jpg">
     <!-- #endregion -->
     
@@ -57,22 +57,122 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "ogrodnik projektuje",
-        "description": "Projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.",
+        "description": "Profesjonalne projekty ogrodów z ponad 20-letnim doświadczeniem. Certyfikowany inspektor terenów zieleni. Obsługujemy Małopolskę i całą Polskę.",
         "url": "https://www.ogrodnikprojektuje.pl",
         "image": "https://ogrodnikprojektuje.pl/resources/img/home/PICT0228 (1).jpg",
         "telephone": "+48663151163",
         "email": "katarzynakudlacik@gmail.com",
+        "foundingDate": "2003",
+        "priceRange": "$$",
         "address": {
             "@type": "PostalAddress",
             "addressCountry": "PL",
             "addressRegion": "Małopolska"
         },
-        "areaServed": "Polska",
-        "knowsAbout": ["projektowanie ogrodów", "aranżacja zieleni", "rewitalizacja parków", "nasadzenia zastępcze", "zieleń miejska"]
+        "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Małopolska" },
+            { "@type": "AdministrativeArea", "name": "Polska" }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Usługi projektowania ogrodów",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Projekt ogrodu" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nadzór realizacji zieleni" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Projekty rewitalizacji parków" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nasadzenia zastępcze i zieleni miejskiej" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PZT - projekty zagospodarowania terenu" } }
+            ]
+        },
+        "knowsAbout": ["projektowanie ogrodów", "aranżacja zieleni", "rewitalizacja parków zabytkowych", "nasadzenia zastępcze", "zieleń miejska", "certyfikacja BREEAM", "zielone dachy", "nasadzenia wertykalne", "projekty zagospodarowania terenu"]
     }
     </script>
     <!-- Preload primary font to prevent layout shift from font swap -->
     <link rel="preload" href="fonts/quicksand-400.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Hero CTA overlay + navbar CTA styles -->
+    <style>
+        .landing-page {
+            position: relative;
+        }
+        .hero-cta-overlay {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            display: flex;
+            justify-content: flex-start;
+            padding: 0 3vw;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+        .hero-cta-overlay.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-cta-box {
+            background: rgba(245, 255, 243, 0.92);
+            padding: 16px 22px;
+            max-width: 420px;
+            pointer-events: all;
+            border-left: 4px solid rgb(17, 77, 7);
+            position: relative;
+        }
+        .hero-cta-close {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            background: none;
+            border: none;
+            color: rgb(17, 77, 7);
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0 2px;
+            opacity: 0.6;
+        }
+        .hero-cta-close:hover {
+            opacity: 1;
+        }
+        .hero-tagline {
+            font-size: clamp(0.85rem, 2vw, 1.15rem);
+            color: rgb(17, 77, 7);
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.45;
+        }
+        .hero-cta-btn {
+            display: inline-block;
+            background: rgb(17, 77, 7);
+            color: white !important;
+            padding: 9px 22px;
+            text-decoration: none !important;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: background 0.2s ease;
+        }
+        .hero-cta-btn:hover {
+            background: rgb(10, 50, 4);
+            color: white !important;
+        }
+        .nav-cta-btn {
+            background: rgb(17, 77, 7) !important;
+            color: white !important;
+            border: none !important;
+            padding: 5px 14px !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-left: 4px;
+            letter-spacing: 0.2px;
+        }
+        .nav-cta-btn:hover {
+            background: rgb(10, 50, 4) !important;
+            color: white !important;
+        }
+    </style>
     <!-- Critical CSS for hero image before JS loads -->
     <style>
         /* Fallback display for hero carousel before Flickity initializes */
@@ -133,8 +233,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="#portfolio">portfolio</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item d-lg-none">
                             <a class="nav-link text-primary" href="#kontakt">kontakt</a>
+                        </li>
+                        <li class="nav-item ms-lg-2 d-none d-lg-flex align-items-center">
+                            <a class="btn btn-sm nav-cta-btn" href="#kontakt">Darmowa wycena →</a>
                         </li>
                     </ul>
                 </div>
@@ -204,6 +307,13 @@
                     </div>
                 </div>
             </div>
+            <div class="hero-cta-overlay d-none d-md-flex">
+                <div class="hero-cta-box">
+                    <button class="hero-cta-close" aria-label="Zamknij" onclick="this.closest('.hero-cta-overlay').classList.remove('visible'); this.closest('.hero-cta-overlay').dataset.dismissed='true';">✕</button>
+                    <p class="hero-tagline">Twój ogród marzeń –<br>od projektu po realizację.<br><span style="font-size:0.8em; font-weight:400;">Ponad 20 lat doświadczenia · Cała Polska</span></p>
+                    <a href="#kontakt" class="hero-cta-btn">Zamów darmową wycenę →</a>
+                </div>
+            </div>
         </div>
 
 
@@ -219,7 +329,7 @@
                             <div>
                                 <h2 class="jumbotron-heading text-primary">oferta</h2>
                                 <hr class="my-4 spacing">
-                                <p class="lead text-muted">poznaj naszą ofertę – projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.</p>
+                                <p class="lead text-muted">ponad 20 lat doświadczenia – projektujemy, doradzamy i realizujemy ogrody marzeń dla klientów indywidualnych i firm w całej Polsce. <strong>Darmowa wycena!</strong></p>
                             </div>
                         </div>
                         <div class="row text-primary">
@@ -257,7 +367,7 @@
                                             <p class="card-text">do samodzielnego wykonania na terenie całego kraju</p>
                                         </div>
                                         <div class="btn-group mt-3">
-                                            <a class="btn btn-sm btn-outline-primary" type="button" href="#jak-powstaje">Zaprojektuj z nami!</a>
+                                            <a class="btn btn-sm btn-outline-primary" type="button" href="#jak-powstaje">Zaprojektuj z nami →</a>
                                         </div>
                                     </div>
                                 </div>
@@ -369,8 +479,10 @@
                                         <h3 class="visually-hidden">Indiwidualny projekt i darmowa wycena</h3>
                                         <div class="text-primary p-3 p-md-5">
                                             Nasze projekty są unikalne i tworzone tak aby spełnić Twoje indywidualne oczekiwania. <br>
-                                            Podczas krótkiej rozmowy telefonicznej lub korespondencji mailowej z projektantem wspólnie określimy twoje potrzeby. <br> <br>
-                                            <a href="#kontakt">Skontaktuj się z nami</a> i otrzymaj darmową wycenę 
+                                            Podczas krótkiej rozmowy telefonicznej lub korespondencji mailowej z projektantem wspólnie określimy twoje potrzeby.
+                                            <div class="mt-3">
+                                                <a href="#kontakt" class="btn btn-sm btn-outline-primary">Skontaktuj się i otrzymaj darmową wycenę →</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -445,7 +557,7 @@
                                 <p class="lead text-muted">zainspiruj się naszymi realizacjami – prezentujemy ogrody stworzone z pasją i dbałością o każdy detal.</p>
                             </div>
                         </div>
-                        <div class="grid-gallery collage-1 mb-4">
+                        <div class="grid-gallery collage-1 mb-3">
                             <div class="collage-element element-1 vertical" >
                                 <h3 class="visually-hidden">Skalniak - ogród skalny</h3>
                                 <a href="gallery.html?gallery=skalny">
@@ -517,6 +629,7 @@
                                 </a>
                             </div>
                         </div>
+
                     </section>
 
                     <section aria-label="Kontakt" class="background-neutral container">
@@ -528,7 +641,7 @@
                             <div>
                                 <h2 class="jumbotron-heading text-primary">kontakt</h2>
                                 <hr class="my-4 spacing">
-                                <p class="lead text-muted">Masz pytania lub chcesz współpracować? Skontaktuj się z nami, a razem stworzymy ogród będący Twoją dumą i miejscem relaksu.</p>
+                                <p class="lead text-muted">Masz pytania lub chcesz współpracować? Skontaktuj się z nami – <strong>wycena jest bezpłatna i niezobowiązująca.</strong> Razem stworzymy ogród będący Twoją dumą i miejscem relaksu.</p>
                             </div>
                         </div>
                         <h3 class="visually-hidden">Formularz kontaktowy i dane kontaktowe ogrodnikprojektuje.pl</h3>
@@ -565,7 +678,7 @@
                                         <div class="h-100 w-100" style="background-color: white; position: relative; z-index: 1;"> 
                                             <form id="emailForm" class="h-100 w-100" onsubmit="sendEmail(); return false;">
                                                 <div class="d-flex flex-column py-2 py-md-4 px-2 px-md-4 h-100 gap-2">
-                                                    <div class="text-primary" style="font-size: clamp(1rem, 2.2vw, 1.5rem);">Napisz do nas!</div>
+                                                    <div class="text-primary" style="font-size: clamp(1rem, 2.2vw, 1.5rem); font-weight: 600;">Napisz do nas – wycena gratis!</div>
                                                     <div class="form-group">
                                                         <label for="email" class="text-primary">Twój email</label>
                                                         <input type="email" id="email" name="email" class="form-control" placeholder="Wpisz swój email" required>
@@ -574,7 +687,7 @@
                                                         <label for="message" class="text-primary">Wiadomość</label>
                                                         <textarea id="message" name="message" class="form-control flex-grow-1" placeholder="Wpisz swoją wiadomość" required style="resize: none; min-height: 120px;"></textarea>
                                                     </div>
-                                                    <button type="submit" class="btn btn-sm btn-outline-secondary" style="width: 100%; max-width: 200px;">Prześlij</button>
+                                                    <button type="submit" class="btn btn-outline-primary" style="width: 100%; max-width: 300px; font-weight: 600; padding: 9px 0;">Wyślij wiadomość →</button>
                                                     <div id="loader" style="display:none;">Wysyłanie...</div>
                                                     <div id="successMsg" style="display:none;" class="text-success mt-2">Wiadomość została wysłana!</div>
                                                     <div id="errorMsg" style="display:none;" class="text-danger mt-2">Wystąpił błąd podczas wysyłania wiadomości.</div>
@@ -629,7 +742,12 @@
                     <li class="nav-item"><a href="#kontakt" class="nav-link px-2 text-primary">kontakt</a></li>
                 </ul>
                 </nav>
-                <p class="text-center text-primary mb-0">© 2025 ogrodnikprojektuje.pl. Wszelkie prawa zastrzeżone.</p>
+                <p class="text-center text-primary mb-1">© 2026 ogrodnikprojektuje.pl. Wszelkie prawa zastrzeżone.</p>
+                <p class="text-center mb-0" style="font-size: 0.85rem;">
+                    <a href="tel:+48663151163" class="text-primary text-decoration-none">+48 663 151 163</a>
+                    &nbsp;·&nbsp;
+                    <a href="mailto:katarzynakudlacik@gmail.com" class="text-primary text-decoration-none">katarzynakudlacik@gmail.com</a>
+                </p>
             </div>
         </footer>
     </div>
@@ -676,6 +794,7 @@
                         }
                     };
                 }
+
 
                 // Logo rotation animation
                 var sectionHeaderLogos = $('.section-header .image-container');
@@ -772,13 +891,19 @@
                                 // Use cached cells instead of querying DOM each time
                                 var cells = this.carouselCells;
                                 if (!cells) return;
-                                
+
                                 // Remove picked from all, add to active
                                 for (var i = 0; i < cells.length; i++) {
                                     cells[i].classList.remove('picked');
                                 }
                                 if (cells[index]) {
                                     cells[index].classList.add('picked');
+                                }
+
+                                // Show hero CTA after user slides at least once (unless dismissed)
+                                var heroCta = document.querySelector('.hero-cta-overlay');
+                                if (heroCta && index > 0 && heroCta.dataset.dismissed !== 'true') {
+                                    heroCta.classList.add('visible');
                                 }
                             }
                         }
