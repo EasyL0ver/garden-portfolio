@@ -50,6 +50,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background: #fff !important;
         }
         .blog-content {
             margin-top: var(--navbar-height);
@@ -63,13 +64,30 @@
             .blog-container { padding: 1.25rem 1rem; }
         }
         .blog-hero {
+            position: relative;
             text-align: center;
-            padding: 2rem 0 2.5rem;
-            border-bottom: 1px solid var(--separator-color);
-            margin-bottom: 2rem;
+            padding: 4rem 2rem;
+            margin: -2rem -2.5rem 2.5rem;
+            background-color: #2c3a27;
+            border-radius: 4px 4px 0 0;
+            overflow: hidden;
         }
-        .blog-hero h1 { font-size: 2.5rem; font-weight: 300; margin: 0 0 0.5rem; }
-        .blog-hero p { color: var(--bs-secondary); margin: 0; }
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('/resources/img/floral-contour-rotated-green-filter.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+        }
+        .blog-hero h1, .blog-hero p { position: relative; z-index: 1; }
+        .blog-hero h1 { font-size: 3rem; font-weight: 300; letter-spacing: 0.08em; margin: 0 0 0.6rem; color: #fff; text-transform: lowercase; }
+        .blog-hero p { color: rgba(255,255,255,0.75); margin: 0; font-style: italic; font-size: 1.05rem; }
+        @media (max-width: 600px) {
+            .blog-hero { margin: -1.25rem -1rem 2rem; padding: 3rem 1rem; }
+            .blog-hero h1 { font-size: 2.2rem; }
+        }
         .post-list { display: flex; flex-direction: column; gap: 2rem; }
         .post-card { border-left: 3px solid var(--separator-color); padding-left: 1.25rem; }
         .post-meta { font-size: 0.8rem; color: var(--bs-secondary); margin-bottom: 0.3rem; }
