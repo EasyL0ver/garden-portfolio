@@ -1,8 +1,7 @@
 ---
-title: "Jak wybrać rośliny do ogrodu – od czego zacząć?"
+title: Jak wybrać rośliny do ogrodu – od czego zacząć?
 date: 2026-03-15
-summary: "Wybór roślin to jedna z najtrudniejszych decyzji przy projektowaniu ogrodu. Podpowiadamy, na co zwrócić uwagę, żeby uniknąć najczęstszych błędów."
-tags: ["porady", "projektowanie", "rośliny"]
+summary: Wybór roślin to jedna z najtrudniejszych decyzji przy projektowaniu ogrodu. Podpowiadamy, na co zwrócić uwagę, żeby uniknąć najczęstszych błędów.
 ---
 
 Wybór roślin to moment, w którym wielu właścicieli ogrodów popełnia największe błędy. Kierując się wyłącznie estetyką w sklepie ogrodniczym, tracimy z oczu to, co naprawdę decyduje o sukcesie nasadzeń – warunki panujące w konkretnym miejscu.
@@ -16,7 +15,7 @@ Zanim sięgniesz po pierwszą sadzonkę, odpowiedz sobie na kilka pytań:
 - **Czy teren jest narażony na wiatr?** Szczególnie ważne przy ogrodach na wzniesieniach i w Beskidach.
 - **Jakie są warunki wodne?** Czy w pewnych miejscach stoi woda po deszczu?
 
-Dopiero znając odpowiedzi na te pytania możemy dobrać rośliny, które faktycznie będą się w danym miejscu dobrze czuły – a nie tylko przeżywały.
+Dopiero znając odpowiedzi na te pytania możemy dobrać rośliny, które faktycznie będą się w danym miejscu dobrze czuły.
 
 ## Dopasuj roślinę do miejsca, nie odwrotnie
 
@@ -28,13 +27,13 @@ Zamiast tego warto patrzeć na ogród jak na zbiór mikrosiedlisk – słoneczne
 
 Ogród powinien wyglądać dobrze przez cały rok, nie tylko w czerwcu. Planując nasadzenia, warto zadbać o:
 
-- **Wiosenne przebudzenie** – żonkile, cebulice, forsycje
-- **Letni rozkwit** – byliny, róże, trawy ozdobne
-- **Jesienną barwę** – derenie, euonymusy, jeżyny ozdobne
-- **Zimową strukturę** – iglaki, wiciokrzewy, suchostany traw
+- **Wiosnę** – żonkile, cebulice, forsycje
+- **Lato** – byliny, róże, trawy ozdobne
+- **Jesień** – derenie, euonymusy, jeżyny ozdobne
+- **Zimę** – iglaki, wiciokrzewy, suchostany traw
 
 ## Kiedy warto skonsultować się z projektantem?
 
-Jeśli masz większą działkę, planujesz kompleksowe nasadzenia lub chcesz mieć pewność, że inwestycja przetrwa lata – konsultacja z projektantem ogrodu się opłaca. Dobry projekt uwzględnia nie tylko estetykę, ale też dynamikę wzrostu roślin, ich wzajemne oddziaływanie i koszty pielęgnacji.
+Jeśli masz większą działkę, planujesz kompleksowe nasadzenia lub chcesz mieć pewność, że inwestycja przetrwa lata – konsultacja z projektantem ogrodu się opłaca.
 
 [Skontaktuj się z nami](/) i opowiedz o swoim ogrodzie – pierwsze spotkanie jest bezpłatne.

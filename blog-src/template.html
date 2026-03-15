@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | ogrodnik projektuje{{ end }}</title>
-    <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
-    <link rel="canonical" href="{{ .Permalink }}">
+    <title>{{PAGE_TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <link rel="canonical" href="https://ogrodnikprojektuje.pl{{CANONICAL}}">
     <link rel="icon" href="/resources/img/logo/drawingpainted.svg">
+    <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="/blog/blog.css">
 </head>
 <body>
@@ -27,7 +28,7 @@
     </nav>
 
     <main class="blog-main">
-        {{ block "main" . }}{{ end }}
+        {{BODY}}
     </main>
 
     <footer class="blog-footer">
