@@ -38,12 +38,21 @@ def parse_frontmatter(text):
             meta[key.strip()] = val.strip()
     return meta, parts[2].strip()
 
+GRID_WRAP = """<div class="container main-content">
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 background-neutral py-4">
+            {body}
+        </div>
+    </div>
+</div>"""
+
 def render(page_title, meta_desc, canonical, body):
+    wrapped = GRID_WRAP.format(body=body)
     return (TEMPLATE
         .replace("{{PAGE_TITLE}}", page_title)
         .replace("{{META_DESCRIPTION}}", meta_desc)
         .replace("{{CANONICAL}}", canonical)
-        .replace("{{BODY}}", body))
+        .replace("{{BODY}}", wrapped))
 
 def slugify(title):
     s = title.lower()
@@ -78,9 +87,6 @@ posts.sort(key=lambda p: p["date"], reverse=True)
 # ── Output dir ────────────────────────────────────────────────────────────────
 OUT_DIR.mkdir(exist_ok=True)
 (OUT_DIR / "posts").mkdir(exist_ok=True)
-
-# ── Copy CSS ──────────────────────────────────────────────────────────────────
-shutil.copy(SRC / "blog.css", OUT_DIR / "blog.css")
 
 # ── Generate individual post pages ───────────────────────────────────────────
 for post in posts:

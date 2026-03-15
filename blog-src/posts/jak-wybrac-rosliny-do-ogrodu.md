@@ -4,6 +4,8 @@ date: 2026-03-15
 summary: Wybór roślin to jedna z najtrudniejszych decyzji przy projektowaniu ogrodu. Podpowiadamy, na co zwrócić uwagę, żeby uniknąć najczęstszych błędów.
 ---
 
+![Błękitne hortensje ogrodowe w pełnym rozkwicie](/resources/img/offer/PICT0038.webp)
+
 Wybór roślin to moment, w którym wielu właścicieli ogrodów popełnia największe błędy. Kierując się wyłącznie estetyką w sklepie ogrodniczym, tracimy z oczu to, co naprawdę decyduje o sukcesie nasadzeń – warunki panujące w konkretnym miejscu.
 
 ## Najpierw poznaj swój ogród

@@ -1,0 +1,8 @@
+{
+    "routes": [
+        {
+            "route": "/blog-src/*",
+            "statusCode": 404
+        }
+    ]
+}
