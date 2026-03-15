@@ -76,11 +76,16 @@
     <!-- Critical CSS for hero image before JS loads -->
     <style>
         /* Fallback display for hero carousel before Flickity initializes */
-        #homepage-carousel:not(.flickity-enabled) {
-            display: flex;
+        #homepage-carousel:not(.flickity-enabled) .flickity-viewport {
+            position: relative;
             width: 100%;
             height: 100%;
             overflow: hidden;
+        }
+        #homepage-carousel:not(.flickity-enabled) .flickity-slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
         }
         #homepage-carousel:not(.flickity-enabled) .carousel-cell {
             flex: 0 0 auto;
@@ -140,6 +145,7 @@
             <div class="row h-100">
                 <div class="col-sm-12 col-md-12 h-100 carousel-container home-background-color">
                     <div id="homepage-carousel" class="h-100">
+                        <div class="flickity-viewport" style="touch-action: pan-y; height: 100%;"><div class="flickity-slider">
                         <div class="carousel-cell mr-4 image-container picked" data-title="Tytuł zdjęcia">
                             <div class="image-wrapper">
                                 <img src="resources/img/home/PICT0228 (1).webp" alt="Rezydencja na wsi - okolice Bielska-Białej, rok 2006" width="1200" height="900" fetchpriority="high" loading="eager" decoding="async" />
@@ -194,6 +200,7 @@
                                 <!-- <div class="mb-0 text-muted">testowo małopolskie</div> -->
                             </div>
                         </div>
+                        </div></div>
                     </div>
                 </div>
             </div>

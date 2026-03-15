@@ -39,6 +39,10 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
+}
+
+/* Only enable transitions after Flickity initializes to avoid delaying LCP */
+.flickity-enabled .carousel-cell.image-container img {
     transition: transform 0.3s ease;
 }
 
@@ -52,8 +56,12 @@
     padding: 0 4px;
     height: calc(var(--bs-gutter-x) * 0.5);
     overflow: hidden;
-    transition: all 0.3s ease;
     z-index: 10;
+}
+
+/* Only enable transitions after Flickity initializes to avoid delaying LCP */
+.flickity-enabled .carousel-cell.image-container .info-bar {
+    transition: all 0.3s ease;
 }
 
 .landing-page .carousel-cell.image-container .info-bar .text-primary {
@@ -64,6 +72,7 @@
 
 .landing-page .flickity-viewport {
     height: 100% !important;
+    contain: layout paint;
 }
 
 .landing-page .carousel-cell.image-container .info-bar .text-muted {
