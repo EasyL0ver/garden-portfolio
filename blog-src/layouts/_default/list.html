@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="blog-container">
+    <h1 class="blog-page-title">{{ .Title }}</h1>
+    <div class="post-list">
+        {{ range .Pages.ByDate.Reverse }}
+        <article class="post-card">
+            <div class="post-meta">{{ .Date.Format "2 January 2006" }}</div>
+            <h2 class="post-card-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <p class="post-card-summary">{{ .Summary }}</p>
+            <a href="{{ .Permalink }}" class="post-read-more">Czytaj dalej →</a>
+        </article>
+        {{ else }}
+        <p class="text-muted">Brak wpisów. Wróć wkrótce!</p>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

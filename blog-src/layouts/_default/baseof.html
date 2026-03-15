@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | ogrodnik projektuje{{ end }}</title>
+    <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="icon" href="/resources/img/logo/drawingpainted.svg">
+    <link rel="stylesheet" href="/blog/blog.css">
+</head>
+<body>
+    <nav class="blog-nav">
+        <div class="blog-nav-inner">
+            <a href="/" class="blog-nav-brand">
+                <img src="/resources/img/logo/drawingpainted.svg" alt="ogrodnik projektuje" height="36">
+                <img src="/resources/img/logo/logo-text.webp" alt="ogrodnik projektuje" height="22">
+            </a>
+            <ul class="blog-nav-links">
+                <li><a href="/">strona główna</a></li>
+                <li><a href="/#uslugi">oferta</a></li>
+                <li><a href="/#portfolio">portfolio</a></li>
+                <li><a href="/blog/">blog</a></li>
+                <li><a href="/#kontakt">kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="blog-main">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="blog-footer">
+        <div class="blog-footer-inner">
+            <p>© 2026 ogrodnikprojektuje.pl &nbsp;·&nbsp;
+                <a href="tel:+48663151163">+48 663 151 163</a> &nbsp;·&nbsp;
+                <a href="mailto:katarzynakudlacik@gmail.com">katarzynakudlacik@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

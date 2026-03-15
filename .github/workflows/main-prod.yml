@@ -39,6 +39,12 @@ jobs:
       #       # compress only - do not create a pull request
       #       compressOnly: true
       #       jpegQuality: ${{ env.JPEG_QUALITY }}
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+      - name: Build Hugo blog
+        run: cd blog-src && hugo --minify
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
