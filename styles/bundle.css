@@ -6,20 +6,14 @@
 /* ==========================================================================
    Self-hosted Google Fonts
    ========================================================================== */
-@font-face {
-    font-family: 'Rouge Script';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url(../fonts/rouge-script.ttf) format('truetype');
-}
 
 @font-face {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(../fonts/quicksand-300.ttf) format('truetype');
+    src: url(../fonts/quicksand-300.woff2) format('woff2'),
+         url(../fonts/quicksand-300.ttf) format('truetype');
 }
 
 @font-face {
@@ -27,7 +21,8 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(../fonts/quicksand-400.ttf) format('truetype');
+    src: url(../fonts/quicksand-400.woff2) format('woff2'),
+         url(../fonts/quicksand-400.ttf) format('truetype');
 }
 
 @font-face {
@@ -35,7 +30,8 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(../fonts/quicksand-500.ttf) format('truetype');
+    src: url(../fonts/quicksand-500.woff2) format('woff2'),
+         url(../fonts/quicksand-500.ttf) format('truetype');
 }
 
 @font-face {
@@ -43,7 +39,8 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(../fonts/quicksand-600.ttf) format('truetype');
+    src: url(../fonts/quicksand-600.woff2) format('woff2'),
+         url(../fonts/quicksand-600.ttf) format('truetype');
 }
 
 @font-face {
@@ -51,7 +48,8 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(../fonts/quicksand-700.ttf) format('truetype');
+    src: url(../fonts/quicksand-700.woff2) format('woff2'),
+         url(../fonts/quicksand-700.ttf) format('truetype');
 }
 
 /* Bootstrap 5.3.0-alpha1 */
@@ -888,6 +886,10 @@ section.offer-section .btn-group .btn {
     height: 100%;
     object-fit: cover;
     object-position: center top;
+}
+
+/* Only enable transitions after Flickity initializes to avoid delaying LCP */
+.flickity-enabled .carousel-cell.image-container img {
     transition: transform 0.3s ease;
 }
 
@@ -901,8 +903,12 @@ section.offer-section .btn-group .btn {
     padding: 0 4px;
     height: calc(var(--bs-gutter-x) * 0.5);
     overflow: hidden;
-    transition: all 0.3s ease;
     z-index: 10;
+}
+
+/* Only enable transitions after Flickity initializes to avoid delaying LCP */
+.flickity-enabled .carousel-cell.image-container .info-bar {
+    transition: all 0.3s ease;
 }
 
 .landing-page .carousel-cell.image-container .info-bar .text-primary {
@@ -913,6 +919,7 @@ section.offer-section .btn-group .btn {
 
 .landing-page .flickity-viewport {
     height: 100% !important;
+    contain: layout paint;
 }
 
 .landing-page .carousel-cell.image-container .info-bar .text-muted {

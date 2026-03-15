@@ -46,18 +46,46 @@
     <!-- #endregion -->
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
     <!-- Preload hero image for faster LCP -->
     <link rel="preload" as="image" href="resources/img/home/PICT0228 (1).webp" fetchpriority="high">
     <!-- Combined CSS bundle (Bootstrap + Flickity + fonts + custom styles) -->
     <link rel="stylesheet" href="styles/bundle.css">
+    <!-- JSON-LD Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "ogrodnik projektuje",
+        "description": "Projektujemy, doradzamy i realizujemy ogrody, które spełniają marzenia o zielonej przestrzeni dopasowanej do Ciebie.",
+        "url": "https://www.ogrodnikprojektuje.pl",
+        "image": "https://ogrodnikprojektuje.pl/resources/img/home/PICT0228 (1).jpg",
+        "telephone": "+48663151163",
+        "email": "katarzynakudlacik@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "PL",
+            "addressRegion": "Małopolska"
+        },
+        "areaServed": "Polska",
+        "knowsAbout": ["projektowanie ogrodów", "aranżacja zieleni", "rewitalizacja parków", "nasadzenia zastępcze", "zieleń miejska"]
+    }
+    </script>
+    <!-- Preload primary font to prevent layout shift from font swap -->
+    <link rel="preload" href="fonts/quicksand-400.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Critical CSS for hero image before JS loads -->
     <style>
         /* Fallback display for hero carousel before Flickity initializes */
-        #homepage-carousel:not(.flickity-enabled) {
-            display: flex;
+        #homepage-carousel:not(.flickity-enabled) .flickity-viewport {
+            position: relative;
             width: 100%;
             height: 100%;
             overflow: hidden;
+        }
+        #homepage-carousel:not(.flickity-enabled) .flickity-slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
         }
         #homepage-carousel:not(.flickity-enabled) .carousel-cell {
             flex: 0 0 auto;
@@ -78,14 +106,15 @@
 </head>
 
 <body class="main-font h-100 p-0 m-0">
+    <a href="#uslugi" class="visually-hidden visually-hidden-focusable">Przejdź do treści</a>
     <div class="background-wrapper">
-        <nav class="navbar navbar-expand-lg fixed-top nav-shadow">
+        <nav class="navbar navbar-expand-lg fixed-top nav-shadow" aria-label="Nawigacja główna">
             <div class="navbar-border h-100 w-100 ms-2 me-2 ms-md-3 me-md-3 ps-md-5 pe-md-5">
-                <div class="navbar-brand h-100 d-flex" href="#">
-                    <a href="#" class="d-flex h-100 align-items-center text-decoration-none">
+                <div class="navbar-brand h-100 d-flex">
+                    <a href="/" class="d-flex h-100 align-items-center text-decoration-none">
                         <img class="h-100 logo" src="resources/img/logo/drawingpainted.svg" alt="Logo ogrodnik projektuje">
-                        <div class="h-100">
-                            <h class="text-primary logo-font logo-text d-block">ogrodnik projektuje</h>
+                        <div class="h-100 logo-text">
+                            <img src="resources/img/logo/logo-text.webp" alt="ogrodnik projektuje" style="height: 30px; width: auto;">
                         </div>
                     </a>
                 </div>
@@ -96,7 +125,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-primary" href="#">home</a>
+                            <a class="nav-link text-primary" href="/">home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="#uslugi">oferta</a>
@@ -116,9 +145,10 @@
             <div class="row h-100">
                 <div class="col-sm-12 col-md-12 h-100 carousel-container home-background-color">
                     <div id="homepage-carousel" class="h-100">
+                        <div class="flickity-viewport" style="touch-action: pan-y; height: 100%;"><div class="flickity-slider">
                         <div class="carousel-cell mr-4 image-container picked" data-title="Tytuł zdjęcia">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/PICT0228 (1).webp" alt="Rezydencja na wsi - okolice Bielska-Białej, rok 2006" fetchpriority="high" loading="eager" decoding="async" />
+                                <img src="resources/img/home/PICT0228 (1).webp" alt="Rezydencja na wsi - okolice Bielska-Białej, rok 2006" width="1200" height="900" fetchpriority="high" loading="eager" decoding="async" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rezydencja na wsi - okolice Bielska-Białej, rok 2006</div>
@@ -127,7 +157,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img src="resources/img/home/1_compressed.webp" alt="Zieleń miejska - Kraków, rok 2017" />
+                                <img data-flickity-lazyload="resources/img/home/1_compressed.webp" alt="Zieleń miejska - Kraków, rok 2017" width="1512" height="2016" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">zieleń miejska - Kraków, rok 2017</div>
@@ -136,7 +166,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/PICT0293 (1).jpg" alt="Rabata bylinowa - okolice Andrychowa, rok 2008" />
+                                <img data-flickity-lazyload="resources/img/home/PICT0293 (1).jpg" alt="Rabata bylinowa - okolice Andrychowa, rok 2008" width="1200" height="1600" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rabata bylinowa - okolice Andrychowa, rok 2008</div>
@@ -145,7 +175,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/hom 4.jpg" alt="Rabaty wyniesione na patio - Kraków, 2017" />
+                                <img data-flickity-lazyload="resources/img/home/hom 4.jpg" alt="Rabaty wyniesione na patio - Kraków, 2017" width="3024" height="4032" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">rabaty wyniesione na patio - Kraków, 2017</div>
@@ -154,7 +184,7 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/home 5.jpg" alt="Zabytkowy park przypałacowy - Małopolska, 2003" />
+                                <img data-flickity-lazyload="resources/img/home/home 5.jpg" alt="Zabytkowy park przypałacowy - Małopolska, 2003" width="2272" height="1712" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">zabytkowy park przypałacowy - Małopolska, 2003</div>
@@ -163,13 +193,14 @@
                         </div>
                         <div class="carousel-cell mr-4 image-container">
                             <div class="image-wrapper">
-                                <img data-flickity-lazyload="resources/img/home/home 6.jpg" alt="Partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015" />
+                                <img data-flickity-lazyload="resources/img/home/home 6.jpg" alt="Partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015" width="3648" height="2736" />
                             </div>
                             <div class="info-bar d-flex align-items-center">
                                 <div class="mb-0 text-primary">partery kwiatowe, hotel resort & spa - okolice Warszawy, 2015</div>
                                 <!-- <div class="mb-0 text-muted">testowo małopolskie</div> -->
                             </div>
                         </div>
+                        </div></div>
                     </div>
                 </div>
             </div>
@@ -180,7 +211,7 @@
             <a class="anchor" id="uslugi"></a>
             <div class="row">
                 <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 background-neutral">
-                    <section name="uslugi" class="offer-section container no-gutters background-neutral">
+                    <section aria-label="Oferta usług" class="offer-section container no-gutters background-neutral">
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
                                 <img src="resources/img/logo/drawing.svg" alt="Logo ogrodnikprojektuje.pl">
@@ -241,10 +272,10 @@
                                         <div class="card-text-group">
                                             <h3 class="card-title h5">poprawa bioróżnorodności</h3>
                                             <p class="card-text">
-                                                zieleń spełniająca wymogi certyfikacji <a href="https://pl.wikipedia.org/wiki/BREEAM">BREEAM</a>
+                                                zieleń spełniająca wymogi certyfikacji <a href="https://pl.wikipedia.org/wiki/BREEAM" target="_blank" rel="noopener noreferrer">BREEAM</a>
                                             </p>
                                             <p class="card-text optional">
-                                                Nasza firma specjalizuje się w projektowaniu ogrodów, które spełniają najwyższe standardy zrównoważonego rozwoju i ekologii, w tym prestiżową certyfikację <a href="https://pl.wikipedia.org/wiki/BREEAM">BREEAM</a>.
+                                                Nasza firma specjalizuje się w projektowaniu ogrodów, które spełniają najwyższe standardy zrównoważonego rozwoju i ekologii, w tym prestiżową certyfikację <a href="https://pl.wikipedia.org/wiki/BREEAM" target="_blank" rel="noopener noreferrer">BREEAM</a>.
                                             </p>
                                         </div>
                                         <div class="btn-group mt-3">
@@ -311,7 +342,7 @@
                     </section>
 
 
-                    <section name="jak-powstaje" class="container background-neutral">
+                    <section aria-label="Jak powstaje ogród" class="container background-neutral">
                         <a class="anchor" id="jak-powstaje"></a>
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
@@ -327,7 +358,7 @@
                             <div id="jak-powstaje-carousel" class="h-100 flickity-carousel mb-6">
                                 <div class ="carousel-cell ogrodnik-card card row w-100 g-0 pastel-1 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/KONCEPCJA.jpg" alt="Wizualizacja koncepcyjna ogrodu z rabatami kwiatowymi" loading="lazy">
+                                        <img class="background" src="resources/img/jakpowstaje/KONCEPCJA.webp" alt="Wizualizacja koncepcyjna ogrodu z rabatami kwiatowymi" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="70 20 60 160" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M95.27 60.302c-1.238.662-4.507 2.092-9.806 4.297-.908.331-2.311.889-4.226 1.648-1.915.775-3.5 1.494-4.738 2.157V47.895C90.029 41.053 98.308 36.086 101.354 33H123.5v134H95.27V60.302z"></path>
@@ -345,7 +376,7 @@
                                 </div>
                                 <div class ="carousel-cell ogrodnik-card card row w-100 g-0 pastel-2 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/projekt_edited.jpg" alt="Plan zagospodarowania działki z podziałem na strefy zieleni" loading="lazy">
+                                        <img class="background" src="resources/img/jakpowstaje/projekt_edited.webp" alt="Plan zagospodarowania działki z podziałem na strefy zieleni" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="55 20 85 160" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M63.331 148.45l32.122-49.356 1.98-2.993c4.195-6.293 7.283-11.567 9.271-15.813a31.095 31.095 0 0 0 2.975-13.338c0-3.753-.744-6.6-2.231-8.525-1.487-1.933-3.621-2.904-6.369-2.904-4.203 0-7.121 1.626-8.778 4.885-1.649 3.26-2.481 7.757-2.481 13.5v6.633H63v-7.126c0-12.594 3.063-22.64 9.19-30.146C78.317 35.753 87.774 32 100.578 32c11.809 0 20.83 3.098 27.062 9.278 6.24 6.18 9.36 14.907 9.36 26.174 0 5.08-.808 9.884-2.401 14.414-1.609 4.53-3.508 8.606-5.715 12.254-2.207 3.648-5.626 8.841-10.265 15.57l-24.492 36.609h39.227V168H63.331v-19.55z"></path>
@@ -363,7 +394,7 @@
                                 </div> 
                                 <div class ="ogrodnik-card carousel-cell card row w-100 g-0 pastel-3 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/propozycja 1_edited.jpg" alt="Kolorowy projekt parku z fontanną i alejkami" loading="lazy">
+                                        <img class="background" src="resources/img/jakpowstaje/propozycja 1_edited.webp" alt="Kolorowy projekt parku z fontanną i alejkami" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="63 20 74 160" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M71.87 158.537c-5.575-7.298-8.37-17.709-8.37-31.219v-4.817h27.401v4.817c0 6.868.673 11.709 2.05 14.531 1.362 2.822 3.909 4.233 7.625 4.233 3.492 0 5.847-1.378 7.048-4.152 1.201-2.757 1.81-7.363 1.81-13.785 0-7.079-.985-12.26-2.956-15.52-1.97-3.268-5.631-4.954-10.989-5.068h-5.086V88.461h4.429c5.575 0 9.403-1.524 11.478-4.565 2.083-3.041 3.124-8.109 3.124-15.196 0-5.425-.721-9.463-2.131-12.123-1.426-2.66-3.941-3.99-7.545-3.99-3.396 0-5.719 1.411-6.976 4.233-1.258 2.822-1.882 6.957-1.882 12.374v6.974H63.5v-8.133c0-12.066 3.196-21.342 9.604-27.821C79.495 33.743 88.378 30.5 99.76 30.5c11.582 0 20.609 3.106 27.057 9.309 6.456 6.195 9.684 15.22 9.684 27.067 0 7.638-1.53 14.142-4.59 19.51-3.068 5.368-6.952 8.717-11.646 10.047 5.022 1.889 8.987 5.263 11.886 10.128 2.899 4.873 4.349 11.855 4.349 20.929 0 13.063-2.899 23.329-8.69 30.805-5.799 7.476-15.042 11.206-27.729 11.206-13.233-.001-22.636-3.65-28.211-10.964z"></path>
@@ -380,7 +411,7 @@
                                 </div> 
                                 <div class ="carousel-cell ogrodnik-card card row w-100 g-0 pastel-4 mb-3 mb-md-0">
                                     <div class="col-md-4 jak-powstaje-img-container d-none d-md-block h-100">
-                                        <img class="background" src="resources/img/jakpowstaje/05-08-24 22-01-57_0000_edited.jpg" alt="Szczegółowy projekt techniczny nasadzeń z oznaczeniami gatunków roślin" loading="lazy">
+                                        <img class="background" src="resources/img/jakpowstaje/05-08-24 22-01-57_0000_edited.webp" alt="Szczegółowy projekt techniczny nasadzeń z oznaczeniami gatunków roślin" loading="lazy">
                                         <div class="slide-number">
                                             <svg class="h-100 w-100" viewBox="50 20 95 155" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M101.497 136.895H60v-20.356L95.166 33H127.5v83.377H140v20.517h-12.501V167h-26.002v-30.105zm0-20.518V60.626L81.16 116.377h20.337z"></path>
@@ -402,7 +433,7 @@
                     </section>
 
 
-                    <section name="gallery-collage" class="container background-neutral">
+                    <section aria-label="Portfolio realizacji" class="container background-neutral">
                         <a class="anchor" id="portfolio"></a>
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
@@ -488,7 +519,7 @@
                         </div>
                     </section>
 
-                    <section name="contact" class="background-neutral container">
+                    <section aria-label="Kontakt" class="background-neutral container">
                         <a class="anchor" id="kontakt"></a>
                         <div class="section-header jumbotron text-center py-4">
                             <div class="image-container">
@@ -509,7 +540,7 @@
                                         <div class="row h-100">
                                             <div class="col-12 d-flex justify-content-center align-items-center mb-2 mb-md-3">
                                                 <div class="text-center w-100">
-                                                    <span class="logo-font">ogrodnik projektuje </span><br>
+                                                    <img class="logo-font" src="resources/img/logo/logo-text.webp" alt="ogrodnik projektuje" style="display:inline-block; height:1em; width:auto;"><br>
                                                     <span style="font-size: 0.85em;">Katarzyna Gągola-Kudłacik</span>
                                                 </div>
                                             </div>
@@ -530,7 +561,7 @@
                                 </div>
                                 <div class="col-12 col-md-8">
                                     <div class="contact-bg-container p-2 p-md-5 h-100" style="min-height: 300px; position: relative; overflow: hidden;">
-                                        <img src="resources/img/contactus.jpg" alt="" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+                                        <img src="resources/img/contactus.webp" alt="" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
                                         <div class="h-100 w-100" style="background-color: white; position: relative; z-index: 1;"> 
                                             <form id="emailForm" class="h-100 w-100" onsubmit="sendEmail(); return false;">
                                                 <div class="d-flex flex-column py-2 py-md-4 px-2 px-md-4 h-100 gap-2">
@@ -588,15 +619,17 @@
         </div>
         
         <!-- Footer with full width and navbar styling -->
-        <footer class="footer-navbar py-4">
+        <footer class="footer-navbar py-4" role="contentinfo">
             <div class="container">
+                <nav aria-label="Nawigacja stopki">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-primary">home</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link px-2 text-primary">home</a></li>
                     <li class="nav-item"><a href="#uslugi" class="nav-link px-2 text-primary">oferta</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav-link px-2 text-primary">portfolio</a></li>
                     <li class="nav-item"><a href="#kontakt" class="nav-link px-2 text-primary">kontakt</a></li>
                 </ul>
-                <p class="text-center text-primary mb-0">ogrodnikprojektuje.pl</p>
+                </nav>
+                <p class="text-center text-primary mb-0">© 2025 ogrodnikprojektuje.pl. Wszelkie prawa zastrzeżone.</p>
             </div>
         </footer>
     </div>
@@ -724,12 +757,12 @@
                 // Carousel initialization functions
                 var initHomepageCarousel = () => {
                     var $homepageCarousel = $('#homepage-carousel').flickity({
-                        imagesLoaded: false,
+                        imagesLoaded: true,
                         percentPosition: false,
                         setGallerySize: false,
                         contain: true,
                         pageDots: false,
-                        lazyLoad: 1,
+                        lazyLoad: 2,
                         on: {
                             ready: function() {
                                 // Cache carousel cells once on ready
@@ -756,7 +789,7 @@
                     var width = document.documentElement.clientWidth
                     if (width >= 768) {
                         var $jakPowstajeCarousel = $('#jak-powstaje-carousel').flickity({
-                            imagesLoaded: false,
+                            imagesLoaded: true,
                             percentPosition: false,
                             setGallerySize: false,
                             contain: true,

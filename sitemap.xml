@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.ogrodnikprojektuje.pl</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://www.ogrodnikprojektuje.pl/gallery.html?gallery=skalny</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ogrodnikprojektuje.pl/gallery.html?gallery=romantyczny</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ogrodnikprojektuje.pl/gallery.html?gallery=miejska</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ogrodnikprojektuje.pl/gallery.html?gallery=willowy</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ogrodnikprojektuje.pl/gallery.html?gallery=nawsi</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ogrodnikprojektuje.pl/gallery.html?gallery=zabytkowy</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ogrodnikprojektuje.pl/gallery.html?gallery=dworek</loc>
-  </url>
-  <url>
-    <loc>https://www.ogrodnikprojektuje.pl</loc>
+    <lastmod>2025-03-14</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
