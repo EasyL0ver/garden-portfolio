@@ -68,8 +68,60 @@ a:hover { color: #0d6efd; }
     transition: color 0.2s;
 }
 .blog-nav-links a:hover { color: var(--secondary); }
-@media (max-width: 600px) {
-    .blog-nav-links { display: none; }
+
+/* CTA button in nav */
+.blog-nav-cta {
+    background: var(--primary) !important;
+    color: white !important;
+    padding: 5px 14px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+.blog-nav-cta:hover { background: rgb(10,50,4) !important; color: white !important; }
+
+/* Hamburger toggler */
+.blog-nav-toggler {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+.blog-nav-toggler span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--primary);
+}
+
+@media (max-width: 991px) {
+    .blog-nav-toggler { display: flex; }
+    .d-desktop-only { display: none !important; }
+    .blog-nav-links {
+        display: none;
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0; right: 0;
+        background: white;
+        flex-direction: column;
+        z-index: 999;
+    }
+    .blog-nav-links.open { display: flex; }
+    .blog-nav-links li {
+        min-height: 50px;
+        border-bottom: 1px solid var(--separator);
+        margin: 0 0.5rem;
+        padding-left: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+    .blog-nav-links li:last-child { border-bottom: none; }
+    .blog-nav-links a { width: 100%; }
+}
+@media (min-width: 992px) {
+    .d-mobile-only { display: none !important; }
 }
 
 /* ── Layout ── */
@@ -133,9 +185,21 @@ a:hover { color: #0d6efd; }
 .blog-footer {
     background: var(--navbar-bg);
     box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
-    padding: 1.25rem 1.5rem;
+    padding: 1.5rem;
     text-align: center;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
 }
 .blog-footer a { color: var(--primary); text-decoration: none; }
 .blog-footer a:hover { text-decoration: underline; }
+.blog-footer-nav {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    border-bottom: 1px solid var(--separator);
+    padding-bottom: 0.75rem;
+}
+.blog-footer-meta { margin: 0; color: var(--primary); }
