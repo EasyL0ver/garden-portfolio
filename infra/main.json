@@ -1,0 +1,725 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "description": "Infrastructure template for ogrodnikprojektuje.pl. Provisions the Azure Static Web App, Azure Communication Services (email + comm service), a Flex Consumption Function App with its supporting storage accounts, and Application Insights. Custom domains are managed outside this template."
+  },
+  "parameters": {
+    "projectName": {
+      "type": "string",
+      "defaultValue": "ogrodnikprojektuje",
+      "metadata": {
+        "description": "Base name used to derive most resource names."
+      }
+    },
+    "staticSiteLocation": {
+      "type": "string",
+      "defaultValue": "West Europe",
+      "metadata": {
+        "description": "Location for the Azure Static Web App."
+      }
+    },
+    "functionAppLocation": {
+      "type": "string",
+      "defaultValue": "Poland Central",
+      "metadata": {
+        "description": "Location for the Function App, App Service Plan, App Insights, and function storage account."
+      }
+    },
+    "receiveStorageLocation": {
+      "type": "string",
+      "defaultValue": "Germany West Central",
+      "metadata": {
+        "description": "Location for the receive-mail storage account."
+      }
+    },
+    "githubRepoUrl": {
+      "type": "string",
+      "defaultValue": "https://github.com/EasyL0ver/garden-portfolio",
+      "metadata": {
+        "description": "GitHub repository URL for the Static Web App."
+      }
+    },
+    "githubBranch": {
+      "type": "string",
+      "defaultValue": "master",
+      "metadata": {
+        "description": "GitHub branch to deploy from."
+      }
+    },
+    "siteHostname": {
+      "type": "string",
+      "defaultValue": "ogrodnikprojektuje.pl",
+      "metadata": {
+        "description": "Primary hostname of the site, used in CORS configuration (without scheme)."
+      }
+    },
+    "logAnalyticsWorkspaceId": {
+      "type": "string",
+      "metadata": {
+        "description": "Full resource ID of the Log Analytics workspace to which Application Insights will send data. Required."
+      }
+    }
+  },
+  "variables": {
+    "staticSiteName": "[parameters('projectName')]",
+    "emailServiceName": "[concat(parameters('projectName'), '-email')]",
+    "commServiceName": "[concat(parameters('projectName'), '-comm-service')]",
+    "appServicePlanName": "[concat('ASP-', parameters('projectName'))]",
+    "functionAppName": "form-functions",
+    "functionStorageName": "[take(concat(toLower(replace(parameters('projectName'), '-', '')), uniqueString(resourceGroup().id)), 24)]",
+    "receiveStorageName": "[take(concat('recv', uniqueString(resourceGroup().id)), 24)]",
+    "appInsightsTagKey": "[concat('hidden-link: /app-insights-resource-id')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Communication/emailServices",
+      "apiVersion": "2025-09-01",
+      "name": "[variables('emailServiceName')]",
+      "location": "global",
+      "properties": {
+        "dataLocation": "Germany"
+      }
+    },
+    {
+      "type": "Microsoft.Communication/emailServices/domains",
+      "apiVersion": "2025-09-01",
+      "name": "[concat(variables('emailServiceName'), '/AzureManagedDomain')]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.Communication/emailServices', variables('emailServiceName'))]"
+      ],
+      "properties": {
+        "domainManagement": "AzureManaged",
+        "userEngagementTracking": "Disabled"
+      }
+    },
+    {
+      "type": "Microsoft.Communication/emailServices/domains",
+      "apiVersion": "2025-09-01",
+      "name": "[concat(variables('emailServiceName'), '/', parameters('siteHostname'))]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.Communication/emailServices', variables('emailServiceName'))]"
+      ],
+      "properties": {
+        "domainManagement": "CustomerManaged",
+        "userEngagementTracking": "Disabled"
+      }
+    },
+    {
+      "type": "Microsoft.Communication/CommunicationServices",
+      "apiVersion": "2025-09-01",
+      "name": "[variables('commServiceName')]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.Communication/emailServices/domains', variables('emailServiceName'), 'AzureManagedDomain')]",
+        "[resourceId('Microsoft.Communication/emailServices/domains', variables('emailServiceName'), parameters('siteHostname'))]"
+      ],
+      "properties": {
+        "dataLocation": "germany",
+        "linkedDomains": [
+          "[resourceId('Microsoft.Communication/emailServices/domains', variables('emailServiceName'), 'AzureManagedDomain')]",
+          "[resourceId('Microsoft.Communication/emailServices/domains', variables('emailServiceName'), parameters('siteHostname'))]"
+        ]
+      }
+    },
+    {
+      "type": "microsoft.communication/emailservices/domains/senderusernames",
+      "apiVersion": "2025-09-01",
+      "name": "[concat(variables('emailServiceName'), '/AzureManagedDomain/donotreply')]",
+      "dependsOn": [
+        "[resourceId('microsoft.communication/emailservices/domains', variables('emailServiceName'), 'AzureManagedDomain')]",
+        "[resourceId('microsoft.communication/emailservices', variables('emailServiceName'))]"
+      ],
+      "properties": {
+        "displayName": "DoNotReply",
+        "username": "DoNotReply"
+      }
+    },
+    {
+      "type": "microsoft.communication/emailservices/domains/senderusernames",
+      "apiVersion": "2025-09-01",
+      "name": "[concat(variables('emailServiceName'), '/', parameters('siteHostname'), '/biuro')]",
+      "dependsOn": [
+        "[resourceId('microsoft.communication/emailservices/domains', variables('emailServiceName'), parameters('siteHostname'))]",
+        "[resourceId('microsoft.communication/emailservices', variables('emailServiceName'))]"
+      ],
+      "properties": {
+        "displayName": "biuro",
+        "username": "biuro"
+      }
+    },
+    {
+      "type": "microsoft.communication/emailservices/domains/senderusernames",
+      "apiVersion": "2025-09-01",
+      "name": "[concat(variables('emailServiceName'), '/', parameters('siteHostname'), '/donotreply')]",
+      "dependsOn": [
+        "[resourceId('microsoft.communication/emailservices/domains', variables('emailServiceName'), parameters('siteHostname'))]",
+        "[resourceId('microsoft.communication/emailservices', variables('emailServiceName'))]"
+      ],
+      "properties": {
+        "displayName": "DoNotReply",
+        "username": "DoNotReply"
+      }
+    },
+    {
+      "type": "microsoft.insights/components",
+      "apiVersion": "2020-02-02",
+      "name": "[variables('functionAppName')]",
+      "kind": "web",
+      "location": "[parameters('functionAppLocation')]",
+      "properties": {
+        "Application_Type": "web",
+        "Flow_Type": "Redfield",
+        "IngestionMode": "LogAnalytics",
+        "Request_Source": "IbizaAIExtensionEnablementBlade",
+        "RetentionInDays": 90,
+        "WorkspaceResourceId": "[parameters('logAnalyticsWorkspaceId')]",
+        "publicNetworkAccessForIngestion": "Enabled",
+        "publicNetworkAccessForQuery": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2025-06-01",
+      "name": "[variables('receiveStorageName')]",
+      "kind": "Storage",
+      "location": "[parameters('receiveStorageLocation')]",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "allowBlobPublicAccess": false,
+        "allowCrossTenantReplication": false,
+        "allowSharedKeyAccess": true,
+        "defaultToOAuthAuthentication": true,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": { "enabled": true, "keyType": "Account" },
+            "file": { "enabled": true, "keyType": "Account" }
+          }
+        },
+        "minimumTlsVersion": "TLS1_2",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow",
+          "ipRules": [],
+          "ipv6Rules": [],
+          "virtualNetworkRules": []
+        },
+        "publicNetworkAccess": "Enabled",
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('receiveStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('receiveStorageName'))]"
+      ],
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "properties": {
+        "cors": { "corsRules": [] },
+        "deleteRetentionPolicy": { "allowPermanentDelete": false, "enabled": false }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('receiveStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('receiveStorageName'))]"
+      ],
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "properties": {
+        "cors": { "corsRules": [] },
+        "protocolSettings": { "smb": {} },
+        "shareDeleteRetentionPolicy": { "days": 7, "enabled": true }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('receiveStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('receiveStorageName'))]"
+      ],
+      "properties": {
+        "cors": { "corsRules": [] }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('receiveStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('receiveStorageName'))]"
+      ],
+      "properties": {
+        "cors": { "corsRules": [] }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('receiveStorageName'), '/default/app-package-receive-mail-7bbd8ba')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('receiveStorageName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('receiveStorageName'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": { "enabled": false },
+        "publicAccess": "None"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('receiveStorageName'), '/default/azure-webjobs-hosts')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('receiveStorageName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('receiveStorageName'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": { "enabled": false },
+        "publicAccess": "None"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('receiveStorageName'), '/default/azure-webjobs-secrets')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('receiveStorageName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('receiveStorageName'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": { "enabled": false },
+        "publicAccess": "None"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2025-06-01",
+      "name": "[variables('functionStorageName')]",
+      "kind": "Storage",
+      "location": "[parameters('functionAppLocation')]",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "allowBlobPublicAccess": false,
+        "allowCrossTenantReplication": false,
+        "allowSharedKeyAccess": true,
+        "defaultToOAuthAuthentication": true,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": { "enabled": true, "keyType": "Account" },
+            "file": { "enabled": true, "keyType": "Account" }
+          }
+        },
+        "minimumTlsVersion": "TLS1_2",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow",
+          "ipRules": [],
+          "ipv6Rules": [],
+          "virtualNetworkRules": []
+        },
+        "publicNetworkAccess": "Enabled",
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('functionStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "properties": {
+        "cors": { "corsRules": [] },
+        "deleteRetentionPolicy": { "allowPermanentDelete": false, "enabled": false }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('functionStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "properties": {
+        "cors": { "corsRules": [] },
+        "protocolSettings": { "smb": {} },
+        "shareDeleteRetentionPolicy": { "days": 7, "enabled": true }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('functionStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "properties": {
+        "cors": { "corsRules": [] }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('functionStorageName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "properties": {
+        "cors": { "corsRules": [] }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('functionStorageName'), '/default/app-package-form-functions-825c6fa')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('functionStorageName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": { "enabled": false },
+        "publicAccess": "None"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('functionStorageName'), '/default/azure-webjobs-hosts')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('functionStorageName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": { "enabled": false },
+        "publicAccess": "None"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2025-06-01",
+      "name": "[concat(variables('functionStorageName'), '/default/azure-webjobs-secrets')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('functionStorageName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": { "enabled": false },
+        "publicAccess": "None"
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2024-11-01",
+      "name": "[variables('appServicePlanName')]",
+      "kind": "functionapp",
+      "location": "[parameters('functionAppLocation')]",
+      "sku": {
+        "capacity": 0,
+        "family": "FC",
+        "name": "FC1",
+        "size": "FC1",
+        "tier": "FlexConsumption"
+      },
+      "properties": {
+        "asyncScalingEnabled": false,
+        "elasticScaleEnabled": false,
+        "hyperV": false,
+        "isSpot": false,
+        "isXenon": false,
+        "maximumElasticWorkerCount": 1,
+        "perSiteScaling": false,
+        "reserved": true,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/staticSites",
+      "apiVersion": "2024-11-01",
+      "name": "[variables('staticSiteName')]",
+      "location": "[parameters('staticSiteLocation')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "properties": {
+        "allowConfigFileUpdates": true,
+        "branch": "[parameters('githubBranch')]",
+        "enterpriseGradeCdnStatus": "Disabled",
+        "provider": "GitHub",
+        "repositoryUrl": "[parameters('githubRepoUrl')]",
+        "stagingEnvironmentPolicy": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Web/staticSites/basicAuth",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(variables('staticSiteName'), '/default')]",
+      "location": "[parameters('staticSiteLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/staticSites', variables('staticSiteName'))]"
+      ],
+      "properties": {
+        "applicableEnvironmentsMode": "SpecifiedEnvironments"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2024-11-01",
+      "name": "[variables('functionAppName')]",
+      "kind": "functionapp,linux",
+      "location": "[parameters('functionAppLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
+      ],
+      "tags": {
+        "[variables('appInsightsTagKey')]": "[resourceId('microsoft.insights/components', variables('functionAppName'))]"
+      },
+      "properties": {
+        "autoGeneratedDomainNameLabelScope": "TenantReuse",
+        "clientAffinityEnabled": false,
+        "clientAffinityProxyEnabled": false,
+        "clientCertEnabled": false,
+        "clientCertMode": "Required",
+        "containerSize": 1536,
+        "customDomainVerificationId": "0F9FEF6861C65FF09BACC6BDB0117ECC50C0CFAAA8BF8F20ABFD1F49AEC16A28",
+        "dailyMemoryTimeQuota": 0,
+        "dnsConfiguration": {},
+        "enabled": true,
+        "endToEndEncryptionEnabled": false,
+        "functionAppConfig": {
+          "deployment": {
+            "storage": {
+              "authentication": {
+                "storageAccountConnectionStringName": "DEPLOYMENT_STORAGE_CONNECTION_STRING",
+                "type": "storageaccountconnectionstring"
+              },
+              "type": "blobcontainer",
+              "value": "[concat('https://', variables('functionStorageName'), '.blob.core.windows.net/app-package-form-functions-825c6fa')]"
+            }
+          },
+          "runtime": {
+            "name": "dotnet-isolated",
+            "version": "8.0"
+          },
+          "scaleAndConcurrency": {
+            "instanceMemoryMB": 512,
+            "maximumInstanceCount": 100
+          }
+        },
+        "hostNamesDisabled": false,
+        "httpsOnly": true,
+        "hyperV": false,
+        "ipMode": "IPv4",
+        "isXenon": false,
+        "keyVaultReferenceIdentity": "SystemAssigned",
+        "outboundVnetRouting": {
+          "allTraffic": false,
+          "applicationTraffic": false,
+          "backupRestoreTraffic": false,
+          "contentShareTraffic": false,
+          "imagePullTraffic": false
+        },
+        "publicNetworkAccess": "Enabled",
+        "redundancyMode": "None",
+        "reserved": true,
+        "scmSiteAlsoStopped": false,
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "siteConfig": {
+          "acrUseManagedIdentityCreds": false,
+          "alwaysOn": false,
+          "functionAppScaleLimit": 100,
+          "http20Enabled": false,
+          "minimumElasticInstanceCount": 0,
+          "numberOfWorkers": 1
+        },
+        "storageAccountRequired": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(variables('functionAppName'), '/ftp')]",
+      "location": "[parameters('functionAppLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+      ],
+      "tags": {
+        "[variables('appInsightsTagKey')]": "[resourceId('microsoft.insights/components', variables('functionAppName'))]"
+      },
+      "properties": {
+        "allow": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(variables('functionAppName'), '/scm')]",
+      "location": "[parameters('functionAppLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+      ],
+      "tags": {
+        "[variables('appInsightsTagKey')]": "[resourceId('microsoft.insights/components', variables('functionAppName'))]"
+      },
+      "properties": {
+        "allow": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(variables('functionAppName'), '/web')]",
+      "location": "[parameters('functionAppLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+      ],
+      "tags": {
+        "[variables('appInsightsTagKey')]": "[resourceId('microsoft.insights/components', variables('functionAppName'))]"
+      },
+      "properties": {
+        "acrUseManagedIdentityCreds": false,
+        "alwaysOn": false,
+        "autoHealEnabled": false,
+        "azureStorageAccounts": {},
+        "cors": {
+          "allowedOrigins": [
+            "https://portal.azure.com",
+            "[concat('https://', parameters('siteHostname'))]",
+            "[concat('https://www.', parameters('siteHostname'))]"
+          ],
+          "supportCredentials": false
+        },
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php"
+        ],
+        "detailedErrorLoggingEnabled": false,
+        "experiments": {
+          "rampUpRules": []
+        },
+        "ftpsState": "FtpsOnly",
+        "functionAppScaleLimit": 100,
+        "functionsRuntimeScaleMonitoringEnabled": false,
+        "http20Enabled": false,
+        "http20ProxyFlag": 0,
+        "httpLoggingEnabled": false,
+        "ipSecurityRestrictions": [
+          {
+            "action": "Allow",
+            "description": "Allow all access",
+            "ipAddress": "Any",
+            "name": "Allow all",
+            "priority": 2147483647
+          }
+        ],
+        "loadBalancing": "LeastRequests",
+        "localMySqlEnabled": false,
+        "logsDirectorySizeLimit": 35,
+        "managedPipelineMode": "Integrated",
+        "minTlsVersion": "1.2",
+        "minimumElasticInstanceCount": 0,
+        "netFrameworkVersion": "v4.0",
+        "numberOfWorkers": 1,
+        "preWarmedInstanceCount": 0,
+        "publicNetworkAccess": "Enabled",
+        "remoteDebuggingEnabled": false,
+        "requestTracingEnabled": false,
+        "scmIpSecurityRestrictions": [
+          {
+            "action": "Allow",
+            "description": "Allow all access",
+            "ipAddress": "Any",
+            "name": "Allow all",
+            "priority": 2147483647
+          }
+        ],
+        "scmIpSecurityRestrictionsUseMain": false,
+        "scmMinTlsVersion": "1.2",
+        "scmType": "None",
+        "use32BitWorkerProcess": false,
+        "virtualApplications": [
+          {
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false,
+            "virtualPath": "/"
+          }
+        ],
+        "vnetPrivatePortsCount": 0,
+        "vnetRouteAllEnabled": false,
+        "webSocketsEnabled": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/functions",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(variables('functionAppName'), '/ContactOgrodnik')]",
+      "location": "[parameters('functionAppLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+      ],
+      "properties": {
+        "config": {
+          "bindings": [
+            {
+              "authLevel": "Anonymous",
+              "direction": "In",
+              "methods": [ "get", "post" ],
+              "name": "req",
+              "type": "httpTrigger"
+            },
+            {
+              "direction": "Out",
+              "name": "$return",
+              "type": "http"
+            }
+          ],
+          "entryPoint": "Company.Function.ContactOgrodnik.Run",
+          "functionDirectory": "",
+          "language": "dotnet-isolated",
+          "name": "ContactOgrodnik",
+          "scriptFile": "form.dll"
+        },
+        "isDisabled": false,
+        "language": "dotnet-isolated"
+      }
+    }
+  ]
+}
