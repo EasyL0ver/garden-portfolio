@@ -50,7 +50,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background: #fff !important;
+            background: rgb(237, 250, 238) !important;
         }
         .blog-content {
             margin-top: var(--navbar-height);
@@ -82,7 +82,8 @@
             opacity: 0.12;
         }
         .blog-hero h1, .blog-hero p { position: relative; z-index: 1; }
-        .blog-hero h1 { font-size: 3rem; font-weight: 300; letter-spacing: 0.08em; margin: 0 0 0.6rem; color: #fff; text-transform: lowercase; }
+        .blog-hero h1 { font-size: clamp(1.3rem, 5.5vw, 3rem); font-weight: 300; letter-spacing: 0.04em; margin: 0 0 0.6rem; color: #fff; text-transform: lowercase; word-break: break-word; }
+        @media (max-width: 400px) { .blog-hero h1 { font-size: 1.15rem; letter-spacing: 0; } }
         .blog-hero p { color: rgba(255,255,255,0.75); margin: 0; font-style: italic; font-size: 1.05rem; }
         @media (max-width: 600px) {
             .blog-hero { margin: -1.25rem -1rem 2rem; padding: 3rem 1rem; }

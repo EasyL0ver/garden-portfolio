@@ -136,7 +136,7 @@ if not cards:
 index_body = f"""
 <div class="blog-container">
     <div class="blog-hero">
-        <h1>ogród, który działa</h1>
+        <h1>blog ogrodnikprojektuje.pl</h1>
         <p>Rośliny, techniki i sezonowe porady od projektanta z 20-letnim doświadczeniem.</p>
     </div>
     <div class="post-list">{cards}</div>
