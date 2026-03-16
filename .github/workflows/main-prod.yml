@@ -51,6 +51,10 @@ jobs:
       #       # compress only - do not create a pull request
       #       compressOnly: true
       #       jpegQuality: ${{ env.JPEG_QUALITY }}
+      - name: Build assets
+        run: |
+          npm ci
+          npm run build
       - name: Build blog
         run: |
           pip install markdown -q

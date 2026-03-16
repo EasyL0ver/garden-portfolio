@@ -1,3 +1,7 @@
 hugo.exe
 /blog/
 blog-src/.hugo_build.lock
+.claude/
+node_modules/
+/styles/bundle.css
+/js/bundle.js
