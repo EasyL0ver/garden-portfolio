@@ -66,7 +66,7 @@
     "emailServiceName": "[concat(parameters('projectName'), '-email')]",
     "commServiceName": "[concat(parameters('projectName'), '-comm-service')]",
     "appServicePlanName": "[concat('ASP-', parameters('projectName'))]",
-    "functionAppName": "form-functions",
+    "functionAppName": "[concat(parameters('projectName'), '-func')]",
     "functionStorageName": "[take(concat(toLower(replace(parameters('projectName'), '-', '')), uniqueString(resourceGroup().id)), 24)]",
     "receiveStorageName": "[take(concat('recv', uniqueString(resourceGroup().id)), 24)]",
     "appInsightsTagKey": "[concat('hidden-link: /app-insights-resource-id')]"
@@ -119,8 +119,7 @@
       "properties": {
         "dataLocation": "germany",
         "linkedDomains": [
-          "[resourceId('Microsoft.Communication/emailServices/domains', variables('emailServiceName'), 'AzureManagedDomain')]",
-          "[resourceId('Microsoft.Communication/emailServices/domains', variables('emailServiceName'), parameters('siteHostname'))]"
+          "[resourceId('Microsoft.Communication/emailServices/domains', variables('emailServiceName'), 'AzureManagedDomain')]"
         ]
       }
     },
@@ -394,7 +393,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
       "apiVersion": "2025-06-01",
-      "name": "[concat(variables('functionStorageName'), '/default/app-package-form-functions-825c6fa')]",
+      "name": "[concat(variables('functionStorageName'), '/default/app-package')]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('functionStorageName'), 'default')]",
         "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
@@ -526,7 +525,7 @@
                 "type": "storageaccountconnectionstring"
               },
               "type": "blobcontainer",
-              "value": "[concat('https://', variables('functionStorageName'), '.blob.core.windows.net/app-package-form-functions-825c6fa')]"
+              "value": "[concat('https://', variables('functionStorageName'), '.blob.core.windows.net/app-package')]"
             }
           },
           "runtime": {
@@ -685,40 +684,6 @@
         "vnetPrivatePortsCount": 0,
         "vnetRouteAllEnabled": false,
         "webSocketsEnabled": false
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2024-11-01",
-      "name": "[concat(variables('functionAppName'), '/ContactOgrodnik')]",
-      "location": "[parameters('functionAppLocation')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
-      ],
-      "properties": {
-        "config": {
-          "bindings": [
-            {
-              "authLevel": "Anonymous",
-              "direction": "In",
-              "methods": [ "get", "post" ],
-              "name": "req",
-              "type": "httpTrigger"
-            },
-            {
-              "direction": "Out",
-              "name": "$return",
-              "type": "http"
-            }
-          ],
-          "entryPoint": "Company.Function.ContactOgrodnik.Run",
-          "functionDirectory": "",
-          "language": "dotnet-isolated",
-          "name": "ContactOgrodnik",
-          "scriptFile": "form.dll"
-        },
-        "isDisabled": false,
-        "language": "dotnet-isolated"
       }
     }
   ]
