@@ -3,6 +3,11 @@
         {
             "route": "/blog-src/*",
             "statusCode": 404
+        },
+        {
+            "route": "/blog/posts/jak-omlodzic-lawendę/*",
+            "redirect": "/blog/posts/jak-omlodzic-lawende/",
+            "statusCode": 301
         }
     ]
 }

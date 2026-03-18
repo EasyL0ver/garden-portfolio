@@ -4,7 +4,7 @@ Blog builder: converts blog-src/posts/*.md -> blog/posts/{slug}/index.html
 Also generates blog/index.html (post list) and copies blog.css.
 Run from repo root: python blog-src/build.py
 """
-import os, re, shutil
+import os, re, shutil, unicodedata
 from pathlib import Path
 from datetime import datetime
 
@@ -54,8 +54,15 @@ def render(page_title, meta_desc, canonical, body):
         .replace("{{CANONICAL}}", canonical)
         .replace("{{BODY}}", wrapped))
 
+def strip_diacritics(text):
+    """Normalize Unicode characters to ASCII equivalents (ę→e, ó→o, ł→l, etc.)."""
+    # Handle Polish ł/Ł explicitly (NFD doesn't decompose these)
+    text = text.replace("ł", "l").replace("Ł", "L")
+    nfkd = unicodedata.normalize("NFKD", text)
+    return "".join(c for c in nfkd if unicodedata.category(c) != "Mn")
+
 def slugify(title):
-    s = title.lower()
+    s = strip_diacritics(title.lower())
     s = re.sub(r"[^a-z0-9\s-]", "", s)
     s = re.sub(r"\s+", "-", s.strip())
     return s
@@ -70,7 +77,7 @@ def fmt_date(date_str):
 posts = []
 for md_file in sorted(POSTS_DIR.glob("*.md")):
     meta, body = parse_frontmatter(md_file.read_text(encoding="utf-8"))
-    slug = md_file.stem
+    slug = strip_diacritics(md_file.stem)
     MD.reset()
     html_body = MD.convert(body)
     posts.append({
