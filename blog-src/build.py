@@ -87,12 +87,16 @@ for md_file in sorted(POSTS_DIR.glob("*.md")):
     slug = strip_diacritics(md_file.stem)
     MD.reset()
     html_body = MD.convert(body)
+    # Extract first image from markdown for thumbnail
+    img_match = re.search(r'!\[.*?\]\((.*?)\)', body)
+    thumb = img_match.group(1) if img_match else ""
     posts.append({
         "slug":    slug,
         "title":   meta.get("title", slug),
         "date":    meta.get("date", ""),
         "summary": meta.get("summary", ""),
         "html":    html_body,
+        "thumb":   thumb,
     })
 
 # Sort newest first
@@ -136,12 +140,16 @@ for post in posts:
 # ── Generate blog index ───────────────────────────────────────────────────────
 cards = ""
 for post in posts:
+    thumb_html = f'<img class="post-card-thumb" src="{post["thumb"]}" alt="" loading="lazy">' if post["thumb"] else ''
     cards += f"""
     <article class="post-card">
-        <div class="post-meta">{fmt_date(post['date'])}</div>
-        <h2 class="post-card-title"><a href="/blog/posts/{post['slug']}/">{post['title']}</a></h2>
-        <p class="post-card-summary">{post['summary']}</p>
-        <a href="/blog/posts/{post['slug']}/" class="post-read-more">Czytaj dalej →</a>
+        {thumb_html}
+        <div class="post-card-body">
+            <div class="post-meta">{fmt_date(post['date'])}</div>
+            <h2 class="post-card-title"><a href="/blog/posts/{post['slug']}/">{post['title']}</a></h2>
+            <p class="post-card-summary">{post['summary']}</p>
+            <a href="/blog/posts/{post['slug']}/" class="post-read-more">Czytaj dalej →</a>
+        </div>
     </article>"""
 
 if not cards:

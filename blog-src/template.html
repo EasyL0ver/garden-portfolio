@@ -92,9 +92,12 @@
         @media (max-width: 600px) {
             .blog-hero { margin: -1.25rem -1rem 2rem; padding: 3rem 1rem; }
             .blog-hero h1 { font-size: 2.2rem; }
+            .post-card-thumb { width: 80px; height: 60px; }
         }
         .post-list { display: flex; flex-direction: column; gap: 2rem; }
-        .post-card { border-left: 3px solid var(--separator-color); padding-left: 1.25rem; }
+        .post-card { display: flex; gap: 1.25rem; align-items: flex-start; border-left: 3px solid var(--separator-color); padding-left: 1.25rem; }
+        .post-card-thumb { width: 120px; height: 90px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+        .post-card-body { flex: 1; min-width: 0; }
         .post-meta { font-size: 0.8rem; color: var(--bs-secondary); margin-bottom: 0.3rem; }
         .post-card-title { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 600; }
         .post-card-title a { text-decoration: none; color: var(--bs-primary); }
