@@ -26,9 +26,13 @@ jobs:
       - name: Publish
         run: dotnet publish form/form.csproj --configuration Release --output ./form/publish
 
+      - name: Login to Azure
+        uses: Azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
         with:
           app-name: 'form-functions'
           package: './form/publish'
-          publish-profile: ${{ secrets.AZURE_FUNCTION_PUBLISH_PROFILE }}
