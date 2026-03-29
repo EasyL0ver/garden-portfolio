@@ -151,7 +151,7 @@ index_body = f"""
 <div class="blog-container">
     <div class="blog-hero">
         <h1>ogrodnik bloguje</h1>
-        <p>Rośliny, techniki i sezonowe porady od projektanta z 20-letnim doświadczeniem.</p>
+        <p>Rośliny, techniki i sezonowe porady od projektantki z 20-letnim doświadczeniem.</p>
     </div>
     <div class="post-list">{cards}</div>
 </div>"""

@@ -1,7 +1,7 @@
 ---
 title: Czas na sianie kwiatów jednorocznych – skąd nasiona?
 date: 2026-03-29
-summary: Polecam czeski sklep LOUKYKVET – świetny dobór odmian kwiatów jednorocznych, przystępne ceny i wysyłka paczkomatami do Polski. Co zamówiłem na ten sezon?
+summary: Polecam czeski sklep LOUKYKVET – świetny dobór odmian kwiatów jednorocznych, przystępne ceny i wysyłka paczkomatami do Polski. Co zamówiłam na ten sezon?
 ---
 
 Wiosna to idealny moment, żeby zaplanować kwiaty jednoroczne na nadchodzący sezon. Jednoroczne kwiaty ciętne to świetny sposób na wypełnienie ogrodu kolorem już w pierwszym roku – ale żeby cieszyć się pięknym efektem, warto zacząć od dobrej jakości nasion i sprawdzonego dostawcy.
@@ -20,7 +20,7 @@ Dobór odmian w sklepie LOUKYKVET jest **wyjątkowo interesujący**, a ceny przy
 - **Bogata edukacja** – przy każdej odmianie znajdziemy szczegółowe informacje: liczbę nasion do jednej komórki multiplata, temperaturę kiełkowania, rozstawę na grządce, podatność na choroby i wiele więcej
 - **Idealne dla początkujących** – ilość praktycznych wskazówek jest ogromna, co jest nieocenione przy pierwszym wysiewie
 
-## Co zamówiłem na ten sezon
+## Co zamówiłam na ten sezon
 
 Oto moje tegoroczne zamówienie – zestaw kwiatów ciętnych i rabatowych, które sprawdzą się zarówno w ogrodzie, jak i w wazonie:
 
