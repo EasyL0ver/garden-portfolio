@@ -8,6 +8,10 @@ on:
       - 'form/**'
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -20,15 +24,19 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Build
-        run: dotnet build form/form.csproj --configuration Release
-
       - name: Publish
-        run: dotnet publish form/form.csproj --configuration Release --output ./form/publish
+        run: |
+          dotnet publish form/form.csproj --configuration Release --output ./form/publish
+          cd form/publish && zip -r ../../form-publish.zip .
+
+      - name: Login to Azure
+        uses: Azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Functions
-        uses: Azure/functions-action@v1
-        with:
-          app-name: 'form-functions'
-          package: './form/publish'
-          publish-profile: ${{ secrets.AZURE_FUNCTION_PUBLISH_PROFILE }}
+        run: |
+          az functionapp deployment source config-zip \
+            --resource-group mama-strona \
+            --name form-functions \
+            --src form-publish.zip
