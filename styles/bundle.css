@@ -506,6 +506,46 @@ section.offer-section .btn-group .btn {
 }
 
 /* ==========================================================================
+   Trust-section.css - "Why choose us" trust signals
+   ========================================================================== */
+
+.trust-section .trust-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trust-section .trust-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(17, 77, 7, 0.12);
+}
+
+.trust-section .trust-number {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.trust-section .trust-icon {
+    margin-bottom: 8px;
+}
+
+.trust-section .trust-icon svg {
+    width: clamp(36px, 6vw, 48px);
+    height: clamp(36px, 6vw, 48px);
+}
+
+.trust-section .trust-label {
+    font-weight: 700;
+    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+    margin-bottom: 6px;
+}
+
+.trust-section .trust-detail {
+    font-size: clamp(0.72rem, 1.4vw, 0.88rem);
+    line-height: 1.4;
+}
+
+/* ==========================================================================
    Grid-gallery.css - Gallery grid styles
    ========================================================================== */
 
