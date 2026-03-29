@@ -914,40 +914,30 @@
                     entries.forEach(function(entry) {
 
                         if(!entry.isIntersecting) {
-                            // If the element is not intersecting, skip further processing
                             return;
                         }
 
                         if(entry.intersectionRatio < 0.8) {
-                            // If the element is not at least 80% visible, skip further processing
                             return;
                         }
 
                         var element = entry.target;
-                        console.log("Logo section intersection:", entry.isIntersecting, "ratio:", entry.intersectionRatio);
                         
                         if(element != animatingElement) {
-                            console.log("Animating new element after delay:", element);
+                            // Stop observing once animated to prevent re-triggering
+                            observer.unobserve(element);
 
-                            // rotate after one second
                             setTimeout(function() {
-                                console.log("Rotating element:", element);
-                                // Remove rotation from previously animated element
                                 if (animatingElement) {
                                     $(animatingElement).removeClass('rotated');
                                 }
-                                
-                                // Remove rotation from all logos
-                                $(sectionHeaderLogos).removeClass('rotated');
-
-                                // Add rotation to the currently intersecting logo
                                 $(element).addClass('rotated');
                             }, 1000);
                             animatingElement = element;
                         }
                     });
                 }, {
-                    threshold: [0.8] // Only trigger when the entire header section is 95% visible
+                    threshold: [0.8]
                 });
                 
                 // Observe each logo
