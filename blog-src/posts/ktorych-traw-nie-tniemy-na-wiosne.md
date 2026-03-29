@@ -55,3 +55,7 @@ Wyczesywanie to prosty zabieg, który można wykonać **ręką w rękawicy ogrod
 Jeśli trawa zimozielona po wyjątkowo mroźnej zimie **całkowicie zbrązowiała** i nie ma na niej żadnych zielonych liści, można ją wyjątkowo przyciąć nisko, aby zmusić do wypuszczenia nowych pędów. To jednak **zabieg ratunkowy, a nie standardowa pielęgnacja** – stosujemy go tylko wtedy, gdy roślina jest w naprawdę złym stanie.
 
 Jeśli nie masz pewności, jak pielęgnować trawy w swoim ogrodzie – [napisz do nas](/). Chętnie doradzimy odpowiedni sposób cięcia i pielęgnacji. Pierwsze spotkanie jest bezpłatne.
+
+---
+
+*Zdjęcia traw ozdobnych: [e-katalogroslin.pl](https://e-katalogroslin.pl/)*
