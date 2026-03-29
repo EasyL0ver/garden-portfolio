@@ -16,7 +16,9 @@
             s.async = true;
             document.head.appendChild(s);
             gtag('js', new Date());
-            gtag('config', 'G-DBM0FEFTDV');
+            gtag('config', 'G-DBM0FEFTDV', {
+                send_page_view: true
+            });
         }
         
         if ('requestIdleCallback' in window) {

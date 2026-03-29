@@ -17,7 +17,9 @@
             s.async = true;
             document.head.appendChild(s);
             gtag('js', new Date());
-            gtag('config', 'G-DBM0FEFTDV');
+            gtag('config', 'G-DBM0FEFTDV', {
+                send_page_view: true
+            });
         }
         
         if ('requestIdleCallback' in window) {
@@ -792,6 +794,7 @@
                                                     document.getElementById('loader').style.display = 'none';
                                                     if (response.ok) {
                                                         document.getElementById('successMsg').style.display = 'block';
+                                                        gtag('event', 'generate_lead', { event_category: 'contact', event_label: 'form_submit' });
                                                         setTimeout(() => location.reload(), 5000);
                                                     } else {
                                                         var errText = await response.text();
@@ -958,6 +961,24 @@
                         $('.background-wrapper').css('background-color', 'rgba(0,0,0,' + shutterRatio * shutterMaxOpacity + ')');
                     });
                 }
+
+                // Section visibility tracking for analytics
+                var trackedSections = {};
+                var sectionObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !trackedSections[entry.target.id]) {
+                            trackedSections[entry.target.id] = true;
+                            gtag('event', 'section_view', { event_category: 'engagement', event_label: entry.target.id });
+                        }
+                    });
+                }, { threshold: 0.3 });
+                document.querySelectorAll('a.anchor[id]').forEach(function(anchor) {
+                    var section = anchor.closest('section') || anchor.parentElement;
+                    if (section && anchor.id) {
+                        section.id = section.id || ('section-' + anchor.id);
+                        sectionObserver.observe(section);
+                    }
+                });
 
                 // Navbar scroll state
                 function updateNavbarScrolled() {
