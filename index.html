@@ -750,6 +750,11 @@
                                             <form id="emailForm" class="h-100 w-100" onsubmit="sendEmail(); return false;">
                                                 <div class="d-flex flex-column py-2 py-md-4 px-2 px-md-4 h-100 gap-2">
                                                     <div class="text-primary" style="font-size: clamp(1rem, 2.2vw, 1.5rem); font-weight: 600;">Napisz do nas – wycena gratis!</div>
+                                                    <!-- Honeypot field hidden from real users -->
+                                                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                                                        <label for="website">Website</label>
+                                                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                                                    </div>
                                                     <div class="form-group">
                                                         <label for="email" class="text-primary">Twój email</label>
                                                         <input type="email" id="email" name="email" class="form-control" placeholder="Wpisz swój email" required>
@@ -769,6 +774,11 @@
                                                 document.getElementById('loader').style.display = 'block';
                                                 document.getElementById('successMsg').style.display = 'none';
                                                 document.getElementById('errorMsg').style.display = 'none';
+                                                if (document.getElementById('website').value) {
+                                                    document.getElementById('loader').style.display = 'none';
+                                                    document.getElementById('successMsg').style.display = 'block';
+                                                    return;
+                                                }
                                                 const data = {
                                                     email: document.getElementById('email').value,
                                                     message: document.getElementById('message').value

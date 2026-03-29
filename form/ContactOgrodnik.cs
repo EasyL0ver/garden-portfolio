@@ -26,10 +26,19 @@ public class ContactOgrodnik
         _logger.LogInformation("SendEmails Function Triggered.");
         string email = req.Query["email"];
         string message = req.Query["message"];
+        string website = req.Query["website"];
         string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
         dynamic data = JsonConvert.DeserializeObject(requestBody);
         email = email ?? data?.email;
         message = message ?? data?.message;
+        website = website ?? data?.website;
+
+        // Honeypot anti-bot check
+        if (!string.IsNullOrEmpty(website))
+        {
+            _logger.LogWarning("Bot submission detected (honeypot filled).");
+            return new OkObjectResult("Wiadomości zostały wysłane.");
+        }
 
         if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(message))
         {
