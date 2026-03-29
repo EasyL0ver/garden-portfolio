@@ -58,4 +58,4 @@ Jeśli nie masz pewności, jak pielęgnować trawy w swoim ogrodzie – [napisz 
 
 ---
 
-*Zdjęcia traw ozdobnych: [e-katalogroslin.pl](https://e-katalogroslin.pl/)*
+*Zdjęcia traw ozdobnych: [e-katalogroslin.pl](https://e-katalogroslin.pl/), [LOUKYKVET](https://loukykvet.cz/)*
