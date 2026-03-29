@@ -67,9 +67,16 @@ def slugify(title):
     s = re.sub(r"\s+", "-", s.strip())
     return s
 
+POLISH_MONTHS = {
+    1: "stycznia", 2: "lutego", 3: "marca", 4: "kwietnia",
+    5: "maja", 6: "czerwca", 7: "lipca", 8: "sierpnia",
+    9: "września", 10: "października", 11: "listopada", 12: "grudnia",
+}
+
 def fmt_date(date_str):
     try:
-        return datetime.fromisoformat(str(date_str)).strftime("%-d %B %Y")
+        dt = datetime.fromisoformat(str(date_str))
+        return f"{dt.day} {POLISH_MONTHS[dt.month]} {dt.year}"
     except Exception:
         return str(date_str)
 
