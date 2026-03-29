@@ -28,6 +28,22 @@ public class ContactOgrodnik
         dynamic data = JsonConvert.DeserializeObject(requestBody);
         email = email ?? data?.email;
         message = message ?? data?.message;
+
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(message))
+        {
+            return new BadRequestObjectResult("Proszę podać adres e-mail i wiadomość.");
+        }
+
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            email = addr.Address;
+        }
+        catch
+        {
+            return new BadRequestObjectResult("Podany adres e-mail jest nieprawidłowy.");
+        }
+
         var senderEmailAddress = Environment.GetEnvironmentVariable("senderEmailAddress");
         var myEmailAddress = Environment.GetEnvironmentVariable("myEmailAddress");
         var connectionString = Environment.GetEnvironmentVariable("AzureCommunicationServicesConnectionString");

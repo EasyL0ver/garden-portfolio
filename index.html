@@ -759,7 +759,7 @@
                                                     <button type="submit" class="btn btn-outline-primary" style="width: 100%; max-width: 300px; font-weight: 600; padding: 9px 0;">Wyślij wiadomość →</button>
                                                     <div id="loader" style="display:none;">Wysyłanie...</div>
                                                     <div id="successMsg" style="display:none;" class="text-success mt-2">Wiadomość została wysłana!</div>
-                                                    <div id="errorMsg" style="display:none;" class="text-danger mt-2">Wystąpił błąd podczas wysyłania wiadomości.</div>
+                                                    <div id="errorMsg" style="display:none;" class="text-danger mt-2"></div>
                                                 </div>
                                             </form>
                                             <script>
@@ -782,11 +782,16 @@
                                                         document.getElementById('successMsg').style.display = 'block';
                                                         setTimeout(() => location.reload(), 5000);
                                                     } else {
-                                                        document.getElementById('errorMsg').style.display = 'block';
+                                                        var errText = await response.text();
+                                                        var errorMsg = document.getElementById('errorMsg');
+                                                        errorMsg.textContent = errText || 'Wystąpił błąd podczas wysyłania wiadomości.';
+                                                        errorMsg.style.display = 'block';
                                                     }
                                                 } catch (error) {
                                                     document.getElementById('loader').style.display = 'none';
-                                                    document.getElementById('errorMsg').style.display = 'block';
+                                                    var errorMsg = document.getElementById('errorMsg');
+                                                    errorMsg.textContent = 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później.';
+                                                    errorMsg.style.display = 'block';
                                                 }
                                             }
                                             </script>

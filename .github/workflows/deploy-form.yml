@@ -1,0 +1,34 @@
+name: deploy email handler
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'form/**'
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy Azure Function
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build
+        run: dotnet build form/form.csproj --configuration Release
+
+      - name: Publish
+        run: dotnet publish form/form.csproj --configuration Release --output ./form/publish
+
+      - name: Deploy to Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: 'form-functions'
+          package: './form/publish'
+          publish-profile: ${{ secrets.AZURE_FUNCTION_PUBLISH_PROFILE }}
